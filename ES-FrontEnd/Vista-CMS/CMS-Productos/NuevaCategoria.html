@@ -1,0 +1,375 @@
+<!--===========================================================
+    ESTILOS DE LA VISTA
+=============================================================-->
+
+<style>
+	
+	/*===TITULO PRINCIPAL DE LA VISTA===*/
+	.titulo{
+			color: #9a9a9a;
+			margin-top: 20px;
+			font-family:serif;
+			text-align: center;
+	}
+	
+	/*===SUBTITULO DE LA VISTA===*/
+	h6 {
+			color: #9a9a9a;
+			margin-top: 20px;
+			font-weight: bold;
+	}
+	
+	/*===BOTONES DE LA VISTA ===*/
+	.btn{border-radius: 50px; font-weight: bold;}
+		
+	/*- ESTILO 2 -*/
+	.btn2{
+			border: 2.5px #66615b solid;
+			border-radius: 50px;
+			padding: 8px 20px;
+			font-weight: bold;
+			color:#66615b;
+			font-size: 14px;
+	}
+	.btn2:hover{
+			background-color: #66615b;
+			color: white;
+			transition: 0.5s;
+	}
+
+	/*=== GRUPO DE DATOS DE ENTRADA - OBLIGATORIO ===*/
+	.input-group .input-group-text{
+			border-right: 0;
+			background: white
+	}
+	.input-group .form-control{
+			border-left: 0
+	}
+
+	/*===MENSAJE DE ALERTA DE LA VISTA===*/
+	.toast {
+			z-index: -100;
+			position: fixed;
+			right: 40px;
+			top: 70px;
+			color: white;
+			font-weight:500;
+			font-size: 18px;
+	}
+	.visualizar{
+			z-index: 100;
+	}
+	
+	/*===RESPONSIVE===*/
+	@media (min-width: 1199.98px) { .contenedor-principal{width: 60%;} }
+
+</style>
+
+<!--===========================================================
+    CONTENIDO GENERAL DE LA VISTA
+=============================================================-->
+
+<div class="contenedor-principal mx-auto my-1">
+
+	<!--TITULO-->
+	<h3 class="titulo mb-5">AGREGAR NUEVA CATEGORÍA</h3>
+	
+	<!--CONTENIDO GENERAL-->
+	<div>
+  
+		<!--CONTENIDO-->
+	  <div class="row">
+
+				<!--INGRESAR DATOS-->
+				<div class="col-md-7 col-sm-7">
+
+					<!--TITULO-->
+					<div class="form-group">
+						<h6>TITULO <span class="red-text font-weight-bold">*</span></h6>
+						<input id="titulo" type="text" class="form-control" placeholder="ingresar el titulo de la pagina aqui...">
+					</div>				
+
+				</div>
+                
+	  </div>
+	  
+		<!--BOTONES-->
+	  <div class="row justify-content-center my-5">
+				<div class="col-md-4 col-sm-4">
+					<button class="btn btn-block enfasis1" onclick="validarFormulario()" type="submit">Guardar</button>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<button class="btn btn-block enfasis2" onclick="cargarDatos()" type="submit">Reestablecer </button>
+				</div>
+	  </div>
+	  
+	</div>
+	
+	<!--ALERTA-->
+	<div class="alert alert-danger mx-5" role="alert">
+			* Campo obligatorio!
+	</div>
+	
+</div>
+
+<!-- TOAST -->
+ <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
+    <div class="toast-body">Mensaje</div>
+ </div>
+
+<!--===========================================================
+    SCRIPTS DE LA VISTA
+=============================================================-->
+
+<script>
+ 
+//--INICIALIZAR FUNCIONES--
+cargarDatos();
+var mostrar=false;
+    
+//--LLAMAR A FUNCION MOSTRAR IMAGEN AL CARGAR IMAGEN--  
+var inputFile = document.getElementById('foto1');
+inputFile.addEventListener('change', vGenerales.mostrarImagen1, false);  
+    
+//--LLAMAR A FUNCION MOSTRAR IMAGEN AL CARGAR IMAGEN--  
+var inputFile = document.getElementById('foto2');
+inputFile.addEventListener('change', vGenerales.mostrarImagen2, false);  
+    
+//--CARGAR INFORMACION EXISTENTE EN LA BASE DE DATOS --
+function cargarDatos(){
+    
+    $.ajax({
+        url: '/../../../ES-BackEnd/Controlador/ModCMS/Controlador_Index/Controlador_MostrarDatosEmpresa.php',
+        type: 'GET',
+        dataType: 'json',
+        error: function(error){
+						mostrar=true;
+            if(error.status == 401){
+								mostrarToast("error","No se pudo establecer conexion con el servidor");
+            }
+            else{
+								mostrarToast("error","Error no identificado.");
+            }
+        },
+        success: function(datos){
+            if(datos.response == 0){
+                mostrar=true;
+								mostrarToast("error",'ERROR: '+datos.message);
+            }
+            else{
+                $("#titulo").val(datos.INFEMPTITULO_PAGINA);
+                $("#correo").val(datos.INFEMPCORREO);
+                $("#telefono1").val(datos.INFEMPTELEFONO1);
+                $("#telefono2").val(datos.INFEMPTELEFONO2);
+                $("#redSocial1").val(datos.INFEMPRED_SOCIAL1);
+                $("#redSocial2").val(datos.INFEMPRED_SOCIAL2);
+                $("#pais option[value="+ datos.INFEMPPAIS +"]").attr("selected",true);
+                $("#provincia option[value="+ datos.INFEMPPROVINCIA +"]").attr("selected",true);
+                $("#distrito option[value="+ datos.INFEMPDISTRITO +"]").attr("selected",true);
+                $("#direccion").val(datos.INFEMPDOMICILIO);
+                
+                if(datos.INFEMPICONO!=""){
+                  document.getElementById('previewFoto1').src = datos.INFEMPICONO;
+                }
+                
+                if(datos.INFEMPLOGO!=""){
+                  document.getElementById('previewFoto2').src = datos.INFEMPLOGO;
+                }
+            }
+        }
+    });
+    
+}
+    
+//--VALIDAR DATOS INGRESADOS EN EL FORMULARIO --  
+function validarFormulario(){
+  
+    var R1 = $("#titulo").val();
+    var R2 = $("#correo").val();
+    var R3 = $("#telefono1").val();
+    var R4 = $("#telefono2").val();
+    var R5 = $("#redSocial1").val();
+    var R6 = $("#redSocial2").val();
+    var R7 = $("#direccion").val();
+    
+    if(R1 == null || R1.length == 0 || /^\s+$/.test(R1)){
+        alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+        $("#titulo").focus();
+    }
+    else if(R2 == null || R2.length == 0 || /^\s+$/.test(R2)){
+        alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+        $("#correo").focus();
+    }
+    else if(R3 == null || R3.length == 0 || /^\s+$/.test(R3)){
+        alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+        $("#telefono1").focus();
+    }
+    else if(R4 == null || R4.length == 0 || /^\s+$/.test(R4)){
+        alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+        $("#telefono2").focus();
+    }
+    else if(R5 == null || R5.length == 0 || /^\s+$/.test(R5)){
+        alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+        $("#redSocial1").focus();
+    }
+    else if(R6 == null || R6.length == 0 || /^\s+$/.test(R6)){
+        alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+        $("#redSocial2").focus();
+    }
+    else if(R7 == null || R7.length == 0 || /^\s+$/.test(R7)){
+        alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+        $("#direccion").focus();
+    }
+    else if(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/.test(R2)){
+			
+				if(document.getElementById('foto1').files.length == 0 && document.getElementById('foto2').files.length == 0){
+						actualizarDatosEmpresa();
+				}else{
+						guardarImagenEmpresa();
+        
+						if ($("#estado").val() == "IMAGEN GUARDADA CORRECTAMENTE"){
+								actualizarDatosEmpresa()
+						}else{
+								mostrar=true;
+								mostrarToast("error",$("#estado").val());
+						}
+					
+				}
+
+    }else{
+        alert('ERROR: Ingresar un correo electronico valido.');
+        $("#correo").focus();
+    }
+        
+} 
+    
+//--GUARDAR IMAGENES DE LA EMPRESA --
+function guardarImagenEmpresa(){
+  
+  var nuevoFormulario = new FormData();   
+  $("#form").find(':input').each(function() {
+    var elemento= this;
+    //Si recibe tipo archivo 'file'
+    if(elemento.type === 'file'){
+       if(elemento.value !== ''){
+          for(var i=0; i< $('#'+elemento.id).prop("files").length; i++){
+              nuevoFormulario.append(elemento.name, $('#'+elemento.id).prop("files")[i]);
+           }
+       }              
+     }
+  });
+
+  $.ajax({
+      url: "/../../../ES-BackEnd/Controlador/ModCMS/Controlador_Index/Controlador_GuardarImagenEmpresa.php",
+      type: "POST",
+      data: nuevoFormulario,
+      contentType: false,
+      processData: false,
+      async:false,
+      success: function(datos){
+        if(datos.response1==0 && datos.response2 ==0){
+              $("#estado").val("ERROR AL GUARDAR LA IMAGEN: "+datos.message)
+          }else{
+              $("#estado").val("IMAGEN GUARDADA CORRECTAMENTE")
+          }
+      }
+  });
+}
+    
+//--ACTUALIZAR DATOS DE LA EMPRESA --    
+function actualizarDatosEmpresa(){
+    var rutaFoto1,nombreFoto1;
+    var rutaFoto2,nombreFoto2;
+  
+    if(document.getElementById('foto1').files.length == 0){
+      if(document.getElementById('previewFoto1').src==""){
+        rutaFoto1="";
+      }else{
+        nombreFoto1=document.getElementById('previewFoto1').src.split("/Imagenes/");
+        rutaFoto1="Elementos/Imagenes/"+nombreFoto1[1];
+      }
+    }else{
+      rutaFoto1="Elementos/Imagenes/"+document.getElementById('foto1').files[0].name
+    }
+    
+    if(document.getElementById('foto2').files.length == 0){
+      if(document.getElementById('previewFoto2').src==""){
+        rutaFoto2="";
+      }else{
+        nombreFoto2=document.getElementById('previewFoto2').src.split("/Imagenes/");
+        rutaFoto2="Elementos/Imagenes/"+nombreFoto2[1];
+      }
+    }else{
+      rutaFoto2="Elementos/Imagenes/"+document.getElementById('foto2').files[0].name
+    }
+	
+		mostrar=true;
+    
+    var $datos={
+        '_titulo': $("#titulo").val(),
+        '_correo': $("#correo").val(),
+        '_telefono1': $("#telefono1").val(),
+        '_telefono2': $("#telefono2").val(),
+        '_redSocial1': $("#redSocial1").val(),
+        '_redSocial2': $("#redSocial2").val(),
+        '_direccion': $("#direccion").val(),
+        '_distrito': $("#distrito").val(),
+        '_provincia': $("#provincia").val(),
+        '_pais': $("#pais").val(),
+        '_rutaFotoIcon': rutaFoto1,
+        '_rutaFotoLogo': rutaFoto2
+    }
+	
+    $.ajax({
+        url: '/../../../ES-BackEnd/Controlador/ModCMS/Controlador_Index/Controlador_ActualizarDatosEmpresa.php',
+        type: 'POST',
+        data: $datos,
+        dataType: 'json',
+        error: function(error){
+            if(error.status == 401){
+								mostrarToast("error","No se pudo establecer conexion con el servidor");
+            }
+            else{
+								mostrarToast("error","Error no identificado.");
+            }
+        },
+        success: function(datos){
+            if(datos.response == 0){
+								mostrarToast("error",'ERROR: '+datos.message);
+            }
+            else{
+								mostrarToast("exito","Actualizacion correcta!");
+            }
+        }
+    });
+    
+}
+	
+//--MOSTRAR TOAST CON MENSAJE--
+function mostrarToast(tipo,msj){
+    if(mostrar==true){
+				switch(tipo){
+					case 'exito':
+						$(".toast").removeClass("succesfull");
+						$(".toast").removeClass("error");
+						
+						$(".toast").addClass("succesfull");
+						break;
+					case 'error':
+						$(".toast").removeClass("succesfull");
+						$(".toast").removeClass("error");
+						
+						$(".toast").addClass("error");
+						break;
+				}
+				
+        $('.toast-body').html('');
+        $('.toast-body').html(msj);
+			
+        $('.toast').toast('show');
+        $('.toast').addClass('visualizar');
+    }
+    mostrar=false;
+}
+    
+</script>

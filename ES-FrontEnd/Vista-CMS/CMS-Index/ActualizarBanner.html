@@ -1,0 +1,278 @@
+<!--===========================================================
+    CONTENIDO GENERAL DE LA VISTA
+=============================================================-->
+
+<div class="contenedor-principal mx-auto my-1">
+
+	<!--TITULO-->
+	<h3 class="titulo mb-5">ACTUALIZAR INFORMACION DEL BANNER</h3>
+	
+	<!--CONTENIDO GENERAL-->
+	<div>
+  
+		<!--CONTENIDO-->
+	  <div class="row">
+
+				<!--INGRESAR DATOS-->
+				<div class="col-12">
+
+					<!--TIPO-->
+					<div class="form-group">
+						<h6>TIPO <span class="red-text font-weight-bold">*</span></h6>
+						<select id="tipo" class="form-control">
+								<option value="B1">Imagen Lateral</option>
+								<option value="B2">Imagen de Fondo</option>
+						</select>
+					</div>
+				
+					<!--TITULO-->
+					<div class="form-group">
+						<h6>TITULO <span class="red-text font-weight-bold">*</span></h6>
+						<input id="titulo" type="text" class="form-control" placeholder="Máximo 100 caracteres">
+					</div>
+
+					<!--DESCRIPCION-->
+					<div class="form-group">
+						<h6>DESCRIPCION <span class="red-text font-weight-bold">*</span></h6>
+						<input id="descripcion" type="text" class="form-control" placeholder="Máximo 300 caracteres">
+					</div>
+
+				</div>
+				
+				<!--IMAGENES-->
+				<div class="col-12"><form action="" id="form">
+				
+					<!--IMAGEN DEL BANNER-->
+					<div class="text-center" >
+							<h6 class="text-center mx-auto" style="width:370px;">IMAGEN DEL BANNER</h6>
+							<img id="previewFoto" class="formulario mx-auto my-2" style="width: 800px; height: 540px;"><br>
+							<label for="foto" class="btn2">CAMBIAR IMAGEN</label>
+							<input id="foto" class="my-2" name="archivo" type="file" accept="image/*" style="display: none"><input type="text" hidden id="estado">
+					</div>
+
+				</form></div>
+
+	  </div>
+	  
+		<!--BOTONES-->
+	  <div class="row justify-content-center my-5">
+				<div class="col-md-4 col-sm-4">
+					<button class="btn btn-block enfasis1" onclick="validarFormulario()" type="submit">ACTUALIZAR INFORMACIÓN</button>
+				</div>
+	  </div>
+	  
+	</div>
+	
+	<!--ALERTA-->
+	<div class="alert alert-danger mx-5" role="alert">
+			* Campo obligatorio!
+	</div>
+	
+</div>
+
+<!-- TOAST -->
+ <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
+    <div class="toast-body">Mensaje</div>
+ </div>
+
+<!--===========================================================
+    SCRIPTS DE LA VISTA
+=============================================================-->
+
+<script>
+ 
+//--INICIALIZAR FUNCIONES--
+cargarDatos("B1");
+    
+//--LLAMAR A FUNCION MOSTRAR IMAGEN AL CARGAR IMAGEN--  
+var inputFile = document.getElementById('foto');
+inputFile.addEventListener('change', vGenerales.mostrarImagen, false);  
+    
+//--SELECCION DE TIPO DE BANNER--
+$("#tipo").change(function() {
+    cargarDatos($("#tipo option:selected").val());
+});
+    
+//--CARGAR INFORMACION EXISTENTE EN LA BASE DE DATOS--
+function cargarDatos(op){
+    
+    var $datos={
+        '_tipo': op
+    }
+    
+    $.ajax({
+        url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_MostrarDatosBanner.php',
+        type: 'POST',
+        data: $datos,
+        dataType: 'json',
+        error: function(error){
+            mostrar=true;
+            if(error.status == 401){
+				mostrarToast("error","No se pudo establecer conexion con el servidor");
+            }
+            else{
+				mostrarToast("error","Error no identificado.");
+            }
+        },
+        success: function(datos){
+            if(datos.response == 0){
+                mostrar=true;
+				mostrarToast("error",'ERROR: '+datos.message);
+            }
+            else{
+                $("#tipo option[value="+ datos.BANNTIPO +"]").attr("selected",true);
+                $("#titulo").val(datos.BANNTITULO);
+                $("#descripcion").val(datos.BANNDESCRIPCION);
+                
+                if(datos.BANNIMAGEN!=""){
+                  document.getElementById('previewFoto').src = datos.BANNIMAGEN;
+                }
+            }
+        }
+    });
+    
+}
+
+//--VALIDAR DATOS INGRESADOS EN EL FORMULARIO--  
+function validarFormulario(){
+  
+    var R1 = $("#titulo").val();
+    var R2 = $("#descripcion").val();
+    
+    if(R1 == null || R1.length == 0 || /^\s+$/.test(R1)){
+        alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+        $("#titulo").focus();
+    }
+    else if(R2 == null || R2.length == 0 || /^\s+$/.test(R2)){
+        alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+        $("#descripcion").focus();
+    }else{
+			
+		if(document.getElementById('foto').files.length == 0){
+			actualizarDatosBanner()
+		}else{
+			guardarImagenBanner();
+        
+			if ($("#estado").val() == "IMAGEN GUARDADA CORRECTAMENTE"){
+				actualizarDatosBanner()
+			}else{
+				mostrar=true;
+				mostrarToast("error",$("#estado").val());
+			}
+					
+		}
+			
+    }
+        
+} 
+
+//--GUARDAR IMAGEN DEL BANNER--  
+function guardarImagenBanner(){
+  
+  var nuevoFormulario = new FormData();   
+  $("#form").find(':input').each(function() {
+    var elemento= this;
+    //Si recibe tipo archivo 'file'
+    if(elemento.type === 'file'){
+       if(elemento.value !== ''){
+          for(var i=0; i< $('#'+elemento.id).prop("files").length; i++){
+              nuevoFormulario.append(elemento.name, $('#'+elemento.id).prop("files")[i]);
+           }
+       }              
+     }
+  });
+
+  $.ajax({
+      url: "ES-BackEnd/Controlador/Controlador-CMS/Controlador_GuardarImagenBanner.php",
+      type: "POST",
+      data: nuevoFormulario,
+      contentType: false,
+      processData: false,
+      async:false,
+      success: function(datos){
+        if(datos.response==0){
+              $("#estado").val("ERROR AL GUARDAR LA IMAGEN: "+datos.message)
+          }else{
+              $("#estado").val("IMAGEN GUARDADA CORRECTAMENTE")
+          }
+      }
+  });
+}    
+    
+//--ACTUALIZAR DATOS DE LA EMPRESA--
+function actualizarDatosBanner(){
+    var rutaFoto,nombreFoto;
+	
+	if(document.getElementById('foto').files.length == 0){
+      if(document.getElementById('previewFoto').src==""){
+        rutaFoto="";
+      }else{
+        nombreFoto=document.getElementById('previewFoto').src.split("/Banners/");
+        rutaFoto="ES-FrontEnd/Elementos/Imagenes/Banners/"+nombreFoto[1];
+      }
+    }else{
+      rutaFoto="ES-FrontEnd/Elementos/Imagenes/Banners/"+document.getElementById('foto').files[0].name
+    }
+	
+		mostrar=true;
+	
+    var $datos={
+        '_titulo': $("#titulo").val(),
+        '_descripcion': $("#descripcion").val(),
+        '_tipo': $("#tipo").val(),
+        '_rutaFoto': rutaFoto
+    }
+    
+    $.ajax({
+        url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_ActualizarBanner.php',
+        type: 'POST',
+        data: $datos,
+        dataType: 'json',
+        error: function(error){
+            if(error.status == 401){
+				mostrarToast("error","No se pudo establecer conexion con el servidor");
+            }
+            else{
+				mostrarToast("error","Error no identificado.");
+            }
+        },
+        success: function(datos){
+            if(datos.response == 0){
+                mostrarToast("error",'ERROR: '+datos.message);
+            }
+            else{
+                mostrarToast("exito","Actualizacion correcta!");
+            }
+        }
+    });
+    
+}
+	
+//--MOSTRAR TOAST CON MENSAJE--
+function mostrarToast(tipo,msj){
+    if(mostrar==true){
+				switch(tipo){
+					case 'exito':
+						$(".toast").removeClass("succesfull");
+						$(".toast").removeClass("error");
+						
+						$(".toast").addClass("succesfull");
+						break;
+					case 'error':
+						$(".toast").removeClass("succesfull");
+						$(".toast").removeClass("error");
+						
+						$(".toast").addClass("error");
+						break;
+				}
+				
+        $('.toast-body').html('');
+        $('.toast-body').html(msj);
+			
+        $('.toast').toast('show');
+        $('.toast').addClass('visualizar');
+    }
+    mostrar=false;
+}
+    
+</script>

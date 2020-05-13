@@ -1,0 +1,147 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+*,body{overflow:hidden;}
+
+.cuerpo{
+    position: absolute;
+    overflow: auto;
+    background: #ffff;
+    margin-left: 59px;
+    padding: 10px 30px;
+    height: 94%;
+    width: 100%;
+}
+
+/*=============================================
+COLORES         
+=============================================*/
+.primario{background-color: #3c61ae;}
+.secundario{background-color: #9095aa;}
+
+.enfasis1{background-color: #fd668c;}
+.enfasis2{background-color: #6610f2 ;}
+.enfasis3{background-color: #004d40 ;}
+
+.lighter1{background-color: #dfeefd ;}
+.lighter2{background-color: #e8eaf6 ;}
+.lighter3{background-color: #ede7f6 ;}
+
+.form{background-color: #1c2a48  ;}
+.subform{background-color: #b1bace  ;}
+
+.error{background-color: #ff4444 ;}
+.succesfull{background-color: #00C851 ;}
+
+.accent1{background-color: #d50000 ;}
+.accent2{background-color: #ff6f00 ;}
+.accent3{background-color: #00c853  ;}
+
+/*=============================================
+BARRA DE DESPLAZAMIENTO         
+=============================================*/
+
+::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+::-webkit-scrollbar{background-color: #F5F5F5;}
+::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 84%,
+									   from(#4D9C41),
+									   to(#19911D),
+									   color-stop(.6,#54DE5D))
+}
+
+/*=============================================
+ESTILOS GENERALES    
+=============================================*/
+
+/*===TITULO PRINCIPAL DE LA VISTA===*/
+.titulo{
+	color: #9a9a9a;
+	margin-top: 20px;
+	font-family:serif;
+	text-align: center;
+}
+	
+/*===SUBTITULO DE LA VISTA===*/
+h6 {
+	color: #9a9a9a;
+	margin-top: 20px;
+	font-weight: bold;
+}
+	
+/*===BOTONES DE LA VISTA (ESTILO 1) ===*/
+.btn{border-radius: 50px; font-weight: bold;}
+		
+/*===BOTONES DE LA VISTA (ESTILO 2) ===*/
+.btn2{
+	border: 2.5px #66615b solid;
+	border-radius: 50px;
+	padding: 8px 20px;
+	font-weight: bold;
+	color:#66615b;
+	font-size: 14px;
+}
+.btn2:hover{
+	background-color: #66615b;
+	color: white;
+	transition: 0.5s;
+}
+
+/*=== GRUPO DE DATOS DE ENTRADA - OBLIGATORIO ===*/
+.input-group .input-group-text{
+	border-right: 0;
+	background: white
+}
+.input-group .form-control{
+	border-left: 0
+}
+
+/*===MENSAJE DE ALERTA DE LA VISTA===*/
+.toast {
+	z-index: -100;
+	position: fixed;
+	right: 40px;
+	top: 70px;
+	color: white;
+	font-weight:500;
+	font-size: 18px;
+}
+.visualizar{
+	z-index: 100;
+}
+	
+/*===SLIDER===*/
+#CarouselInicio .carousel-item{
+	height: 50vh;
+	background-size: cover!important;
+	background-position: center center!important;
+}
+#CarouselInicio .carousel-control-prev i, #CarouselInicio .carousel-control-next i{
+	padding: 10px;
+	background: rgba(10, 130, 10, 0.5);
+}
+
+.descripcionSlider{
+	color: white;
+	font-stretch:ultra-condensed;
+	line-height: 0.9;
+	position: absolute;
+    top: 40%;
+}
+.descripcionSlider a{
+	border-radius: 50px;
+	background: #28a745;
+	transition: opacity 0.3s;
+	padding: 10px;
+	max-width: 150px;
+}
+.boxtitleSlider{margin-left: 10%;}
+	
+/*===RESPONSIVE===*/
+@media (min-width: 1199.98px) { .contenedor-principal{width: 60%;} }
