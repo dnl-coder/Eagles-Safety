@@ -12,23 +12,35 @@ $Model_CMS = new Model_CMS();
 
 if(isset($_POST['_username']) && isset($_POST['_password'])){
     
-    $username = $_POST['_username'];
-    $password = $_POST['_password'];
-    
-    if($Model_CMS->login($username,$password)){
+    $username = strip_tags($_POST['_username']);
+    $password = strip_tags($_POST['_password']);
+
+    $longitud = strlen($password);
+
+    if($longitud<=12){
+
+        if($Model_CMS->login($username,$password)){
         
-        $data = array(
-            "response" => 1,
-            "message" => "Ingreso correcto"                      
-            ); 
-        
+            $data = array(
+                "response" => 1,
+                "message" => "Ingreso correcto"                      
+                );
+            
+        }else{
+            
+            $data = array(
+                "response" => 0,
+                "message" => "Ingrese correctamente los datos"                      
+                );  
+        }
     }else{
-        
+            
         $data = array(
             "response" => 0,
             "message" => "Ingrese correctamente los datos"                      
             );  
     }
+    
 }else{
     
     $data = array(
@@ -38,7 +50,7 @@ if(isset($_POST['_username']) && isset($_POST['_password'])){
 }
 
 
-header('Content-type: application/json; charset=utf-8');
+header('Content-Type:application/x-www-form-urlencoded');
 
 echo json_encode($data);         
 

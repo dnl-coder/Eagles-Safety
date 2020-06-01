@@ -34,7 +34,7 @@ class conexion {
 		$host = 'localhost';              //DIRECCION DEL HOST DONDE ESTARA ALOJADA LA BD
 		$user = 'root';                   //USUARIO DE INGRESO A LA BD
 		$password = '';                   //CONTRASEÑA DE INGRESO A LA BD
-		$database_name = 'es';     //NOMBRE DE LA BD
+		$database_name = 'epiz_21089143_es';     //NOMBRE DE LA BD
         
 		$this->_conexion=mysqli_connect($host, $user, $password, $database_name);
         
