@@ -1,0 +1,158 @@
+/*general style*/
+html, body{
+    overflow: ;
+    scrollbar-face-color:#2C6783;
+    scrollbar-track-color:#F5F5F5;
+    scrollbar-shadow-color:rgba(0,0,0,0.1);
+    scrollbar-highlight-color:#05B7FF;
+}
+
+/*barra desplazamiento style*/
+::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+::-webkit-scrollbar{
+    background-color: #F5F5F5; 
+    width: 15px;
+}
+::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 94%,
+									   from(var(--light3)),
+									   to(var(--primary)))
+}
+
+/*menu style*/
+.navbar{
+    background: transparent;
+    padding: 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+.navbar .navbar-brand{
+    color: var(--primary) !important;
+    font-weight: bold;
+    font-size: 2.4rem;
+    margin-left: 30px;
+    font-family: 'Dancing Script', cursive;
+}
+.navbar .nav-link{color: white !important;}
+.navbar .nav .nav-item a{
+    font-size: 0.8rem !important;
+}
+.navbar .nav-item:hover{
+    background: var(--primary) !important;
+    transition: 0.3s;
+}
+.navbar .rs a{
+    color: white;
+    margin-right: 50px;
+    margin-bottom: 3%;
+    cursor: context-menu;
+}
+.navbar .rs a span{
+    background:forestgreen; 
+    width:25px; 
+    height:25px;
+}
+.navbar .rs a:hover{ color: white; }
+.navbar .activeNav{background: var(--primary);}
+
+/*menu scrolling style*/
+.scrolling-navbar { transition: background .5s ease-in-out, padding .5s ease-in-out; }
+.top-nav-collapse { background-color: rgba(1,1,1,0.9);}
+.top-nav-collapse  .navbar-brand{ color: white !important; }
+.top-nav-collapse  .navbar-brand img{ max-width: 60px; transition: 1s}
+
+/*footer style*/
+.footer h4{
+    color: var(--primary);
+    font-weight: 600; 
+    margin-top: 10px;
+    cursor:context-menu;
+}
+.footer p{
+    font-weight: 600;
+    cursor:context-menu;
+}
+.footer span{ color: #222;}
+
+/*copyright style*/
+.footer-bottom{
+	text-align:center;
+    background: var(--primary);
+}
+.footer-bottom p{
+	font-size:15px;
+    font-weight: 700;
+	color: white;
+    cursor:context-menu;
+    margin: 0;
+}
+
+/*=============================================
+  INDEX
+=============================================*/
+
+/*carousel style*/
+#CarouselInicio .carousel-item{
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    height: 100vh;
+}
+#CarouselInicio .carousel-control-prev i, #CarouselInicio .carousel-control-next i{
+    padding: 10px;
+    background: rgba(10, 130, 10, 0.5);
+}
+
+/*destacados style*/
+.product-ofertas{background: var(--light1);}
+
+/*=============================================
+  NOSOTROS
+=============================================*/
+
+/*quienesSomos style*/
+#quienesSomos{
+    border-style: solid;
+    border-width: 70px 0px 0px;
+    border-image: url(../Imagenes/Nosotros/FondoNosotros1.png) 96 fill stretch;
+    margin-top: -70px;
+}
+
+/*mision style*/
+#mision{
+    border-style: solid;
+    border-width: 70px 0px 0px;
+    border-image: url(../Imagenes/Nosotros/FondoNosotros2.png) 96 fill stretch;
+}
+
+/*vision style*/
+#vision{
+    border-style: solid;
+    border-width: 70px 0px 70px;
+    border-image: url(../Imagenes/Nosotros/FondoNosotros3.png) 96 fill stretch;
+    margin-top: -70px;
+}
+
+/*=============================================
+PRODUCTOS    (PRODUCTOS)
+=============================================*/
+.list-group-item{color:grey;font-weight: 600;}
+.list-group-item:hover{
+    background: forestgreen;
+    color: white;
+    margin-left: 5px;
+}
+
+.list-group a.active{background: green; border: green}
+
+.activePage {
+    background: #4D9C41;
+    color: white;
+    padding: 0;
+}

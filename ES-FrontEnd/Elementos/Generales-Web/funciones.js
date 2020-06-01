@@ -1,57 +1,3 @@
-//-- ANIMACION TEXTO ESCRIBIENDOSE (INDEX) --
-var TxtType = function (el, toRotate, period) {
-    this.toRotate = toRotate;
-    this.el = el;
-    this.loopNum = 0;
-    this.period = parseInt(period, 10) || 2000;
-    this.txt = '';
-    this.tick();
-    this.isDeleting = false;
-};
-TxtType.prototype.tick = function () {
-    var i = this.loopNum % this.toRotate.length;
-    var fullTxt = this.toRotate[i];
-
-    if (this.isDeleting){
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else{
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
-
-    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-    var that = this;
-    var delta = 200 - Math.random() * 100;
-
-    if (this.isDeleting) { delta /= 2; }
-
-    if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
-        this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        this.loopNum++;
-        delta = 500;
-    }
-
-    setTimeout(function() {that.tick();}, delta);
-};
-window.onload = function() {
-    var elements = document.getElementsByClassName('typewrite');
-    for (var i=0; i<elements.length; i++) {
-        var toRotate = elements[i].getAttribute('data-type');
-        var period = elements[i].getAttribute('data-period');
-        if (toRotate) {
-          new TxtType(elements[i], JSON.parse(toRotate), period);
-        }
-    }
-    // INJECT CSS
-    var css = document.createElement("style");
-    css.type = "text/css";
-    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-    document.body.appendChild(css);
-};
-
 /*=============================================
     BARRA DE NAVEGACION SCRIPTS
 =============================================*/
@@ -59,26 +5,7 @@ window.onload = function() {
 //--REDIRIGIR A INICIO--
 $("#logo-Eagles").click(function() {
     window.location="index.php";
-});    
-
-//--FONDO MENU--
-$("#menu .navbar-toggler").click(function() {
-    $("#menu").css("background","rgba(76, 175, 80, 0.8)");
-});  
-    
-//--CAMBIAR ESTILO DEL LOGO AL HACER SCROLL--
-$(window).scroll(function() {
-    if ($("#menu").offset().top > 60) {
-        $("#logo-Eagles").removeClass("logo");
-        $("#logo-Eagles").addClass("logomin");
-        $("#menu").css("background","rgba(76, 175, 80, 0.8)");
-    } else {
-        $("#logo-Eagles").removeClass("logomin");
-        $("#logo-Eagles").addClass("logo");
-        $("#menu").css("background", "rgba(76, 175, 80, 0)");
-        $(".navbar").css("-webkit-box-shadow", "0 2px 5px 0 rgba(0,0,0,0), 0 2px 10px 0 rgba(0,0,0,0)");
-    }
-});
+});     
     
 //--AÑADIR CLASE ACTIVE A LA OPCION DEL NAVBAR SELECCIONADA--
  $(document).ready(function () { 
@@ -154,13 +81,10 @@ vistaWeb.prototype.mostrarInformacionEmpresa = function(){
         success: function(datos){
 
             //NAV
-            $("#telNavES").html("<span class='fa fa-phone rounded-circle mr-2 pl-2 pt-1' style='background:forestgreen; width:25px; height:25px'></span>"+datos[0].INFEMPTELEFONO1+" / "+datos[0].INFEMPTELEFONO2);
+            $("#telNavES").html("<span class='fa fa-phone rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPTELEFONO1+" / "+datos[0].INFEMPTELEFONO2);
 
-            $("#correoNavES").html("<span class='fa fa-envelope rounded-circle mr-2 pl-1 pt-1' style='background:forestgreen; width:25px; height:25px'></span>"+datos[0].INFEMPCORREO);
-            //document.getElementById('iconoES').src = datos[0].INFEMPICONO;
+            $("#correoNavES").html("<span class='fa fa-envelope rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPCORREO);
 
-            document.getElementById('red2NavES').href = datos[0].INFEMPRED_SOCIAL1;
-            document.getElementById('red1NavES').href = datos[0].INFEMPRED_SOCIAL2;
 					
             //FOOTER
             $("#correoES").html(datos[0].INFEMPCORREO);
@@ -174,7 +98,6 @@ vistaWeb.prototype.mostrarInformacionEmpresa = function(){
             $("#direccion1ES").html(datos[0].INFEMPDOMICILIO+", "+datos[0].INFEMPDISTRITO);
             $("#direccion2ES").html(datos[0].INFEMPPROVINCIA+", "+datos[0].INFEMPPAIS);
             
-            document.getElementById('logoES').src = datos[0].INFEMPLOGO;
 
         }
     });
