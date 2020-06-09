@@ -1,3 +1,29 @@
+/*=============================================
+    BARRA DE NAVEGACION SCRIPTS
+=============================================*/
+
+//--REDIRIGIR A INICIO--
+$("#logo-Eagles").click(function() {
+    window.location="index.php";
+});     
+    
+//--AÑADIR CLASE ACTIVE A LA OPCION DEL NAVBAR SELECCIONADA--
+ $(document).ready(function () { 
+     $(function(){ 
+         var current_page_URL = location.href; 
+         $( "a" ).each(function() { 
+            if ($(this).attr("href") !== "#") { 
+                var target_URL = $(this).prop("href"); 
+                if (target_URL == current_page_URL) { 
+                    $('nav a').parents('li, ul').removeClass('activeNav'); 
+                    $(this).parent('li').addClass('activeNav'); 
+                    return false; 
+                } 
+            }
+         }); 
+     }); 
+ }); 
+
 //-- ANIMACION TEXTO ESCRIBIENDOSE (INDEX) --
 var TxtType = function (el, toRotate, period) {
     this.toRotate = toRotate;
@@ -52,49 +78,21 @@ window.onload = function() {
     document.body.appendChild(css);
 };
 
-/*=============================================
-    BARRA DE NAVEGACION SCRIPTS
-=============================================*/
+//--MOSTRAR/OCULTAR CATEGORIAS--
+$("#filtroCategorias").click(function() {
+    $("#filtroCategoriasContent").toggleClass("d-none");
+});     
 
-//--REDIRIGIR A INICIO--
-$("#logo-Eagles").click(function() {
-    window.location="index.php";
-});    
-
-//--FONDO MENU--
-$("#menu .navbar-toggler").click(function() {
-    $("#menu").css("background","rgba(76, 175, 80, 0.8)");
-});  
-    
-//--CAMBIAR ESTILO DEL LOGO AL HACER SCROLL--
-$(window).scroll(function() {
-    if ($("#menu").offset().top > 60) {
-        $("#logo-Eagles").removeClass("logo");
-        $("#logo-Eagles").addClass("logomin");
-        $("#menu").css("background","rgba(76, 175, 80, 0.8)");
-    } else {
-        $("#logo-Eagles").removeClass("logomin");
-        $("#logo-Eagles").addClass("logo");
-        $("#menu").css("background", "rgba(76, 175, 80, 0)");
-        $(".navbar").css("-webkit-box-shadow", "0 2px 5px 0 rgba(0,0,0,0), 0 2px 10px 0 rgba(0,0,0,0)");
+//--MOSTRAR/OCULTAR CATEGORIAS RESPONSIVE--
+$(window).resize(function(){
+    if (window.innerWidth>991){
+        // ## agregar clase
+        $('#filtroCategoriasContent').addClass('d-none'); 
+    }else{
+        // ## eliminar clase
+        $('#filtroCategoriasContent').removeClass('d-block');
     }
 });
-    
-//--AÑADIR CLASE ACTIVE A LA OPCION DEL NAVBAR SELECCIONADA--
- $(document).ready(function () { 
-     $(function(){ 
-         var current_page_URL = location.href; 
-         $( "a" ).each(function() { 
-            if ($(this).attr("href") !== "#") { 
-                var target_URL = $(this).prop("href"); 
-                if (target_URL == current_page_URL) { 
-                    $('nav a').parents('li, ul').removeClass('activeNav'); $(this).parent('li').addClass('activeNav'); 
-                    return false; 
-                } 
-            } 
-         }); 
-     }); 
- }); 
 
 /*=============================================
     FUNCIONES GENERALES
@@ -125,9 +123,11 @@ vistaWeb.prototype.mostrarSliders = function(){
                 else{
                     sliders+="<div class='carousel-item' style='background:url(\""+datos[i].SLDRIMAGEN+"\");'>"
                 }
-                sliders+="\<div class='descripcionSlider row container-fluid m-0 wow fadeIn justify-content-center' data-wow-delay='0.4s'>\
-                                <p class='col-12 text-center h1-responsive'>"+datos[i].SLDRDESCRIPCION+"</p>\
-                                <a class='btn btn-sm green wow rubberBand white-text' data-wow-delay='0.4s' href='Contactos.php'>VER MÁS</a>\
+                sliders+="\<div class='descripcionSlider container-fluid wow fadeIn' data-wow-delay='0.4s'>\
+                                <p class='h1-responsive'>EQUIPOS</p>\
+                                <p class='h1-responsive'>QUE PROTEGEN</p>\
+                                <p class='h1-responsive'>TU VIDA</p>\
+                                <p class='descripcion'>Tenemos los mejores productos para garantizar tu cuidado</p>\
                             </div>\
                         </div>\
                     </div>"
@@ -154,13 +154,10 @@ vistaWeb.prototype.mostrarInformacionEmpresa = function(){
         success: function(datos){
 
             //NAV
-            $("#telNavES").html("<span class='fa fa-phone rounded-circle mr-2 pl-2 pt-1' style='background:forestgreen; width:25px; height:25px'></span>"+datos[0].INFEMPTELEFONO1+" / "+datos[0].INFEMPTELEFONO2);
+            $("#telNavES").html("<span class='fa fa-phone rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPTELEFONO1+" / "+datos[0].INFEMPTELEFONO2);
 
-            $("#correoNavES").html("<span class='fa fa-envelope rounded-circle mr-2 pl-1 pt-1' style='background:forestgreen; width:25px; height:25px'></span>"+datos[0].INFEMPCORREO);
-            //document.getElementById('iconoES').src = datos[0].INFEMPICONO;
+            $("#correoNavES").html("<span class='fa fa-envelope rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPCORREO);
 
-            document.getElementById('red2NavES').href = datos[0].INFEMPRED_SOCIAL1;
-            document.getElementById('red1NavES').href = datos[0].INFEMPRED_SOCIAL2;
 					
             //FOOTER
             $("#correoES").html(datos[0].INFEMPCORREO);
@@ -174,7 +171,6 @@ vistaWeb.prototype.mostrarInformacionEmpresa = function(){
             $("#direccion1ES").html(datos[0].INFEMPDOMICILIO+", "+datos[0].INFEMPDISTRITO);
             $("#direccion2ES").html(datos[0].INFEMPPROVINCIA+", "+datos[0].INFEMPPAIS);
             
-            document.getElementById('logoES').src = datos[0].INFEMPLOGO;
 
         }
     });
@@ -259,7 +255,7 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
             data=datos;
             var contenedor = "";
             for(var i=0; i<3 ; i++){
-                contenedor += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-4 col-sm' style='min-width:150px; max-width:250px;'>\n\
+                contenedor += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-12' style='min-width:150px; max-width:250px;'>\n\
                 <div class='card m-1'>\n\
                     <!--imagen-->\n\
                     <div class='view overlay zoom'>\n\
@@ -268,10 +264,10 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
                     <!--titulo-->\n\
                     <div class='card-body'>\n\
                         <p class='font-weight-bold text-uppercase mb-1' >"+datos[i].PRODNOMBRE+"</p>\n\
-                        <hr class='green lighten-3 my-0' style='width: 60%; height:3px;'>\n\
-                        <hr class='green my-1' style='width: 20%; height:3px;'>\n\
+                        <hr class='bg-light3 my-0' style='width: 60%; height:3px;'>\n\
+                        <hr class='bg-primary my-1' style='width: 20%; height:3px;'>\n\
                         <div class='text-right'>\n\
-                            <a id='"+datos[i].PRODCODIGO+"' class='btn btn-green btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a> \n\
+                            <a id='"+datos[i].PRODCODIGO+"' class='btn bg-primary btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a> \n\
                         </div>\n\
                     </div>\n\
                 </div>\n\
@@ -307,9 +303,13 @@ vistaWeb.prototype.seleccionarProducto = function(e){
     
     modal+="<div class='modal-content'>\n\
     <!-- ENCABEZADO -->\n\
-    <div class='modal-header pb-0'>\n\
+    <div class='modal-header pb-0 border border-0'>\n\
         <!-- TITULO --> \n\
-        <h1 class='h5-responsive green-text font-weight-bold text-uppercase'>"+datos[numproducto].PRODNOMBRE+"</h1>\n\
+        <div>\n\
+          <p class='font-weight-bold small mb-0'>"+datos[numproducto].PRODNOMBRE+"</p>\n\
+          <hr class='bg-light3 my-0 mx-0' style='width: 60%; height:2px;'>\n\
+          <hr class='bg-primary my-1 mx-0' style='width: 20%; height:2px;'>\n\
+        </div>\n\
         <!-- BOTON CERRAR --> \n\
         <button type='button' class='close p-3' data-dismiss='modal' aria-label='Close'>\n\
             <span aria-hidden='true'>&times;</span>\n\
@@ -321,29 +321,19 @@ vistaWeb.prototype.seleccionarProducto = function(e){
         <!-- IMAGEN Y CONTACTO --> \n\
         <div class='col-12 col-lg-5 py-1'>\n\
             <!-- imagen -->   \n\
-            <div class='card m-2' style='width:auto; max-height:210px;'>\n\
-                <div class='card-body text-center' >\n\
-                    <img class='img-fluid' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[numproducto].PRODIMAGEN+"' width='210' height='210' />\n\
-                </div>\n\
-            </div>  \n\
-            <!-- contactarse -->   \n\
-            <div class='m-2 mt-4'>\n\
-                <div class='grey-text text-center'>\n\
-                    <ul class='list-inline'>\n\
-                        <li class='list-inline-item'><i class='fa fa-truck fa-2x'></i><br/>Entrega rápida</li>\n\
-                        <li class='list-inline-item'><i class='fa fa-credit-card fa-2x'></i><br/>Pago seguro</li>\n\
-                    </ul>\n\
-                </div>\n\
-                <a class='btn btn-green btn-block text-uppercase m-0' href='Contactos.php'><i class='fa fa-envelope'></i> Contactarse</a>\n\
-            </div>\n\
+            <img class='img-fluid d-block mx-auto' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[numproducto].PRODIMAGEN+"' style='max-height:40vh;' />\n\
         </div>    \n\
         <!-- CARACTERISTICAS -->\n\
-        <div class='col-12 col-lg-7 p-5 p-lg-1'>\n\
+        <div class='col-12 col-lg-7 p-0'>\n\
             <!-- descripcion --> \n\
-            <div class='m-2'>\n\
-                <h1 class='h5-responsive font-weight-bold text-uppercase'>CARACTERISTICAS</h1>\n\
-                <hr class='green mt-0' style='width: 20%; height:5px;'>\n\
-                <ul>"+caracteristicas+"\n\</ul>\n\
+            <div class='mx-2'>\n\
+                <p class='font-weight-bold small'>Características</p>\n\
+                <ul class='pl-3 small'>"+caracteristicas+"\n\</ul>\n\
+                <div class='row justify-content-center'>\n\
+                  <p class='mx-1 px-2 py-1 mb-0 small text-white rounded black'><i class='fas mr-1 fa-shield-alt'></i>Seguridad</p>\n\
+                  <p class='mx-1 px-2 py-1 mb-0 small text-white rounded bg-primary'><i class='fas mr-1 fa-balance-scale'></i>Calidad</p>\n\
+                  <p class='mx-1 px-2 py-1 mb-0 small text-white rounded bg-enfasis3'><i class='fas mr-1 fa-trophy'></i>Garantía</p>\n\
+                </div>\n\
             </div>\n\
         </div>\n\
     </div> \n\
@@ -441,7 +431,8 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
 };
 
 //-- FUNCION MOSTRAR PRODUCTOS X CATEGORIA--
-/* --> SELECCIONAR CATEGORIA */ vistaWeb.prototype.mostrarProductosXCategoria = function(opcion){
+/* --> SELECCIONAR CATEGORIA */ 
+vistaWeb.prototype.mostrarProductosXCategoria = function(opcion){
     var $categoria={
         '_categoria': opcion
     }
@@ -469,7 +460,9 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
         }
     });
 };
-/* --> GENERAR PAGINACION */ vistaWeb.prototype.generarPaginacion = function(datos){
+
+/* --> GENERAR PAGINACION */ 
+vistaWeb.prototype.generarPaginacion = function(datos){
     var total = datos.length;
     var paginas=0;
     
@@ -492,11 +485,10 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
         vWeb.generarProductos(total, paginas, datos,num);
     });
     vWeb.generarProductos(total, paginas, datos,1);
-    $('#PAGINACION ul').addClass('m-0');
-    $('#PAGINACION ul li').addClass('px-3 border border-light');
-    $('#PAGINACION ul li a').addClass('text-dark');
 };
-/* --> GENERAR CUADRICULA DE PRODUCTOS */ vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
+
+/* --> GENERAR CUADRICULA DE PRODUCTOS */ 
+vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
     var primero=(num-1)*12;
     var ultimo=num*12;
     var contenido = "";
@@ -505,19 +497,19 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
         ultimo=total;
     }
     for(var i=primero; i<ultimo; i++){
-        contenido += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-4 col-sm' style='min-width:250px; max-width:350px;'>\n\
-        <div class='card m-1'>\n\
+        contenido += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-12 col-sm-6 col-md-4 p-2'>\n\
+        <div class='card'>\n\
             <!--imagen-->\n\
             <div class='view overlay zoom'>\n\
-                <img id='"+datos[i].PRODCODIGO+"' class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' onclick='vWeb.seleccionarProducto(this)' style='cursor:pointer;'>\n\
+                <img id='"+datos[i].PRODCODIGO+"' class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' onclick='vWeb.seleccionarProducto(this)' style='cursor:pointer; height:40vh;'>\n\
             </div>\n\
             <!--titulo-->\n\
             <div class='card-body'>\n\
-                <h5 class='card-title font-weight-bold text-uppercase mb-1'>"+datos[i].PRODNOMBRE+"</h5>\n\
-                <hr class='green lighten-3 my-0' style='width: 60%; height:3px;'>\n\
-                <hr class='green my-1' style='width: 20%; height:3px;'>\n\
+                <p class='mb-3'>"+datos[i].PRODNOMBRE+"</p>\n\
+                <hr class='bg-light2 my-0' style='width: 60%; height:3px;'>\n\
+                <hr class='bg-primary my-1' style='width: 20%; height:3px;'>\n\
                 <div class='text-right'>\n\
-                    <a id='"+datos[i].PRODCODIGO+"' class='btn btn-green btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a> \n\
+                    <a id='"+datos[i].PRODCODIGO+"' class='btn bg-primary btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a> \n\
                 </div>\n\
             </div>\n\
         </div>\n\

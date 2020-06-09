@@ -1,22 +1,13 @@
-<!--=====================================
-        BOOTSTRAP JS DE LA PAGINA  ¡IMPORTANTE!       
-======================================-->
-
-<script src="ES-FrontEnd/Bootstrap/js/jquery-3.3.1.min.js"></script>
-<script src="ES-FrontEnd/Bootstrap/js/popper.min.js"></script>
-<script src="ES-FrontEnd/Bootstrap/js/mdb.min.js"></script>
-<script src="ES-FrontEnd/Bootstrap/js/bootstrap.min.js"></script>
-<script src="ES-FrontEnd/Bootstrap/js/jquery.bootpag.min.js"></script>
-
-<!--MIS ARCHIVOS JS-->
-<script src="ES-FrontEnd/Elementos/Generales-Web/funciones.js"></script>
-
-<!--CODE JS ANIMACIONES-->
-<script src="ES-FrontEnd/Bootstrap/js/wow.js"></script>
-
-<script>
-    new WOW().init();
-    $('body').scrollspy({
-        target: '.dotted-scrollspy'
-    });
-</script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="ES-FrontEnd/MDB/js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="ES-FrontEnd/MDB/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="ES-FrontEnd/MDB/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="ES-FrontEnd/MDB/js/mdb.min.js"></script>
+    <!--CODE JS PAGINACION-->
+    <script type="text/javascript" src="ES-FrontEnd/MDB/js/jquery.bootpag.min.js"></script>
+       
+    <!--MIS ARCHIVOS JS-->
+    <script src="ES-FrontEnd/Elementos/Generales-Web/funciones.js"></script>

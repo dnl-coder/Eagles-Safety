@@ -122,12 +122,12 @@ function validar(){
         alert('ERROR: El campo contraseña no debe ir vacío o lleno de solamente espacios en blanco');
         $("#ingresarContraseña").focus();
     }
-    else if(user.length<5 || user.length>40){
-        alert('ERROR Usuario: Tamaño mínimo : 5. Tamaño máximo: 40');
+    else if(user.length<5 || user.length>12){
+        alert('ERROR Usuario: Tamaño mínimo : 5. Tamaño máximo: 12');
         $("#ingresarUsuario").focus();
     }
-    else if(pass.length<5 || pass.length>40){
-        alert('ERROR Contraseña: Tamaño mínimo: 5. Tamaño máximo: 40');
+    else if(pass.length<5 || pass.length>12){
+        alert('ERROR Contraseña: Tamaño mínimo: 5. Tamaño máximo: 12');
         $("#ingresarContraseña").focus();
     }
     else if(/^\w+$/.test(user) && /^\w+$/.test(pass)){
