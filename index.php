@@ -19,28 +19,28 @@
     <!-- CAROUSEL DE IMAGENES-->
     <div id="CarouselInicio" class="carousel slide" data-ride="carousel">
 
-    <!--SLIDES-->
-    <div class="carousel-inner" role="listbox"></div>
+      <!--SLIDES-->
+      <div class="carousel-inner" role="listbox"></div>
 
-    <!--CONTROLES-->
-    <a class="carousel-control-prev" href="#CarouselInicio" role="button" data-slide="prev">
-        <span aria-hidden="true"><i class="fa fa-chevron-left fa-2x"></i></span>
-        <span class="sr-only">Anterior</span>
-    </a>
-    <a class="carousel-control-next" href="#CarouselInicio" role="button" data-slide="next">
-        <span aria-hidden="true"><i class="fa fa-chevron-right fa-2x"></i></span>
-        <span class="sr-only">Siguiente</span>
-    </a>
+      <!--CONTROLES-->
+      <a class="carousel-control-prev" href="#CarouselInicio" role="button" data-slide="prev">
+          <span aria-hidden="true"><i class="fa fa-chevron-left fa-2x"></i></span>
+          <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#CarouselInicio" role="button" data-slide="next">
+          <span aria-hidden="true"><i class="fa fa-chevron-right fa-2x"></i></span>
+          <span class="sr-only">Siguiente</span>
+      </a>
 
     </div>                    
     
     <!-- BANNER 1-->
-    <div class="container p-2">    
+    <div class="container py-2 px-5">    
       <div class="row my-5 py-5">
 
       <!--IMAGEN -->   
       <div class="col-12 col-sm-7 my-auto">
-          <img src="ES-FrontEnd/Elementos/Imagenes/Banners/ES-Banner1.png" class="img-fluid mx-auto d-block wow fadeInLeft">
+          <img src="ES-FrontEnd/Elementos/Imagenes/Banners/ES-Banner1.png" class="img-fluid mx-auto d-block animated fadeInLeft">
       </div>
 
       <!--DESCRIPCION -->
@@ -56,13 +56,18 @@
     <div class="product-ofertas container-fluid py-3">
 
         <!--TITULO -->  
-        <p class="h2-responsive pt-4 font-weight-bold text-center wow fadeIn" data-wow-delay="0.4s">Productos de alta calidad</p>
+        <p class="h2-responsive pt-4 font-weight-bold text-center animated fadeIn" data-wow-delay="0.4s">Productos de alta calidad</p>
 
         <!--DESCRIPCION -->  
-        <p class="px-4 pb-3 lead text-center wow fadeIn">Los mejores acabados, diseños y modelos a tu alcance.</p>
+        <p class="px-4 pb-3 lead text-center animated fadeIn">Los mejores acabados, diseños y modelos a tu alcance.</p>
 
         <!--PRODUCTOS -->  
-        <div id="DESTACADOS" class="card-deck mb-4 px-5 justify-content-center"></div> 
+        <div id="DESTACADOS" class="card-deck mb-4 row justify-content-center"></div> 
+        
+        <!-- DESCRIPCION--> 
+        <div class="modal fade" id="modalDescripcion" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-dialog-centered" role="document"></div>
+        </div>
 
     </div>
 
@@ -71,7 +76,7 @@
       <div class="container my-5">
 
       <!--DESCRIPCION -->
-      <h3 class="h4-responsive font-weight-bold px-4 pb-2 white-text text-center wow fadeIn">Calidad y seguridad garantizada en cada una de nuestras marcas.</h3>
+      <h3 class="h4-responsive font-weight-bold px-4 pb-2 white-text text-center animated fadeIn">Calidad y seguridad garantizada en cada una de nuestras marcas.</h3>
 
       <!--CAROUSEL DE MARCAS -->
       <div class="container text-center d-none d-sm-flex">

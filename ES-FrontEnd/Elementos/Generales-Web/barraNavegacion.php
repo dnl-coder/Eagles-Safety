@@ -15,7 +15,7 @@
         <!--OPCIONES DEL MENU-->
         <ul class="navbar-nav mr-auto">
          
-          <li class="nav-item activeNav"><a class="nav-link" href="index.php">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
           
           <li class="nav-item"><a class="nav-link" href="Nosotros.php">Nosotros</a></li>
           
