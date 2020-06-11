@@ -156,7 +156,7 @@
     </div></div>
 
     <!-- FOOTER-->   
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/piePaginaMin.php";?>    
+    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/piePagina.php";?>    
     
     <!-- CONTENT-->
 

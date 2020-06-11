@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="ES-FrontEnd/MDB/css/mdb.min.css">
 
     <!-- ESTILOS GENERALES -->
-    <link href="ES-FrontEnd/Elementos/Generales-Web/color.css" rel="stylesheet">
+    <link rel="stylesheet" href="color.css">
     <link rel="stylesheet" href="ES-FrontEnd/Elementos/Generales-Web/style.css">
     
     <!-- SCRIPTS -->
@@ -34,7 +34,7 @@
     <!-- JQuery -->
     <script type="text/javascript" src="ES-FrontEnd/MDB/js/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="ES-FrontEnd/MDB/js/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="ES-FrontEnd/MDB/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
