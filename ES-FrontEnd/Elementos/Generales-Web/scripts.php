@@ -11,3 +11,10 @@
        
     <!--MIS ARCHIVOS JS-->
     <script src="ES-FrontEnd/Elementos/Generales-Web/funciones.js"></script>
+    <script>
+      
+      $( document ).ready(function() {
+        new WOW().init();
+      });
+      
+    </script>

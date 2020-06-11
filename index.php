@@ -6,7 +6,14 @@
     <title>Seguridad industrial - Eagles Safety eirl</title>
 
     <!-- CONFIGURACION GENERAL-->
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/head.php";?>
+    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/config.php";?>
+    
+    <!-- JS DEL ARCHIVO-->
+    <script type="text/javascript">
+      vWeb.mostrarSliders();
+      vWeb.mostrarMarcas();
+      vWeb.mostrarProductosDestacados();
+    </script>
     
 </head>
 <body>
@@ -40,13 +47,13 @@
 
       <!--IMAGEN -->   
       <div class="col-12 col-sm-7 my-auto">
-          <img src="ES-FrontEnd/Elementos/Imagenes/Banners/ES-Banner1.png" class="img-fluid mx-auto d-block animated fadeInLeft">
+          <img src="ES-FrontEnd/Elementos/Imagenes/Banners/ES-Banner1.png" class="img-fluid mx-auto d-block wow fadeInLeft">
       </div>
 
       <!--DESCRIPCION -->
       <div class="col-12 col-sm-5">
-          <h3 class="h1-responsive font-weight-bold">EXPERIENCIA, SEGURIDAD Y GARANTIA</h3>
-          <p>Tenemos los mejores productos para <b class="font-weight-bold">garantizar</b> que siempre regreses seguro a tu hogar.</p>
+          <h3 class="h1-responsive font-weight-bold wow fadeIn">EXPERIENCIA, SEGURIDAD Y GARANTIA</h3>
+          <p>Tenemos los mejores productos para <b class="font-weight-bold wow fadeIn">garantizar</b> que siempre regreses seguro a tu hogar.</p>
       </div>
 
       </div>       
@@ -76,7 +83,7 @@
       <div class="container my-5">
 
       <!--DESCRIPCION -->
-      <h3 class="h4-responsive font-weight-bold px-4 pb-2 white-text text-center animated fadeIn">Calidad y seguridad garantizada en cada una de nuestras marcas.</h3>
+      <h3 class="h4-responsive font-weight-bold px-4 pb-2 white-text text-center wow fadeIn">Calidad y seguridad garantizada en cada una de nuestras marcas.</h3>
 
       <!--CAROUSEL DE MARCAS -->
       <div class="container text-center d-none d-sm-flex">
@@ -121,19 +128,9 @@
     </div>
     
     <!--FOOTER -->   
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/piePagina.php";?>    
+    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/piePagina.php";?>   
     
     <!-- CONTENT-->
-    
-    <!-- SCRIPTS -->
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/scripts.php";?>  
-    <script>
-    vWeb.mostrarMarcas();
-    vWeb.mostrarProductosDestacados();
-    vWeb.mostrarSliders();
 
-    </script>
-    
-    
 </body>
 </html>

@@ -6,7 +6,13 @@
     <title>Nosotros - Eagles Safety eirl</title>
 
     <!-- CONTENIDO GENERAL-->
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/head.php";?>
+    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/config.php";?>
+    
+    <!-- JS DEL ARCHIVO-->
+    <script type="text/javascript">
+      vWeb.mostrarMarcas();
+      vWeb.mostrarSliders();
+    </script>
     
 </head>
 
@@ -83,42 +89,33 @@
     </div>       
 
     <!-- DESCRIPCION-->  
-    <div class="py-1 wow fadeInLeft">
-    <div class="row">
-       
-        <!-- MISION-->
-        <div class="mision col-12 col-sm-6">
-            <i class="fas fa-balance-scale fa-3x"></i>
-            <h1 class="h4-responsive">NUESTRA MISIÓN</h1>
-            <hr>
-            <p>Proveer equipos de protección personal de calidad que cumplan con los requerimientos de los clientes y brinden un desenvolvimiento seguro de cada usuario en todos los sectores productivos del Perú.</p>
-        </div>
-        
-        <!-- VISION-->
-        <div class="vision col-12 col-sm-6">
-            <i class="fas fa-eye fa-3x"></i>
-            <h1 class="h4-responsive">VISIÓN COMO EMPRESA</h1>
-            <hr>
-            <p>Convertirnos en una empresa reconocida en su sector por brindar una atención de calidad a sus clientes en la comercialización de equipos de protección, seguridad y afines.
-            </p>
-        </div>
+    <div class="py-1">
+      <div class="row">
 
-    </div>
+          <!-- MISION-->
+          <div class="mision col-12 col-sm-6">
+              <i class="fas fa-balance-scale fa-3x wow fadeInLeft"></i>
+              <h1 class="h4-responsive wow fadeInLeft">NUESTRA MISIÓN</h1>
+              <hr class="wow fadeInLeft">
+              <p class="wow fadeInLeft">Proveer equipos de protección personal de calidad que cumplan con los requerimientos de los clientes y brinden un desenvolvimiento seguro de cada usuario en todos los sectores productivos del Perú.</p>
+          </div>
+
+          <!-- VISION-->
+          <div class="vision col-12 col-sm-6">
+              <i class="fas fa-eye fa-3x wow fadeInRight"></i>
+              <h1 class="h4-responsive wow fadeInRight">VISIÓN COMO EMPRESA</h1>
+              <hr class="wow fadeInRight">
+              <p class="wow fadeInRight">Convertirnos en una empresa reconocida en su sector por brindar una atención de calidad a sus clientes en la comercialización de equipos de protección, seguridad y afines.
+              </p>
+          </div>
+
+      </div>
     </div>       
 
     <!--FOOTER -->   
     <?php include_once "ES-FrontEnd/Elementos/Generales-Web/piePagina.php";?>    
     
     <!-- CONTENT-->
-    
-    <!-- SCRIPTS -->
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/scripts.php";?>  
-    <script>
-      
-        vWeb.mostrarMarcas();
-        vWeb.mostrarSliders();
-      
-    </script>
 
 </body>
 </html>

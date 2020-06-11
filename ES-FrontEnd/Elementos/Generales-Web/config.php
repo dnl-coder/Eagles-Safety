@@ -21,10 +21,33 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
-    <link href="ES-FrontEnd/MDB/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="ES-FrontEnd/MDB/css/bootstrap.min.css">
     <!-- Material Design Bootstrap -->
-    <link href="ES-FrontEnd/MDB/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="ES-FrontEnd/MDB/css/mdb.min.css">
 
     <!-- ESTILOS GENERALES -->
     <link href="ES-FrontEnd/Elementos/Generales-Web/color.css" rel="stylesheet">
     <link rel="stylesheet" href="ES-FrontEnd/Elementos/Generales-Web/style.css">
+    
+    <!-- SCRIPTS -->
+    
+    <!-- JQuery -->
+    <script type="text/javascript" src="ES-FrontEnd/MDB/js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="ES-FrontEnd/MDB/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="ES-FrontEnd/MDB/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="ES-FrontEnd/MDB/js/mdb.min.js"></script>
+    <!--CODE JS PAGINACION-->
+    <script type="text/javascript" src="ES-FrontEnd/MDB/js/jquery.bootpag.min.js"></script>
+       
+    <!-- JS GENERALES-->
+    <script type="text/javascript" src="ES-FrontEnd/Elementos/Generales-Web/funciones.js"></script>
+    <script>
+      
+      $( document ).ready(function() {
+        new WOW().init();
+      });
+      
+    </script>
