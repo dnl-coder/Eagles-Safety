@@ -6,8 +6,7 @@
     <title>Contáctanos - Eagles Safety eirl</title>
 
     <!-- CONFIGURACION GENERAL-->
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/head.php";?>
-    
+    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/config.php";?>
  
 </head>
 
@@ -112,9 +111,6 @@
     <?php include_once "ES-FrontEnd/Elementos/Generales-Web/piePagina.php";?>    
     
     <!-- CONTENT-->
-    
-    <!-- SCRIPTS -->
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/scripts.php";?>  
     
 </body>
 </html>

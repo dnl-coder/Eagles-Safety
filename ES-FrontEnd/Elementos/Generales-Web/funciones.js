@@ -124,10 +124,10 @@ vistaWeb.prototype.mostrarSliders = function(){
                     sliders+="<div class='carousel-item' style='background:url(\""+datos[i].SLDRIMAGEN+"\");'>"
                 }
                 sliders+="\<div class='descripcionSlider container-fluid wow fadeIn' data-wow-delay='0.4s'>\
-                                <p class='h1-responsive'>EQUIPOS</p>\
-                                <p class='h1-responsive'>QUE PROTEGEN</p>\
-                                <p class='h1-responsive'>TU VIDA</p>\
-                                <p class='descripcion'>Tenemos los mejores productos para garantizar tu cuidado</p>\
+                                <p class='h1-responsive wow fadeInLeftBig'>EQUIPOS</p>\
+                                <p class='h1-responsive wow fadeInLeftBig'>QUE PROTEGEN</p>\
+                                <p class='h1-responsive wow fadeInLeftBig'>TU VIDA</p>\
+                                <p class='descripcion wow fadeIn'>Tenemos los mejores productos para garantizar tu cuidado</p>\
                             </div>\
                         </div>\
                     </div>"
@@ -255,7 +255,7 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
             data=datos;
             var contenedor = "";
             for(var i=0; i<3 ; i++){
-                contenedor += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-12' style='min-width:150px; max-width:250px;'>\n\
+                contenedor += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-12 wow fadeIn' style='min-width:150px; max-width:250px;'>\n\
                 <div class='card m-1'>\n\
                     <!--imagen-->\n\
                     <div class='view overlay zoom'>\n\

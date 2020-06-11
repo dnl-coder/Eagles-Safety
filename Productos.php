@@ -6,7 +6,38 @@
     <title>Productos - Eagles Safety eirl</title>
 
     <!-- CONTENIDO GENERAL-->
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/head.php";?>
+    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/config.php";?>
+    
+    <!-- JS DEL ARCHIVO-->
+    <script type="text/javascript">
+
+        categoria="Protección Anticaída";
+        vWeb.mostrarProductosXCategoria(categoria);
+
+        //--SELECCIONAR CATEGORIA--
+        $('#list-tab a').on('click', function (e) {
+            e.preventDefault()
+            categoria=$(this).text();
+            vWeb.mostrarProductosXCategoria(categoria);
+            $(this).tab('show');
+        })
+        $('#filtroCategoriasContent li').on('click', function (e) {
+            e.preventDefault()
+            $('#filtroCategoriasContent').addClass('d-none');
+            categoria=$(this).text();
+            vWeb.mostrarProductosXCategoria(categoria);
+            $(this).tab('show');
+          
+            $("#list-tab a").each(function() { 
+                $(this).removeClass("active");
+                if ($(this).children("span").text().toLowerCase() == categoria.toLowerCase() ) { 
+                    $(this).addClass("active");
+                }
+            }); 
+          
+        })
+
+    </script>
     
 </head>
 
@@ -125,42 +156,9 @@
     </div></div>
 
     <!-- FOOTER-->   
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/piePaginaMin.php";?>    
+    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/piePagina.php";?>    
     
     <!-- CONTENT-->
-    
-    <!-- SCRIPTS -->
-    <?php include_once "ES-FrontEnd/Elementos/Generales-Web/scripts.php";?>  
-
-    <script>
-
-        categoria="Protección Auditiva";
-        vWeb.mostrarProductosXCategoria(categoria);
-
-        //--SELECCIONAR CATEGORIA--
-        $('#list-tab a').on('click', function (e) {
-            e.preventDefault()
-            categoria=$(this).text();
-            vWeb.mostrarProductosXCategoria(categoria);
-            $(this).tab('show');
-        })
-        $('#filtroCategoriasContent li').on('click', function (e) {
-            e.preventDefault()
-            $('#filtroCategoriasContent').addClass('d-none');
-            categoria=$(this).text();
-            vWeb.mostrarProductosXCategoria(categoria);
-            $(this).tab('show');
-          
-            $("#list-tab a").each(function() { 
-                $(this).removeClass("active");
-                if ($(this).children("span").text().toLowerCase() == categoria.toLowerCase() ) { 
-                    $(this).addClass("active");
-                }
-            }); 
-          
-        })
-
-    </script>
 
 </body>
 </html>
