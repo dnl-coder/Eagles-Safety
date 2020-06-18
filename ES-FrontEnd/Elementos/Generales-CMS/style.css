@@ -1,3 +1,7 @@
+/*=============================================
+  GENERAL STYLE
+=============================================*/
+
 body{overflow: hidden;}
 
 .cuerpo{
@@ -54,6 +58,115 @@ BARRA DE DESPLAZAMIENTO
 									   to(#19911D),
 									   color-stop(.6,#54DE5D))
 }
+
+
+/*menu superior style*/
+.navbar{
+    margin-left: 265px;
+    transition: all 0.5s  ease-in-out;
+    background: var(--primary);
+    color: white;
+}
+.navbar .navbar-brand{
+    font-size: 1.3rem;
+    font-family: 'Dancing Script', cursive;
+}
+.navbar .dropdown-item:hover{background:  var(--enfasis3);}
+
+/*menu lateral style*/
+.sidebar{
+    z-index: 1000;
+    position: absolute;
+    height: 100%;
+    width:265px;  
+    background: var(--secundary);
+    top: 0;
+    overflow-y:auto;
+}
+::-webkit-scrollbar{width:0px}
+.sidebar ul{ list-style:none; margin:0px; padding:0px; }
+.sidebar ul li a{ 
+    display:block; 
+    padding:18px 15px; 
+    color: white;
+    border-left:0px solid #dedede;  
+    text-decoration:none;
+}
+.sidebar li a.active{
+    background: var(--secundary);
+    border-left:5px solid #dedede; 
+    transition: all 0.5s  ease-in-out
+}
+.sidebar li a:hover, .sidebar li a.active:hover{background-color: #222;}
+.sidebar li a i{ 
+    padding-right:3px;
+    font-size: 30px;
+    vertical-align: bottom;
+}
+
+/*menu lateral opcion menu style*/
+.sidebar ul li .sub-menu li a{ 
+    position:relative; 
+    color: white;
+}
+.sidebar ul li .sub-menu li a:before{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: "\f054";
+    display: inline-block;
+    padding-left: 0px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+.sidebar ul li .sub-menu li a:hover:after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 5px;
+    background-color: #111;
+    height: 100%;
+}
+.sidebar ul li .sub-menu li a:hover{ 
+    background-color:#222; 
+    padding-left:20px; 
+    transition: all 0.5s  ease-in-out;
+    color: white;
+}
+a.bg-primary:focus{ 
+    background-color:var(--primary) !important;
+}
+.sidebar .sub-menu{ border-left:5px solid #dedede;}
+.mostrar{display: block !important;}
+
+@media (max-width: 991px){
+  
+    .sidebar{
+      display: none;
+      top: 56px;
+      transition: all 0.5s  ease-in-out;
+    }
+
+    .navbar{
+      margin-left: 0;
+      transition: all 0.5s  ease-in-out;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*=============================================
 ESTILOS GENERALES    

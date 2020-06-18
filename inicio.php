@@ -2,29 +2,30 @@
 <html lang="es">
 <head>
    
-<!--TITULO DE LA VISTA -->
-<title>CMS - Eagles Safety eirl</title>
+    <!-- TITULO DE LA VISTA -->
+    <title>CMS - Eagles Safety EIRL</title>
 
-<!-- CONTENIDO GENERAL DEL HEAD -->
-<?php include_once "ES-FrontEnd/Elementos/Generales-CMS/head.php";?>
+    <!-- CONFIGURACION GENERAL-->
+    <?php include_once "ES-FrontEnd/Elementos/Generales-CMS/config.php";?>
 
 </head>
 
 <body>
    
-<!--=====================================
-        BARRA DE NAVEGACION     
-======================================-->    
-<?php include_once "ES-FrontEnd/Elementos/Generales-CMS/barraNavegacion.php";?>
+    <!-- CONTENT-->
+    
+    <!-- BARRA DE NAVEGACION-->
+    <?php include_once "ES-FrontEnd/Elementos/Generales-CMS/barraNavegacion.php";?>
 
-<section class="cuerpo" id="cuerpo">
+    <!-- INICIO-->
+    <section class="cuerpo" id="cuerpo">
 
-   ...
+       ...
 
-</section> 
+    </section> 
+    
+    <!-- CONTENT-->
 	
 </body>
-
-<?php include_once "ES-FrontEnd/Elementos/Generales-CMS/scripts.php";?>
 
 </html>

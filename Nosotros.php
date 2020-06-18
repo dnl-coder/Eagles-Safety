@@ -3,7 +3,7 @@
 <head>
   
     <!--TITULO DE LA VISTA -->
-    <title>Nosotros - Eagles Safety eirl</title>
+    <title>Nosotros - Eagles Safety EIRL</title>
 
     <!-- CONTENIDO GENERAL-->
     <?php include_once "ES-FrontEnd/Elementos/Generales-Web/config.php";?>
