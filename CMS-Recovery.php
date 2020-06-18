@@ -3,7 +3,7 @@
 <head>
 
     <!-- TITULO DE LA VISTA -->
-    <title>CMS - Eagles Safety eirl</title>
+    <title>CMS - Eagles Safety EIRL</title>
 
     <!-- CONFIGURACION GENERAL-->
     <?php include_once "ES-FrontEnd/Elementos/Generales-CMS/config.php";?>

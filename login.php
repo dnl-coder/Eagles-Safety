@@ -3,7 +3,7 @@
 <head>
 
     <!-- TITULO DE LA VISTA -->
-    <title>CMS - Eagles Safety eirl</title>
+    <title>CMS - Eagles Safety EIRL</title>
 
     <!-- CONFIGURACION GENERAL-->
     <?php include_once "ES-FrontEnd/Elementos/Generales-CMS/config.php";?>
@@ -133,7 +133,7 @@
                 
                 <!-- Me olvide mi contraseña -->
                 <div class="col-12 col-sm-6 p-0">
-                  <a href="Recovery.php">¿Olvidaste tu contraseña?</a>
+                  <a href="CMS-Recovery.php">¿Olvidaste tu contraseña?</a>
                 </div>
                 
             </div>
@@ -148,4 +148,5 @@
     <!-- CONTENT-->
    
 </body>
+
 </html>

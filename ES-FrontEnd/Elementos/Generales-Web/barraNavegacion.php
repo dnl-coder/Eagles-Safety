@@ -4,8 +4,7 @@
       <a class="navbar-brand" href="index.php"><img src="ES-FrontEnd/Elementos/Imagenes/Logo.png" alt="Logo Eagles Safety" width="100">Eagles Safety</a>
       
       <!-- BOTON EXPANSIBLE-->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       

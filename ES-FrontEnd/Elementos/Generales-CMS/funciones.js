@@ -161,46 +161,6 @@ function vistaEliminarCategoria(){
 }
 
 /*=============================================
-    BARRA DE NAVEGACION SCRIPTS
-=============================================*/
-
-//FUNCION PARA AGREGAR CLASE ACTIVE AL ELEMENTO SELECCIONADO DEL NAV
-$(".list-sidebar a").click(function() {
-    // eliminamos active de todos los elementos
-    $(".list-sidebar a").removeClass("enfasis1");
-    $(".sidebar.fliph .sub-menu").removeClass("ocultar");
-    // activamos el elemento clickeado.
-    $(this).addClass("enfasis1");
-});
-
-$(".list-sidebar .sub-menu a").click(function() {
-    $(".sidebar.fliph .sub-menu").addClass("ocultar");
-    $(this).addClass("collapsed");
-});
-
-//FUNCION PARA COMPRIMIR EL MENU
-$('.button-left').click(function(){
-    $(".sidebar.fliph .sub-menu").removeClass("ocultar");
-   $('.sidebar').toggleClass('fliph');
-   $('.navbar').toggleClass('comprimido');
-});
-    
-//--AJUSTAR MENU DE ACUERDO AL TAMAÑO DE PANTALLA--
-$(window).resize(function(){
-
-    if (window.innerWidth>991){
-        $('.sidebar').removeClass('fliph');
-        $('.navbar').removeClass('comprimido');
-        $(".sidebar.fliph .sub-menu").removeClass("ocultar");
-    }else{
-        $('.sidebar').addClass('fliph');
-        $('.navbar').addClass('comprimido'); 
-        $(".sidebar.fliph .sub-menu").removeClass("ocultar");
-    }
-
-});
-
-/*=============================================
     FUNCIONES GENERALES
 =============================================*/
 

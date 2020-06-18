@@ -76,12 +76,7 @@ window.onload = function() {
     css.type = "text/css";
     css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
     document.body.appendChild(css);
-};
-
-//--MOSTRAR/OCULTAR CATEGORIAS--
-$("#filtroCategorias").click(function() {
-    $("#filtroCategoriasContent").toggleClass("d-none");
-});     
+};    
 
 //--MOSTRAR/OCULTAR CATEGORIAS RESPONSIVE--
 $(window).resize(function(){
