@@ -47,17 +47,17 @@
                 <!--INPUTS -->
                 <form method="POST">
 
-                    <!--NOMBRE -->
-                    <div class="row">
-                        <div class="col-md-12 my-3">
-                            <input type="text" id="nombre" name="name" class="form-control" placeholder="Nombre">
-                        </div>
-                    </div>
-
                     <!--CORREO -->
                     <div class="row">
                         <div class="col-md-12 my-3">
                             <input type="email" id="correo" name="email" class="form-control" placeholder="Correo">
+                        </div>
+                    </div>
+
+                    <!--ASUNTO -->
+                    <div class="row">
+                        <div class="col-md-12 my-3">
+                            <input type="text" id="asunto" name="asunto" rows="2" class="form-control" placeholder="Asunto">
                         </div>
                     </div>
 

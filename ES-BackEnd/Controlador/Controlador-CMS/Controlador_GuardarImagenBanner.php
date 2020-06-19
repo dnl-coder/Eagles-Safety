@@ -18,7 +18,7 @@ if(isset($_FILES["archivo"])){
                 $data = array(
                     "response" => 1,
                     "message" => "La imagen se ha guardado correctamente"                      
-                ); 
+                );
             }else{
                 $data = array(
                     "response" => 0,

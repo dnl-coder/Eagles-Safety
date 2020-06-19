@@ -366,21 +366,21 @@ vistaWeb.prototype.mostrarInformacionNosotros = function(){
 
 //-- VALIDAR INFORMACION DE CONTACTANOS EN LA WEB --
 vistaWeb.prototype.validar = function(){
-    var nombre=$("#nombre").val();
+    var asunto=$("#asunto").val();
     var correo=$("#correo").val();
     var mensaje=$("#mensaje").val();    
     
-    if(nombre == null || nombre.length == 0 || /^\s+$/.test(nombre)){
+    if(asunto == null || asunto.length == 0 || /^\s+$/.test(asunto)){
         alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
-        $("#nombre").focus();
+        $("#asunto").focus();
     }
     else if(mensaje == null || mensaje.length == 0 || /^\s+$/.test(mensaje)){
         alert('ERROR: El campo contraseña no debe ir vacío o lleno de solamente espacios en blanco');
         $("#mensaje").focus();
     }
-    else if(nombre.length<3 || nombre.length>40){
+    else if(asunto.length<3 || asunto.length>40){
         alert('ERROR Nombre: Tamaño mínimo : 3. Tamaño máximo: 40');
-        $("#nombreo").focus();
+        $("#asunto").focus();
     }
     else if(mensaje.length<4 || mensaje.length>40){
         alert('ERROR Mensaje: Tamaño mínimo: 4. Tamaño máximo: 100');
@@ -396,13 +396,13 @@ vistaWeb.prototype.validar = function(){
 //-- FUNCION GUARDAR MENSAJE DE CONTACTANOS EN LA BD --
 vistaWeb.prototype.insertarMensajeContactanos = function(){
     var $datos={
-        '_nombre': $("#nombre").val(),
         '_correo': $("#correo").val(),
+        '_asunto': $("#asunto").val(),
         '_mensaje': $("#mensaje").val()
     }
     
     $.ajax({
-        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_InsertarMensajeContactanos.php',
+        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_EnviarCorreo.php',
         type: 'POST',
         data: $datos,
         dataType: 'json',
