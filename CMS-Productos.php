@@ -27,8 +27,8 @@
     <!-- CONTENT-->
     
     <!-- JS Scripts-->
-    <script type="text/javascript" src="ES-FrontEnd/Elementos/Generales-CMS/funciones.js"></script>
-    
+    <script src="ES-FrontEnd/Elementos/Generales-CMS/scripts.js"></script>  
+	
 </body>
 
 </html>
