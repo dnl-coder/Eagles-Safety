@@ -25,6 +25,9 @@
     </section> 
     
     <!-- CONTENT-->
+    
+    <!-- JS Scripts-->
+    <script src="ES-FrontEnd/Elementos/Generales-CMS/scripts.js"></script>  
 	
 </body>
 

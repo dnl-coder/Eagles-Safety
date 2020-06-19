@@ -3,10 +3,10 @@
 =============================================*/
 html, body{
     overflow-x: hidden;
-    scrollbar-face-color:#2C6783;
+    scrollbar-face-color: var(--primary);
     scrollbar-track-color:#F5F5F5;
     scrollbar-shadow-color:rgba(0,0,0,0.1);
-    scrollbar-highlight-color:#05B7FF;
+    scrollbar-highlight-color: var(--primary);
 }
 
 /*barra desplazamiento style*/

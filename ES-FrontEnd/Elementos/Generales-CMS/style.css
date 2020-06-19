@@ -2,16 +2,20 @@
   GENERAL STYLE
 =============================================*/
 
-body{overflow: hidden;}
+body{
+    overflow-x: hidden;
+    scrollbar-face-color: var(--primary);
+    scrollbar-track-color:#F5F5F5;
+    scrollbar-shadow-color:rgba(0,0,0,0.1);
+    scrollbar-highlight-color: var(--primary);
+}
 
 .cuerpo{
     position: absolute;
-    overflow: auto;
-    background: #ffff;
-    margin-left: 59px;
-    padding: 10px 30px;
-    height: 94%;
+    padding-left: 280px;
+    padding-right: 1%;
     width: 100%;
+    top: 56px;
 }
 
 /*=============================================
@@ -38,27 +42,25 @@ COLORES
 .accent2{background-color: #ff6f00 ;}
 .accent3{background-color: #00c853  ;}
 
-/*=============================================
-BARRA DE DESPLAZAMIENTO         
-=============================================*/
-
+/*barra desplazamiento style*/
 ::-webkit-scrollbar-track{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
 	background-color: #F5F5F5;
 	border-radius: 10px;
 }
-::-webkit-scrollbar{background-color: #F5F5F5;}
+::-webkit-scrollbar{
+    background-color: #F5F5F5; 
+    width: 15px;
+}
 ::-webkit-scrollbar-thumb{
 	border-radius: 10px;
 	background-color: #FFF;
 	background-image: -webkit-gradient(linear,
 									   40% 0%,
-									   75% 84%,
-									   from(#4D9C41),
-									   to(#19911D),
-									   color-stop(.6,#54DE5D))
+									   75% 94%,
+									   from(var(--light3)),
+									   to(var(--primary)))
 }
-
 
 /*menu superior style*/
 .navbar{
@@ -76,7 +78,7 @@ BARRA DE DESPLAZAMIENTO
 /*menu lateral style*/
 .sidebar{
     z-index: 1000;
-    position: absolute;
+    position: fixed;
     height: 100%;
     width:265px;  
     background: var(--secundary);
@@ -133,7 +135,7 @@ BARRA DE DESPLAZAMIENTO
     transition: all 0.5s  ease-in-out;
     color: white;
 }
-a.bg-primary:focus{ 
+a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{ 
     background-color:var(--primary) !important;
 }
 .sidebar .sub-menu{ border-left:5px solid #dedede;}
@@ -150,6 +152,12 @@ a.bg-primary:focus{
     .navbar{
       margin-left: 0;
       transition: all 0.5s  ease-in-out;
+    }
+  
+    .cuerpo{
+        padding-left: 3%;
+        padding-right: 3%;
+
     }
 
 }
