@@ -10,15 +10,15 @@ require_once(__DIR__."/../../Modelo/Modelo_Web.php");
 
 $Model_Web = new Model_Web();
 
-if(isset($_POST['_nombre']) && isset($_POST['_correo']) && isset($_POST['_mensaje'])){
+if(isset($_POST['_correo']) && isset($_POST['_asunto']) && isset($_POST['_mensaje'])){
     
-    $nombre = $_POST['_nombre'];
     $correo = $_POST['_correo'];
+    $asunto = $_POST['_asunto'];
     $mensaje = $_POST['_mensaje'];
     
     //MENSAJE A MOSTRAR SI ENCUENTRA RESULTADOS
 
-    if($Model_Web->insertarMensajeContactanos($nombre,$correo,$mensaje)){                        
+    if($Model_Web->insertarMensajeContactanos($correo,$asunto,$mensaje)){                        
         $msg = array(
             "response" => 1,
             "message" => "Registro correcto"                      

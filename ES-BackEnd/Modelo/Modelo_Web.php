@@ -63,12 +63,10 @@ class Model_Web{
     /*=======================================================s
         INSERTAR MENSAJES CONTÁCTANOS
     =======================================================*/
-    public function insertarMensajeContactanos($nombre,$correo,$mensaje){
-        $sql = "INSERT INTO `contactanos` (`CONTACCODIGO`, `CONTACNOMBRE`, `CONTACCORREO`, `CONTACMENSAJE`) VALUES (NULL, '".$nombre."', '".$correo."', '".$mensaje."');";
+    public function insertarMensajeContactanos($correo,$asunto,$mensaje){
+        $sql = "INSERT INTO `contactanos` (`CONTACCODIGO`, `CONTACCORREO`, `CONTACASUNTO`, `CONTACMENSAJE`) VALUES (NULL, '".$correo."', '".$asunto."', '".$mensaje."');";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
-    }
-	
+    }	
 }
-
 ?>

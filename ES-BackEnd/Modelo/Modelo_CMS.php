@@ -135,7 +135,7 @@ class Model_CMS{
     public function mostrarRegistroContactanos() {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "SELECT CONTACNOMBRE, CONTACCORREO, CONTACMENSAJE FROM contactanos";
+        $sql = "SELECT CONTACCORREO, CONTACASUNTO, CONTACMENSAJE FROM contactanos";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_array();
         
