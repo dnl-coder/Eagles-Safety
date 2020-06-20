@@ -330,7 +330,7 @@
 
         var $datos={
             '_nombre': $("#nombre").val(),
-            '_rutaFoto': rutaFoto
+            '_imagen': rutaFoto
         }
 
         $.ajax({
