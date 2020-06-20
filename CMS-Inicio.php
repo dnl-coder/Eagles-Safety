@@ -17,7 +17,7 @@
     <!-- BARRA DE NAVEGACION-->
     <?php include_once "ES-FrontEnd/Elementos/Generales-CMS/barraNavegacion.php";?>
 
-    <!-- INICIO-->
+    <!-- CONTENIDO GENERAL-->
     <section class="cuerpo" id="cuerpo">
 
        ...

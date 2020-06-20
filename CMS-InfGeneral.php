@@ -17,152 +17,184 @@
     <!-- BARRA DE NAVEGACION-->
     <?php include_once "ES-FrontEnd/Elementos/Generales-CMS/barraNavegacion.php";?>
     
-    <!-- INICIO-->
+    <!-- CONTENIDO GENERAL-->
     <section class="cuerpo" id="cuerpo">
-
+     
+      <!-- CUERPO-->
       <div class="px-5 my-5">
 
           <!--TITULO-->
-          <h3 class="titulo mb-5">ACTUALIZAR INFORMACION DE LA EMPRESA</h3>
+          <h3 class="titulo">ACTUALIZAR INFORMACION GENERAL</h3>
 
-          <!--CONTENIDO GENERAL-->
+          <!--CONTENIDO DEL FORMULARIO-->
           <div>
-
-              <!--CONTENIDO-->
+           
+            <!--FORMULARIO-->
             <div class="row">
 
-                      <!--IMAGENES-->
-                      <div class="col-md-5 col-sm-5"><form action="" id="form">
+              <!--IMAGENES-->
+              <div class="col-sm-5">
+                <form action="" id="form">
 
-                          <!--ICONO DE LA PAGINA-->
-                          <div class="text-center" >
-                                  <h6 class="text-left mx-auto" style="width:370px;">ICONO DE LA PAGINA</h6>
-                                  <img id="previewFoto1" class="formulario mx-auto my-2" style="width: 150px; height: 120px;"><br>
-                                  <label for="foto1" class="btn2">CAMBIAR IMAGEN</label>
-                                  <input id="foto1" class="my-2" name="archivo1" type="file" accept="image/*" style="display: none"><input type="text" hidden id="estado">
-                          </div>
+                  <!--ICONO DE LA PAGINA-->
+                  <div class="text-center" >
+                     
+                      <h6 class="subtitulo">ICONO DE LA PAGINA</h6>
+                      
+                      <img id="previewFoto1" class="imagenMin" ><br>
+                      
+                      <label for="foto1" class="botonSecundario">CAMBIAR IMAGEN</label>
+                      <input id="foto1" class="inputImagen" name="archivo1" type="file" accept="image/*">
+                      
+                  </div>
 
-                          <!--LOGO DE LA PAGINA-->
-                          <div class="text-center">
-                                  <h6 class="text-left mx-auto" style="width:370px;">LOGO DE LA PAGINA</h6>
-                                  <img id="previewFoto2" class="formulario mx-auto my-2" style="width: 370px; height: 250px;">
-                                  <label for="foto2" class="btn2">CAMBIAR IMAGEN</label>
-                                  <input id="foto2" class="my-2" name="archivo2" type="file" accept="image/*" style="display: none">
-                          </div>
+                  <!--LOGO DE LA PAGINA-->
+                  <div class="text-center">
+                     
+                      <h6 class="subtitulo">LOGO DE LA PAGINA</h6>
+                      
+                      <img id="previewFoto2" class="imagenMin">
+                      
+                      <label for="foto2" class="botonSecundario">CAMBIAR IMAGEN</label>
+                      <input id="foto2" class="inputImagen" name="archivo2" type="file" accept="image/*">
+                      
+                  </div>
 
-                      </form></div>
+                </form>
+              </div>
 
-                      <!--INGRESAR DATOS-->
-                      <div class="col-md-7 col-sm-7">
+              <!--INGRESAR DATOS-->
+              <div class="col-sm-7">
 
-                          <!--TITULO-->
-                          <div class="form-group">
-                              <h6>TITULO <span class="red-text font-weight-bold">*</span></h6>
-                              <input id="titulo" type="text" class="form-control" placeholder="ingresar el titulo de la pagina aqui...">
-                          </div>
+                  <!--TITULO-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">TITULO</h6>
+                      <input id="titulo" type="text" class="form-control" placeholder="Nombre de la página">
+                  </div>
 
-                          <!--CORREO-->
-                          <div class="form-group">
-                              <h6>CORREO <span class="red-text font-weight-bold">*</span></h6>
-                              <input id="correo" type="text" class="form-control" placeholder="empresa@empresa.com.pe">
-                          </div>
+                  <!--CORREO-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">CORREO</h6>
+                      <input id="correo" type="email" class="form-control" placeholder="empresa@empresa.com.pe">
+                  </div>
 
-                          <!--TELEFONO-->
-                          <div class="row mx-0 form-group">
+                  <!--TELEFONO-->
+                  <div class="d-flex flex-column flex-md-row">
 
-                                  <!--TELEFONO 1-->
-                                  <div class="col-md-6 pl-0">
-                                      <h6>TELEFONO 1 <span class="red-text font-weight-bold">*</span></h6>
-                                      <input id="telefono1" type="number" min="0" class="form-control" placeholder="987 654 321">
-                                  </div>
-
-                                  <!--TELEFONO 2-->
-                                  <div class="col-md-6 pr-0">
-                                      <h6>TELEFONO 2 <span class="red-text font-weight-bold">*</span></h6>
-                                      <input id="telefono2" type="number" min="0" class="form-control" placeholder="987 654 321">
-                                  </div>
-
-                          </div>
-
-                          <!--RED SOCIAL-->
-                          <div class="row mx-0 form-group">
-
-                                  <!--FACEBOOK 1-->
-                                  <div class="col-md-6 pl-0">
-                                      <h6>FACEBOOK <span class="red-text font-weight-bold">*</span></h6>
-                                      <input id="redSocial1" type="text" class="form-control" placeholder="ingrese el link a facebook aqui...">
-                                  </div>
-
-                                  <!--YOUTUBE 2-->
-                                  <div class="col-md-6 pr-0">
-                                      <h6>YOUTUBE <span class="red-text font-weight-bold">*</span></h6>
-                                      <input id="redSocial2" type="text" class="form-control" placeholder="ingrese el link a youtube aqui...">
-                                  </div>
-
-                          </div>
-
-                          <!--DIRECCION-->
-                          <div class="row mx-0 form-group">
-
-                                  <!--PAIS-->
-                                  <div class="col-md-4 pl-0">
-                                      <h6>PAIS <span class="red-text font-weight-bold">*</span></h6>
-                                      <select id="pais" class="browser-default custom-select">
-                                          <option value="PERU">PERU</option>
-                                      </select>
-                                  </div>
-
-                                  <!--PROVINCIA-->
-                                  <div class="col-md-4 pl-0">
-                                      <h6>PROVINCIA <span class="red-text font-weight-bold">*</span></h6>
-                                      <select id="provincia" class="browser-default custom-select">
-                                          <option value="LIMA">LIMA</option>
-                                      </select>
-                                  </div>
-
-                                  <!--DISTRITO-->
-                                  <div class="col-md-4 px-0">
-                                      <h6>DISTRITO <span class="red-text font-weight-bold">*</span></h6>
-                                      <select id="distrito" class="browser-default custom-select">
-                                          <option value="COMAS">COMAS</option>
-                                      </select>
-                                  </div>
-
-                          </div>
-
-                          <!--DOMICILIO-->
-                          <div class="form-group">
-                              <h6>DOMICILIO <span class="red-text font-weight-bold">*</span></h6>
-                              <input id="direccion" type="text" class="form-control" placeholder="Calle Urales 128">
-                          </div>
-
+                      <!--TELEFONO 1-->
+                      <div class="pr-0 pr-md-4 form-group">
+                          <h6 class="subtitulo obligatorio">TELEFONO 1</h6>
+                          <input id="telefono1" type="number" min="0" class="form-control" placeholder="999 999 999">
                       </div>
+
+                      <!--TELEFONO 2-->
+                      <div class="form-group">
+                          <h6 class="subtitulo obligatorio">TELEFONO 2</h6>
+                          <input id="telefono2" type="number" min="0" class="form-control" placeholder="999 999 999">
+                      </div>
+
+                  </div>
+
+                  <!--DIRECCION-->
+                  <div class="d-flex flex-column flex-md-row">
+
+                      <!--PAIS-->
+                      <div class="pr-0 pr-md-4 form-group flex-fill">
+                          <h6 class="subtitulo obligatorio">PAIS</h6>
+                          <select id="pais" class="browser-default custom-select">
+                              <option value="PERU">PERU</option>
+                          </select>
+                      </div>
+
+                      <!--PROVINCIA-->
+                      <div class="pr-0 pr-md-4 form-group flex-fill">
+                          <h6 class="subtitulo obligatorio">PROVINCIA</h6>
+                          <select id="provincia" class="browser-default custom-select">
+                              <option value="LIMA">LIMA</option>
+                          </select>
+                      </div>
+
+                      <!--DISTRITO-->
+                      <div class="form-group flex-fill">
+                          <h6 class="subtitulo obligatorio">DISTRITO</h6>
+                          <select id="distrito" class="browser-default custom-select">
+                              <option value="COMAS">COMAS</option>
+                          </select>
+                      </div>
+
+                  </div>
+
+                  <!--DOMICILIO-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">DOMICILIO</h6>
+                      <input id="direccion" type="text" class="form-control" placeholder="Calle Empresa N° 111">
+                  </div>
+
+              </div>
+              
+              <!--REDES SOCIALES-->
+              <div class="col-12">
+
+                  <!--FACEBOOK 1-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">FACEBOOK</h6>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1"><i class="fab fa-lg fa-facebook-square"></i></span>
+                        </div>
+                        <input id="redSocial1" type="text" class="form-control" placeholder="Link de facebook">
+                      </div>
+                  </div>
+
+                  <!--LINKEDIN 2-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">LINKEDIN</h6>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1"><i class="fab fa-lg fa-linkedin"></i></span>
+                        </div>
+                        <input id="redSocial2" type="text" class="form-control" placeholder="Link de linkedin">
+                      </div>
+                  </div>
+
+                  <!--YOUTUBE 3-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">YOUTUBE</h6>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1"><i class="fab fa-lg fa-youtube"></i></span>
+                        </div>
+                        <input id="redSocial2" type="text" class="form-control" placeholder="Link de youtube">
+                      </div>
+                  </div>
+
+              </div>
 
             </div>
 
-              <!--BOTONES-->
+            <!--BOTONES-->
             <div class="row justify-content-center my-5">
-                      <div class="col-md-4 col-sm-4">
-                          <button class="btn btn-block enfasis1" onclick="validarFormulario()" type="submit">Guardar</button>
-                      </div>
-                      <div class="col-md-4 col-sm-4">
-                          <button class="btn btn-block enfasis2" onclick="cargarDatos()" type="submit">Reestablecer </button>
-                      </div>
+              <div class="col-sm-4 text-center">
+                  <button class="botonPrincipal btn" onclick="validarFormulario()" type="submit">Guardar</button>
+              </div>
+              <div class="col-sm-4 text-center">
+                  <button class="botonPrincipal  btn" onclick="cargarDatos()" type="submit">Reestablecer </button>
+              </div>
             </div>
 
           </div>
 
           <!--ALERTA-->
-          <div class="alert alert-danger mx-5" role="alert">
-                  * Campo obligatorio!
+          <div class="alert alert-danger" role="alert">
+                  * Campo obligatorio
           </div>
 
       </div>
 
       <!-- TOAST -->
-       <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
-          <div class="toast-body">Mensaje</div>
-       </div>
+      <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
+        <div class="toast-body">Mensaje</div>
+      </div>
 
     </section> 
     
