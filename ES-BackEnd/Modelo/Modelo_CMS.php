@@ -287,16 +287,29 @@ class Model_CMS{
     /*===========================================
         CONSULTA: ACTUALIZAR NOSOTROS
     ===========================================*/
-    
-    public function actualizarNosotros($descripcion,$vision,$rutaFotoVision,$mision,$rutaFotoMision) {
-        
+
+    public function actualizarNosotros($rutaFoto,$descripcion,$vision,$mision) {
+            
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `nosotros` SET `NOSTDESCRIPCION` = '".$descripcion."', `NOSTVISION` = '".$vision."', `NOSTVISION_IMAGEN` = '".$rutaFotoVision."', `NOSTMISION` = '".$mision."', `NOSTMISION_IMAGEN` = '".$rutaFotoMision."' WHERE `NOSTCODIGO` = 1;";
+        $sql = "UPDATE `nosotros` SET `NOSTIMAGEN` = '".$rutaFoto."', `NOSTDESCRIPCION` = '".$descripcion."', `NOSTVISION` = '".$vision."',  `NOSTMISION` = '".$mision."' WHERE `NOSTCODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+        
+    }
+
+    /*===========================================
+        CONSULTA: ACTUALIZAR SLIDER
+    ===========================================*/
+
+    public function actualizarSlider($codigo,$nombre,$descripcion,$rutaFoto) {
+            
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `slider` SET `SLDRNOMBRE` = '".$nombre."', `SLDRDESCRIPCION` = '".$descripcion."', `SLDRIMAGEN` = '".$rutaFoto."' WHERE `SLDRCODIGO` = ".$codigo." ";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
     }  
-    
+
 }
 
 ?>
