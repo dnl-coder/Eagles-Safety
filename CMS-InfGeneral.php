@@ -21,7 +21,7 @@
     <section class="cuerpo" id="cuerpo">
      
       <!-- CUERPO-->
-      <div class="px-5 my-5">
+      <div class="px-5 mb-5">
 
           <!--TITULO-->
           <h3 class="titulo">ACTUALIZAR INFORMACION GENERAL</h3>
@@ -44,7 +44,7 @@
                       <img id="previewFoto1" class="imagenMin" ><br>
                       
                       <label for="foto1" class="botonSecundario">CAMBIAR IMAGEN</label>
-                      <input id="foto1" class="inputImagen" name="archivo1" type="file" accept="image/*">
+                      <input id="foto1" class="inputImagen" name="archivo1" type="file" accept="image/*"><input type="text" hidden id="estado">
                       
                   </div>
 
@@ -53,10 +53,10 @@
                      
                       <h6 class="subtitulo">LOGO DE LA PAGINA</h6>
                       
-                      <img id="previewFoto2" class="imagenMin">
+                      <img id="previewFoto2" class="imagenMin"><br>
                       
                       <label for="foto2" class="botonSecundario">CAMBIAR IMAGEN</label>
-                      <input id="foto2" class="inputImagen" name="archivo2" type="file" accept="image/*">
+                      <input id="foto2" class="inputImagen" name="archivo2" type="file" accept="image/*"><input type="text" hidden id="estado">
                       
                   </div>
 

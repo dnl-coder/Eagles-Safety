@@ -62,9 +62,9 @@
                 <span class="fa fa-chevron-left pull-right mt-2"></span> 
             </a>
             <ul class="sub-menu collapse" id="dashboard1">
-                <li><a onclick="ventanaSlider()"> Carrusel de imágenes </a></li>
-                <li><a onclick="ventanaMarcas()"> Marcas </a></li>
-                <li><a onclick="ventanaActualizarBanner()"> Banner </a></li>
+                <li><a href="CMS-Componente-Slider.php"> Carrusel de imágenes </a></li>
+                <li><a href="CMS-Componente-Marcas.php"> Marcas </a></li>
+                <li><a href="CMS-Componente-Banner.php"> Banner </a></li>
             </ul>
         </li>
 

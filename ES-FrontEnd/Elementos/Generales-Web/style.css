@@ -115,29 +115,32 @@ html, body{
     background: rgba(1, 1, 1, 0.9);
 }
 .descripcionSlider{
-    margin-top: 35vh !important;
+    margin-top: 30vh !important;
     margin-left: 15%;
 }
 .descripcionSlider p{
     width: fit-content;
-    background: var(--primary);
-    color: black;
+    max-width: 450px;
+    background: rgba(1,1,1,0.7) !important;
+    color: var(--primary);
     padding: 0 0.9rem;
     margin-bottom: 0.3rem !important;
     font-weight: bold;
     font-family:serif;
     text-transform: uppercase;
-  
+    text-shadow: 1px 1px 5px black;
+    font-family: 'Bungee', cursive;
+    border-radius: 2px;
 }
 .descripcionSlider p.descripcion{
     color: white;
     max-width: 400px;
-    background: rgba(1,1,1,0.7) !important;
     margin-bottom: 0.3rem !important;
     text-transform: none;
     font-size: 1.6rem;
     font-weight: bold;
     font-style: italic;
+    font-family: serif;
 }
 
 /*destacados style*/
@@ -226,7 +229,6 @@ PRODUCTOS    (PRODUCTOS)
 /*=============================================
 MEDIA RESPONSIVE
 =============================================*/
-@media (min-width: 1199.98px) { .contenedor-principal{width: 60%;} }
 @media (max-width: 768px) { 
 
     /*menu style*/

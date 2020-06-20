@@ -1,6 +1,6 @@
 :root {
   
-  --marginTitulo: 5% 0 5% 0;
+  --marginTitulo: 30px 0 20px 0;
   --colorTitulo: #9a9a9a;
   
   --marginSubtitulo: 5% 0 3% 0;
@@ -156,9 +156,9 @@ a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{
     border-radius: 30px; 
     font-weight: bold;
     background: var(--primary);
-    padding: 5% 20%;
+    padding: 10px 50px;
 }
-.botonPrincipal:hover{
+.botonPrincipal:hover, .botonPrincipal:focus, .botonPrincipal:hover:focus{
     background: var(--secundary) !important;
     transition: 30s;
 }
@@ -167,7 +167,7 @@ a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{
 .botonSecundario{
 	border: 2.4px var(--colorTextBotonSecundario) solid;
 	border-radius: 50px;
-	padding: 1% 5%;
+	padding: 5px 20px;
 	font-weight: bold;
 	color: var(--colorTextBotonSecundario);
 	font-size: 12px;
@@ -186,7 +186,7 @@ a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{
 .imagenMin{
     margin: 3% 0 3% 0;
     width: 200px; 
-    height: 170px;
+    height: 200px;
 }
 
 /*=== GRUPO DE DATOS DE ENTRADA STYLE ===*/
@@ -211,10 +211,92 @@ a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{
 .visualizar{
 	z-index: 100;
 }
-	
+.succesfull{background: #00C851;}
+.error{background: #ff4444;}
+
 /*=============================================
-MEDIA RESPONSIVE
+  COMPONENTE CARRUSEL DE IMAGENES
 =============================================*/
+
+/*carousel style*/
+#CarouselInicio .carousel-item{
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    height: 60vh;
+}
+#CarouselInicio .carousel-control-prev i, #CarouselInicio .carousel-control-next i{
+    padding: 10px;
+    background: rgba(1, 1, 1, 0.9);
+}
+.numeroSliders{
+    font-weight: bold;
+    padding-top: 8px;
+}
+.descripcionSlider{
+    margin-top: 13vh !important;
+    margin-left: 10%;
+}
+.descripcionSlider p{
+    width: fit-content;
+    max-width: 250px;
+    color: var(--primary);
+    background: rgba(1,1,1,0.7) !important;
+    border-radius: 2px;
+    padding: 0 0.9rem;
+    margin-bottom: 0.3rem !important;
+    font-weight: bold;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 5px black;
+    font-family: 'Bungee', cursive;
+  
+}
+.descripcionSlider p.descripcion{
+    color: white;
+    max-width: 250px;
+    margin-bottom: 0.3rem !important;
+    text-transform: none;
+    font-size: 1rem;
+    font-weight: bold;
+    font-style: italic;
+    font-family: serif;
+}
+
+/*===OPCIONES DEL SLIDER STYLE===*/
+#contenidoModificar img{
+    width: 200px;
+    height: 130px;
+}
+.opcionesSlider{ position: absolute; }
+.opcionesSlider .btn{
+    background-color: rgba(244, 67, 54, 1); 
+    position: absolute; 
+    bottom: 0;
+    padding: 5px 13px;
+    color: white;
+    font-weight: bold;
+}
+
+/*=============================================
+  MEDIA RESPONSIVE
+=============================================*/
+@media (max-width: 768px) { 
+
+    /*carousel style*/
+    .numeroSliders{
+        font-size: 1rem !important;
+    }
+    .descripcionSlider p{
+        max-width: 130px !important;
+        font-size: 0.9rem !important;
+    }
+    .descripcionSlider p.descripcion{
+        max-width: 130px !important;
+        font-size: 0.7rem !important;
+    }
+  
+}
 
 @media (max-width: 991px){
   
@@ -236,47 +318,3 @@ MEDIA RESPONSIVE
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*===SLIDER===*/
-#CarouselInicio .carousel-item{
-	height: 50vh;
-	background-size: cover!important;
-	background-position: center center!important;
-}
-#CarouselInicio .carousel-control-prev i, #CarouselInicio .carousel-control-next i{
-	padding: 10px;
-	background: rgba(10, 130, 10, 0.5);
-}
-
-.descripcionSlider{
-	color: white;
-	font-stretch:ultra-condensed;
-	line-height: 0.9;
-	position: absolute;
-    top: 40%;
-}
-.descripcionSlider a{
-	border-radius: 50px;
-	background: #28a745;
-	transition: opacity 0.3s;
-	padding: 10px;
-	max-width: 150px;
-}
-.boxtitleSlider{margin-left: 10%;}
