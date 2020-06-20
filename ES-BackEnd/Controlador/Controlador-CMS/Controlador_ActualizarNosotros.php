@@ -10,15 +10,14 @@ require_once(__DIR__."/../../Modelo/Modelo_CMS.php");
 
 $Model_CMS = new Model_CMS();
 
-if(isset($_POST['_descripcion']) && isset($_POST['_vision']) && isset($_POST['_visionimagen']) && isset($_POST['_mision']) && isset($_POST['_misionimagen'])){
+if(isset($_POST['_nosotrosimagen']) && isset($_POST['_descripcion']) && isset($_POST['_vision']) && isset($_POST['_mision'])){
     
+    $rutaFoto = $_POST['_nosotrosimagen'];
     $descripcion = $_POST['_descripcion'];
     $vision = $_POST['_vision'];
-    $rutaFotoVision = $_POST['_visionimagen'];
     $mision = $_POST['_mision'];
-    $rutaFotoMision = $_POST['_misionimagen'];
     
-    if($Model_CMS->actualizarNosotros($descripcion,$vision,$rutaFotoVision,$mision,$rutaFotoMision)){
+    if($Model_CMS->actualizarNosotros($rutaFoto,$descripcion,$vision,$mision)){
 
         $data = array(
             "response" => 1,
