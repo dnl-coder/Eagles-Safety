@@ -20,110 +20,109 @@
     <!-- CONTENIDO GENERAL-->
     <section class="cuerpo" id="cuerpo">
 
-    <!--===========================================================
-        CONTENIDO GENERAL DE LA VISTA
-    =============================================================-->
+      <!-- CUERPO-->
+      <div class="px-5 mb-5">
 
-    <div class="contenedor-principal mx-auto my-1">
+          <!--TITULO-->
+          <h3 class="titulo">AGREGAR UN NUEVO PRODUCTO</h3>
 
-        <!--TITULO-->
-        <h3 class="titulo mb-5">AGREGAR UN NUEVO PRODUCTO</h3>
-        
-        <!--CONTENIDO GENERAL-->
-        <div>
-    
-            <!--CONTENIDO-->
-        <div class="row">
+          <!--CONTENIDO DEL FORMULARIO-->
+          <div>
 
-                    <!--IMAGENES-->
-                    <div class="col-md-5 col-sm-5"><form action="" id="form">
-                        
-                        <!--IMAGEN DEL PRODUCTO-->
-                        <div class="text-center">
-                                <h6 class="text-left mx-auto" style="width:300px;">IMAGEN DEL PRODUCTO</h6>
-                                <img id="previewFoto" class="formulario mx-auto my-2" style="width: 300px; height: 250px;">
-                                <label for="foto" class="btn2">CAMBIAR IMAGEN</label>
-                                <input id="foto" class="my-2" name="archivo1" type="file" accept="image/*" style="display: none"><input type="text" hidden id="estado">
-                        </div>
+            <!--FORMULARIO-->
+            <div class="row">
 
-                    </form></div>
+              <!--IMAGENES-->
+              <div class="col-sm-5">
+                <form id="form">
 
-                    <!--INGRESAR DATOS-->
-                    <div class="col-md-7 col-sm-7">
+                  <!--IMAGEN DEL PRODUCTO-->
+                  <div class="text-center">
+                     
+                      <h6 class="subtitulo">IMAGEN DEL PRODUCTO</h6>
+                      
+                      <img id="previewFoto" class="imagenMin" src="ES-FrontEnd/Elementos/Imagenes/Icons/sinImagen.png"><br>
+                      
+                      <label for="foto" class="botonSecundario">CAMBIAR IMAGEN</label>
+                      <input id="foto" class="inputImagen" name="archivo1" type="file" accept="image/*">
+                      <input type="text" hidden id="estado">
+                  </div>
 
-                        <!--NOMBRE-->
-                        <div class="form-group">
-                            <h6>NOMBRE <span class="red-text font-weight-bold">*</span></h6>
-                            <input id="nombre" type="text" class="form-control" placeholder="ingresar el nombre del producto...">
-                        </div>
+                </form>
+              </div>
 
-                        <!--DESCRIPCION-->
-                        <div class="form-group">
-                            <h6>DESCRIPCION <span class="red-text font-weight-bold">*</span></h6>
-                            <input id="descripcion" type="text" class="form-control" placeholder="ingresar descripcion breve del producto...">
-                        </div>
+              <!--INGRESAR DATOS-->
+              <div class="col-sm-7">
 
-                        <!--DESCRIPCION ESPECIFICA-->
-                        <div class="form-group">
-                            <h6>DESCRIPCION ESPECIFICA<span class="red-text font-weight-bold">*</span></h6>
-                            <input id="descripcionEspecifica" type="text" class="form-control" placeholder="ingresar descripcion especifica del producto...">
-                        </div>
+                  <!--NOMBRE-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">NOMBRE</h6>
+                      <input id="nombre" type="text" class="form-control" placeholder="Nombre del producto">
+                  </div>
 
-                        <!--CATEGORIA-->
-                        <div class="form-group">
-                            <h6>CATEGORIA<span class="red-text font-weight-bold">*</span></h6>
-                            <select id="categoria" class="form-control">
-                                <option value="">Seleccionar categoria</option>
-                            </select>
-                        </div>
+                  <!--DESCRIPCION-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">DESCRIPCION CORTA</h6>
+                      <input id="descripcion" type="text" class="form-control" placeholder="Descripcion breve del producto">
+                  </div>
 
-                        <!--DESTACADO-->
-                        <div class="row mx-0 form-group">
-                            <h6>¿ES UN PRODUCTO DESTACADO?<span class="red-text font-weight-bold">*</span></h6>
-                            <select id="destacado" class="form-control">
-                                <option value="1">SI</option>
-                                <option value="0" selected>NO</option>
-                            </select>
-                        </div>
+                  <!--DESCRIPCION ESPECIFICA-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">DESCRIPCION LARGA</h6>
+                      <input id="descripcionEspecifica" type="text" class="form-control" placeholder="Descripcion detallada del producto">
+                  </div>
 
-                    </div>
+                  <!--CATEGORIA-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">CATEGORIA</h6>
+                      <select id="categoria" class="form-control">
+                          <option value="">Seleccionar categoria</option>
+                      </select>
+                  </div>
 
-        </div>
-        
+                  <!--DESTACADO-->
+                  <div class="row mx-0 form-group">
+                      <h6 class="subtitulo obligatorio">¿ES UN PRODUCTO DESTACADO?</h6>
+                      <select id="destacado" class="form-control">
+                          <option value="1">SI</option>
+                          <option value="0" selected>NO</option>
+                      </select>
+                  </div>
+
+              </div>
+
+            </div>
+
             <!--BOTONES-->
-        <div class="row justify-content-center my-5">
-                    <div class="col-md-4 col-sm-4">
-                        <button class="btn btn-block enfasis1" onclick="validarFormulario()" type="submit">Guardar</button>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <button class="btn btn-block enfasis2" onclick="limpiar()" type="submit">Reestablecer </button>
-                    </div>
-        </div>
-        
-        </div>
-        
-        <!--ALERTA-->
-        <div class="alert alert-danger mx-5" role="alert">
-                * Campo obligatorio!
-        </div>
-        
-    </div>
+            <div class="row justify-content-center my-5">
+              <div class="col-sm-4 text-center">
+                  <button class="botonPrincipal btn" onclick="validarFormulario()" type="submit">Guardar</button>
+              </div>
+              <div class="col-sm-4 text-center">
+                  <button class="botonPrincipal  btn" onclick="cargarDatos()" type="submit">Reestablecer </button>
+              </div>
+            </div>
 
-    <!-- TOAST -->
-    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
+          </div>
+
+          <!--ALERTA-->
+          <div class="alert alert-danger" role="alert">
+                  * Campo obligatorio!
+          </div>
+
+      </div>
+
+      <!-- TOAST -->
+      <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
         <div class="toast-body">Mensaje</div>
-    </div>    
+      </div>  
 
     </section> 
     
     <!-- CONTENT-->
     
     <!-- JS Scripts-->
-    <script src="ES-FrontEnd/Elementos/Generales-CMS/scripts.js"></script>  
-    
-	<!--===========================================================
-        SCRIPTS DE LA VISTA
-    =============================================================-->
+    <script type="text/javascript" src="ES-FrontEnd/Elementos/Generales-CMS/funciones.js"></script>
 
     <script>
     
@@ -330,6 +329,7 @@
     }
         
     </script>
+    
 </body>
 
 </html>
