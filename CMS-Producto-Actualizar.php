@@ -20,126 +20,128 @@
     <!-- CONTENIDO GENERAL-->
     <section class="cuerpo" id="cuerpo">
 
-    <!--===========================================================
-        CONTENIDO GENERAL DE LA VISTA
-    =============================================================-->
+      <!-- CUERPO-->
+      <div class="px-5 mb-5">
 
-    <div class="contenedor-principal mx-auto my-1">
+          <!--TITULO-->
+          <h3 class="titulo">ACTUALIZAR PRODUCTO</h3>
 
-        <!--TITULO-->
-        <h3 class="titulo mb-3">ACTUALIZAR PRODUCTO</h3>
-        
-        <!--CONTENIDO GENERAL-->
-        <div>
-    
-            <!--CONTENIDO-->
-        <div class="row">
+          <!--CONTENIDO DEL FORMULARIO-->
+          <div>
 
-                    <!--SELECCIONAR CATEGORIA-->
-                    <div class="col-12 col-sm-6">
-                        
-                        <div class="form-group">
-                            <h6>SELECCIONAR CATEGORIA <span class="red-text font-weight-bold">*</span></h6>
-                            <select id="selCategoria" class="form-control">
-                                <option value="">Seleccionar categoría</option>
-                            </select>
-                        </div>
+            <!--FORMULARIO-->
+            <div class="row">
 
-                    </div>
+              <!--SELECCIONAR CATEGORIA-->
+              <div class="col-12 col-sm-6">
 
-                    <!--SELECCIONAR PRODUCTO-->
-                    <div class="col-12 col-sm-6">
-                        
-                        <div class="form-group">
-                            <h6>SELECCIONAR PRODUCTO <span class="red-text font-weight-bold">*</span></h6>
-                            <select id="selProducto" class="form-control">
-                                <option value="">Seleccionar producto</option>
-                            </select>
-                        </div>
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">SELECCIONAR CATEGORIA</h6>
+                      <select id="selCategoria" class="form-control">
+                          <option value="">Seleccionar categoría</option>
+                      </select>
+                  </div>
 
-                    </div>
+              </div>
 
-                    <!--SEPARADOR-->
-                    <div class="col-12">
-                        <hr>
-                    </div>
+              <!--SELECCIONAR PRODUCTO-->
+              <div class="col-12 col-sm-6">
 
-                    <!--IMAGENES-->
-                    <div class="col-md-5 col-sm-5"><form action="" id="form">
-                        
-                        <!--IMAGEN DEL PRODUCTO-->
-                        <div class="text-center">
-                                <h6 class="text-left mx-auto" style="width:300px;">IMAGEN DEL PRODUCTO</h6>
-                                <img id="previewFoto" class="formulario mx-auto my-2" style="width: 300px; height: 250px;">
-                                <label for="foto" class="btn2">CAMBIAR IMAGEN</label>
-                                <input id="foto" class="my-2" name="archivo1" type="file" accept="image/*" style="display: none"><input type="text" hidden id="estado">
-                        </div>
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">SELECCIONAR PRODUCTO</h6>
+                      <select id="selProducto" class="form-control">
+                          <option value="">Seleccionar producto</option>
+                      </select>
+                  </div>
 
-                    </form></div>
+              </div>
 
-                    <!--INGRESAR DATOS-->
-                    <div class="col-md-7 col-sm-7">
+              <!--SEPARADOR-->
+              <div class="col-12">
+                  <hr>
+              </div>
 
-                        <!--NOMBRE-->
-                        <div class="form-group">
-                            <h6>NOMBRE <span class="red-text font-weight-bold">*</span></h6>
-                            <input id="nombre" type="text" class="form-control" placeholder="ingresar el nombre del producto...">
-                        </div>
+              <!--IMAGENES-->
+              <div class="col-sm-5">
+                <form id="form">
 
-                        <!--DESCRIPCION-->
-                        <div class="form-group">
-                            <h6>DESCRIPCION <span class="red-text font-weight-bold">*</span></h6>
-                            <input id="descripcion" type="text" class="form-control" placeholder="ingresar descripcion breve del producto...">
-                        </div>
+                  <!--IMAGEN DEL PRODUCTO-->
+                  <div class="text-center">
+                     
+                      <h6 class="subtitulo">IMAGEN DEL PRODUCTO</h6>
+                      
+                      <img id="previewFoto" class="imagenMin"><br>
+                      
+                      <label for="foto" class="botonSecundario">CAMBIAR IMAGEN</label>
+                      <input id="foto" class="inputImagen" name="archivo1" type="file" accept="image/*">
+                      <input type="text" hidden id="estado">
+                  </div>
 
-                        <!--DESCRIPCION ESPECIFICA-->
-                        <div class="form-group">
-                            <h6>DESCRIPCION ESPECIFICA<span class="red-text font-weight-bold">*</span></h6>
-                            <input id="descripcionEspecifica" type="text" class="form-control" placeholder="ingresar descripcion especifica del producto...">
-                        </div>
+                </form>
+              </div>
 
-                        <!--CATEGORIA-->
-                        <div class="form-group">
-                            <h6>CATEGORIA<span class="red-text font-weight-bold">*</span></h6>
-                            <select id="categoria" class="form-control">
-                                <option value="">Seleccionar categoria</option>
-                                <option value="1">Protección anticaída</option>
-                            </select>
-                        </div>
+              <!--INGRESAR DATOS-->
+              <div class="col-sm-7">
 
-                        <!--DESTACADO-->
-                        <div class="row mx-0 form-group">
-                            <h6>¿ES UN PRODUCTO DESTACADO?<span class="red-text font-weight-bold">*</span></h6>
-                            <select id="destacado" class="form-control">
-                                <option value="1">SI</option>
-                                <option value="0" selected>NO</option>
-                            </select>
-                        </div>
+                  <!--NOMBRE-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">NOMBRE</h6>
+                      <input id="nombre" type="text" class="form-control" placeholder="Nombre del producto">
+                  </div>
 
-                    </div>
+                  <!--DESCRIPCION-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">DESCRIPCION CORTA</h6>
+                      <input id="descripcion" type="text" class="form-control" placeholder="Descripcion breve del producto">
+                  </div>
 
-        </div>
-        
+                  <!--DESCRIPCION ESPECIFICA-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">DESCRIPCION LARGA</h6>
+                      <input id="descripcionEspecifica" type="text" class="form-control" placeholder="Descripcion detallada del producto">
+                  </div>
+
+                  <!--CATEGORIA-->
+                  <div class="form-group">
+                      <h6 class="subtitulo obligatorio">CATEGORIA</h6>
+                      <select id="categoria" class="form-control">
+                          <option value="">Seleccionar categoria</option>
+                      </select>
+                  </div>
+
+                  <!--DESTACADO-->
+                  <div class="row mx-0 form-group">
+                      <h6 class="subtitulo obligatorio">¿ES UN PRODUCTO DESTACADO?</h6>
+                      <select id="destacado" class="form-control">
+                          <option value="1">SI</option>
+                          <option value="0" selected>NO</option>
+                      </select>
+                  </div>
+
+              </div>
+
+            </div>
+
             <!--BOTONES-->
-        <div class="row justify-content-center my-5">
-                    <div class="col-md-4 col-sm-4">
-                        <button class="btn btn-block enfasis1" onclick="validarFormulario()" type="submit">Actualizar</button>
-                    </div>
-        </div>
-        
-        </div>
-        
-        <!--ALERTA-->
-        <div class="alert alert-danger mx-5" role="alert">
-                * Campo obligatorio!
-        </div>
-        
-    </div>
+            <div class="row justify-content-center my-5">
+              <div class="col-sm-4 text-center">
+                  <button class="botonPrincipal btn" onclick="validarFormulario()" type="submit">Actualizar</button>
+              </div>
+            </div>
 
-    <!-- TOAST -->
-    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
+          </div>
+
+          <!--ALERTA-->
+          <div class="alert alert-danger" role="alert">
+                  * Campo obligatorio!
+          </div>
+
+      </div>
+
+      <!-- TOAST -->
+      <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
         <div class="toast-body">Mensaje</div>
-    </div>
+      </div>  
 
     </section> 
     
@@ -202,6 +204,7 @@
                     }
                     categorias += "\</select>"
                     $("#selCategoria").append(categorias);
+                    $("#categoria").append(categorias);
                 }
             }
         });
@@ -281,7 +284,7 @@
                     $("#destacado option[value="+ datos.PRODDESTACADO +"]").attr("selected",true);
                     
                     if(datos.PRODIMAGEN!=""){
-                    document.getElementById('previewFoto').src = datos.PRODIMAGEN;
+                    document.getElementById('previewFoto').src = "ES-FrontEnd/Elementos/Imagenes/Productos/"+datos.PRODIMAGEN;
                     }
                 }
             }
@@ -375,10 +378,10 @@
             rutaFoto1="";
         }else{
             nombreFoto1=document.getElementById('previewFoto').src.split("/Imagenes/");
-            rutaFoto1="ES-FrontEnd/Elementos/Imagenes/"+nombreFoto1[1];
+            rutaFoto1=nombreFoto1[1];
         }
         }else{
-        rutaFoto1="ES-FrontEnd/Elementos/Imagenes/"+document.getElementById('foto').files[0].name
+        rutaFoto1=document.getElementById('foto').files[0].name
         }
         
             mostrar=true;
