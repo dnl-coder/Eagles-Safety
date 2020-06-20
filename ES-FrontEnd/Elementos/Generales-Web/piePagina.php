@@ -30,9 +30,8 @@
 
         <!--REDES SOCIALES -->  
         <div class="row justify-content-center">
-            <a id="red1ES" class="m-2" target="_blank" href="http://www.facebook.com/eagles.safety.eirl/"><span class="fab fa-facebook-square fa-2x"></span></a>
-            <a id="red2ES" class="m-2" href="#"><span class="fab fa-youtube fa-2x"></span></a>
-            <a id="red3ES" class="m-2" href="#"><span class="fab fa-linkedin fa-2x"></span></a>
+            <a id="red1ES" class="m-2" href="" target="_blank"><span class="fab fa-facebook-square fa-2x"></span></a>
+            <a id="red2ES" class="m-2" href="" target="_blank"><span class="fab fa-linkedin fa-2x"></span></a>
         </div>
 
       </div>
@@ -41,6 +40,6 @@
     <!--COPYRIGHT -->      
     <div class="footer-bottom align-bottom py-2">
       <div class="container">
-        <p>Eagles Safety EIRL © 2018. Todos los derechos reservados.</p>
+        <p><span id="nombreEmpresa"></span> © 2018. Todos los derechos reservados.</p>
       </div>
     </div>

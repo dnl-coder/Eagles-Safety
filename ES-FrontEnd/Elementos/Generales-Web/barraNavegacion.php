@@ -1,7 +1,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top">
      
       <!-- TITULO-->
-      <a class="navbar-brand" href="index.php"><img src="ES-FrontEnd/Elementos/Imagenes/Logo.png" alt="Logo Eagles Safety" width="100">Eagles Safety</a>
+      <a class="navbar-brand" href="index.php"></a>
       
       <!-- BOTON EXPANSIBLE-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

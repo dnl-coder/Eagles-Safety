@@ -149,12 +149,15 @@ vistaWeb.prototype.mostrarInformacionEmpresa = function(){
         success: function(datos){
 
             //NAV
+            $(".navbar-brand").html("<img class='mr-3' src='"+datos[0].INFEMPLOGO+"' width='100'>"+datos[0].INFEMPTITULO_PAGINA);
+          
             $("#telNavES").html("<span class='fa fa-phone rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPTELEFONO1+" / "+datos[0].INFEMPTELEFONO2);
 
             $("#correoNavES").html("<span class='fa fa-envelope rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPCORREO);
 
 					
             //FOOTER
+            $("#nombreEmpresa").html(datos[0].INFEMPTITULO_PAGINA);
             $("#correoES").html(datos[0].INFEMPCORREO);
 
             document.getElementById('red1ES').href = datos[0].INFEMPRED_SOCIAL1;

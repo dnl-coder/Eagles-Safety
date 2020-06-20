@@ -44,7 +44,7 @@
                       <img id="previewFoto1" class="imagenMin" ><br>
                       
                       <label for="foto1" class="botonSecundario">CAMBIAR IMAGEN</label>
-                      <input id="foto1" class="inputImagen" name="archivo1" type="file" accept="image/*"><input type="text" hidden id="estado">
+                      <input id="foto1" class="inputImagen" name="archivo1" type="file" accept="image/*"><input type="text" hidden id="estado1">
                       
                   </div>
 
@@ -56,7 +56,7 @@
                       <img id="previewFoto2" class="imagenMin"><br>
                       
                       <label for="foto2" class="botonSecundario">CAMBIAR IMAGEN</label>
-                      <input id="foto2" class="inputImagen" name="archivo2" type="file" accept="image/*"><input type="text" hidden id="estado">
+                      <input id="foto2" class="inputImagen" name="archivo2" type="file" accept="image/*"><input type="text" hidden id="estado2">
                       
                   </div>
 
@@ -82,13 +82,13 @@
                   <div class="d-flex flex-column flex-md-row">
 
                       <!--TELEFONO 1-->
-                      <div class="pr-0 pr-md-4 form-group">
+                      <div class="pr-0 pr-md-4 form-group flex-fill">
                           <h6 class="subtitulo obligatorio">TELEFONO 1</h6>
                           <input id="telefono1" type="number" min="0" class="form-control" placeholder="999 999 999">
                       </div>
 
                       <!--TELEFONO 2-->
-                      <div class="form-group">
+                      <div class="form-group flex-fill">
                           <h6 class="subtitulo obligatorio">TELEFONO 2</h6>
                           <input id="telefono2" type="number" min="0" class="form-control" placeholder="999 999 999">
                       </div>
@@ -96,7 +96,7 @@
                   </div>
 
                   <!--DIRECCION-->
-                  <div class="d-flex flex-column flex-md-row">
+                  <div class="d-flex flex-column flex-xl-row">
 
                       <!--PAIS-->
                       <div class="pr-0 pr-md-4 form-group flex-fill">
@@ -119,6 +119,7 @@
                           <h6 class="subtitulo obligatorio">DISTRITO</h6>
                           <select id="distrito" class="browser-default custom-select">
                               <option value="COMAS">COMAS</option>
+                              <option value="SMP">SMP</option>
                           </select>
                       </div>
 
@@ -154,17 +155,6 @@
                           <span class="input-group-text" id="basic-addon1"><i class="fab fa-lg fa-linkedin"></i></span>
                         </div>
                         <input id="redSocial2" type="text" class="form-control" placeholder="Link de linkedin">
-                      </div>
-                  </div>
-
-                  <!--YOUTUBE 3-->
-                  <div class="form-group">
-                      <h6 class="subtitulo obligatorio">YOUTUBE</h6>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1"><i class="fab fa-lg fa-youtube"></i></span>
-                        </div>
-                        <input id="redSocial2" type="text" class="form-control" placeholder="Link de youtube">
                       </div>
                   </div>
 
@@ -309,7 +299,7 @@
                     }else{
                             guardarImagenEmpresa();
 
-                            if ($("#estado").val() == "IMAGEN GUARDADA CORRECTAMENTE"){
+                            if ($("#estado1").val() == "IMAGEN GUARDADA CORRECTAMENTE"){
                                     actualizarDatosEmpresa()
                             }else{
                                     mostrar=true;
@@ -350,9 +340,11 @@
           async:false,
           success: function(datos){
             if(datos.response1==0 && datos.response2 ==0){
-                  $("#estado").val("ERROR AL GUARDAR LA IMAGEN: "+datos.message)
+                  $("#estado1").val("ERROR AL GUARDAR LA IMAGEN: "+datos.message)
+                  $("#estado2").val("ERROR AL GUARDAR LA IMAGEN: "+datos.message)
               }else{
-                  $("#estado").val("IMAGEN GUARDADA CORRECTAMENTE")
+                  $("#estado1").val("IMAGEN GUARDADA CORRECTAMENTE")
+                  $("#estado2").val("IMAGEN GUARDADA CORRECTAMENTE")
               }
           }
       });
