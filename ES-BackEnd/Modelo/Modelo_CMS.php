@@ -295,6 +295,19 @@ class Model_CMS{
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
+    }
+
+    /*===========================================
+        CONSULTA: ACTUALIZAR SLIDER
+    ===========================================*/
+
+    public function actualizarSlider($codigo,$nombre,$descripcion,$rutaFoto) {
+            
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `slider` SET `SLDRNOMBRE` = '".$nombre."', `SLDRDESCRIPCION` = '".$descripcion."', `SLDRIMAGEN` = '".$rutaFoto."' WHERE `SLDRCODIGO` = ".$codigo." ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+        
     }  
 
 }
