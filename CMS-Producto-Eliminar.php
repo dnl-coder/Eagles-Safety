@@ -7,7 +7,7 @@
 
     <!-- CONFIGURACION GENERAL-->
     <?php include_once "ES-FrontEnd/Elementos/Generales-CMS/config.php";?>
-
+    
 </head>
 
 <body>
@@ -27,7 +27,7 @@
     <!-- CONTENT-->
     
     <!-- JS Scripts-->
-    <script src="ES-FrontEnd/Elementos/Generales-CMS/scripts.js"></script>  
+    <script type="text/javascript" src="ES-FrontEnd/Elementos/Generales-CMS/funciones.js"></script>
 	
 </body>
 

@@ -56,7 +56,7 @@
 
         <!-- MENU COMPONENTES-->
         <li> 
-            <a href="CMS-Componentes.php" data-toggle="collapse" data-target="#dashboard1" class="collapsed"> 
+            <a href="#" data-toggle="collapse" data-target="#dashboard1" class="collapsed"> 
                 <i class="fas fa-boxes"></i>
                 <span class="nav-label"> Componentes</span> 
                 <span class="fa fa-chevron-left pull-right mt-2"></span> 
@@ -70,15 +70,15 @@
 
         <!-- MENU PRODUCTOS-->
         <li> 
-            <a href="CMS-Productos.php" data-toggle="collapse" data-target="#dashboard2" class="collapsed"> 
+            <a href="#" data-toggle="collapse" data-target="#dashboard2" class="collapsed"> 
                 <i class="fas fa-shipping-fast"></i> 
                 <span class="nav-label"> Productos </span> 
                 <span class="fa fa-chevron-left pull-right mt-2"></span> 
             </a>
             <ul class="sub-menu collapse" id="dashboard2">
-                <li><a onclick="vistaNuevoProducto()"> Agregar producto </a></li>
-                <li><a onclick="vistaEditarProducto()"> Editar producto </a></li>
-                <li><a onclick="vistaEliminarProducto()"> Eliminar producto </a></li>
+                <li><a href="CMS-Producto-Agregar.php"> Agregar producto </a></li>
+                <li><a href="CMS-Producto-Actualizar.php"> Editar producto </a></li>
+                <li><a href="CMS-Producto-Eliminar.php"> Eliminar producto </a></li>
             </ul>
         </li>
         
