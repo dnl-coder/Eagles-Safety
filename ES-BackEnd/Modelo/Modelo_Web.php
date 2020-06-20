@@ -46,7 +46,7 @@ class Model_Web{
         CARGAR PRODUCTOS (TODOS)
     =======================================================*/
     public function cargarProductos($categoria){
-        $sql = "SELECT P.* FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' ";
+        $sql = "SELECT P.* FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO WHERE C.CATCODIGO ='" . $categoria . "' ";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
     }

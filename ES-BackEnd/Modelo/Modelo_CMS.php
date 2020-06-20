@@ -226,11 +226,24 @@ class Model_CMS{
     public function actualizarProducto($codigo,$nombre,$rutaFoto,$descripcion,$descripcionespecifica,$categoria,$destacado) {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `producto` SET `PRODNOMBRE` = '".$nombre."', `PRODIMAGEN` = '".$rutaFoto."', `PRODDESCRIPCION` = '".$descripcion."', `PRODDESCRIPCION_ESPECIFICA` = '".$descripcionespecifica."', `CATCODIGO` = '".$categoria."', `PRODDESTACADO` = '".$destacado."'  WHERE `CATCODIGO` = '".$codigo."';";
+        $sql = "UPDATE `producto` SET `PRODNOMBRE` = '".$nombre."', `PRODIMAGEN` = '".$rutaFoto."', `PRODDESCRIPCION` = '".$descripcion."', `PRODDESCRIPCION_ESPECIFICA` = '".$descripcionespecifica."', `CATCODIGO` = '".$categoria."', `PRODDESTACADO` = '".$destacado."'  WHERE `PRODCODIGO` = '".$codigo."';";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
-    }  
+    }
+    
+    /*===========================================
+        CONSULTA: DETALLE PRODUCTO
+    ===========================================*/
+    
+    public function detalleProducto($codigo) {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM producto WHERE `PRODCODIGO` = ".$codigo." ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    }
 
     /*===========================================
         CONSULTA: ELIMINAR MARCA
