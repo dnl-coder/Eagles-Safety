@@ -16,19 +16,19 @@
     
     <!-- BARRA DE NAVEGACION-->
     <?php include_once "ES-FrontEnd/Elementos/Generales-CMS/barraNavegacion.php";?>
-
+    
     <!-- CONTENIDO GENERAL-->
     <section class="cuerpo" id="cuerpo">
-
-       ...
-
+     
+      
+     
     </section> 
     
-    <!-- CONTENT-->
+    <!-- CONTENT--> 
     
     <!-- JS Scripts-->
-    <script src="ES-FrontEnd/Elementos/Generales-CMS/scripts.js"></script>  
-	
+    <script type="text/javascript" src="ES-FrontEnd/Elementos/Generales-CMS/funciones.js"></script>
+   
 </body>
 
 </html>
