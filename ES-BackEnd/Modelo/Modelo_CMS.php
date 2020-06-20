@@ -239,7 +239,7 @@ class Model_CMS{
     public function actualizarMarca($codigo,$nombre,$rutaFoto) {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `marca` SET `MARCNOMBRE` = '".$nombre."', `MARCIMAGEN` = '".$rutaFoto."' WHERE `CATCODIGO` = '".$codigo."';";
+        $sql = "UPDATE `marca` SET `MARCNOMBRE` = '".$nombre."', `MARCIMAGEN` = '".$rutaFoto."' WHERE `MARCCODIGO` = '".$codigo."';";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
