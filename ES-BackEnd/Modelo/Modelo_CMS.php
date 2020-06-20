@@ -233,19 +233,6 @@ class Model_CMS{
     }  
 
     /*===========================================
-        CONSULTA: ACTUALIZAR MARCA
-    ===========================================*/
-    
-    public function actualizarMarca($codigo,$nombre,$rutaFoto) {
-        
-        //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `marca` SET `MARCNOMBRE` = '".$nombre."', `MARCIMAGEN` = '".$rutaFoto."' WHERE `MARCCODIGO` = '".$codigo."';";
-        $this->_conexion->ejecutar_sentencia($sql);
-        return $this->_conexion->insert_registro();
-        
-    }  
-
-    /*===========================================
         CONSULTA: ELIMINAR MARCA
     ===========================================*/
     
@@ -262,12 +249,12 @@ class Model_CMS{
         CONSULTA: MOSTRAR REGISTRO DE MARCA
     ===========================================*/
     
-    public function mostrarRegistroMarca() {
+    public function mostrarRegistrosMarca() {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "SELECT MARCCODIGO, MARCNOMBRE, MARCIMAGEN FROM marca";
+        $sql = "SELECT * FROM marca";
         $this->_conexion->ejecutar_sentencia($sql);
-        return $this->_conexion->retornar_array();
+        return $this->_conexion->retornar_select();
         
     }
 

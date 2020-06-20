@@ -10,9 +10,9 @@ require_once(__DIR__."/../../Modelo/Modelo_CMS.php");
 
 $Model_CMS = new Model_CMS();
 
-if($Model_CMS->mostrarRegistroMarca()){                        
+if($Model_CMS->mostrarRegistrosMarca()){                        
     
-    $array = $Model_CMS->mostrarRegistroMarca();  
+    $array = $Model_CMS->mostrarRegistrosMarca();  
 
 }else{                        
     $array = array(
