@@ -89,7 +89,7 @@
                   </div>
 
                   <h6 class="subtitulo">Imagen</h6>
-                  <img id="previewFoto" class="imagenMin"><br>
+                  <img id="previewFoto" class="imagenMinSlider mb-2"><br>
                   <label for="foto" class="botonSecundario">Seleccionar imagen</label>
                   <input id="foto" class="inputImagen" name="archivo" type="file" accept="image/*"><input type="text" hidden id="estado">
 
@@ -171,7 +171,7 @@
                         }
 
                         slider2+="<div class='p-1'>\
-                <img src='"+datos[i].SLDRIMAGEN+"'>\
+                <img class='imagenMinSlider' src='"+datos[i].SLDRIMAGEN+"'>\
                 <div class='opcionesSlider'>\
                     <button class='btn bg-primary' onclick='editarSlider("+datos[i].SLDRCODIGO+")'><i class='fas fa-pen'></i></button>\
                     <button class='btn ml-5' onclick='eliminarSlider("+datos[i].SLDRCODIGO+")'>X</button>\

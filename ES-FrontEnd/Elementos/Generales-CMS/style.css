@@ -188,6 +188,10 @@ a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{
     width: 200px; 
     height: 200px;
 }
+.imagenMinSlider{
+    width: 200px;
+    height: 130px;
+}
 
 /*=== GRUPO DE DATOS DE ENTRADA STYLE ===*/
 .input-group .input-group-text{
@@ -264,10 +268,6 @@ a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{
 }
 
 /*===OPCIONES DEL SLIDER STYLE===*/
-#contenidoModificar img{
-    width: 200px;
-    height: 130px;
-}
 .opcionesSlider{ position: absolute; }
 .opcionesSlider .btn{
     background-color: rgba(244, 67, 54, 1); 
