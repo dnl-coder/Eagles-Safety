@@ -70,7 +70,7 @@
                      
                       <h6 class="subtitulo">IMAGEN DEL PRODUCTO</h6>
                       
-                      <img id="previewFoto" class="imagenMin"><br>
+                      <img id="previewFoto" class="imagenMin" src="ES-FrontEnd/Elementos/Imagenes/Icons/sinImagen.png"><br>
                       
                       <label for="foto" class="botonSecundario">CAMBIAR IMAGEN</label>
                       <input id="foto" class="inputImagen" name="archivo1" type="file" accept="image/*">
