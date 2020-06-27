@@ -493,6 +493,11 @@
           </div>
         </div>
       </div>
+      
+      <!-- TOAST -->
+      <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
+        <div class="toast-body">Mensaje</div>
+      </div>
 
     </section> 
     
@@ -505,6 +510,10 @@
       var mostrar=false;
       cargarDatos();
       
+      //--LLAMAR A FUNCION MOSTRAR IMAGEN AL CARGAR IMAGEN--  
+      var inputFile = document.getElementById('foto');
+      inputFile.addEventListener('change', vGenerales.mostrarImagen, false);  
+
       //--CARGAR DATOS DEL COMPONENTE 1 --  
       function cargarDatos(){
         $.ajax({
@@ -712,15 +721,15 @@
         var $datos={
             '_titulo': $("#titulo").val(),
             '_subtitulo': $("#subtitulo").val(),
-            '_descripcion': $("#descripcion").html(),
+            '_descripcion': $("#descripcion").val(),
             '_imagen': rutaFoto,
-            '_destacamos': $("#destacamos").html(),
-            '_caracteristica1': $("#caracteristica1").html(),
-            '_caracteristica2': $("#caracteristica2").html(),
-            '_caracteristica3': $("#caracteristica3").html(),
-            '_caracteristica4': $("#caracteristica4").html(),
-            '_caracteristica5': $("#caracteristica5").html(),
-            '_caracteristica6': $("#caracteristica6").html()
+            '_destacamos': $("#destacamos").val(),
+            '_caracteristica1': $("#caracteristica1").val(),
+            '_caracteristica2': $("#caracteristica2").val(),
+            '_caracteristica3': $("#caracteristica3").val(),
+            '_caracteristica4': $("#caracteristica4").val(),
+            '_caracteristica5': $("#caracteristica5").val(),
+            '_caracteristica6': $("#caracteristica6").val()
           
         }
         
@@ -742,6 +751,8 @@
                     mostrarToast("error",datos.message);
                 }
                 else{
+                    $('#c1Editar').modal('hide')
+                    cargarDatos();
                     mostrarToast("exito","Actualizacion correcta!");
                 }
             }
@@ -780,7 +791,8 @@
                     mostrarToast("error",datos.message);
                 }
                 else{
-                    mostrarToast("exito","Actualizacion correcta!");
+                    $('#c1Actualizar').modal('hide')
+                    mostrarToast("exito","Actualización correcta!");
                 }
             }
         });
