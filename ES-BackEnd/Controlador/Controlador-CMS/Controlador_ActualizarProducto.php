@@ -10,7 +10,8 @@ require_once(__DIR__."/../../Modelo/Modelo_CMS.php");
 
 $Model_CMS = new Model_CMS();
 
-if(isset($_POST['_codigo']) && $_POST['_nombre']) && isset($_POST['_imagen']) && isset($_POST['_descripcion']) && isset($_POST['_descripcionEspecifica']) && isset($_POST['_codcategoria']) && isset($_POST['_destacado'])){
+if(isset($_POST['_codigo']) && isset($_POST['_nombre']) && isset($_POST['_imagen']) && isset($_POST['_descripcion']) && 
+   isset($_POST['_descripcionEspecifica']) && isset($_POST['_codcategoria']) && isset($_POST['_destacado'])){
     
     $codigo = $_POST['_codigo'];
     $nombre = $_POST['_nombre'];
@@ -26,30 +27,21 @@ if(isset($_POST['_codigo']) && $_POST['_nombre']) && isset($_POST['_imagen']) &&
         $msg = array(
             "response" => 1,
             "message" => "Registro correcto"                      
-            );                        
-    
-    // MENSAJE A MOSTRAR NO ENCUENTRA RESULTADOS    
-        
-    }else{                        
+            );        
+    }
+    else{                        
         $msg = array(
             "response" => 0,
             "message" => "Ingrese correctamente los datos"                    
             );                        
     }
-    
-// MENSAJE A MOSTRAR SI NO SE REALIZA LA CONSULTA    
-    
-}else{
-    
+}else{    
    $msg = array(
             "response" => 0,
             "message" => "Parametros no encontrados"                      
-            );
-    
+            );    
 }
 
 header('Content-type: application/json; charset=utf-8');
-
-echo json_encode($msg);   
-
+echo json_encode($msg);  
 ?>

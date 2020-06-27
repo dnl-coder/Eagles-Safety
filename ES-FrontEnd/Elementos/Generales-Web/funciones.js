@@ -1,3 +1,29 @@
+/*=============================================
+    BARRA DE NAVEGACION SCRIPTS
+=============================================*/
+
+//--REDIRIGIR A INICIO--
+$("#logo-Eagles").click(function() {
+    window.location="index.php";
+});     
+    
+//--AÑADIR CLASE ACTIVE A LA OPCION DEL NAVBAR SELECCIONADA--
+ $(document).ready(function () { 
+     $(function(){ 
+         var current_page_URL = location.href; 
+         $( "a" ).each(function() { 
+            if ($(this).attr("href") !== "#") { 
+                var target_URL = $(this).prop("href"); 
+                if (target_URL == current_page_URL) { 
+                    $('nav a').parents('li, ul').removeClass('activeNav'); 
+                    $(this).parent('li').addClass('activeNav'); 
+                    return false; 
+                } 
+            }
+         }); 
+     }); 
+ }); 
+
 //-- ANIMACION TEXTO ESCRIBIENDOSE (INDEX) --
 var TxtType = function (el, toRotate, period) {
     this.toRotate = toRotate;
@@ -50,51 +76,18 @@ window.onload = function() {
     css.type = "text/css";
     css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
     document.body.appendChild(css);
-};
+};    
 
-/*=============================================
-    BARRA DE NAVEGACION SCRIPTS
-=============================================*/
-
-//--REDIRIGIR A INICIO--
-$("#logo-Eagles").click(function() {
-    window.location="index.php";
-});    
-
-//--FONDO MENU--
-$("#menu .navbar-toggler").click(function() {
-    $("#menu").css("background","rgba(76, 175, 80, 0.8)");
-});  
-    
-//--CAMBIAR ESTILO DEL LOGO AL HACER SCROLL--
-$(window).scroll(function() {
-    if ($("#menu").offset().top > 60) {
-        $("#logo-Eagles").removeClass("logo");
-        $("#logo-Eagles").addClass("logomin");
-        $("#menu").css("background","rgba(76, 175, 80, 0.8)");
-    } else {
-        $("#logo-Eagles").removeClass("logomin");
-        $("#logo-Eagles").addClass("logo");
-        $("#menu").css("background", "rgba(76, 175, 80, 0)");
-        $(".navbar").css("-webkit-box-shadow", "0 2px 5px 0 rgba(0,0,0,0), 0 2px 10px 0 rgba(0,0,0,0)");
+//--MOSTRAR/OCULTAR CATEGORIAS RESPONSIVE--
+$(window).resize(function(){
+    if (window.innerWidth>991){
+        // ## agregar clase
+        $('#filtroCategoriasContent').addClass('d-none'); 
+    }else{
+        // ## eliminar clase
+        $('#filtroCategoriasContent').removeClass('d-block');
     }
 });
-    
-//--AÑADIR CLASE ACTIVE A LA OPCION DEL NAVBAR SELECCIONADA--
- $(document).ready(function () { 
-     $(function(){ 
-         var current_page_URL = location.href; 
-         $( "a" ).each(function() { 
-            if ($(this).attr("href") !== "#") { 
-                var target_URL = $(this).prop("href"); 
-                if (target_URL == current_page_URL) { 
-                    $('nav a').parents('li, ul').removeClass('activeNav'); $(this).parent('li').addClass('activeNav'); 
-                    return false; 
-                } 
-            } 
-         }); 
-     }); 
- }); 
 
 /*=============================================
     FUNCIONES GENERALES
@@ -105,7 +98,7 @@ var vistaWeb = function (){}
 //-- FUNCION MOSTRAR SLIDERS --
 vistaWeb.prototype.mostrarSliders = function(){
     $.ajax({
-        url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_MostrarSliders.php',
+        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarSliders.php',
         type: 'GET',
         dataType: 'json',
         error: function(error){
@@ -125,14 +118,196 @@ vistaWeb.prototype.mostrarSliders = function(){
                 else{
                     sliders+="<div class='carousel-item' style='background:url(\""+datos[i].SLDRIMAGEN+"\");'>"
                 }
-                sliders+="\<div class='descripcionSlider row container-fluid m-0 wow fadeIn justify-content-center' data-wow-delay='0.4s'>\
-                                <p class='col-12 text-center h1-responsive'>"+datos[i].SLDRDESCRIPCION+"</p>\
-                                <a class='btn btn-sm green wow rubberBand white-text' data-wow-delay='0.4s' href='Contactos.php'>VER MÁS</a>\
+                sliders+="\<div class='descripcionSlider container-fluid wow fadeIn' data-wow-delay='0.4s'>\
+                                <p class='h1-responsive wow fadeInLeftBig'>EQUIPOS</p>\
+                                <p class='h1-responsive wow fadeInLeftBig'>QUE PROTEGEN</p>\
+                                <p class='h1-responsive wow fadeInLeftBig'>TU VIDA</p>\
+                                <p class='descripcion wow fadeIn'>Tenemos los mejores productos para garantizar tu cuidado</p>\
                             </div>\
                         </div>\
                     </div>"
             }
             $("#CarouselInicio .carousel-inner").html(sliders);
+        }
+    });
+};
+
+//-- FUNCION MOSTRAR COMPONENTE 1 --
+vistaWeb.prototype.mostrarComponente1 = function(){
+    $.ajax({
+        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarDatosComponente1.php',
+        type: 'GET',
+        dataType: 'json',
+        error: function(error){
+            if(error.status == 401){
+                console.error("Archivos no encontrados");
+            }
+            else{
+                console.error("Error no identificado");
+            }
+        },
+        success: function(datos){
+            var componente="";
+            switch(datos.COMP1){
+              case "1": componente+="<div class='container my-5 py-5'> \
+            <section class='px-md-5 mx-md-5 dark-grey-text text-center text-lg-left'> \
+              <div class='row'> \
+                <div class='col-lg-6 mb-4 mb-lg-0 d-flex align-items-center justify-content-center'> \
+                  <img class='img-fluid wow fadeInLeft' src='"+datos.C1IMAGEN+"'> \
+                </div> \
+                <div class='col-lg-6 mb-4 mb-lg-0'> \
+                  <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
+                  <p class='font-weight-bold wow fadeIn'>"+datos.C1SUBTITULO+"</p> \
+                  <p class='text-muted wow fadeIn'>"+datos.C1DESCRIPCION+"</p> \
+                  <a class='font-weight-bold font-primary wow fadeIn' href='Nosotros.php' >Conocer más<i class='fas fa-angle-right ml-2'></i></a> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+              case "2": componente+="<div class='tab-pane fade show' id='op2' role='tabpanel' aria-labelledby='op2-tab'> \
+          <div class='container my-5 py-5'> \
+            <section class='px-md-5 mx-md-5 text-center dark-grey-text'> \
+              <div class='row'> \
+                <div class='col-md-6 mb-4 mb-md-0'> \
+                  <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
+                  <p class='text-muted wow fadeIn'>"+datos.C1DESCRIPCION+"</p> \
+                  <a class='btn bg-primary btn-md ml-0 wow fadeIn' href='Nosotros.php' role='button'>Conocer más<i class='fa fa-gem ml-2'></i></a> \
+                  <hr class='my-5'> \
+                  <p class='font-weight-bold wow fadeIn'>Síguenos en:</p> \
+                  <a class='mx-1 font-primary disabled wow fadeIn' role='button'><i class='fab fa-facebook-f'></i></a> \
+                  <a class='mx-1 font-primary disabled wow fadeIn' role='button'><i class='fab fa-linkedin-in'></i></a> \
+                  <a class='mx-1 font-primary disabled wow fadeIn' role='button'><i class='fab fa-instagram'></i></a> \
+                </div> \
+                <div class='col-md-5 mb-4 mb-md-0'> \
+                  <img class='c1imagen img-fluid wow fadeInRight' src='"+datos.C1IMAGEN+"'> \
+                </div> \
+              </div> \
+            </section> \
+          </div> \
+        </div>"; break;
+              case "3": componente+="<div class='container my-5 py-5'> \
+            <section class='px-md-5 mx-md-5 text-center text-lg-left dark-grey-text'> \
+              <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
+              <p class='text-muted mb-5 wow fadeIn'>"+datos.C1DESCRIPCION+"</p> \
+              <div class='row'> \
+                <div class='col-lg-3 col-md-12 mb-lg-0 mb-4'> \
+                  <img class='img-fluid wow fadeInLeft' src='"+datos.C1IMAGEN+"'> \
+                </div> \
+                <div class='col-lg-6 col-md-6 mb-lg-0 mb-lg-0 mb-2'> \
+                  <h4 class='h4 wow fadeIn'>¿Por qué elegirnos?</h4> \
+                  <p class='text-muted wow fadeIn'>"+datos.C1DESTACAMOS+"</p> \
+                </div> \
+                <div class='col-lg-3 col-md-6 text-center'> \
+                  <a class='btn bg-primary btn-md waves-effect wow fadeIn' href='Nosotros.php' role='button'>Ver más</a> \
+                  <a class='btn bg-primary btn-md wow fadeIn' href='Contactos.php' role='button'>Contáctanos</a> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+              case "4": componente+="<div class='container my-5 py-5'> \
+            <section class='px-md-5 mx-md-5 text-center dark-grey-text'> \
+              <div class='row d-flex justify-content-center'> \
+                <div class='col-xl-6 col-md-8'> \
+                  <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
+                  <p class='text-muted wow fadeIn'>"+datos.C1DESCRIPCION+"</p> \
+                  <a class='btn bg-primary btn-md ml-0 mb-5 wow fadeIn' href='Nosotros.php' role='button'>Ver más<i class='fa fa-magic ml-2'></i></a> \
+                </div> \
+              </div> \
+              <div class='row'> \
+                <div class='col-lg-3 col-md-6 wow fadeIn'> \
+                  <i class='fas fa-gem fa-3x blue-text'></i> \
+                  <p class='font-weight-bold my-3'>Calidad</p> \
+                  <p class='text-muted'>"+datos.C1CARACTERISTICA1+"</p> \
+                </div> \
+                <div class='col-lg-3 col-md-6 wow fadeIn'> \
+                    <i class='fas fa-chart-area fa-3x teal-text'></i> \
+                    <p class='font-weight-bold my-3'>Garantía</p> \
+                    <p class='text-muted'>"+datos.C1CARACTERISTICA2+"</p> \
+                </div> \
+                <div class='col-lg-3 col-md-6 wow fadeIn'> \
+                    <i class='fas fa-cogs fa-3x indigo-text'></i> \
+                    <p class='font-weight-bold my-3'>Funcional</p> \
+                    <p class='text-muted'>"+datos.C1CARACTERISTICA3+"</p> \
+                </div> \
+                <div class='col-lg-3 col-md-6 wow fadeIn'> \
+                    <i class='fas fa-cloud-upload-alt fa-3x deep-purple-text'></i> \
+                    <p class='font-weight-bold my-3'>Eficaz</p> \
+                    <p class='text-muted'>"+datos.C1CARACTERISTICA4+"</p> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+              case '5': componente+="<div class='container my-5 p-5> \
+            <section class='dark-grey-text'> \
+              <h2 class='text-center font-weight-bold mb-4 pb-2'>"+datos.C1TITULO+"</h2> \
+              <p class='text-center lead grey-text mx-auto mb-5'>"+datos.C1DESCRIPCION+"</p> \
+              <div class='row'> \
+                <div class='col-md-4'> \
+                  <div class='row mb-3 wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='fas fa-2x fa-flag-checkered font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Calidad</h5> \
+                      <p class='grey-text'>"+datos.C1CARACTERISTICA1+"</p> \
+                    </div> \
+                  </div> \
+                  <div class='row mb-3 wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='fas fa-2x fa-flask font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Eficiente</h5> \
+                      <p class='grey-text'>"+datos.C1CARACTERISTICA2+"</p> \
+                    </div> \
+                  </div> \
+                  <div class='row mb-md-0 mb-3 wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='fas fa-2x fa-glass-martini font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Garantía</h5> \
+                      <p class='grey-text mb-md-0'>"+datos.C1CARACTERISTICA3+"</p> \
+                    </div> \
+                  </div> \
+                </div> \
+                <div class='col-md-4 text-center'> \
+                  <img class='img-fluid wow fadeIn' src='"+datos.C1IMAGEN+"'> \
+                </div> \
+                <div class='col-md-4'> \
+                  <div class='row mb-3 wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='far fa-2x fa-heart font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Confiable</h5> \
+                      <p class='grey-text'>"+datos.C1CARACTERISTICA4+"</p> \
+                    </div> \
+                  </div> \
+                  <div class='row mb-3 wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='fas fa-2x fa-bolt font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Eficaz</h5> \
+                      <p class='grey-text'>"+datos.C1CARACTERISTICA5+"</p> \
+                    </div> \
+                  </div> \
+                  <div class='row wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='fas fa-2x fa-magic font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Mágico</h5> \
+                      <p class='grey-text mb-0'>"+datos.C1CARACTERISTICA6+"</p> \
+                    </div> \
+                  </div> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+            }
+            $("div#CarouselInicio").after(componente);
         }
     });
 };
@@ -154,15 +329,15 @@ vistaWeb.prototype.mostrarInformacionEmpresa = function(){
         success: function(datos){
 
             //NAV
-            $("#telNavES").html("<span class='fa fa-phone rounded-circle mr-2 pl-2 pt-1' style='background:forestgreen; width:25px; height:25px'></span>"+datos[0].INFEMPTELEFONO1+" / "+datos[0].INFEMPTELEFONO2);
+            $(".navbar-brand").html("<img class='mr-3' src='"+datos[0].INFEMPLOGO+"' width='100'>"+datos[0].INFEMPTITULO_PAGINA);
+          
+            $("#telNavES").html("<span class='fa fa-phone rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPTELEFONO1+" / "+datos[0].INFEMPTELEFONO2);
 
-            $("#correoNavES").html("<span class='fa fa-envelope rounded-circle mr-2 pl-1 pt-1' style='background:forestgreen; width:25px; height:25px'></span>"+datos[0].INFEMPCORREO);
-            //document.getElementById('iconoES').src = datos[0].INFEMPICONO;
+            $("#correoNavES").html("<span class='fa fa-envelope rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPCORREO);
 
-            document.getElementById('red2NavES').href = datos[0].INFEMPRED_SOCIAL1;
-            document.getElementById('red1NavES').href = datos[0].INFEMPRED_SOCIAL2;
 					
             //FOOTER
+            $("#nombreEmpresa").html(datos[0].INFEMPTITULO_PAGINA);
             $("#correoES").html(datos[0].INFEMPCORREO);
 
             document.getElementById('red1ES').href = datos[0].INFEMPRED_SOCIAL1;
@@ -174,7 +349,6 @@ vistaWeb.prototype.mostrarInformacionEmpresa = function(){
             $("#direccion1ES").html(datos[0].INFEMPDOMICILIO+", "+datos[0].INFEMPDISTRITO);
             $("#direccion2ES").html(datos[0].INFEMPPROVINCIA+", "+datos[0].INFEMPPAIS);
             
-            document.getElementById('logoES').src = datos[0].INFEMPLOGO;
 
         }
     });
@@ -259,7 +433,7 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
             data=datos;
             var contenedor = "";
             for(var i=0; i<3 ; i++){
-                contenedor += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-4 col-sm' style='min-width:150px; max-width:250px;'>\n\
+                contenedor += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-12 wow fadeIn' style='min-width:150px; max-width:250px;'>\n\
                 <div class='card m-1'>\n\
                     <!--imagen-->\n\
                     <div class='view overlay zoom'>\n\
@@ -268,10 +442,10 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
                     <!--titulo-->\n\
                     <div class='card-body'>\n\
                         <p class='font-weight-bold text-uppercase mb-1' >"+datos[i].PRODNOMBRE+"</p>\n\
-                        <hr class='green lighten-3 my-0' style='width: 60%; height:3px;'>\n\
-                        <hr class='green my-1' style='width: 20%; height:3px;'>\n\
+                        <hr class='bg-light3 my-0' style='width: 60%; height:3px;'>\n\
+                        <hr class='bg-primary my-1' style='width: 20%; height:3px;'>\n\
                         <div class='text-right'>\n\
-                            <a id='"+datos[i].PRODCODIGO+"' class='btn btn-green btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a> \n\
+                            <a id='"+datos[i].PRODCODIGO+"' class='btn bg-primary btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a> \n\
                         </div>\n\
                     </div>\n\
                 </div>\n\
@@ -307,9 +481,13 @@ vistaWeb.prototype.seleccionarProducto = function(e){
     
     modal+="<div class='modal-content'>\n\
     <!-- ENCABEZADO -->\n\
-    <div class='modal-header pb-0'>\n\
+    <div class='modal-header pb-0 border border-0'>\n\
         <!-- TITULO --> \n\
-        <h1 class='h5-responsive green-text font-weight-bold text-uppercase'>"+datos[numproducto].PRODNOMBRE+"</h1>\n\
+        <div>\n\
+          <p class='font-weight-bold small mb-0'>"+datos[numproducto].PRODNOMBRE+"</p>\n\
+          <hr class='bg-light3 my-0 mx-0' style='width: 60%; height:2px;'>\n\
+          <hr class='bg-primary my-1 mx-0' style='width: 20%; height:2px;'>\n\
+        </div>\n\
         <!-- BOTON CERRAR --> \n\
         <button type='button' class='close p-3' data-dismiss='modal' aria-label='Close'>\n\
             <span aria-hidden='true'>&times;</span>\n\
@@ -321,29 +499,19 @@ vistaWeb.prototype.seleccionarProducto = function(e){
         <!-- IMAGEN Y CONTACTO --> \n\
         <div class='col-12 col-lg-5 py-1'>\n\
             <!-- imagen -->   \n\
-            <div class='card m-2' style='width:auto; max-height:210px;'>\n\
-                <div class='card-body text-center' >\n\
-                    <img class='img-fluid' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[numproducto].PRODIMAGEN+"' width='210' height='210' />\n\
-                </div>\n\
-            </div>  \n\
-            <!-- contactarse -->   \n\
-            <div class='m-2 mt-4'>\n\
-                <div class='grey-text text-center'>\n\
-                    <ul class='list-inline'>\n\
-                        <li class='list-inline-item'><i class='fa fa-truck fa-2x'></i><br/>Entrega rápida</li>\n\
-                        <li class='list-inline-item'><i class='fa fa-credit-card fa-2x'></i><br/>Pago seguro</li>\n\
-                    </ul>\n\
-                </div>\n\
-                <a class='btn btn-green btn-block text-uppercase m-0' href='Contactos.php'><i class='fa fa-envelope'></i> Contactarse</a>\n\
-            </div>\n\
+            <img class='img-fluid d-block mx-auto' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[numproducto].PRODIMAGEN+"' style='max-height:40vh;' />\n\
         </div>    \n\
         <!-- CARACTERISTICAS -->\n\
-        <div class='col-12 col-lg-7 p-5 p-lg-1'>\n\
+        <div class='col-12 col-lg-7 p-0'>\n\
             <!-- descripcion --> \n\
-            <div class='m-2'>\n\
-                <h1 class='h5-responsive font-weight-bold text-uppercase'>CARACTERISTICAS</h1>\n\
-                <hr class='green mt-0' style='width: 20%; height:5px;'>\n\
-                <ul>"+caracteristicas+"\n\</ul>\n\
+            <div class='mx-2'>\n\
+                <p class='font-weight-bold small'>Características</p>\n\
+                <ul class='pl-3 small'>"+caracteristicas+"\n\</ul>\n\
+                <div class='row justify-content-center'>\n\
+                  <p class='mx-1 px-2 py-1 mb-0 small text-white rounded black'><i class='fas mr-1 fa-shield-alt'></i>Seguridad</p>\n\
+                  <p class='mx-1 px-2 py-1 mb-0 small text-white rounded bg-primary'><i class='fas mr-1 fa-balance-scale'></i>Calidad</p>\n\
+                  <p class='mx-1 px-2 py-1 mb-0 small text-white rounded bg-enfasis3'><i class='fas mr-1 fa-trophy'></i>Garantía</p>\n\
+                </div>\n\
             </div>\n\
         </div>\n\
     </div> \n\
@@ -381,21 +549,21 @@ vistaWeb.prototype.mostrarInformacionNosotros = function(){
 
 //-- VALIDAR INFORMACION DE CONTACTANOS EN LA WEB --
 vistaWeb.prototype.validar = function(){
-    var nombre=$("#nombre").val();
+    var asunto=$("#asunto").val();
     var correo=$("#correo").val();
     var mensaje=$("#mensaje").val();    
     
-    if(nombre == null || nombre.length == 0 || /^\s+$/.test(nombre)){
+    if(asunto == null || asunto.length == 0 || /^\s+$/.test(asunto)){
         alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
-        $("#nombre").focus();
+        $("#asunto").focus();
     }
     else if(mensaje == null || mensaje.length == 0 || /^\s+$/.test(mensaje)){
         alert('ERROR: El campo contraseña no debe ir vacío o lleno de solamente espacios en blanco');
         $("#mensaje").focus();
     }
-    else if(nombre.length<3 || nombre.length>40){
+    else if(asunto.length<3 || asunto.length>40){
         alert('ERROR Nombre: Tamaño mínimo : 3. Tamaño máximo: 40');
-        $("#nombreo").focus();
+        $("#asunto").focus();
     }
     else if(mensaje.length<4 || mensaje.length>40){
         alert('ERROR Mensaje: Tamaño mínimo: 4. Tamaño máximo: 100');
@@ -411,13 +579,13 @@ vistaWeb.prototype.validar = function(){
 //-- FUNCION GUARDAR MENSAJE DE CONTACTANOS EN LA BD --
 vistaWeb.prototype.insertarMensajeContactanos = function(){
     var $datos={
-        '_nombre': $("#nombre").val(),
         '_correo': $("#correo").val(),
+        '_asunto': $("#asunto").val(),
         '_mensaje': $("#mensaje").val()
     }
     
     $.ajax({
-        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_InsertarMensajeContactanos.php',
+        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_EnviarCorreo.php',
         type: 'POST',
         data: $datos,
         dataType: 'json',
@@ -441,7 +609,8 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
 };
 
 //-- FUNCION MOSTRAR PRODUCTOS X CATEGORIA--
-/* --> SELECCIONAR CATEGORIA */ vistaWeb.prototype.mostrarProductosXCategoria = function(opcion){
+/* --> SELECCIONAR CATEGORIA */ 
+vistaWeb.prototype.mostrarProductosXCategoria = function(opcion){
     var $categoria={
         '_categoria': opcion
     }
@@ -469,7 +638,9 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
         }
     });
 };
-/* --> GENERAR PAGINACION */ vistaWeb.prototype.generarPaginacion = function(datos){
+
+/* --> GENERAR PAGINACION */ 
+vistaWeb.prototype.generarPaginacion = function(datos){
     var total = datos.length;
     var paginas=0;
     
@@ -492,11 +663,10 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
         vWeb.generarProductos(total, paginas, datos,num);
     });
     vWeb.generarProductos(total, paginas, datos,1);
-    $('#PAGINACION ul').addClass('m-0');
-    $('#PAGINACION ul li').addClass('px-3 border border-light');
-    $('#PAGINACION ul li a').addClass('text-dark');
 };
-/* --> GENERAR CUADRICULA DE PRODUCTOS */ vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
+
+/* --> GENERAR CUADRICULA DE PRODUCTOS */ 
+vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
     var primero=(num-1)*12;
     var ultimo=num*12;
     var contenido = "";
@@ -505,19 +675,19 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
         ultimo=total;
     }
     for(var i=primero; i<ultimo; i++){
-        contenido += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-4 col-sm' style='min-width:250px; max-width:350px;'>\n\
-        <div class='card m-1'>\n\
+        contenido += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-12 col-sm-6 col-md-4 p-2'>\n\
+        <div class='card'>\n\
             <!--imagen-->\n\
             <div class='view overlay zoom'>\n\
-                <img id='"+datos[i].PRODCODIGO+"' class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' onclick='vWeb.seleccionarProducto(this)' style='cursor:pointer;'>\n\
+                <img id='"+datos[i].PRODCODIGO+"' class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' onclick='vWeb.seleccionarProducto(this)' style='cursor:pointer; height:40vh;'>\n\
             </div>\n\
             <!--titulo-->\n\
             <div class='card-body'>\n\
-                <h5 class='card-title font-weight-bold text-uppercase mb-1'>"+datos[i].PRODNOMBRE+"</h5>\n\
-                <hr class='green lighten-3 my-0' style='width: 60%; height:3px;'>\n\
-                <hr class='green my-1' style='width: 20%; height:3px;'>\n\
+                <p class='mb-3'>"+datos[i].PRODNOMBRE+"</p>\n\
+                <hr class='bg-light2 my-0' style='width: 60%; height:3px;'>\n\
+                <hr class='bg-primary my-1' style='width: 20%; height:3px;'>\n\
                 <div class='text-right'>\n\
-                    <a id='"+datos[i].PRODCODIGO+"' class='btn btn-green btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a> \n\
+                    <a id='"+datos[i].PRODCODIGO+"' class='btn bg-primary btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a> \n\
                 </div>\n\
             </div>\n\
         </div>\n\

@@ -63,12 +63,36 @@ class Model_Web{
     /*=======================================================s
         INSERTAR MENSAJES CONTÁCTANOS
     =======================================================*/
-    public function insertarMensajeContactanos($nombre,$correo,$mensaje){
-        $sql = "INSERT INTO `contactanos` (`CONTACCODIGO`, `CONTACNOMBRE`, `CONTACCORREO`, `CONTACMENSAJE`) VALUES (NULL, '".$nombre."', '".$correo."', '".$mensaje."');";
+    public function insertarMensajeContactanos($correo,$asunto,$mensaje){
+        $sql = "INSERT INTO `contactanos` (`CONTACCODIGO`, `CONTACCORREO`, `CONTACASUNTO`, `CONTACMENSAJE`) VALUES (NULL, '".$correo."', '".$asunto."', '".$mensaje."');";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
+    }	
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DEL COMPONENTE 1
+    ===========================================*/
+  
+    public function mostrarDatosComponente1() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT `componente1-presentacion`.*, `componentes`.`COMP1` FROM `componente1-presentacion`, `componentes`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
     }
-	
+  
+    /*===========================================
+        CONSULTA: MOSTRAR SLIDER DE LA EMPRESA
+    ===========================================*/
+    
+    public function mostrarSliders() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM slider";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+        
+    }
 }
-
 ?>

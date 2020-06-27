@@ -15,7 +15,7 @@ if(isset($_POST['_codigo']) && isset($_POST['_nombre'])){
     $codigo = $_POST['_codigo'];
     $nombre = $_POST['_nombre'];
     
-    if($Model_CMS->actualizarCategoria($codigo,$nombre){
+    if($Model_CMS->actualizarCategoria($codigo,$nombre)){
 
         $data = array(
             "response" => 1,

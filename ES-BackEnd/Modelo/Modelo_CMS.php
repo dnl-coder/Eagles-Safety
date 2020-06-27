@@ -103,7 +103,7 @@ class Model_CMS{
     }
     
     /*===========================================
-        CONSULTA: MOSTRAR SLIDER DE LA EMPRESA
+        CONSULTA: ELIMINAR SLIDER DE LA EMPRESA
     ===========================================*/
     
     public function eliminarSlider($codigo) {
@@ -116,7 +116,7 @@ class Model_CMS{
     }
     
     /*===========================================
-        CONSULTA: MOSTRAR SLIDER DE LA EMPRESA
+        CONSULTA: AGREGAR SLIDER DE LA EMPRESA
     ===========================================*/
     
     public function agregarSlider($titulo,$descripcion,$rutaFoto) {
@@ -135,7 +135,7 @@ class Model_CMS{
     public function mostrarRegistroContactanos() {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "SELECT CONTACNOMBRE, CONTACCORREO, CONTACMENSAJE FROM contactanos";
+        $sql = "SELECT CONTACCORREO, CONTACASUNTO, CONTACMENSAJE FROM contactanos";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_array();
         
@@ -226,24 +226,24 @@ class Model_CMS{
     public function actualizarProducto($codigo,$nombre,$rutaFoto,$descripcion,$descripcionespecifica,$categoria,$destacado) {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `producto` SET `PRODNOMBRE` = '".$nombre."', `PRODIMAGEN` = '".$rutaFoto."', `PRODDESCRIPCION` = '".$descripcion."', `PRODDESCRIPCION_ESPECIFICA` = '".$descripcionespecifica."', `CATCODIGO` = '".$categoria."', `PRODDESTACADO` = '".$destacado."'  WHERE `CATCODIGO` = '".$codigo."';";
+        $sql = "UPDATE `producto` SET `PRODNOMBRE` = '".$nombre."', `PRODIMAGEN` = '".$rutaFoto."', `PRODDESCRIPCION` = '".$descripcion."', `PRODDESCRIPCION_ESPECIFICA` = '".$descripcionespecifica."', `CATCODIGO` = '".$categoria."', `PRODDESTACADO` = '".$destacado."'  WHERE `PRODCODIGO` = '".$codigo."';";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
-    }  
-
+    }
+    
     /*===========================================
-        CONSULTA: ACTUALIZAR MARCA
+        CONSULTA: DETALLE PRODUCTO
     ===========================================*/
     
-    public function actualizarMarca($codigo,$nombre,$rutaFoto) {
+    public function detalleProducto($codigo) {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `marca` SET `MARCNOMBRE` = '".$nombre."', `MARCIMAGEN` = '".$rutaFoto."' WHERE `CATCODIGO` = '".$codigo."';";
+        $sql = "SELECT * FROM producto WHERE `PRODCODIGO` = ".$codigo." ";
         $this->_conexion->ejecutar_sentencia($sql);
-        return $this->_conexion->insert_registro();
+        return $this->_conexion->retornar_array();
         
-    }  
+    }
 
     /*===========================================
         CONSULTA: ELIMINAR MARCA
@@ -262,12 +262,12 @@ class Model_CMS{
         CONSULTA: MOSTRAR REGISTRO DE MARCA
     ===========================================*/
     
-    public function mostrarRegistroMarca() {
+    public function mostrarRegistrosMarca() {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "SELECT MARCCODIGO, MARCNOMBRE, MARCIMAGEN FROM marca";
+        $sql = "SELECT * FROM marca";
         $this->_conexion->ejecutar_sentencia($sql);
-        return $this->_conexion->retornar_array();
+        return $this->_conexion->retornar_select();
         
     }
 
@@ -287,16 +287,67 @@ class Model_CMS{
     /*===========================================
         CONSULTA: ACTUALIZAR NOSOTROS
     ===========================================*/
-    
-    public function actualizarNosotros($descripcion,$vision,$rutaFotoVision,$mision,$rutaFotoMision) {
-        
+
+    public function actualizarNosotros($rutaFoto,$descripcion,$vision,$mision) {
+            
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `nosotros` SET `NOSTDESCRIPCION` = '".$descripcion."', `NOSTVISION` = '".$vision."', `NOSTVISION_IMAGEN` = '".$rutaFotoVision."', `NOSTMISION` = '".$mision."', `NOSTMISION_IMAGEN` = '".$rutaFotoMision."' WHERE `NOSTCODIGO` = 1;";
+        $sql = "UPDATE `nosotros` SET `NOSTIMAGEN` = '".$rutaFoto."', `NOSTDESCRIPCION` = '".$descripcion."', `NOSTVISION` = '".$vision."',  `NOSTMISION` = '".$mision."' WHERE `NOSTCODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+        
+    }
+
+    /*===========================================
+        CONSULTA: ACTUALIZAR SLIDER
+    ===========================================*/
+
+    public function actualizarSlider($codigo,$nombre,$descripcion,$rutaFoto) {
+            
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `slider` SET `SLDRNOMBRE` = '".$nombre."', `SLDRDESCRIPCION` = '".$descripcion."', `SLDRIMAGEN` = '".$rutaFoto."' WHERE `SLDRCODIGO` = ".$codigo." ";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
     }  
-    
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DEL COMPONENTE 1
+    ===========================================*/
+  
+    public function mostrarDatosComponente1() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT `componente1-presentacion`.*, `componentes`.`COMP1` FROM `componente1-presentacion`, `componentes`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();        
+    }
+
+    /*===========================================
+        CONSULTA: ACTUALIZAR DATOS DEL COMPONENTE 1
+    ===========================================*/
+  
+    public function actualizarDatosComponente1($titulo,$subtitulo,$descripcion,$imagen,$destacamos,$caracteristica1,$caracteristica2,$caracteristica3,$caracteristica4,$caracteristica5,$caracteristica6) {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `componente1-presentacion` SET `C1TITULO` = '".$titulo."', `C1SUBTITULO` = '".$subtitulo."', `C1DESCRIPCION` = '".$descripcion."',  `C1IMAGEN` = '".$imagen."', `C1DESTACAMOS` = '".$destacamos."', `C1CARACTERISTICA1` = '".$caracteristica1."', `C1CARACTERISTICA2` = '".$caracteristica2."',  `C1CARACTERISTICA3` = '".$caracteristica3."', `C1CARACTERISTICA4` = '".$caracteristica4."', `C1CARACTERISTICA5` = '".$caracteristica5."',  `C1CARACTERISTICA6` = '".$caracteristica6."' WHERE `C1CODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
+    }
+
+    /*===========================================
+        CONSULTA: ACTUALIZAR ESTILO DEL COMPONENTE 1
+    ===========================================*/
+  
+    public function actualizarEstiloComponente($estilo){
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `componentes` SET `COMP1` = '".$estilo."' WHERE `COMPCODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
+    }
+
 }
 
 ?>
