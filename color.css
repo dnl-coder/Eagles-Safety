@@ -32,14 +32,14 @@
 .bg-alternative1{background: var(--alternative1) !important;}
 
 /*text color*/
-.text-primary{color: var(--principal) !important;}
-.text-secundary{color: var(--secundary) !important;}
-.text-enfasis1{color: var(--enfasis1) !important;}
-.text-enfasis2{color: var(--enfasis2) !important;}
-.text-enfasis3{color: var(--enfasis3) !important;}
-.text-light1{color: var(--light1) !important;}
-.text-light2{color: var(--light2) !important;}
-.text-light3{color: var(--light3) !important;}
+.font-primary{color: var(--primary) !important;}
+.font-secundary{color: var(--secundary) !important;}
+.font-enfasis1{color: var(--enfasis1) !important;}
+.font-enfasis2{color: var(--enfasis2) !important;}
+.font-enfasis3{color: var(--enfasis3) !important;}
+.font-light1{color: var(--light1) !important;}
+.font-light2{color: var(--light2) !important;}
+.font-light3{color: var(--light3) !important;}
 
 .text-formValid{color: var(--formValid) !important;}
 .text-formInvalid{color: var(--formInvalid) !important;}
