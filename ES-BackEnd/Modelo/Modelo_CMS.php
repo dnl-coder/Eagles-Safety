@@ -339,10 +339,10 @@ class Model_CMS{
         CONSULTA: ACTUALIZAR ESTILO DEL COMPONENTE 1
     ===========================================*/
   
-    public function actualizarEstiloComponente($estilo) {
+    public function actualizarEstiloComponente($estilo){
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `componentes` SET `COMP1` = '".$estilo."' WHERE `C1CODIGO ` = 1;";
+        $sql = "UPDATE `componentes` SET `COMP1` = '".$estilo."' WHERE `COMPCODIGO` = 1;";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
 
