@@ -68,5 +68,31 @@ class Model_Web{
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
     }	
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DEL COMPONENTE 1
+    ===========================================*/
+  
+    public function mostrarDatosComponente1() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT `componente1-presentacion`.*, `componentes`.`COMP1` FROM `componente1-presentacion`, `componentes`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR SLIDER DE LA EMPRESA
+    ===========================================*/
+    
+    public function mostrarSliders() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM slider";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+        
+    }
 }
 ?>

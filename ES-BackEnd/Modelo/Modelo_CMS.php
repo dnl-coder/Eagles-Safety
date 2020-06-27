@@ -103,7 +103,7 @@ class Model_CMS{
     }
     
     /*===========================================
-        CONSULTA: MOSTRAR SLIDER DE LA EMPRESA
+        CONSULTA: ELIMINAR SLIDER DE LA EMPRESA
     ===========================================*/
     
     public function eliminarSlider($codigo) {
@@ -116,7 +116,7 @@ class Model_CMS{
     }
     
     /*===========================================
-        CONSULTA: MOSTRAR SLIDER DE LA EMPRESA
+        CONSULTA: AGREGAR SLIDER DE LA EMPRESA
     ===========================================*/
     
     public function agregarSlider($titulo,$descripcion,$rutaFoto) {
@@ -309,6 +309,19 @@ class Model_CMS{
         return $this->_conexion->insert_registro();
         
     }  
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DEL COMPONENTE 1
+    ===========================================*/
+  
+    public function mostrarDatosComponente1() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM `componente1-presentacion`";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    }
 
 }
 
