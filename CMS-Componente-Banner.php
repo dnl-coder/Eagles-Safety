@@ -25,8 +25,8 @@
       <!-- OPCIONES DE LA VISTA-->
       <div class="row">
         <div class="col text-center">
-          <button class="btn botonTercero" data-toggle="modal" data-target="#c1Editar"><i class="far fa-edit"></i> Editar descripción</button>
-          <button class="btn botonTercero" data-toggle="modal" data-target="#c1Actualizar"><i class="fas fa-sync"></i> Actualizar componente</button>
+          <button class="btn botonTercero" data-toggle="modal" data-target="#c1Editar" onclick="cargarDatosModal()"><i class="far fa-edit"></i> Editar descripción</button>
+          <button class="btn botonTercero" data-toggle="modal" data-target="#c1Actualizar" onclick="cargarDatosModal()"><i class="fas fa-sync"></i> Actualizar componente</button>
         </div>
       </div>
       
@@ -136,31 +136,31 @@
                
               <!-- ESTILO 1 -->
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="c1Estilo1" name="c1Estilos">
+                <input type="radio" class="custom-control-input" id="c1Estilo1" name="c1Estilos" value="1">
                 <label class="custom-control-label" for="c1Estilo1">Estilo 1</label>
               </div>
 
               <!-- ESTILO 2 -->
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="c1Estilo2" name="c1Estilos" checked>
+                <input type="radio" class="custom-control-input" id="c1Estilo2" name="c1Estilos" value="2" checked>
                 <label class="custom-control-label" for="c1Estilo2">Estilo 2</label>
               </div>
 
               <!-- ESTILO 3 -->
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="c1Estilo3" name="c1Estilos">
+                <input type="radio" class="custom-control-input" id="c1Estilo3" name="c1Estilos" value="3">
                 <label class="custom-control-label" for="c1Estilo3">Estilo 3</label>
               </div>
               
               <!-- ESTILO 4 -->
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="c1Estilo4" name="c1Estilos">
+                <input type="radio" class="custom-control-input" id="c1Estilo4" name="c1Estilos" value="4">
                 <label class="custom-control-label" for="c1Estilo4">Estilo 4</label>
               </div>
               
               <!-- ESTILO 5 -->
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="c1Estilo5" name="c1Estilos">
+                <input type="radio" class="custom-control-input" id="c1Estilo5" name="c1Estilos" value="5">
                 <label class="custom-control-label" for="c1Estilo5">Estilo 5</label>
               </div>
               
@@ -168,7 +168,7 @@
             
             <!-- Botones -->
             <div class="modal-footer">
-              <button id="actualizar" type="button" class="btn bg-primary" onClick="actualizarComponente()">Guardar</button>
+              <button id="actualizar" type="button" class="btn bg-primary" onClick="actualizarEstiloComponente1()">Guardar</button>
             </div>
             
           </div>
@@ -504,7 +504,8 @@
     <script>
       var mostrar=false;
       cargarDatos();
-  
+      
+      //--CARGAR DATOS DEL COMPONENTE 1 --  
       function cargarDatos(){
         $.ajax({
             url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_MostrarDatosComponente1.php',
@@ -536,6 +537,31 @@
                     $(".c1caracteristica4").html(datos.C1CARACTERISTICA4);
                     $(".c1caracteristica5").html(datos.C1CARACTERISTICA5);
                     $(".c1caracteristica6").html(datos.C1CARACTERISTICA6);
+
+                }
+            }
+        });
+      }
+      
+      //--CARGAR DATOS DEL COMPONENTE 1 EN EL MODAL --  
+      function cargarDatosModal(){
+        $.ajax({
+            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_MostrarDatosComponente1.php',
+            type: 'GET',
+            dataType: 'json',
+            error: function(error){
+                if(error.status == 401){
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
+                }
+                else{
+                    mostrarToast("error","Error no identificado.");
+                }
+            },
+            success: function(datos){
+                if(datos.response == 0){
+                    mostrarToast("error",datos.message);
+                }
+                else{
                   
                     //MODAL
                     $("#titulo").val(datos.C1TITULO);
@@ -549,10 +575,218 @@
                     $("#caracteristica4").html(datos.C1CARACTERISTICA4);
                     $("#caracteristica5").html(datos.C1CARACTERISTICA5);
                     $("#caracteristica6").html(datos.C1CARACTERISTICA6);
+                    switch(datos.COMP1){
+                      case "1": $( "#c1Estilo1" ).prop( "checked", true);break;
+                      case "2": $( "#c1Estilo2" ).prop( "checked", true);break;
+                      case "3": $( "#c1Estilo3" ).prop( "checked", true);break;
+                      case "4": $( "#c1Estilo4" ).prop( "checked", true);break;
+                      case "5": $( "#c1Estilo5" ).prop( "checked", true);break;
+                    }
+                  
                 }
             }
         });
       }
+      
+      //--VALIDAR DATOS INGRESADOS EN EL FORMULARIO --  
+      function validarFormulario(){      
+
+          var R1 = $("#titulo").val();
+          var R2 = $("#subtitulo").val();
+          var R3 = $("#descripcion").html();
+          var R4 = $("#destacamos").html();
+          var R5 = $("#caracteristica1").html();
+          var R6 = $("#caracteristica2").html();
+          var R7 = $("#caracteristica3").html();
+          var R8 = $("#caracteristica4").html();
+          var R9 = $("#caracteristica5").html();
+          var R10 = $("#caracteristica6").html();
+
+          if(R1 == null || R1.length == 0 || /^\s+$/.test(R1)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#titulo").focus();
+          }
+          else if(R2 == null || R2.length == 0 || /^\s+$/.test(R2)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#subtitulo").focus();
+          }
+          else if(R3 == null || R3.length == 0 || /^\s+$/.test(R3)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#descripcion").focus();
+          }
+          else if(R4 == null || R4.length == 0 || /^\s+$/.test(R4)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#destacamos").focus();
+          }
+          else if(R5 == null || R5.length == 0 || /^\s+$/.test(R5)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica1").focus();
+          }
+          else if(R6 == null || R6.length == 0 || /^\s+$/.test(R6)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica2").focus();
+          }
+          else if(R7 == null || R7.length == 0 || /^\s+$/.test(R7)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica3").focus();
+          }
+          else if(R8 == null || R8.length == 0 || /^\s+$/.test(R8)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica4").focus();
+          }
+          else if(R9 == null || R9.length == 0 || /^\s+$/.test(R9)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica5").focus();
+          }
+          else if(R10 == null || R10.length == 0 || /^\s+$/.test(R10)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica6").focus();
+          }
+          else if(document.getElementById('foto').files.length == 0){
+              actualizarDatosComponente1();
+          }else{
+              guardarImagenComponente1();
+
+              if ($("#estado").val() == "IMAGEN GUARDADA CORRECTAMENTE"){
+                      actualizarDatosComponente1()
+              }else{
+                      mostrar=true;
+                      mostrarToast("error",$("#estado").val());
+              }
+          }
+
+      } 
+      
+      //--GUARDAR IMAGEN DEL COMPONENTE 1--  
+      function guardarImagenComponente1(){
+
+        var nuevoFormulario = new FormData();   
+        $("#form").find(':input').each(function() {
+          var elemento= this;
+          //Si recibe tipo archivo 'file'
+          if(elemento.type === 'file'){
+             if(elemento.value !== ''){
+                for(var i=0; i< $('#'+elemento.id).prop("files").length; i++){
+                    nuevoFormulario.append(elemento.name, $('#'+elemento.id).prop("files")[i]);
+                 }
+             }              
+           }
+        });
+
+        $.ajax({
+            url: "ES-BackEnd/Controlador/Controlador-CMS/Controlador_GuardarImagenComponente1.php",
+            type: "POST",
+            data: nuevoFormulario,
+            contentType: false,
+            processData: false,
+            async:false,
+            success: function(datos){
+              if(datos.response1==0 && datos.response2 ==0){
+                    $("#estado").val("ERROR AL GUARDAR LA IMAGEN: "+datos.message)
+                }else{
+                    $("#estado").val("IMAGEN GUARDADA CORRECTAMENTE")
+                }
+            }
+        });
+        
+      }
+      
+      //--ACTUALIZAR DATOS DEL COMPONENTE 1 --  
+      function actualizarDatosComponente1(){
+        
+        var rutaFoto;
+
+        if(document.getElementById('foto').files.length == 0){
+          if(document.getElementById('previewFoto').src==""){
+            rutaFoto="";
+          }else{
+            nombreFoto=document.getElementById('previewFoto').src.split("/Componentes/");
+            rutaFoto="ES-FrontEnd/Elementos/Imagenes/Componentes/"+nombreFoto[1];
+          }
+        }else{
+          rutaFoto="ES-FrontEnd/Elementos/Imagenes/Componentes/"+document.getElementById('foto').files[0].name
+        }
+
+        mostrar=true;
+        
+        var $datos={
+            '_titulo': $("#titulo").val(),
+            '_subtitulo': $("#subtitulo").val(),
+            '_descripcion': $("#descripcion").html(),
+            '_imagen': rutaFoto,
+            '_destacamos': $("#destacamos").html(),
+            '_caracteristica1': $("#caracteristica1").html(),
+            '_caracteristica2': $("#caracteristica2").html(),
+            '_caracteristica3': $("#caracteristica3").html(),
+            '_caracteristica4': $("#caracteristica4").html(),
+            '_caracteristica5': $("#caracteristica5").html(),
+            '_caracteristica6': $("#caracteristica6").html()
+          
+        }
+        
+        $.ajax({
+            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_ActualizarDatosComponente1.php',
+            type: 'POST',
+            data: $datos,
+            dataType: 'json',
+            error: function(error){
+                if(error.status == 401){
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
+                }
+                else{
+                    mostrarToast("error","Error no identificado.");
+                }
+            },
+            success: function(datos){
+                if(datos.response == 0){
+                    mostrarToast("error",datos.message);
+                }
+                else{
+                    mostrarToast("exito","Actualizacion correcta!");
+                }
+            }
+        });
+      }
+      
+      //--ACTUALIZAR ESTILO DEL COMPONENTE 1 --  
+      function actualizarEstiloComponente1(){
+
+        mostrar=true;
+        var estilo="";
+        
+        $("input:radio:checked" ).each(function() {
+            estilo=$(this).val();
+        });
+
+        var $datos={
+            '_estilo': estilo
+        }
+        
+        $.ajax({
+            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_ActualizarEstiloComponente1.php',
+            type: 'POST',
+            data: $datos,
+            dataType: 'json',
+            error: function(error){
+                if(error.status == 401){
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
+                }
+                else{
+                    mostrarToast("error","Error no identificado.");
+                }
+            },
+            success: function(datos){
+                if(datos.response == 0){
+                    mostrarToast("error",datos.message);
+                }
+                else{
+                    mostrarToast("exito","Actualizacion correcta!");
+                }
+            }
+        });
+      }
+      
+      //--MOSTRAR TOAST --  
       function mostrarToast(tipo,msj){
         if(mostrar==true){
             switch(tipo){
