@@ -10,19 +10,19 @@ require_once(__DIR__."/../../Modelo/Modelo_CMS.php");
 
 $Model_CMS = new Model_CMS();
 
-if(isset($_POST['_codigo']) && isset($_POST['_nombre'])){
+if(isset($_POST['_estilo'])){
     
-    $codigo = $_POST['_codigo'];
-    $nombre = $_POST['_nombre'];
+    $estilo = $_POST['_estilo'];
     
-    if($Model_CMS->actualizarCategoria($codigo,$nombre)){
+    if($Model_CMS->actualizarEstiloComponente($estilo)){
 
         $data = array(
             "response" => 1,
-            "message" => "Informacion ingresada"                      
+            "message" => "Informacion ingresada"               
             );  
 
-    }else{
+    }
+    else{
         $data = array(
             "response" => 0,
             "message" => "Informacion no encontrada"                      
