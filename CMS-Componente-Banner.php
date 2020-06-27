@@ -54,7 +54,7 @@
                   </div>
                   
                   <div class="form-group">
-                      <h6 class="subtitulo mt-0">Subtítulo</h6>
+                      <h6 class="subtitulo obligatorio mt-0">Subtítulo</h6>
                       <input id="subtitulo" type="text" class="form-control">
                   </div>
                   
@@ -63,43 +63,43 @@
                       <textarea id="descripcion" type="text" class="form-control" rows="3"></textarea>
                   </div>
 
-                  <h6 class="subtitulo">Imagen</h6>
+                  <h6 class="subtitulo obligatorio">Imagen</h6>
                   <img id="previewFoto" class="imagenMinSlider mb-2"><br>
                   <label for="foto" class="botonSecundario">Seleccionar imagen</label>
                   <input id="foto" class="inputImagen" name="archivo" type="file" accept="image/*"><input type="text" hidden id="estado">
                   
                   <div class="form-group">
-                      <h6 class="subtitulo">Destacamos</h6>
+                      <h6 class="subtitulo obligatorio">Destacamos</h6>
                       <textarea id="destacamos" type="text" class="form-control" rows="3"></textarea>
                   </div>
                   
                   <div class="form-group">
-                      <h6 class="subtitulo">Característica 1</h6>
+                      <h6 class="subtitulo obligatorio">Característica 1</h6>
                       <textarea id="caracteristica1" type="text" class="form-control" rows="2"></textarea>
                   </div>
                   
                   <div class="form-group">
-                      <h6 class="subtitulo">Característica 2</h6>
+                      <h6 class="subtitulo obligatorio">Característica 2</h6>
                       <textarea id="caracteristica2" type="text" class="form-control" rows="2"></textarea>
                   </div>
                   
                   <div class="form-group">
-                      <h6 class="subtitulo">Característica 3</h6>
+                      <h6 class="subtitulo obligatorio">Característica 3</h6>
                       <textarea id="caracteristica3" type="text" class="form-control" rows="2"></textarea>
                   </div>
                   
                   <div class="form-group">
-                      <h6 class="subtitulo">Característica 4</h6>
+                      <h6 class="subtitulo obligatorio">Característica 4</h6>
                       <textarea id="caracteristica4" type="text" class="form-control" rows="2"></textarea>
                   </div>
                   
                   <div class="form-group">
-                      <h6 class="subtitulo">Característica 5</h6>
+                      <h6 class="subtitulo obligatorio">Característica 5</h6>
                       <textarea id="caracteristica5" type="text" class="form-control" rows="2"></textarea>
                   </div>
                   
                   <div class="form-group">
-                      <h6 class="subtitulo">Característica 6</h6>
+                      <h6 class="subtitulo obligatorio">Característica 6</h6>
                       <textarea id="caracteristica6" type="text" class="form-control" rows="2"></textarea>
                   </div>
 
@@ -601,7 +601,15 @@
       function validarFormulario(){      
 
           var R1 = $("#titulo").val();
-          var R2 = $("#descripcion").val();
+          var R2 = $("#subtitulo").val();
+          var R3 = $("#descripcion").html();
+          var R4 = $("#destacamos").html();
+          var R5 = $("#caracteristica1").html();
+          var R6 = $("#caracteristica2").html();
+          var R7 = $("#caracteristica3").html();
+          var R8 = $("#caracteristica4").html();
+          var R9 = $("#caracteristica5").html();
+          var R10 = $("#caracteristica6").html();
 
           if(R1 == null || R1.length == 0 || /^\s+$/.test(R1)){
               alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
@@ -609,7 +617,39 @@
           }
           else if(R2 == null || R2.length == 0 || /^\s+$/.test(R2)){
               alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#subtitulo").focus();
+          }
+          else if(R3 == null || R3.length == 0 || /^\s+$/.test(R3)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
               $("#descripcion").focus();
+          }
+          else if(R4 == null || R4.length == 0 || /^\s+$/.test(R4)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#destacamos").focus();
+          }
+          else if(R5 == null || R5.length == 0 || /^\s+$/.test(R5)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica1").focus();
+          }
+          else if(R6 == null || R6.length == 0 || /^\s+$/.test(R6)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica2").focus();
+          }
+          else if(R7 == null || R7.length == 0 || /^\s+$/.test(R7)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica3").focus();
+          }
+          else if(R8 == null || R8.length == 0 || /^\s+$/.test(R8)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica4").focus();
+          }
+          else if(R9 == null || R9.length == 0 || /^\s+$/.test(R9)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica5").focus();
+          }
+          else if(R10 == null || R10.length == 0 || /^\s+$/.test(R10)){
+              alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+              $("#caracteristica6").focus();
           }
           else if(document.getElementById('foto').files.length == 0){
               actualizarDatosComponente1();
