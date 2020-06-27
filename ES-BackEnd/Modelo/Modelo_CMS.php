@@ -319,8 +319,7 @@ class Model_CMS{
         //FUNCION CON LA CONSULTA A REALIZAR
         $sql = "SELECT `componente1-presentacion`.*, `componentes`.`COMP1` FROM `componente1-presentacion`, `componentes`;";
         $this->_conexion->ejecutar_sentencia($sql);
-        return $this->_conexion->retornar_array();
-        
+        return $this->_conexion->retornar_array();        
     }
 
     /*===========================================
@@ -330,10 +329,9 @@ class Model_CMS{
     public function actualizarDatosComponente1($titulo,$subtitulo,$descripcion,$imagen,$destacamos,$caracteristica1,$caracteristica2,$caracteristica3,$caracteristica4,$caracteristica5,$caracteristica6) {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `componente1-presentacion` SET `C1TITULO` = '".$titulo."', `C1SUBTITULO` = '".$subtitulo."', `C1DESCRIPCION` = '".$descripcion."',  `C1IMAGEN` = '".$imagen."', `C1DESTACAMOS` = '".$destacamos."', `C1CARACTERISTICA1` = '".$caracteristica1."', `C1CARACTERISTICA2` = '".$caracteristica2."',  `C1CARACTERISTICA3` = '".$caracteristica3."', `C1CARACTERISTICA4` = '".$caracteristica4."', `C1CARACTERISTICA5` = '".$caracteristica5."',  `C1CARACTERISTICA6` = '".$caracteristica6."' WHERE `C1CODIGO ` = 1;";
+        $sql = "UPDATE `componente1-presentacion` SET `C1TITULO` = '".$titulo."', `C1SUBTITULO` = '".$subtitulo."', `C1DESCRIPCION` = '".$descripcion."',  `C1IMAGEN` = '".$imagen."', `C1DESTACAMOS` = '".$destacamos."', `C1CARACTERISTICA1` = '".$caracteristica1."', `C1CARACTERISTICA2` = '".$caracteristica2."',  `C1CARACTERISTICA3` = '".$caracteristica3."', `C1CARACTERISTICA4` = '".$caracteristica4."', `C1CARACTERISTICA5` = '".$caracteristica5."',  `C1CARACTERISTICA6` = '".$caracteristica6."' WHERE `C1CODIGO` = 1;";
         $this->_conexion->ejecutar_sentencia($sql);
-        return $this->_conexion->retornar_array();
-        
+        return $this->_conexion->insert_registro();        
     }
 
     /*===========================================
@@ -345,8 +343,7 @@ class Model_CMS{
         //FUNCION CON LA CONSULTA A REALIZAR
         $sql = "UPDATE `componentes` SET `COMP1` = '".$estilo."' WHERE `C1CODIGO ` = 1;";
         $this->_conexion->ejecutar_sentencia($sql);
-        return $this->_conexion->retornar_array();
-        
+        return $this->_conexion->insert_registro();        
     }
 
 }
