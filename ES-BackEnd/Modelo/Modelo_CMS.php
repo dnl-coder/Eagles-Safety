@@ -317,7 +317,7 @@ class Model_CMS{
     public function mostrarDatosComponente1() {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "SELECT * FROM `componente1-presentacion`";
+        $sql = "SELECT `componente1-presentacion`.*, `componentes`.`COMP1` FROM `componente1-presentacion`, `componentes`;";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_array();
         
