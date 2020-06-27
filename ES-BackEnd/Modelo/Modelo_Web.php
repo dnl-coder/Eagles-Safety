@@ -46,7 +46,7 @@ class Model_Web{
         CARGAR PRODUCTOS (TODOS)
     =======================================================*/
     public function cargarProductos($categoria){
-        $sql = "SELECT P.* FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO WHERE C.CATCODIGO ='" . $categoria . "' ";
+        $sql = "SELECT P.* FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' ";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
     }
@@ -68,5 +68,31 @@ class Model_Web{
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
     }	
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DEL COMPONENTE 1
+    ===========================================*/
+  
+    public function mostrarDatosComponente1() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT `componente1-presentacion`.*, `componentes`.`COMP1` FROM `componente1-presentacion`, `componentes`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR SLIDER DE LA EMPRESA
+    ===========================================*/
+    
+    public function mostrarSliders() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM slider";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+        
+    }
 }
 ?>

@@ -98,7 +98,7 @@ var vistaWeb = function (){}
 //-- FUNCION MOSTRAR SLIDERS --
 vistaWeb.prototype.mostrarSliders = function(){
     $.ajax({
-        url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_MostrarSliders.php',
+        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarSliders.php',
         type: 'GET',
         dataType: 'json',
         error: function(error){
@@ -128,6 +128,186 @@ vistaWeb.prototype.mostrarSliders = function(){
                     </div>"
             }
             $("#CarouselInicio .carousel-inner").html(sliders);
+        }
+    });
+};
+
+//-- FUNCION MOSTRAR COMPONENTE 1 --
+vistaWeb.prototype.mostrarComponente1 = function(){
+    $.ajax({
+        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarDatosComponente1.php',
+        type: 'GET',
+        dataType: 'json',
+        error: function(error){
+            if(error.status == 401){
+                console.error("Archivos no encontrados");
+            }
+            else{
+                console.error("Error no identificado");
+            }
+        },
+        success: function(datos){
+            var componente="";
+            switch(datos.COMP1){
+              case "1": componente+="<div class='container my-5 py-5'> \
+            <section class='px-md-5 mx-md-5 dark-grey-text text-center text-lg-left'> \
+              <div class='row'> \
+                <div class='col-lg-6 mb-4 mb-lg-0 d-flex align-items-center justify-content-center'> \
+                  <img class='img-fluid wow fadeInLeft' src='"+datos.C1IMAGEN+"'> \
+                </div> \
+                <div class='col-lg-6 mb-4 mb-lg-0'> \
+                  <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
+                  <p class='font-weight-bold wow fadeIn'>"+datos.C1SUBTITULO+"</p> \
+                  <p class='text-muted wow fadeIn'>"+datos.C1DESCRIPCION+"</p> \
+                  <a class='font-weight-bold font-primary wow fadeIn' href='Nosotros.php' >Conocer más<i class='fas fa-angle-right ml-2'></i></a> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+              case "2": componente+="<div class='tab-pane fade show' id='op2' role='tabpanel' aria-labelledby='op2-tab'> \
+          <div class='container my-5 py-5'> \
+            <section class='px-md-5 mx-md-5 text-center dark-grey-text'> \
+              <div class='row'> \
+                <div class='col-md-6 mb-4 mb-md-0'> \
+                  <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
+                  <p class='text-muted wow fadeIn'>"+datos.C1DESCRIPCION+"</p> \
+                  <a class='btn bg-primary btn-md ml-0 wow fadeIn' href='Nosotros.php' role='button'>Conocer más<i class='fa fa-gem ml-2'></i></a> \
+                  <hr class='my-5'> \
+                  <p class='font-weight-bold wow fadeIn'>Síguenos en:</p> \
+                  <a class='mx-1 font-primary disabled wow fadeIn' role='button'><i class='fab fa-facebook-f'></i></a> \
+                  <a class='mx-1 font-primary disabled wow fadeIn' role='button'><i class='fab fa-linkedin-in'></i></a> \
+                  <a class='mx-1 font-primary disabled wow fadeIn' role='button'><i class='fab fa-instagram'></i></a> \
+                </div> \
+                <div class='col-md-5 mb-4 mb-md-0'> \
+                  <img class='c1imagen img-fluid wow fadeInRight' src='"+datos.C1IMAGEN+"'> \
+                </div> \
+              </div> \
+            </section> \
+          </div> \
+        </div>"; break;
+              case "3": componente+="<div class='container my-5 py-5'> \
+            <section class='px-md-5 mx-md-5 text-center text-lg-left dark-grey-text'> \
+              <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
+              <p class='text-muted mb-5 wow fadeIn'>"+datos.C1DESCRIPCION+"</p> \
+              <div class='row'> \
+                <div class='col-lg-3 col-md-12 mb-lg-0 mb-4'> \
+                  <img class='img-fluid wow fadeInLeft' src='"+datos.C1IMAGEN+"'> \
+                </div> \
+                <div class='col-lg-6 col-md-6 mb-lg-0 mb-lg-0 mb-2'> \
+                  <h4 class='h4 wow fadeIn'>¿Por qué elegirnos?</h4> \
+                  <p class='text-muted wow fadeIn'>"+datos.C1DESTACAMOS+"</p> \
+                </div> \
+                <div class='col-lg-3 col-md-6 text-center'> \
+                  <a class='btn bg-primary btn-md waves-effect wow fadeIn' href='Nosotros.php' role='button'>Ver más</a> \
+                  <a class='btn bg-primary btn-md wow fadeIn' href='Contactos.php' role='button'>Contáctanos</a> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+              case "4": componente+="<div class='container my-5 py-5'> \
+            <section class='px-md-5 mx-md-5 text-center dark-grey-text'> \
+              <div class='row d-flex justify-content-center'> \
+                <div class='col-xl-6 col-md-8'> \
+                  <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
+                  <p class='text-muted wow fadeIn'>"+datos.C1DESCRIPCION+"</p> \
+                  <a class='btn bg-primary btn-md ml-0 mb-5 wow fadeIn' href='Nosotros.php' role='button'>Ver más<i class='fa fa-magic ml-2'></i></a> \
+                </div> \
+              </div> \
+              <div class='row'> \
+                <div class='col-lg-3 col-md-6 wow fadeIn'> \
+                  <i class='fas fa-gem fa-3x blue-text'></i> \
+                  <p class='font-weight-bold my-3'>Calidad</p> \
+                  <p class='text-muted'>"+datos.C1CARACTERISTICA1+"</p> \
+                </div> \
+                <div class='col-lg-3 col-md-6 wow fadeIn'> \
+                    <i class='fas fa-chart-area fa-3x teal-text'></i> \
+                    <p class='font-weight-bold my-3'>Garantía</p> \
+                    <p class='text-muted'>"+datos.C1CARACTERISTICA2+"</p> \
+                </div> \
+                <div class='col-lg-3 col-md-6 wow fadeIn'> \
+                    <i class='fas fa-cogs fa-3x indigo-text'></i> \
+                    <p class='font-weight-bold my-3'>Funcional</p> \
+                    <p class='text-muted'>"+datos.C1CARACTERISTICA3+"</p> \
+                </div> \
+                <div class='col-lg-3 col-md-6 wow fadeIn'> \
+                    <i class='fas fa-cloud-upload-alt fa-3x deep-purple-text'></i> \
+                    <p class='font-weight-bold my-3'>Eficaz</p> \
+                    <p class='text-muted'>"+datos.C1CARACTERISTICA4+"</p> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+              case '5': componente+="<div class='container my-5 p-5> \
+            <section class='dark-grey-text'> \
+              <h2 class='text-center font-weight-bold mb-4 pb-2'>"+datos.C1TITULO+"</h2> \
+              <p class='text-center lead grey-text mx-auto mb-5'>"+datos.C1DESCRIPCION+"</p> \
+              <div class='row'> \
+                <div class='col-md-4'> \
+                  <div class='row mb-3 wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='fas fa-2x fa-flag-checkered font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Calidad</h5> \
+                      <p class='grey-text'>"+datos.C1CARACTERISTICA1+"</p> \
+                    </div> \
+                  </div> \
+                  <div class='row mb-3 wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='fas fa-2x fa-flask font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Eficiente</h5> \
+                      <p class='grey-text'>"+datos.C1CARACTERISTICA2+"</p> \
+                    </div> \
+                  </div> \
+                  <div class='row mb-md-0 mb-3 wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='fas fa-2x fa-glass-martini font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Garantía</h5> \
+                      <p class='grey-text mb-md-0'>"+datos.C1CARACTERISTICA3+"</p> \
+                    </div> \
+                  </div> \
+                </div> \
+                <div class='col-md-4 text-center'> \
+                  <img class='img-fluid wow fadeIn' src='"+datos.C1IMAGEN+"'> \
+                </div> \
+                <div class='col-md-4'> \
+                  <div class='row mb-3 wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='far fa-2x fa-heart font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Confiable</h5> \
+                      <p class='grey-text'>"+datos.C1CARACTERISTICA4+"</p> \
+                    </div> \
+                  </div> \
+                  <div class='row mb-3 wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='fas fa-2x fa-bolt font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Eficaz</h5> \
+                      <p class='grey-text'>"+datos.C1CARACTERISTICA5+"</p> \
+                    </div> \
+                  </div> \
+                  <div class='row wow fadeIn'> \
+                    <div class='col-2'> \
+                      <i class='fas fa-2x fa-magic font-primary'></i> \
+                    </div> \
+                    <div class='col-10'> \
+                      <h5 class='font-weight-bold mb-3'>Mágico</h5> \
+                      <p class='grey-text mb-0'>"+datos.C1CARACTERISTICA6+"</p> \
+                    </div> \
+                  </div> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+            }
+            $("div#CarouselInicio").after(componente);
         }
     });
 };

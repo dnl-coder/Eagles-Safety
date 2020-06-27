@@ -11,6 +11,7 @@
     <!-- JS DEL ARCHIVO-->
     <script type="text/javascript">
       vWeb.mostrarSliders();
+      vWeb.mostrarComponente1();
       vWeb.mostrarMarcas();
       vWeb.mostrarProductosDestacados();
     </script>
@@ -41,24 +42,6 @@
 
     </div>                    
     
-    <!-- BANNER 1-->
-    <div class="container py-2 px-5">    
-      <div class="row my-5 py-5">
-
-      <!--IMAGEN -->   
-      <div class="col-12 col-sm-7 my-auto">
-          <img src="ES-FrontEnd/Elementos/Imagenes/Banners/ES-Banner1.png" class="img-fluid mx-auto d-block wow fadeInLeft">
-      </div>
-
-      <!--DESCRIPCION -->
-      <div class="col-12 col-sm-5">
-          <h3 class="h1-responsive font-weight-bold wow fadeIn">EXPERIENCIA, SEGURIDAD Y GARANTIA</h3>
-          <p>Tenemos los mejores productos para <b class="font-weight-bold wow fadeIn">garantizar</b> que siempre regreses seguro a tu hogar.</p>
-      </div>
-
-      </div>       
-    </div>
-
     <!-- PRODUCTOS DESTACADOS-->
     <div class="product-ofertas container-fluid py-3">
 
