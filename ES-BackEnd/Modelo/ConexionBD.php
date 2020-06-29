@@ -26,15 +26,15 @@ class conexion {
     
 	public function __construct () {
 
-		//$host = 'sql211.epizy.com';              //DIRECCION DEL HOST DONDE ESTARA ALOJADA LA BD
-		//$user = 'epiz_21089143';                   //USUARIO DE INGRESO A LA BD
-		//$password = 'eventera';                   //CONTRASEÑA DE INGRESO A LA BD
-		//$database_name = 'epiz_21089143_ES';     //NOMBRE DE LA BD
+		$host = 'sql103.epizy.com';              //DIRECCION DEL HOST DONDE ESTARA ALOJADA LA BD
+		$user = 'epiz_25125041';                   //USUARIO DE INGRESO A LA BD
+		$password = 'ePV0eJjLhZikyqnh';                   //CONTRASEÑA DE INGRESO A LA BD
+		$database_name = 'epiz_25125041_es';     //NOMBRE DE LA BD
         
-        $host = 'localhost';              //DIRECCION DEL HOST DONDE ESTARA ALOJADA LA BD
-		$user = 'root';                   //USUARIO DE INGRESO A LA BD
-		$password = '';                   //CONTRASEÑA DE INGRESO A LA BD
-		$database_name = 'epiz_21089143_ES';     //NOMBRE DE LA BD
+        //$host = 'localhost';              //DIRECCION DEL HOST DONDE ESTARA ALOJADA LA BD
+		//$user = 'root';                   //USUARIO DE INGRESO A LA BD
+		//$password = '';                   //CONTRASEÑA DE INGRESO A LA BD
+		//$database_name = 'epiz_21089143_ES';     //NOMBRE DE LA BD
         
 		$this->_conexion=mysqli_connect($host, $user, $password, $database_name);
         
