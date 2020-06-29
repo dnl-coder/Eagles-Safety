@@ -152,10 +152,10 @@
             dataType: 'json',
             error: function(error){
                 if(error.status == 401){
-                    console.log("No se pudo establecer conexion con el servidor")
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
                 }
                 else{
-                    console.log("Error no identificado.")
+                    mostrarToast("error","Error no identificado.");
                 }
             },
             success: function(datos){
@@ -241,15 +241,15 @@
             dataType: 'json',
             error: function(error){
                 if(error.status == 401){
-                    console.log("No se pudo establecer conexion con el servidor")
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
                 }
                 else{
-                    console.log("Error no identificado.")
+                    mostrarToast("error","Error no identificado.");
                 }
             },
             success: function(datos){
                 if(datos.response == 0){
-                    console.log('ERROR: '+datos.message)
+                    mostrarToast("error",datos.message);
                 }
                 else{
                     mostrar=true;
@@ -340,15 +340,15 @@
             dataType: 'json',
             error: function(error){
                 if(error.status == 401){
-                    console.log("No se pudo establecer conexion con el servidor")
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
                 }
                 else{
-                    console.log("Error no identificado.")
+                    mostrarToast("error","Error no identificado.");
                 }
             },
             success: function(datos){
                 if(datos.response == 0){
-                    console.log('ERROR: '+datos.message)
+                    mostrarToast("error",datos.message);
                 }
                 else{
                     document.getElementById("guardar").disabled=false;

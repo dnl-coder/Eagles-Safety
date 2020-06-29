@@ -250,7 +250,7 @@
         
         <!-- ESTILO 2 -->
         <div class="tab-pane fade show" id="op2" role="tabpanel" aria-labelledby="op2-tab">
-          <div class="container my-5 p-5 z-depth-1 bg-dark1">
+          <div class="container my-5 p-5 z-depth-1 bg-primary">
             <section class="text-center white-text">
 
               <!-- TITULO Y DESCRIPCION -->
@@ -263,7 +263,7 @@
                 <!-- TEXTO 1 -->
                 <div class="col-md-4 mb-4">
 
-                  <i class="fas fa-brain fa-3x font-primary"></i>
+                  <i class="fas fa-brain fa-3x"></i>
                   <h5 class="T1Titulo font-weight-bold my-4 text-uppercase"></h5>
                   <p class="T1Descripcion mb-md-0 mb-5"></p>
 
@@ -272,7 +272,7 @@
                 <!-- TEXTO 2 -->
                 <div class="col-md-4 mb-4">
 
-                  <i class="fas fa-eye fa-3x font-primary"></i>
+                  <i class="fas fa-eye fa-3x"></i>
                   <h5 class="T2Titulo font-weight-bold my-4 text-uppercase"></h5>
                   <p class="T2Descripcion mb-md-0 mb-5"></p>
 
@@ -281,7 +281,7 @@
                 <!-- TEXTO 3 -->
                 <div class="col-md-4 mb-4">
 
-                  <i class="fas fa-users fa-3x font-primary"></i>
+                  <i class="fas fa-users fa-3x"></i>
                   <h5 class="T3Titulo font-weight-bold my-4 text-uppercase"></h5>
                   <p class="T3Descripcion mb-0"></p>
 
@@ -330,7 +330,7 @@
         <div class="tab-pane fade show" id="op4" role="tabpanel" aria-labelledby="op4-tab">
           <div class="container my-5 px-0 z-depth-1">
             <section class="c1imagen1 text-center white-text p-5" style="background-attachment: fixed;">
-              <div class="row d-flex justify-content-center">
+              <div class="row d-flex justify-content-center my-5">
                 <div class="col-md-6">
 
                     <h3 class="c1titulo font-weight-bold"></h3>

@@ -12,6 +12,7 @@
     <script type="text/javascript">
       vWeb.mostrarSliders();
       vWeb.mostrarComponente1();
+      vWeb.mostrarComponente2();
       vWeb.mostrarMarcas();
       vWeb.mostrarProductosDestacados();
     </script>

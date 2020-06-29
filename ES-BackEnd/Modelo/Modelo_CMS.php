@@ -311,6 +311,19 @@ class Model_CMS{
     }  
   
     /*===========================================
+        CONSULTA: DETALLE SLIDER
+    ===========================================*/
+    
+    public function detalleSlider($codigo) {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM `slider` WHERE `SLDRCODIGO` = ".$codigo." ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    }
+  
+    /*===========================================
         CONSULTA: MOSTRAR DATOS DEL COMPONENTE 1
     ===========================================*/
   

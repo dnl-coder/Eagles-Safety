@@ -119,10 +119,8 @@ vistaWeb.prototype.mostrarSliders = function(){
                     sliders+="<div class='carousel-item' style='background:url(\""+datos[i].SLDRIMAGEN+"\");'>"
                 }
                 sliders+="\<div class='descripcionSlider container-fluid wow fadeIn' data-wow-delay='0.4s'>\
-                                <p class='h1-responsive wow fadeInLeftBig'>EQUIPOS</p>\
-                                <p class='h1-responsive wow fadeInLeftBig'>QUE PROTEGEN</p>\
-                                <p class='h1-responsive wow fadeInLeftBig'>TU VIDA</p>\
-                                <p class='descripcion wow fadeIn'>Tenemos los mejores productos para garantizar tu cuidado</p>\
+                                <p class='h1-responsive wow fadeInLeftBig'>"+datos[i].SLDRNOMBRE+"</p>\
+                                <p class='descripcion wow fadeIn'>"+datos[i].SLDRDESCRIPCION+"</p>\
                             </div>\
                         </div>\
                     </div>"
@@ -149,7 +147,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
         success: function(datos){
             var componente="";
             switch(datos.COMP1){
-              case "1": componente+="<div class='container my-5 py-5'> \
+              case "1": componente+="<div id='banner1' class='container my-5 py-5'> \
             <section class='px-md-5 mx-md-5 dark-grey-text text-center text-lg-left'> \
               <div class='row'> \
                 <div class='col-lg-6 mb-4 mb-lg-0 d-flex align-items-center justify-content-center'> \
@@ -164,7 +162,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
               </div> \
             </section> \
           </div>"; break;
-              case "2": componente+="<div class='tab-pane fade show' id='op2' role='tabpanel' aria-labelledby='op2-tab'> \
+              case "2": componente+="<div id='banner1' class='tab-pane fade show' id='op2' role='tabpanel' aria-labelledby='op2-tab'> \
           <div class='container my-5 py-5'> \
             <section class='px-md-5 mx-md-5 text-center dark-grey-text'> \
               <div class='row'> \
@@ -185,7 +183,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
             </section> \
           </div> \
         </div>"; break;
-              case "3": componente+="<div class='container my-5 py-5'> \
+              case "3": componente+="<div id='banner1' class='container my-5 py-5'> \
             <section class='px-md-5 mx-md-5 text-center text-lg-left dark-grey-text'> \
               <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
               <p class='text-muted mb-5 wow fadeIn'>"+datos.C1DESCRIPCION+"</p> \
@@ -204,7 +202,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
               </div> \
             </section> \
           </div>"; break;
-              case "4": componente+="<div class='container my-5 py-5'> \
+              case "4": componente+="<div id='banner1' class='container my-5 py-5'> \
             <section class='px-md-5 mx-md-5 text-center dark-grey-text'> \
               <div class='row d-flex justify-content-center'> \
                 <div class='col-xl-6 col-md-8'> \
@@ -237,7 +235,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
               </div> \
             </section> \
           </div>"; break;
-              case '5': componente+="<div class='container my-5 p-5> \
+              case '5': componente+="<div id='banner1' class='container my-5 p-5> \
             <section class='dark-grey-text'> \
               <h2 class='text-center font-weight-bold mb-4 pb-2'>"+datos.C1TITULO+"</h2> \
               <p class='text-center lead grey-text mx-auto mb-5'>"+datos.C1DESCRIPCION+"</p> \
@@ -308,6 +306,135 @@ vistaWeb.prototype.mostrarComponente1 = function(){
           </div>"; break;
             }
             $("div#CarouselInicio").after(componente);
+        }
+    });
+};
+
+//-- FUNCION MOSTRAR COMPONENTE 1 --
+vistaWeb.prototype.mostrarComponente2 = function(){
+    $.ajax({
+        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarDatosComponente2.php',
+        type: 'GET',
+        dataType: 'json',
+        error: function(error){
+            if(error.status == 401){
+                console.error("Archivos no encontrados");
+            }
+            else{
+                console.error("Error no identificado");
+            }
+        },
+        success: function(datos){
+            var componente="";
+            switch(datos.COMP2){
+              case "0": componente+=""; break;
+              case "1": componente+="<div class='container my-5'> \
+            <section class='dark-grey-text text-center'> \
+              <h3 class='text-center font-weight-bold mb-4 pb-2'>"+datos.C2TITULO+"</h3> \
+              <p class='text-center text-muted w-responsive mx-auto mb-5'>"+datos.C2DESCRIPCION+"</p> \
+              <div class='row'> \
+                <div class='col-md-6 mb-4'> \
+                  <div class='c1imagen1 card card-image'> \
+                    <div class='text-white text-center d-flex align-items-center py-5 px-4 px-md-5 rounded'> \
+                      <div> \
+                        <h6 class='font-enfasis1'> \
+                          <i class='fas fa-chart-pie'></i> \
+                          <strong>Funcional</strong> \
+                        </h6> \
+                        <h3 class='py-3 font-weight-bold'> \
+                          <strong>"+datos.C2T1TITULO+"</strong> \
+                        </h3> \
+                        <p class='pb-3'>"+datos.C2T1DESCRIPCION+"</p> \
+                      </div> \
+                    </div> \
+                  </div> \
+                </div> \
+                <div class='col-md-6 mb-4'> \
+                  <div class='c1imagen2 card card-image'> \
+                    <div class='text-white text-center d-flex align-items-center py-5 px-4 px-md-5 rounded'> \
+                      <div> \
+                        <h6 class='font-enfasis3'> \
+                          <i class='fas fa-eye'></i> \
+                          <strong> Dinámico</strong> \
+                        </h6> \
+                        <h3 class='py-3 font-weight-bold'> \
+                          <strong>"+datos.C2T2TITULO+"</strong> \
+                        </h3> \
+                        <p class='pb-3'>"+datos.C2T2DESCRIPCION+"</p> \
+                      </div> \
+                    </div> \
+                  </div> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+              case "2": componente+="<div class='container-fluid p-5 bg-primary'> \
+            <section class='text-center white-text'> \
+              <h2 class='font-weight-bold mb-4 pb-2 text-uppercase'>"+datos.C2TITULO+"</h2> \
+              <p class='mx-auto mb-5'>"+datos.C2DESCRIPCION+"</p> \
+              <div class='row'> \
+                <div class='col-md-4 mb-4'> \
+                  <i class='fas fa-brain fa-3x'></i> \
+                  <h5 class='font-weight-bold my-4 text-uppercase'>"+datos.C2T1TITULO+"</h5> \
+                  <p class='mb-md-0 mb-5'>"+datos.C2T1DESCRIPCION+"</p> \
+                </div> \
+                <div class='col-md-4 mb-4'> \
+                  <i class='fas fa-eye fa-3x'></i> \
+                  <h5 class='font-weight-bold my-4 text-uppercase'>"+datos.C2T2TITULO+"</h5> \
+                  <p class='mb-md-0 mb-5'>"+datos.C2T2DESCRIPCION+"</p> \
+                </div> \
+                <div class='col-md-4 mb-4'> \
+                  <i class='fas fa-users fa-3x'></i> \
+                  <h5 class='font-weight-bold my-4 text-uppercase'>"+datos.C2T3TITULO+"</h5> \
+                  <p class='mb-0'>"+datos.C2T3DESCRIPCION+"</p> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+              case "3": componente+="<div class='container-fluid'> \
+            <section class='dark-grey-text text-center'> \
+              <h3 class='text-center font-weight-bold mb-4 pb-2'>"+datos.C2TITULO+"</h3> \
+              <p class='text-center text-muted w-responsive mx-auto mb-5'>"+datos.C2DESCRIPCION+"</p> \
+              <div class='row'> \
+                <div class='col-md-12 px-0'> \
+                  <div class='c1imagen1 card card-image' style='background-attachment: fixed;'> \
+                    <div class='text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4 px-md-5 rounded'> \
+                      <div> \
+                        <h6 class='font-primary'> \
+                          <i class='fas fa-eye'></i> \
+                          <strong> Funcional</strong> \
+                        </h6> \
+                        <h3 class='py-3 font-weight-bold'> \
+                          <strong>"+datos.C2T1TITULO+"</strong> \
+                        </h3> \
+                        <p class='pb-3'>"+datos.C2T1DESCRIPCION+"</p> \
+                      </div> \
+                    </div> \
+                  </div> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+              case "4": componente+="<div class='container-fluid px-0'> \
+            <section class='c1imagen1 text-center white-text p-5' style='background-attachment: fixed;'> \
+              <div class='row d-flex justify-content-center my-5'> \
+                <div class='col-md-6'> \
+                    <h3 class='font-weight-bold'>"+datos.C2TITULO+"</h3> \
+                    <p>"+datos.C2DESCRIPCION+"</p> \
+                </div> \
+              </div> \
+            </section> \
+          </div>"; break;
+            }
+            $("div#banner1").after(componente);
+            $(".c1imagen1").css("background-image","url("+datos.C2IMAGEN1+")");
+            $(".c1imagen1").css("background-repeat","no-repeat");
+            $(".c1imagen1").css("background-size","cover");
+            $(".c1imagen1").css("background-position","center");
+            $(".c1imagen2").css("background-image","url("+datos.C2IMAGEN2+")");
+            $(".c1imagen2").css("background-repeat","no-repeat");
+            $(".c1imagen2").css("background-size","cover");
+            $(".c1imagen2").css("background-position","center");
         }
     });
 };

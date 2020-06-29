@@ -49,7 +49,7 @@
         <div class="alert alert-dark p-1 mx-auto my-4 row" role="alert">
           <div class="col-12 col-md-5 h5-responsive numeroSliders">Slider usados <span id="cantSlider">4</span> de 8</div>
           <div class="col-12 col-md-7 row m-0 justify-content-center">
-            <button class="btn py-2 bg-primary" data-toggle="modal" data-target="#agregarSlider">Agregar</button>
+            <button class="btn py-2 bg-primary" data-toggle="modal" data-target="#agregarSlider" onclick="agregarSliderOp()">Agregar</button>
             <button class="btn py-2 bg-primary" onclick="cargarDatos()">Actualizar</button>
           </div>
         </div>
@@ -60,7 +60,7 @@
       <div id="contenidoModificar" class="px-5 mt-0 mb-5 d-flex flex-wrap justify-content-center">
       </div>
 
-      <!-- MODAL AÑADIR SLIDER -->
+      <!-- MODAL AÑADIR/ACTUALIZAR SLIDER -->
       <div class="modal fade" id="agregarSlider" tabindex="-1" role="dialog" aria-labelledby="agregarSlider"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -81,6 +81,7 @@
                   <div class="form-group">
                       <h6 class="subtitulo">Título</h6>
                       <input id="titulo" type="text" class="form-control">
+                      <input id="codigo" hidden type="text">
                   </div>
                   
                   <div class="form-group">
@@ -99,12 +100,13 @@
             <!-- BOTONES -->
             <div class="modal-footer">
               <button id="guardar" type="button" class="btn bg-primary" onClick="validarFormulario()">Guardar</button>
+              <button id="actualizar" type="button" class="btn bg-primary" onClick="validarFormulario2()">Actualizar</button>
             </div>
             
           </div>
         </div>
       </div>
-
+     
       <!-- TOAST -->
       <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
         <div class="toast-body">Mensaje</div>
@@ -138,10 +140,10 @@
             dataType: 'json',
             error: function(error){
                 if(error.status == 401){
-                    console.log("No se pudo establecer conexion con el servidor")
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
                 }
                 else{
-                    console.log("Error no identificado.")
+                    mostrarToast("error","Error no identificado.");
                 }
             },
             success: function(datos){
@@ -173,7 +175,7 @@
                         slider2+="<div class='p-1'>\
                 <img class='imagenMinSlider' src='"+datos[i].SLDRIMAGEN+"'>\
                 <div class='opcionesSlider'>\
-                    <button class='btn bg-primary' onclick='editarSlider("+datos[i].SLDRCODIGO+")'><i class='fas fa-pen'></i></button>\
+                    <button class='btn bg-primary' onclick='mostrarDatosSlider("+datos[i].SLDRCODIGO+")'  data-toggle='modal'' data-target='#agregarSlider'><i class='fas fa-pen'></i></button>\
                     <button class='btn ml-5' onclick='eliminarSlider("+datos[i].SLDRCODIGO+")'>X</button>\
                 </div>\
             </div>"
@@ -188,35 +190,39 @@
         });
 
     }
-
-    //--ELIMINAR SLIDER--      
-    function eliminarSlider(cod){
+      
+    //--MOSTRAR DATOS SLIDER--      
+    function mostrarDatosSlider(cod){
+      
+        $("#guardar").addClass("d-none");
+        $("#actualizar").removeClass("d-none");
 
         var $datos={
             '_codigo': cod
         }
 
         $.ajax({
-            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_EliminarSlider.php',
+            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_DetalleSlider.php',
             type: 'POST',
             data: $datos,
             dataType: 'json',
             error: function(error){
                 if(error.status == 401){
-                    console.log("No se pudo establecer conexion con el servidor")
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
                 }
                 else{
-                    console.log("Error no identificado.")
+                    mostrarToast("error","Error no identificado.");
                 }
             },
             success: function(datos){
                 if(datos.response == 0){
-                    console.log('ERROR: '+datos.message)
+                    mostrarToast("error",datos.message);
                 }
                 else{
-                    mostrar=true;
-                    mostrarToast('exito','Imagen eliminada correctamente');
-                    cargarDatos();
+                    $("#codigo").val(datos.SLDRCODIGO);
+                    $("#titulo").val(datos.SLDRNOMBRE);
+                    $("#descripcion").val(datos.SLDRDESCRIPCION);
+                    document.getElementById('previewFoto').src = datos.SLDRIMAGEN;
                 }
             }
         });
@@ -243,6 +249,38 @@
             }else{
                 alert($("#estado").val());
             }
+        }
+
+    } 
+      
+    //--VALIDAR DATOS INGRESADOS EN EL FORMULARIO--  
+    function validarFormulario2(){
+
+        var R1 = $("#titulo").val();
+        var R2 = $("#descripcion").val();
+
+        if(R1 == null || R1.length == 0 || /^\s+$/.test(R1)){
+            alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+            $("#titulo").focus();
+        }
+        else if(R2 == null || R2.length == 0 || /^\s+$/.test(R2)){
+            alert('ERROR: El campo no debe ir vacío o lleno solamente espacios en blanco');
+            $("#descripcion").focus();
+        }else{
+            if(document.getElementById('foto').files.length == 0){
+                actualizarSlider();
+            }else{
+                guardarImagenSlider();
+
+                if ($("#estado").val() == "IMAGEN GUARDADA CORRECTAMENTE"){
+                        actualizarSlider()
+                }else{
+                        mostrar=true;
+                        mostrarToast("error",$("#estado1").val());
+                }
+
+            }
+          
         }
 
     } 
@@ -308,15 +346,15 @@
             dataType: 'json',
             error: function(error){
                 if(error.status == 401){
-                    console.log("No se pudo establecer conexion con el servidor")
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
                 }
                 else{
-                    console.log("Error no identificado.")
+                    mostrarToast("error","Error no identificado.");
                 }
             },
             success: function(datos){
                 if(datos.response == 0){
-                    console.log('ERROR: '+datos.message)
+                    mostrarToast("error",datos.message);
                 }
                 else{
                     document.getElementById("guardar").disabled=false;
@@ -333,6 +371,99 @@
 
     }
 
+    //--OP DE AGREGAR SLIDER--      
+    function agregarSliderOp(){
+      
+        $("#guardar").removeClass("d-none");
+        $("#actualizar").addClass("d-none");
+      
+    }
+
+    //--ACTUALIZAR SLIDER--      
+    function actualizarSlider(){
+      
+        var rutaFoto, nombreFoto;
+
+        if(document.getElementById('foto').files.length == 0){
+          if(document.getElementById('previewFoto').src==""){
+            rutaFoto="";
+          }else{
+            nombreFoto=document.getElementById('previewFoto').src.split("/Slider/");
+            rutaFoto="ES-FrontEnd/Elementos/Imagenes/Slider/"+nombreFoto[1];
+          }
+        }else{
+          rutaFoto="ES-FrontEnd/Elementos/Imagenes/Slider/"+document.getElementById('foto').files[0].name
+        }
+
+        var $datos={
+            '_codigo': $("#codigo").val(),
+            '_nombre': $("#titulo").val(),
+            '_descripcion': $("#descripcion").val(),
+            '_imagen': rutaFoto
+        }
+
+        $.ajax({
+            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_ActualizarSlider.php',
+            type: 'POST',
+            data: $datos,
+            dataType: 'json',
+            error: function(error){
+                if(error.status == 401){
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
+                }
+                else{
+                    mostrarToast("error","Error no identificado.");
+                }
+            },
+            success: function(datos){
+                if(datos.response == 0){
+                    mostrarToast("error",datos.message);
+                }
+                else{
+                    mostrar=true;
+                    mostrarToast('exito','Slider editado correctamente');
+                    cargarDatos();
+                    $('#agregarSlider').modal('hide');
+                }
+            }
+        });
+
+    }
+
+    //--ELIMINAR SLIDER--      
+    function eliminarSlider(cod){
+
+        var $datos={
+            '_codigo': cod
+        }
+
+        $.ajax({
+            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_EliminarSlider.php',
+            type: 'POST',
+            data: $datos,
+            dataType: 'json',
+            error: function(error){
+                if(error.status == 401){
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
+                }
+                else{
+                    mostrarToast("error","Error no identificado.");
+                }
+            },
+            success: function(datos){
+                if(datos.response == 0){
+                    mostrarToast("error",datos.message);
+                }
+                else{
+                    mostrar=true;
+                    mostrarToast('exito','Slider eliminado correctamente');
+                    cargarDatos();
+                }
+            }
+        });
+
+    }  
+      
     //--MOSTRAR TOAST CON MENSAJE--
     function mostrarToast(tipo,msj){
         if(mostrar==true){

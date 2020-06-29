@@ -83,6 +83,19 @@ class Model_Web{
     }
   
     /*===========================================
+        CONSULTA: MOSTRAR DATOS DEL COMPONENTE 2
+    ===========================================*/
+  
+    public function mostrarDatosComponente2() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT `componente2-adicional`.*, `componentes`.`COMP2` FROM `componente2-adicional`, `componentes`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    }
+  
+    /*===========================================
         CONSULTA: MOSTRAR SLIDER DE LA EMPRESA
     ===========================================*/
     
