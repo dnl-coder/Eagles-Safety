@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 27-06-2020 a las 16:06:38
+-- Tiempo de generación: 29-06-2020 a las 15:39:16
 -- Versión del servidor: 8.0.18
 -- Versión de PHP: 7.3.12
 
@@ -108,7 +108,36 @@ CREATE TABLE IF NOT EXISTS `componente1-presentacion` (
 --
 
 INSERT INTO `componente1-presentacion` (`C1CODIGO`, `C1TITULO`, `C1SUBTITULO`, `C1DESCRIPCION`, `C1IMAGEN`, `C1DESTACAMOS`, `C1CARACTERISTICA1`, `C1CARACTERISTICA2`, `C1CARACTERISTICA3`, `C1CARACTERISTICA4`, `C1CARACTERISTICA5`, `C1CARACTERISTICA6`) VALUES
-(1, 'EXPERIENCIA, SEGURIDAD Y GARANTIA', 'Los mejores', 'Tenemos los mejores productos para garantizar que siempre regreses seguro a tu hogar.', 'ES-FrontEnd/Elementos/Imagenes/Banners/ES-Banner1.png', 'Tenemos los mejores productos para garantizar que siempre regreses seguro a tu hogar.', 'MICHA GATA GORDA PELUDA OREJONA CACHETONA JUGUETONA LINDA BELLA HERMOSA PRECIOSA X33333333', 'LEOPOLDO GATO GORDO PELUDO OREJON CACHETON JUGUETON LINDO BELLO HERMOSO PRECIOSO X33333333', 'GOLIAT GATO GORDO PELUDO OREJON CACHETON JUGUETON LINDO BELLO HERMOSO PRECIOSO X33333333', 'CUCHA GATA GORDA PELUDA OREJONA CACHETONA JUGUETONA LINDA BELLA HERMOSA PRECIOSA X33333333', 'CHUQUI GATA GORDA PELUDA OREJONA CACHETONA JUGUETONA LINDA BELLA HERMOSA PRECIOSA X33333333', 'MINI GATA GORDA PELUDA OREJONA CACHETONA JUGUETONA LINDA BELLA HERMOSA PRECIOSA X33333333');
+(1, 'CAT', 'CAT', 'CAT', 'ES-FrontEnd/Elementos/Imagenes/Componentes/28958936_1181621198640588_2748993189728187426_n.jpg', 'CAT', 'MICHA GATA GORDA PELUDA OREJONA CACHETONA JUGUETONA LINDA BELLA HERMOSA PRECIOSA X33333333', 'LEOPOLDO GATO GORDO PELUDO OREJON CACHETON JUGUETON LINDO BELLO HERMOSO PRECIOSO X33333333', 'GOLIAT GATO GORDO PELUDO OREJON CACHETON JUGUETON LINDO BELLO HERMOSO PRECIOSO X33333333', 'CUCHA GATA GORDA PELUDA OREJONA CACHETONA JUGUETONA LINDA BELLA HERMOSA PRECIOSA X33333333', 'CHUQUI GATA GORDA PELUDA OREJONA CACHETONA JUGUETONA LINDA BELLA HERMOSA PRECIOSA X33333333', 'MINI GATA GORDA PELUDA OREJONA CACHETONA JUGUETONA LINDA BELLA HERMOSA PRECIOSA X33333333');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `componente2-adicional`
+--
+
+DROP TABLE IF EXISTS `componente2-adicional`;
+CREATE TABLE IF NOT EXISTS `componente2-adicional` (
+  `C2CODIGO` int(11) NOT NULL COMMENT 'CODIGO DEL COMPONENTE',
+  `C2TITULO` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'TITULO DEL COMPONENTE 2',
+  `C2DESCRIPCION` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'DESCRIPCION DEL COMPONENTE',
+  `C2IMAGEN1` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'IMAGEN 1 DEL COMPONENTE ',
+  `C2IMAGEN2` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'IMAGEN 2 DEL COMPONENTE',
+  `C2T1TITULO` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'TITULO DEL TEXTO 1',
+  `C2T1DESCRIPCION` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'DESCRIPCION DEL TEXTO 1',
+  `C2T2TITULO` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'TITULO DEL TEXTO 2',
+  `C2T2DESCRIPCION` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'DESCRIPCION DEL TEXTO 2',
+  `C2T3TITULO` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'TITULO DEL TEXTO 3',
+  `C2T3DESCRIPCION` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'DESCRIPCION DEL TEXTO 3',
+  PRIMARY KEY (`C2CODIGO`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='COMPONENTE 2 DEL INDEX DE LA PAGINA';
+
+--
+-- Volcado de datos para la tabla `componente2-adicional`
+--
+
+INSERT INTO `componente2-adicional` (`C2CODIGO`, `C2TITULO`, `C2DESCRIPCION`, `C2IMAGEN1`, `C2IMAGEN2`, `C2T1TITULO`, `C2T1DESCRIPCION`, `C2T2TITULO`, `C2T2DESCRIPCION`, `C2T3TITULO`, `C2T3DESCRIPCION`) VALUES
+(1, 'HOLAAAAAAAAAAAAA', 'Somos una empresa importadora, comercializadora y exportadora de equipos de proteccion personal (epp', 'ES-FrontEnd/Elementos/Imagenes/Componentes/28958936_1181621198640588_2748993189728187426_n.jpg', 'ES-FrontEnd/Elementos/Imagenes/Componentes/28958936_1181621198640588_2748993189728187426_n.jpg', 'CAT CAT CAT', 'Somos una empresa importadora, comercializadora y exportadora de equipos de proteccion personal (epp\'s) enfocada en brindar un buen nivel de servicio. Nuestros productos aseguran calidad, seguridad y confiabilidad. Todo lo que el cliente necesita para llegar seguro a casa.', 'DSFDSF', 'Somos una empresa importadora, comercializadora y exportadora de equipos de proteccion personal (epp\'s) enfocada en brindar un buen nivel de servicio. Nuestros productos aseguran calidad, seguridad y confiabilidad. Todo lo que el cliente necesita para llegar seguro a casa.', 'CSFDSFDF', 'Somos una empresa importadora, comercializadora y exportadora de equipos de proteccion personal (epp\'s) enfocada en brindar un buen nivel de servicio. Nuestros productos aseguran calidad, seguridad y confiabilidad. Todo lo que el cliente necesita para llegar seguro a casa.');
 
 -- --------------------------------------------------------
 
@@ -130,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `componentes` (
 --
 
 INSERT INTO `componentes` (`COMPCODIGO`, `COMP1`, `COMP2`, `COMP3`) VALUES
-(1, 1, 1, 1);
+(1, 5, 0, 1);
 
 -- --------------------------------------------------------
 

@@ -163,7 +163,7 @@
             
             <!-- Botones -->
             <div class="modal-footer">
-              <button id="actualizar" type="button" class="btn bg-primary" onClick="actualizarEstiloComponente2()">Guardar</button>
+              <button id="actualizar" type="button" class="btn bg-primary" onClick="actualizarEstiloComponente()">Guardar</button>
             </div>
             
           </div>
@@ -635,7 +635,7 @@
         }
         
         $.ajax({
-            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_ActualizarEstiloComponente1.php',
+            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_ActualizarEstiloComponente2.php',
             type: 'POST',
             data: $datos,
             dataType: 'json',
@@ -653,7 +653,7 @@
                 }
                 else{
                     $('#c1Actualizar').modal('hide')
-                    mostrarToast("exito","Actualización correcta!");
+                    mostrarToast("exito","¡Actualización correcta!");
                 }
             }
         });

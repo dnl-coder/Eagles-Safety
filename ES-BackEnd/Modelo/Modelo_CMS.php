@@ -372,6 +372,19 @@ class Model_CMS{
         return $this->_conexion->insert_registro();
 
     }
+  
+    /*===========================================
+        CONSULTA: ACTUALIZAR ESTILO DEL COMPONENTE 2
+    ===========================================*/
+  
+    public function actualizarEstiloComponente2($estilo){
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `componentes` SET `COMP2` = '".$estilo."' WHERE `COMPCODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
+    }
 
 }
 
