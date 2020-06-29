@@ -347,6 +347,31 @@ class Model_CMS{
         return $this->_conexion->insert_registro();
 
     }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DEL COMPONENTE 2
+    ===========================================*/
+  
+    public function mostrarDatosComponente2() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT `componente2-adicional`.*, `componentes`.`COMP2` FROM `componente2-adicional`, `componentes`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();        
+    }
+  
+    /*===========================================
+        CONSULTA: ACTUALIZAR DATOS DEL COMPONENTE 2
+    ===========================================*/
+  
+    public function actualizarDatosComponente2($titulo,$descripcion,$imagen1,$imagen2,$T1Titulo,$T1Descripcion,$T2Titulo,$T2Descripcion,$T3Titulo,$T3Descripcion) {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `componente2-adicional` SET `C2TITULO` = '".$titulo."', `C2DESCRIPCION` = '".$descripcion."', `C2IMAGEN1` = '".$imagen1."',  `C2IMAGEN2` = '".$imagen2."', `C2T1TITULO` = '".$T1Titulo."', `C2T1DESCRIPCION` = '".$T1Descripcion."', `C2T2TITULO` = '".$T2Titulo."',  `C2T2DESCRIPCION` = '".$T2Descripcion."', `C2T3TITULO` = '".$T3Titulo."', `C2T3DESCRIPCION` = '".$T3Descripcion."' WHERE `C2CODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
+    }
 
 }
 

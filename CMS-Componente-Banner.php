@@ -703,7 +703,7 @@
       //--ACTUALIZAR DATOS DEL COMPONENTE 1 --  
       function actualizarDatosComponente1(){
         
-        var rutaFoto;
+        var rutaFoto, nombreFoto;
 
         if(document.getElementById('foto').files.length == 0){
           if(document.getElementById('previewFoto').src==""){

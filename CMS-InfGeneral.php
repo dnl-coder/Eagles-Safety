@@ -303,7 +303,7 @@
                                     actualizarDatosEmpresa()
                             }else{
                                     mostrar=true;
-                                    mostrarToast("error",$("#estado").val());
+                                    mostrarToast("error",$("#estado1").val());
                             }
 
                     }

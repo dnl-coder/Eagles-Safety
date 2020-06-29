@@ -63,8 +63,11 @@
             </a>
             <ul class="sub-menu collapse" id="dashboard1">
                 <li><a href="CMS-Componente-Slider.php"> Carrusel de imágenes </a></li>
+                <li><a href="CMS-Componente-Banner.php"> Banner 1</a></li>
+                <li><a href="CMS-Componente-Banner2.php"> Banner 2</a></li>
+                <li><a href="CMS-Componente-Banner3.php"> Banner 3</a></li>
                 <li><a href="CMS-Componente-Marcas.php"> Marcas </a></li>
-                <li><a href="CMS-Componente-Banner.php"> Banner </a></li>
+                
             </ul>
         </li>
 
