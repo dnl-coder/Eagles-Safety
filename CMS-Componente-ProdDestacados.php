@@ -459,7 +459,7 @@
                       var tabla="";
                       for(var i=0; i<datos.length ; i++){
                         tabla += "<tr> \
-                          <th class='py-0 align-middle' scope='row'><input type='radio' value='producto-"+(i+1)+"' name='prodDestacados'></th> \
+                          <th class='py-0 align-middle' scope='row'><input type='radio' value='"+(i+1)+"' name='prodDestacados'></th> \
                           <td class='py-0 align-middle'>"+datos[i].CATNOMBRE+"</td> \
                           <td class='py-0 align-middle'>"+datos[i].PRODNOMBRE+"</td> \
                           <td class='py-0 align-middle'><img src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' width='50' height='50'></td> \

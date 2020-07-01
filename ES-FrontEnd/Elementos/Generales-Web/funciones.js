@@ -838,6 +838,9 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
             }
             else{
                 console.log("Mensaje enviado correctamente");
+                $("#correo").val("");
+                $("#asunto").val("");
+                $("#mensaje").val("");
             }
         }
     });

@@ -36,10 +36,10 @@
             <div class="list-group" id="list-tab" role="tablist">
                 
                 <!-- CATEGORIA 1 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="profile"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT2.png" width="100"><span class="my-auto">Protección Anticaída</span></a>                
+                <a class="list-group-item list-group-item-action active p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="profile"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT2.png" width="100"><span class="my-auto">Protección Anticaída</span></a>                
 
                 <!-- CATEGORIA 2 -->
-                <a class="list-group-item list-group-item-action active p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="home"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT6.png" width="100"><span class="my-auto">Protección Auditiva</span></a>
+                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="home"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT6.png" width="100"><span class="my-auto">Protección Auditiva</span></a>
 
                 <!-- CATEGORIA 3 -->
                 <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="messages"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT1.png" width="100"><span class="my-auto">Protección Cabeza</span></a>
