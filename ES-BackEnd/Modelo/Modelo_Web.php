@@ -55,7 +55,7 @@ class Model_Web{
         CARGAR PRODUCTOS DESTACADOS
     =======================================================*/
     public function mostrarProductosDestacados(){
-        $sql = "SELECT * FROM producto WHERE PRODDESTACADO = '1' ";
+        $sql = "SELECT `producto`.*, `componentes`.`COMPDESTACADOS` FROM `producto`, `componentes` WHERE PRODDESTACADO = '1';";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
     }
@@ -102,7 +102,7 @@ class Model_Web{
     public function mostrarSliders() {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "SELECT * FROM slider";
+        $sql = "SELECT `slider`.*, `componentes`.`COMPSLIDER` FROM `slider`, `componentes`;";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
         

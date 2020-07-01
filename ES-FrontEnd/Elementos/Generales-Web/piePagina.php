@@ -9,13 +9,13 @@
                 <span class="fab fa-viber fa-3x fa-sm-4x"></span>
                 <h4 class="h4-responsive">Teléfonos:</h4>
                 <p id="tel1ES" class="mb-1">(+51) 998 338 559</p>
-                <p id="tel2ES">(+51) 999 229 937</p>
+                <p id="tel2ES"></p>
             </div>
             <!--CORREO -->  
             <div class="col-12 col-sm-4 wow fadeIn">
                 <span class="fas fa-comments fa-3x fa-sm-4x"></span>
                 <h4 class="h4-responsive">Escríbenos:</h4>
-                <p id="correoES">rmanrique@es.com.pe</p>
+                <p id="correoES"></p>
             </div>
             <!--DIRECCION -->  
             <div class="col-12 col-sm-4 wow fadeIn">

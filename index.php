@@ -44,23 +44,7 @@
     </div>                    
     
     <!-- PRODUCTOS DESTACADOS-->
-    <div class="product-ofertas container-fluid py-3">
-
-        <!--TITULO -->  
-        <p class="h2-responsive pt-4 font-weight-bold text-center animated fadeIn" data-wow-delay="0.4s">Productos de alta calidad</p>
-
-        <!--DESCRIPCION -->  
-        <p class="px-4 pb-3 lead text-center animated fadeIn">Los mejores acabados, diseños y modelos a tu alcance.</p>
-
-        <!--PRODUCTOS -->  
-        <div id="DESTACADOS" class="card-deck mb-4 row justify-content-center"></div> 
-        
-        <!-- DESCRIPCION--> 
-        <div class="modal fade" id="modalDescripcion" tabindex="-1" role="dialog">
-          <div class="modal-dialog modal-dialog-centered" role="document"></div>
-        </div>
-
-    </div>
+    <div id="DESTACADOS"></div>
 
     <!-- CAROUSEL DE MARCAS-->
     <div class="black darken-4 py-5">

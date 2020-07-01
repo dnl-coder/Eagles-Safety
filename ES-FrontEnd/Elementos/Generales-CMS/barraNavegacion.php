@@ -62,11 +62,14 @@
                 <span class="fa fa-chevron-left pull-right mt-2"></span> 
             </a>
             <ul class="sub-menu collapse" id="dashboard1">
-                <li><a href="CMS-Componente-Slider.php"> Carrusel de imágenes </a></li>
+                <li><a href="CMS-Componente-Navegador.php"> Navegador </a></li>
+                <li><a href="CMS-Componente-Carrusel.php"> Carrusel de imágenes </a></li>
                 <li><a href="CMS-Componente-Banner.php"> Banner 1</a></li>
                 <li><a href="CMS-Componente-Banner2.php"> Banner 2</a></li>
-                <li><a href="CMS-Componente-Banner3.php"> Banner 3</a></li>
+                <li><a href="CMS-Componente-ProdDestacados.php"> Productos Destacados</a></li>
                 <li><a href="CMS-Componente-Marcas.php"> Marcas </a></li>
+                <li><a href="CMS-Componente-Banner3.php"> Banner 3</a></li>
+                <li><a href="CMS-Componente-Footer.php"> Pie de página</a></li>
                 
             </ul>
         </li>
@@ -83,6 +86,14 @@
                 <li><a href="CMS-Producto-Actualizar.php"> Editar producto </a></li>
                 <li><a href="CMS-Producto-Eliminar.php"> Eliminar producto </a></li>
             </ul>
+        </li>
+        
+        <!-- MENU CONFIGURACION-->
+        <li> 
+            <a href="CMS-Configuracion.php"> 
+                <i class="fas fa-cog"></i>
+                <span class="nav-label"> Configuración</span>
+            </a>
         </li>
         
         <!-- MENU USUARIO-->

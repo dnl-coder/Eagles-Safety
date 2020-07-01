@@ -14,7 +14,7 @@
   GENERAL STYLE
 =============================================*/
 
-body{
+html,body{
     overflow-x: hidden;
     scrollbar-face-color: var(--primary);
     scrollbar-track-color:#F5F5F5;
@@ -194,6 +194,21 @@ a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{
 	transition: 0.5s;
 }
 
+/*===BOTON QUINTO STYLE ===*/
+.botonCuarto{
+    border: 4px var(--primary) solid;
+	padding: 8px 50px;
+    border-radius: 30px; 
+	font-weight: bold;
+	font-size: 12px;
+    color: white;
+}
+.botonCuarto:hover, .botonCuarto:focus, .botonCuarto:hover:focus{
+	background: var(--primary) !important;
+    color: white;
+	transition: 0.5s;
+}
+
 /*===IMAGEN STYLE ===*/
 .inputImagen{
     margin: 3% 0 3% 0;
@@ -294,6 +309,14 @@ a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{
     font-weight: bold;
 }
 
+/*===OPCIONES DEL PRODUCTO DESTACADO===*/
+#tDestacados .btn{
+    background-color: rgba(244, 67, 54, 1); 
+    padding: 5px 13px;
+    color: white;
+    font-weight: bold;
+}
+
 /*=============================================
   MEDIA RESPONSIVE
 =============================================*/
@@ -332,5 +355,11 @@ a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{
         padding-right: 3%;
 
     }
+  
+    .destacado2{height: auto !important;}
 
 }
+
+
+
+

@@ -96,7 +96,7 @@ class Model_CMS{
     public function mostrarSliders() {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "SELECT * FROM slider";
+        $sql = "SELECT `slider`.*, `componentes`.`COMPSLIDER` FROM `slider`, `componentes`;";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
         
@@ -317,10 +317,23 @@ class Model_CMS{
     public function detalleSlider($codigo) {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "SELECT * FROM `slider` WHERE `SLDRCODIGO` = ".$codigo." ";
+        $sql = "SELECT `slider`.*, `componentes`.`COMPSLIDER` FROM `slider`, `componentes` WHERE `SLDRCODIGO` = ".$codigo."; ";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_array();
         
+    }
+  
+    /*===========================================
+        CONSULTA: ACTUALIZAR ESTILO DEL SLIDER
+    ===========================================*/
+  
+    public function actualizarEstiloSlider($estilo){
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `componentes` SET `COMPSLIDER` = '".$estilo."' WHERE `COMPCODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
     }
   
     /*===========================================
@@ -397,6 +410,49 @@ class Model_CMS{
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
 
+    }
+  
+    /*=======================================================s
+        CONSULTA: CARGAR PRODUCTOS DESTACADOS
+    =======================================================*/
+    public function mostrarProductosDestacados(){
+        $sql = "SELECT `producto`.*, `categoria`.CATNOMBRE  FROM `producto` INNER JOIN `categoria` ON `producto`.CATCODIGO = `categoria`.CATCODIGO WHERE `producto`.PRODDESTACADO = '1' ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+    /*=======================================================s
+        CONSULTA: CARGAR PRODUCTOS (TODOS)
+    =======================================================*/
+    public function cargarProductos($categoria){
+        $sql = "SELECT P.*, C.CATNOMBRE FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+    /*===========================================
+        CONSULTA: ACTUALIZAR ESTILO DESTACADOS
+    ===========================================*/
+  
+    public function actualizarEstiloDestacados($estilo){
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `componentes` SET `COMPDESTACADOS` = '".$estilo."' WHERE `COMPCODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
+    }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DE LOS COMPONENTES
+    ===========================================*/
+  
+    public function mostrarDatosComponentes() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM `componentes`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();        
     }
 
 }

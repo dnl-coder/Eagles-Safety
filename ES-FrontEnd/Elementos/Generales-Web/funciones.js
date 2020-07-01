@@ -110,22 +110,90 @@ vistaWeb.prototype.mostrarSliders = function(){
             }
         },
         success: function(datos){
-            var sliders=""
-            for (var i=0; i<datos.length;i++){
-                if(i==0){
-                    sliders+="<div class='carousel-item active' style='background:url(\""+datos[i].SLDRIMAGEN+"\");'>"
-                }
-                else{
-                    sliders+="<div class='carousel-item' style='background:url(\""+datos[i].SLDRIMAGEN+"\");'>"
-                }
-                sliders+="\<div class='descripcionSlider container-fluid wow fadeIn' data-wow-delay='0.4s'>\
-                                <p class='h1-responsive wow fadeInLeftBig'>"+datos[i].SLDRNOMBRE+"</p>\
-                                <p class='descripcion wow fadeIn'>"+datos[i].SLDRDESCRIPCION+"</p>\
+            var sliders="";
+            switch(datos[0].COMPSLIDER){
+              case "1": 
+                sliders+="<div class='fondo' style='background-repeat: no-repeat; background-size: cover; background-position: center center; height:100vh;'> \
+            <div class='mask bg-gradiente d-flex justify-content-center align-items-center' style='height:100vh;'> \
+              <div class='container'> \
+                <div class='row'> \
+                  <div class='col-md-6 white-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft' data-wow-delay='0.3s'> \
+                    <h1 class='h1-responsive font-weight-bold mt-sm-5'>"+datos[0].SLDRNOMBRE+"</h1> \
+                    <hr class='hr-light'> \
+                    <h6 class='Sdescripcion mb-4'>"+datos[0].SLDRDESCRIPCION+"</h6> \
+                    <a class='btn botonPrincipal' href='Nosotros.php'>Ver más</a> \
+                    <a class='btn botonCuarto' href='Contactos.php'>Contáctanos</a> \
+                  </div> \
+                  <div class='col-md-6 col-xl-5 mt-xl-5 wow fadeInRight' data-wow-delay='0.3s'> \
+                    <img class='Simagen img-fluid'> \
+                  </div> \
+                </div> \
+              </div> \
+            </div> \
+          </div>"; 
+                $(".carousel-control-prev").css("display","none");
+                $(".carousel-control-next").css("display","none");
+                break;
+              case "2": 
+                sliders+="<div class='Simagen view jarallax' data-jarallax='{'speed': 0.2}' style='background-repeat: no-repeat; background-size: cover; background-position: center center; height:100vh;'> \
+            <div class='mask rgba-white-light d-flex justify-content-center align-items-center'> \
+              <div class='container'> \
+                <div class='row'> \
+                  <div class='col-md-12 white-text text-center'> \
+                    <h1 class='display-4 mb-0 pt-md-5 pt-5 white-text font-weight-bold wow fadeInDown' data-wow-delay='0.3s'>"+datos[0].SLDRNOMBRE+"</h1> \
+                    <h5 class='text-uppercase pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 white-text font-weight-bold wow fadeInDown' data-wow-delay='0.3s'>"+datos[0].SLDRDESCRIPCION+"</h5> \
+                    <div class='wow fadeInDown' data-wow-delay='0.3s'> \
+                      <a class='btn bg-enfasis1 btn-lg btn-rounded' href='Nosotros.php'>Ver más</a> \
+                      <a class='btn bg-enfasis2 btn-lg btn-rounded' href='Contactos.php'>Contáctanos</a> \
+                    </div> \
+                  </div> \
+                </div> \
+              </div> \
+            </div> \
+          </div>";
+                $(".carousel-control-prev").css("display","none");
+                $(".carousel-control-next").css("display","none");
+                break;
+              case "3": 
+                sliders+="<div class='Simagen view jarallax' data-jarallax='{'speed': 0.2}' style='background-repeat: no-repeat; background-size: cover; background-position: center center; height:100vh;'> \
+            <div class='mask rgba-black-light d-flex justify-content-center align-items-center'> \
+              <div class='container'> \
+                <div class='row'> \
+                  <div class='col-md-12 mb-4 white-text text-center'> \
+                    <h1 class='h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown' data-wow-delay='0.3s'><strong>"+datos[0].SLDRNOMBRE+"</strong></h1> \
+                    <hr class='my-4 wow fadeInDown' data-wow-delay='0.4s' style='border-top: 3px solid #fff; width: 80px;'> \
+                    <h5 class='text-uppercase mb-4 white-text wow fadeInDown' data-wow-delay='0.4s'><strong>"+datos[0].SLDRDESCRIPCION+"</strong></h5> \
+                    <a class='btn botonCuarto wow fadeInDown' href='Nosotros.php' data-wow-delay='0.4s'>Ver más</a> \
+                    <a class='btn botonCuarto wow fadeInDown' href='Contactos.php' data-wow-delay='0.4s'>Contáctanos</a> \
+                  </div> \
+                </div> \
+              </div> \
+            </div> \
+          </div>";
+                $(".carousel-control-prev").css("display","none");
+                $(".carousel-control-next").css("display","none");
+                break;
+              case "4":
+                for (var i=0; i<datos.length;i++){
+                    if(i==0){
+                        sliders+="<div class='carousel-item active' style='background:url(\""+datos[i].SLDRIMAGEN+"\");'>"
+                    }
+                    else{
+                        sliders+="<div class='carousel-item' style='background:url(\""+datos[i].SLDRIMAGEN+"\");'>"
+                    }
+                    sliders+="\<div class='descripcionSlider container-fluid wow fadeIn' data-wow-delay='0.4s'>\
+                                    <p class='h1-responsive wow fadeInLeftBig'>"+datos[i].SLDRNOMBRE+"</p>\
+                                    <p class='descripcion wow fadeIn'>"+datos[i].SLDRDESCRIPCION+"</p>\
+                                </div>\
                             </div>\
-                        </div>\
-                    </div>"
+                        </div>"
+                }
+                break;
             }
             $("#CarouselInicio .carousel-inner").html(sliders);
+            $(".Simagen").attr("src",datos[0].SLDRIMAGEN);
+            $(".Simagen").css("background-image","url("+datos[0].SLDRIMAGEN+")");
+            $(".fondo").css("background-image",'url(https://mdbootstrap.com/img/Photos/Others/architecture.jpg)');
         }
     });
 };
@@ -559,24 +627,65 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
         success: function(datos){
             data=datos;
             var contenedor = "";
-            for(var i=0; i<3 ; i++){
-                contenedor += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-12 wow fadeIn' style='min-width:150px; max-width:250px;'>\n\
-                <div class='card m-1'>\n\
-                    <!--imagen-->\n\
-                    <div class='view overlay zoom'>\n\
-                        <img id='"+datos[i].PRODCODIGO+"' class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' onclick='vWeb.seleccionarProducto(this)' style='cursor:pointer;'>\n\
-                    </div>\n\
-                    <!--titulo-->\n\
-                    <div class='card-body'>\n\
-                        <p class='font-weight-bold text-uppercase mb-1' >"+datos[i].PRODNOMBRE+"</p>\n\
-                        <hr class='bg-light3 my-0' style='width: 60%; height:3px;'>\n\
-                        <hr class='bg-primary my-1' style='width: 20%; height:3px;'>\n\
-                        <div class='text-right'>\n\
-                            <a id='"+datos[i].PRODCODIGO+"' class='btn bg-primary btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a> \n\
-                        </div>\n\
-                    </div>\n\
-                </div>\n\
-                </div>";
+            switch(datos[0].COMPDESTACADOS){
+              case "0": contenedor+=""; break;
+              case "1":
+                contenedor +="<div class='bg-light1 container-fluid pt-5 pb-2 text-center'> \
+              <h3 class='font-weight-bold mb-4 pb-2  wow fadeIn'>Productos de alta calidad</h3> \
+              <p class='grey-text w-responsive mx-auto mb-5 wow fadeIn'>Los mejores acabados, diseños y modelos a tu alcance.</p> \
+              <div class='card-deck mb-4 row justify-content-center'>";
+                for(var i=0; i<3 ; i++){
+                    contenedor += "<div class='col-12 wow fadeIn' style='min-width:150px; max-width:250px;'> \
+                    <div class='card m-1'> \
+                        <div class='view overlay zoom'> \
+                            <img id='"+datos[i].PRODCODIGO+"' class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' onclick='vWeb.seleccionarProducto(this)' style='cursor:pointer;' height='200px'> \
+                        </div> \
+                        <div class='card-body'> \
+                            <p class='font-weight-bold text-uppercase mb-1' style='height:80px;'>"+datos[i].PRODNOMBRE+"</p> \
+                            <hr class='bg-light3 my-0' style='width: 60%; height:3px;'> \
+                            <hr class='bg-primary my-1' style='width: 20%; height:3px;'> \
+                            <div class='text-right'> \
+                                <a id='"+datos[i].PRODCODIGO+"' class='btn bg-primary btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a>  \
+                            </div> \
+                        </div> \
+                    </div> \
+                    </div>";
+
+                }
+                contenedor += "</div>  \
+              <div class='modal fade' id='modalDescripcion' tabindex='-1' role='dialog'> \
+                <div class='modal-dialog modal-dialog-centered' role='document'></div> \
+              </div> \
+          </div>"
+                break;
+              case "2":
+                contenedor += "<div class='container mt-5'> \
+            <section class='dark-grey-text text-center'> \
+              <h3 class='font-weight-bold mb-4 pb-2'>Productos de alta calidad</h3> \
+              <p class='grey-text w-responsive mx-auto mb-5'>Los mejores acabados, diseños y modelos a tu alcance.</p> \
+              <div class='row justify-content-center'>";                
+                for(var i=0; i<3 ; i++){
+                    contenedor += "<div class='col-lg-3 col-md-6 mb-4 justify-content-center d-flex align-items-stretch'> \
+                <div class='card align-items-center'> \
+                  <div class='destacado2 view overlay' style='height: 238.078px'> \
+                    <img src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' class='card-img-top'> \
+                    <a id='"+datos[i].PRODCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
+                  </div> \
+                  <div class='card-body text-center'> \
+                    <h5 class='mb-3'> \
+                      <strong> \
+                        <a id='"+datos[i].PRODCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[i].PRODNOMBRE+"</a> \
+                      </strong> \
+                    </h5> \
+                  </div> \
+                </div> \
+              </div>";
+
+                }
+                contenedor += "</div> \
+            </section> \
+          </div>";
+                break;
             }
 
             $("#DESTACADOS").html(contenedor);
@@ -590,7 +699,6 @@ vistaWeb.prototype.seleccionarProducto = function(e){
     var modal="";
     var numproducto = 0;
     datos=data;
-    
     //BUSCAR DATOS DE PRODUCTO EN ARRAY
     for(var i=0; i<datos.length; i++){
        if(datos[i].PRODCODIGO == id){
@@ -802,7 +910,7 @@ vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
         ultimo=total;
     }
     for(var i=primero; i<ultimo; i++){
-        contenido += "<div id='producto-"+datos[i].PRODCODIGO+"' class='col-12 col-sm-6 col-md-4 p-2'>\n\
+        contenido += "<div class='col-12 col-sm-6 col-md-4 p-2'>\n\
         <div class='card'>\n\
             <!--imagen-->\n\
             <div class='view overlay zoom'>\n\
@@ -819,6 +927,7 @@ vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
             </div>\n\
         </div>\n\
         </div>";
+    
     }
     $("#content").html(contenido);
 };
