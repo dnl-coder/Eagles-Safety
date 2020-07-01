@@ -634,7 +634,7 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
               <h3 class='font-weight-bold mb-4 pb-2  wow fadeIn'>Productos de alta calidad</h3> \
               <p class='grey-text w-responsive mx-auto mb-5 wow fadeIn'>Los mejores acabados, diseños y modelos a tu alcance.</p> \
               <div class='card-deck mb-4 row justify-content-center'>";
-                for(var i=0; i<3 ; i++){
+                for(var i=0; i<datos.length ; i++){
                     contenedor += "<div class='col-12 wow fadeIn' style='min-width:150px; max-width:250px;'> \
                     <div class='card m-1'> \
                         <div class='view overlay zoom'> \
@@ -664,7 +664,7 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
               <h3 class='font-weight-bold mb-4 pb-2'>Productos de alta calidad</h3> \
               <p class='grey-text w-responsive mx-auto mb-5'>Los mejores acabados, diseños y modelos a tu alcance.</p> \
               <div class='row justify-content-center'>";                
-                for(var i=0; i<3 ; i++){
+                for(var i=0; i<datos.length ; i++){
                     contenedor += "<div class='col-lg-3 col-md-6 mb-4 justify-content-center d-flex align-items-stretch'> \
                 <div class='card align-items-center'> \
                   <div class='destacado2 view overlay' style='height: 238.078px'> \

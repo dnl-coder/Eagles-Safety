@@ -188,7 +188,6 @@
           });
       }
       
-      
       //--MOSTRAR TOAST --  
       function mostrarToast(tipo,msj){
         if(mostrar==true){
@@ -214,9 +213,7 @@
             $('.toast').addClass('visualizar');
         }
         mostrar=false;
-    }
-  
-      
+    } 
       
     </script>
 	

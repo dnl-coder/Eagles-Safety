@@ -310,7 +310,7 @@
                     var contenedor1 = "";
                     var contenedor2 = "";
 
-                    for(var i=0; i<3 ; i++){
+                    for(var i=0; i<datos.length ; i++){
                         contenedor1 += "<div class='col-12 wow fadeIn' style='min-width:150px; max-width:250px;'> \
                         <div class='card m-1'> \
                             <div class='view overlay zoom'> \
@@ -375,7 +375,7 @@
                 else{
                     var tabla = "";
                 
-                    for(var i=0; i<3 ; i++){
+                    for(var i=0; i<datos.length ; i++){
 
                       tabla += "<tr> \
                             <th class='py-0 align-middle' scope='row'><button type='button' class='btn' onclick='eliminarDestacado("+datos[i].PRODCODIGO+")'>X</button></th> \
@@ -453,7 +453,7 @@
                   var tabla="";
                   if(datos.response == 0){
                       tabla=datos.message;
-                      $(".alert").html("Error no identificado.");
+                      $(".alert").html(datos.message);
                   }
                   else{
                       var tabla="";
