@@ -36,6 +36,19 @@ class Model_CMS{
         return $this->_conexion->retornar_array();
         
     } 
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS NOSOTROS
+    ===========================================*/
+    
+    public function mostrarDatosNosotros() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM nosotros";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    } 
     
     /*===========================================
         CONSULTA: ACTUALIZAR DATOS DE LA EMPRESA
@@ -288,10 +301,10 @@ class Model_CMS{
         CONSULTA: ACTUALIZAR NOSOTROS
     ===========================================*/
 
-    public function actualizarNosotros($rutaFoto,$descripcion,$vision,$mision) {
+    public function actualizarNosotros($rutaMision,$rutaVision,$descripcion,$vision,$mision) {
             
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `nosotros` SET `NOSTIMAGEN` = '".$rutaFoto."', `NOSTDESCRIPCION` = '".$descripcion."', `NOSTVISION` = '".$vision."',  `NOSTMISION` = '".$mision."' WHERE `NOSTCODIGO` = 1;";
+        $sql = "UPDATE `nosotros` SET `NOSTMISION_IMAGEN` = '".$rutaMision."', `NOSTVISION_IMAGEN` = '".$rutaVision."', `NOSTDESCRIPCION` = '".$descripcion."', `NOSTVISION` = '".$vision."',  `NOSTMISION` = '".$mision."' WHERE `NOSTCODIGO` = 1;";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
@@ -453,6 +466,55 @@ class Model_CMS{
         $sql = "SELECT * FROM `componentes`;";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_array();        
+    }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DE LA PALETA DE COLORES VIGENTE
+    ===========================================*/
+  
+    public function mostrarColoresWeb() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM `paleta-colores` ORDER by COLORCODIGO DESC LIMIT 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();        
+    }
+  
+    /*===========================================
+        CONSULTA: AGREGAR PALETA DE COLORES
+    ===========================================*/
+  
+    public function agregarPaletaColores($primary, $secundary,$enfasis1,$enfasis2,$enfasis3,$light1,$light2,$light3) {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "INSERT INTO `paleta-colores`(`COLORCODIGO`, `COLORPRIMARY`, `COLORSECUNDARY`, `COLORENFASIS1`, `COLORENFASIS2`, `COLORENFASIS3`, `COLORLIGHT1`, `COLORLIGHT2`, `COLORLIGHT3`) VALUES (NULL,'".$primary."','".$secundary."','".$enfasis1."','".$enfasis2."','".$enfasis3."','".$light1."','".$light2."','".$light3."');";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();        
+    }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR TODAS LAS PALETAS DE COLORES
+    ===========================================*/
+  
+    public function mostrarPaletasColores() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM `paleta-colores`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();        
+    }
+  
+    /*===========================================
+        CONSULTA: ACTUALIZAR PRODUCTOS DESTACADOS
+    ===========================================*/
+  
+    public function actualizarDestacado($codigo,$destacado){
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `producto` SET `PRODDESTACADO` = '".$destacado."'  WHERE `PRODCODIGO` = '".$codigo."';";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
     }
 
 }

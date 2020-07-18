@@ -8,7 +8,7 @@ $("#logo-Eagles").click(function() {
 });     
     
 //--AÑADIR CLASE ACTIVE A LA OPCION DEL NAVBAR SELECCIONADA--
- $(document).ready(function () { 
+$(document).ready(function () { 
      $(function(){ 
          var current_page_URL = location.href; 
          $( "a" ).each(function() { 
@@ -22,6 +22,9 @@ $("#logo-Eagles").click(function() {
             }
          }); 
      }); 
+   
+    cargarPaletaColores(); 
+   
  }); 
 
 //-- ANIMACION TEXTO ESCRIBIENDOSE (INDEX) --
@@ -89,6 +92,41 @@ $(window).resize(function(){
     }
 });
 
+//--CARGAR PALETA DE COLORES--
+function cargarPaletaColores(){
+  
+    $.ajax({
+        url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_MostrarColoresWeb.php',
+        type: 'GET',
+        dataType: 'json',
+        error: function(error){
+            if(error.status == 401){
+                console.log("No se pudo establecer conexion con el servidor");
+            }
+            else{
+                console.log("Error no identificado.");
+            }
+        },
+        success: function(datos){
+            if(datos.response == 0){
+                console.log(datos.message);
+            }
+            else{
+                document.documentElement.style.setProperty('--primary', datos.COLORPRIMARY);
+                document.documentElement.style.setProperty('--secundary', datos.COLORSECUNDARY);
+                document.documentElement.style.setProperty('--enfasis1', datos.COLORENFASIS1);
+                document.documentElement.style.setProperty('--enfasis2', datos.COLORENFASIS2);
+                document.documentElement.style.setProperty('--enfasis3', datos.COLORENFASIS3);
+                document.documentElement.style.setProperty('--light1', datos.COLORLIGHT1);
+                document.documentElement.style.setProperty('--light2', datos.COLORLIGHT2);
+                document.documentElement.style.setProperty('--light3', datos.COLORLIGHT3);
+            }
+        }
+    });
+  
+}
+
+
 /*=============================================
     FUNCIONES GENERALES
 =============================================*/
@@ -116,23 +154,23 @@ vistaWeb.prototype.mostrarSliders = function(){
                 sliders+="<div class='fondo' style='background-repeat: no-repeat; background-size: cover; background-position: center center; height:100vh;'> \
             <div class='mask bg-gradiente d-flex justify-content-center align-items-center' style='height:100vh;'> \
               <div class='container'> \
-                <div class='row'> \
-                  <div class='col-md-6 white-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft' data-wow-delay='0.3s'> \
-                    <h1 class='h1-responsive font-weight-bold mt-sm-5'>"+datos[0].SLDRNOMBRE+"</h1> \
+                <div class='row mt-5 mt-md-0 mt-lg-5 pt-5 pb-5'> \
+                  <div class='col-md-6 white-text text-center text-md-left mt-5 mt-md-0 mt-lg-5 wow fadeInLeft' data-wow-delay='0.3s'> \
+                    <h1 class='h1-responsive font-weight-bold mt-5 mt-md-0 mt-lg-5'>"+datos[0].SLDRNOMBRE+"</h1> \
                     <hr class='hr-light'> \
                     <h6 class='Sdescripcion mb-4'>"+datos[0].SLDRDESCRIPCION+"</h6> \
                     <a class='btn botonPrincipal' href='Nosotros.php'>Ver más</a> \
                     <a class='btn botonCuarto' href='Contactos.php'>Contáctanos</a> \
                   </div> \
-                  <div class='col-md-6 col-xl-5 mt-xl-5 wow fadeInRight' data-wow-delay='0.3s'> \
-                    <img class='Simagen img-fluid'> \
+                  <div class='col-md-6 col-xl-5 mt-xl-5 wow fadeInRight text-center pb-5 pb-md-0 px-5 px-md-0' data-wow-delay='0.3s'> \
+                    <img class='Simagen img-fluid px-5 px-md-0' style='max-height:400px;'> \
                   </div> \
                 </div> \
               </div> \
             </div> \
           </div>"; 
-                $(".carousel-control-prev").css("display","none");
-                $(".carousel-control-next").css("display","none");
+                $("#CarouselInicio .carousel-control-prev").css("display","none");
+                $("#CarouselInicio .carousel-control-next").css("display","none");
                 break;
               case "2": 
                 sliders+="<div class='Simagen view jarallax' data-jarallax='{'speed': 0.2}' style='background-repeat: no-repeat; background-size: cover; background-position: center center; height:100vh;'> \
@@ -151,8 +189,8 @@ vistaWeb.prototype.mostrarSliders = function(){
               </div> \
             </div> \
           </div>";
-                $(".carousel-control-prev").css("display","none");
-                $(".carousel-control-next").css("display","none");
+                $("#CarouselInicio .carousel-control-prev").css("display","none");
+                $("#CarouselInicio .carousel-control-next").css("display","none");
                 break;
               case "3": 
                 sliders+="<div class='Simagen view jarallax' data-jarallax='{'speed': 0.2}' style='background-repeat: no-repeat; background-size: cover; background-position: center center; height:100vh;'> \
@@ -160,9 +198,9 @@ vistaWeb.prototype.mostrarSliders = function(){
               <div class='container'> \
                 <div class='row'> \
                   <div class='col-md-12 mb-4 white-text text-center'> \
-                    <h1 class='h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown' data-wow-delay='0.3s'><strong>"+datos[0].SLDRNOMBRE+"</strong></h1> \
+                    <h1 class='h1-responsive white-text text-uppercase font-weight-bold mb-0 pt-5 wow fadeInDown' data-wow-delay='0.3s'><strong>"+datos[0].SLDRNOMBRE+"</strong></h1> \
                     <hr class='my-4 wow fadeInDown' data-wow-delay='0.4s' style='border-top: 3px solid #fff; width: 80px;'> \
-                    <h5 class='text-uppercase mb-4 white-text wow fadeInDown' data-wow-delay='0.4s'><strong>"+datos[0].SLDRDESCRIPCION+"</strong></h5> \
+                    <h5 class='text-uppercase mb-4 white-text wow fadeInDown h5-responsive' data-wow-delay='0.4s'><strong>"+datos[0].SLDRDESCRIPCION+"</strong></h5> \
                     <a class='btn botonCuarto wow fadeInDown' href='Nosotros.php' data-wow-delay='0.4s'>Ver más</a> \
                     <a class='btn botonCuarto wow fadeInDown' href='Contactos.php' data-wow-delay='0.4s'>Contáctanos</a> \
                   </div> \
@@ -170,8 +208,8 @@ vistaWeb.prototype.mostrarSliders = function(){
               </div> \
             </div> \
           </div>";
-                $(".carousel-control-prev").css("display","none");
-                $(".carousel-control-next").css("display","none");
+                $("#CarouselInicio .carousel-control-prev").css("display","none");
+                $("#CarouselInicio .carousel-control-next").css("display","none");
                 break;
               case "4":
                 for (var i=0; i<datos.length;i++){
@@ -191,8 +229,8 @@ vistaWeb.prototype.mostrarSliders = function(){
                 break;
             }
             $("#CarouselInicio .carousel-inner").html(sliders);
-            $(".Simagen").attr("src",datos[0].SLDRIMAGEN);
-            $(".Simagen").css("background-image","url("+datos[0].SLDRIMAGEN+")");
+            $("img.Simagen").attr("src",datos[0].SLDRIMAGEN);
+            $("div.Simagen").css("background-image","url("+datos[0].SLDRIMAGEN+")");
             $(".fondo").css("background-image",'url(https://mdbootstrap.com/img/Photos/Others/architecture.jpg)');
         }
     });
@@ -219,7 +257,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
             <section class='px-md-5 mx-md-5 dark-grey-text text-center text-lg-left'> \
               <div class='row'> \
                 <div class='col-lg-6 mb-4 mb-lg-0 d-flex align-items-center justify-content-center'> \
-                  <img class='img-fluid wow fadeInLeft' src='"+datos.C1IMAGEN+"'> \
+                  <img class='img-fluid wow fadeInLeft' src='"+datos.C1IMAGEN+"' style='max-height:400px;'> \
                 </div> \
                 <div class='col-lg-6 mb-4 mb-lg-0'> \
                   <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
@@ -245,7 +283,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                   <a class='mx-1 font-primary disabled wow fadeIn' role='button'><i class='fab fa-instagram'></i></a> \
                 </div> \
                 <div class='col-md-5 mb-4 mb-md-0'> \
-                  <img class='c1imagen img-fluid wow fadeInRight' src='"+datos.C1IMAGEN+"'> \
+                  <img class='c1imagen img-fluid wow fadeInRight' src='"+datos.C1IMAGEN+"' style='max-height:400px;'> \
                 </div> \
               </div> \
             </section> \
@@ -522,13 +560,16 @@ vistaWeb.prototype.mostrarInformacionEmpresa = function(){
             }
         },
         success: function(datos){
+          
+            //PRELOADING
+            $(".logo").attr("src",datos[0].INFEMPLOGO);
 
             //NAV
             $(".navbar-brand").html("<img class='mr-3' src='"+datos[0].INFEMPLOGO+"' width='100'>"+datos[0].INFEMPTITULO_PAGINA);
           
-            $("#telNavES").html("<span class='fa fa-phone rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPTELEFONO1+" / "+datos[0].INFEMPTELEFONO2);
+            $(".telNavES").html("<span class='fa fa-phone rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPTELEFONO1+" / "+datos[0].INFEMPTELEFONO2);
 
-            $("#correoNavES").html("<span class='fa fa-envelope rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPCORREO);
+            $(".correoNavES").html("<span class='fa fa-envelope rounded-circle mr-2 pl-1 pt-1'></span>"+datos[0].INFEMPCORREO);
 
 					
             //FOOTER
@@ -913,20 +954,18 @@ vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
         ultimo=total;
     }
     for(var i=primero; i<ultimo; i++){
-        contenido += "<div class='col-12 col-sm-6 col-md-4 p-2'>\n\
-        <div class='card'>\n\
+        contenido += "<div class='col-12 col-sm-6 col-md-4 col-lg-3 p-2'>\n\
+        <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.seleccionarProducto(this)'>\n\
             <!--imagen-->\n\
             <div class='view overlay zoom'>\n\
-                <img id='"+datos[i].PRODCODIGO+"' class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' onclick='vWeb.seleccionarProducto(this)' style='cursor:pointer; height:40vh;'>\n\
+                <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' style='cursor:pointer; height:40vh;'>\n\
             </div>\n\
             <!--titulo-->\n\
             <div class='card-body'>\n\
-                <p class='mb-3'>"+datos[i].PRODNOMBRE+"</p>\n\
-                <hr class='bg-light2 my-0' style='width: 60%; height:3px;'>\n\
-                <hr class='bg-primary my-1' style='width: 20%; height:3px;'>\n\
-                <div class='text-right'>\n\
-                    <a id='"+datos[i].PRODCODIGO+"' class='btn bg-primary btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a> \n\
-                </div>\n\
+                <p class='mb-2 font-dark4'>PROTECTA</p>\n\
+                <p class='mb-1'>"+datos[i].PRODNOMBRE+"</p>\n\
+                <p class='mb-2 font-dark4'>COD 1161560</p>\n\
+                <p class='mb-2 bg-primary text-white px-2 border rounded-pill' style='width:fit-content;'>DISPONIBLE</p>\n\
             </div>\n\
         </div>\n\
         </div>";

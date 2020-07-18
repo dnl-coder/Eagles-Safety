@@ -209,9 +209,7 @@
     
     <script>
       var mostrar=false;
-      var cantDestacados=3;
       mostrarProductosDestacados();
-      mostrarCategorias();
       
       //--SELECCION DE CATEGORIA--
       $("#selCategoria").change(function() {
@@ -388,6 +386,8 @@
 
                     $("#tDestacados tbody").html(tabla);
                     $(".alert").html("");
+                  
+                    mostrarCategorias();
 
                 }
                 
@@ -459,7 +459,7 @@
                       var tabla="";
                       for(var i=0; i<datos.length ; i++){
                         tabla += "<tr> \
-                          <th class='py-0 align-middle' scope='row'><input type='radio' value='"+(i+1)+"' name='prodDestacados'></th> \
+                          <th class='py-0 align-middle' scope='row'><input type='radio' value='"+datos[i].PRODCODIGO+"' name='prodDestacados'></th> \
                           <td class='py-0 align-middle'>"+datos[i].CATNOMBRE+"</td> \
                           <td class='py-0 align-middle'>"+datos[i].PRODNOMBRE+"</td> \
                           <td class='py-0 align-middle'><img src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' width='50' height='50'></td> \
@@ -477,7 +477,7 @@
       //-ELIMINAR DESTACADO--
       function eliminarDestacado(cod){
           
-          if(cantDestacados<=1){
+          if($('#tDestacados >tbody >tr').length <=1){
               $(".alert").html("Mínimo debe haber un producto destacado")
           }else{
               var $datos={
@@ -503,7 +503,7 @@
                           $(".alert").html(datos.message);
                       }
                       else{
-                          cantDestacados=cantDestacados-1;
+                          mostrarProductosDestacados();
                           mostrarProductosDestacadosModal();
                           $(".alert").html("");
                       }
@@ -515,7 +515,7 @@
       //-AGREGAR DESTACADO--
       function agregarDestacado(){
           
-          if(cantDestacados>=3){
+          if($('#tDestacados >tbody >tr').length >=3){
               $(".alert").html("Máximo debe haber tres productos destacados")
           }else{
             
@@ -546,7 +546,7 @@
                           $(".alert").html(datos.message);
                       }
                       else{
-                          cantDestacados=cantDestacados+1;
+                          mostrarProductosDestacados();
                           mostrarProductosDestacadosModal();
                           $(".alert").html("");
                       }

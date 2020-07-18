@@ -377,7 +377,7 @@
         if(document.getElementById('previewFoto').src==""){
             rutaFoto1="";
         }else{
-            nombreFoto1=document.getElementById('previewFoto').src.split("/Imagenes/");
+            nombreFoto1=document.getElementById('previewFoto').src.split("/Productos/");
             rutaFoto1=nombreFoto1[1];
         }
         }else{

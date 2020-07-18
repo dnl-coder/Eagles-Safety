@@ -109,16 +109,16 @@
       <div class="tab-content">
         <!-- ESTILO 1 -->
         <div class="tab-pane fade show active" id="op1" role="tabpanel" aria-labelledby="op1-tab">
-          <div style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center; height:500px;">
+          <div style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
 
             <!-- CONTENIDO-->
-            <div class="mask bg-gradiente d-flex justify-content-center align-items-center" style="height:500px;">
+            <div class="mask bg-gradiente d-flex justify-content-center align-items-center">
               <div class="container">
-                <div class="row">
+                <div class="row mt-0 mb-5 pt-5 pb-5">
 
                   <!--INFORMACION-->
-                  <div class="col-md-6 white-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft" data-wow-delay="0.3s">
-                    <h1 class="Stitulo h1-responsive font-weight-bold mt-sm-5"></h1>
+                  <div class="col-md-6 white-text text-center text-md-left mt-5 mt-md-0 mt-lg-5 wow fadeInLeft" data-wow-delay="0.3s">
+                    <h1 class="Stitulo h1-responsive font-weight-bold mt-5 mt-md-0 mt-lg-5"></h1>
                     <hr class="hr-light">
                     <h6 class="Sdescripcion mb-4"></h6>
                     <a class="btn botonPrincipal disabled" href="Nosotros.php">Ver más</a>
@@ -126,8 +126,8 @@
                   </div>
 
                   <!--IMAGEN-->
-                  <div class="col-md-6 col-xl-5 mt-xl-5 wow fadeInRight" data-wow-delay="0.3s">
-                    <img class="Simagen img-fluid">
+                  <div class="col-md-6 col-xl-5 mt-xl-5 wow fadeInRight text-center pb-5 pb-sm-0 px-5 px-sm-0" data-wow-delay="0.3s">
+                    <img class="Simagen img-fluid px-5 px-sm-0" style="max-height:400px;">
                   </div>
 
                 </div>
@@ -170,7 +170,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-12 mb-4 white-text text-center">
-                    <h1 class="Stitulo h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown"
+                    <h1 class="Stitulo h1-responsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown"
                       data-wow-delay="0.3s"><strong></strong></h1>
                     <hr class="my-4 wow fadeInDown" data-wow-delay="0.4s" style="border-top: 3px solid #fff; width: 80px;">
                     <h5 class="text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s"><strong class="Sdescripcion"></strong></h5>
@@ -242,17 +242,17 @@
               <form id="form" class="text-center">
                   
                   <div class="form-group">
-                      <h6 class="subtitulo">Título</h6>
-                      <input id="titulo" type="text" class="form-control">
+                      <h6 class="subtitulo obligatorio">Título</h6>
+                      <input id="titulo" type="text" class="form-control" maxlength="50" placeholder="Maximo 50 caracteres">
                       <input id="codigo" hidden type="text">
                   </div>
                   
                   <div class="form-group">
-                      <h6 class="subtitulo">Descripcion</h6>
-                      <input id="descripcion" type="text" class="form-control">
+                      <h6 class="subtitulo obligatorio">Descripcion</h6>
+                      <textarea id="descripcion" type="text" class="form-control" rows="3"></textarea>
                   </div>
 
-                  <h6 class="subtitulo">Imagen</h6>
+                  <h6 class="subtitulo obligatorio">Imagen</h6>
                   <img id="previewFoto" class="imagenMinSlider mb-2"><br>
                   <label for="foto" class="botonSecundario">Seleccionar imagen</label>
                   <input id="foto" class="inputImagen" name="archivo" type="file" accept="image/*"><input type="text" hidden id="estado">
@@ -352,8 +352,9 @@
                     $("#vistaPrevia").addClass("d-none");
                     $(".Stitulo").html(datos[0].SLDRNOMBRE);
                     $(".Sdescripcion").html(datos[0].SLDRDESCRIPCION);
-                    $(".Simagen").attr("src",datos[0].SLDRIMAGEN);
-                    $(".Simagen").css("background-image","url("+datos[0].SLDRIMAGEN+")");
+                    $("img.Simagen").attr("src",datos[0].SLDRIMAGEN);
+                    $("div.Simagen").css("background-image","url("+datos[0].SLDRIMAGEN+")");
+
                     mostrarDatosSlider(datos[0].SLDRCODIGO);
                   
                     if(datos[0].COMPSLIDER == 4){
@@ -396,7 +397,7 @@
                 else{
                     $("#codigo").val(datos.SLDRCODIGO);
                     $("#titulo").val(datos.SLDRNOMBRE);
-                    $("#descripcion").val(datos.SLDRDESCRIPCION);
+                    $("#descripcion").html(datos.SLDRDESCRIPCION);
                     document.getElementById('previewFoto').src = datos.SLDRIMAGEN;
                   
                     switch(datos.COMPSLIDER){
@@ -404,7 +405,8 @@
                       case "2": $( "#c1Estilo2" ).prop( "checked", true);break;
                       case "3": $( "#c1Estilo3" ).prop( "checked", true);break;
                       case "4": $( "#c1Estilo4" ).prop( "checked", true);break;
-                    }
+                    }    
+                    
                 }
             }
         });

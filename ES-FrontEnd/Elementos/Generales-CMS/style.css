@@ -78,7 +78,6 @@ html,body{
     display:block; 
     padding:18px 15px; 
     color: white;
-    border-left:0px solid #dedede;  
     text-decoration:none;
 }
 .sidebar li a.active{
@@ -158,6 +157,7 @@ a.bg-primary:hover:focus, a.bg-primary:focus, a.bg-primary:hover{
     font-weight: bold;
     background: var(--primary);
     padding: 10px 50px;
+    color: white;
 }
 .botonPrincipal:hover, .botonPrincipal:focus, .botonPrincipal:hover:focus{
     background: var(--secundary) !important;

@@ -27,8 +27,8 @@
         <!--REDES SOCIALES-->
         <ul class="navbar-nav rs">
           <li class="d-flex flex-column">
-            <a id="telNavES"></a>
-            <a id="correoNavES"></a>
+            <a class="telNavES"></a>
+            <a class="correoNavES"></a>
           </li>
         </ul>
         

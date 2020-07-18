@@ -27,95 +27,95 @@
 
     </div>  
 
-    <!-- CONTENEDOR INFERIOR-->
-    <section class="container-fluid my-4" style="margin-left: 1%; margin-right: 1%; width: 98%;">
+    <!-- CONTENIDO-->
+    <section class="container-fluid my-4" style="margin: auto; width: 95%;">
       <div class="row">
 
-          <!--contenedor izquierdo-->  
-          <div id="categorias" class="col-lg-4 col-xl-3 d-none d-lg-block">
-            <div class="list-group" id="list-tab" role="tablist">
-                
-                <!-- CATEGORIA 1 -->
-                <a class="list-group-item list-group-item-action active p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="profile"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT2.png" width="100"><span class="my-auto">Protección Anticaída</span></a>                
+        <!--FILTROS-->  
+        <div class="filtros col-lg-3 d-none d-lg-block bg-light1 p-4">
 
-                <!-- CATEGORIA 2 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="home"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT6.png" width="100"><span class="my-auto">Protección Auditiva</span></a>
+            <!--TITULO-->  
+            <div class="font-dark4">
+                <h6 class="h6-responsive font-weight-bold"><i class="fas fa-sliders-h"></i> FILTROS</h6>
+            </div>
 
-                <!-- CATEGORIA 3 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="messages"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT1.png" width="100"><span class="my-auto">Protección Cabeza</span></a>
-                
-                <!-- CATEGORIA 4 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="settings"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT3.png" width="100"><span class="my-auto">Protección Corporal</span></a>
+            <!--OPCIONES DE FILTROS-->  
+            <div class="">
 
-                <!-- CATEGORIA 5 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="settings"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT4.png" width="100"><span class="my-auto">Protección Manos</span></a>
-                
-                <!-- CATEGORIA 6 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="settings"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT5.png" width="100"><span class="my-auto">Protección Pies</span></a>
+                <!--FILTROS APLICADOS-->  
+                <div class="my-3">
+                  <p class="font-dark4 h6-responsive font-weight-bold">Filtros aplicados</p>
+                  <div class="tags mt-3">
+                    <div class="chip white border rounded-pill px-3 py-1">Anticaída<i class="close fas fa-times"></i></div>
+                  </div>
+                  <div class="text-center my-3">
+                    <a class="font-dark4">Limpiar filtros</a>
+                  </div>
 
-                <!-- CATEGORIA 7 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="settings"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT7.png" width="100"><span class="my-auto">Protección Respiratoria</span></a>
+                </div>
 
-                <!-- CATEGORIA 8 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="settings"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT8.png" width="100"><span class="my-auto">Protección Visual</span></a>
-                
-                <!-- CATEGORIA 9 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="settings"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT9.png" width="100"><span class="my-auto">Ropa Descartable</span></a>
-                
-                <!-- CATEGORIA 10 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="settings"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT10.png" width="100"><span class="my-auto">Ropa Impermeable</span></a>
+                <!--CATEGORIAS-->  
+                <hr>
+                <div class="my-3">
+                  <p class="font-dark4 h6-responsive font-weight-bold mb-1">Categorías</p>
+                  <ul class="categoria list-group"></ul>
+                </div>
 
-                <!-- CATEGORIA 11 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="settings"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT11.png" width="100"><span class="my-auto">Señalización</span></a>
+                <!--MARCAS-->  
+                <hr>
+                <div class="my-3">
+                  <p class="font-dark4 h6-responsive font-weight-bold mb-1">Marcas</p>
+                  <ul class="marcas list-group"></ul>
+                </div>
 
-                <!-- CATEGORIA 12 -->
-                <a class="list-group-item list-group-item-action p-0 d-flex" data-toggle="list" href="#producto" role="tab" aria-controls="settings"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/CAT12.png" width="100"><span class="my-auto">Otros Equipos de Protección</span></a>                    
+                <!--DISPONIBILIDAD-->  
+                <hr>
+                <div class="my-3">
+                  <p class="font-dark4 h6-responsive font-weight-bold mb-1">Disponibilidad</p>
+                  <ul class="list-group">
+                      <li class="list-group-item">
+                          <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="disponibilidad1">
+                              <label class="custom-control-label pt-1 pl-2" for="disponibilidad1">Disponible</label>
+                          </div>
+                      </li>
+                      <li class="list-group-item">
+                          <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="disponibilidad2">
+                              <label class="custom-control-label pt-1 pl-2" for="disponibilidad2">No disponible</label>
+                          </div>
+                      </li>
+                  </ul>
+                </div>
 
             </div>
-          </div>
 
-          <!-- contenedor derecho--> 
-          <div class="col-12 col-lg-8 col-xl-9">
+        </div>
 
-              <!-- BOTON MOSTRAR CATEGORIAS -->
-              <div class="d-flex align-items-center flex-wrap mb-3 d-block d-lg-none">
-                  <a id="filtroCategorias" class="btn bg-primary m-0 py-2">
-                      <i class="fa fa-filter"></i> <b>Categorías</b>
-                  </a>  
-              </div>
-              
-              <!-- FILTRO CATEGORIAS--> 
-              <div id="filtroCategoriasContent" class="d-none"> 
-                <ul class="row justify-content-center p-0">
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-caida.png" width="50"><br>Protección anticaída</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-auditiva.png" width="50"><br>Protección auditiva</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-cabeza.png" width="50"><br>Protección cabeza</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-cuerpo.png" width="50"><br>Protección corporal</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-manos.png" width="50"><br>Protección manos</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-pies.png" width="50"><br>Protección pies</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-respiratoria.png" width="50"><br>Protección respiratoria</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-visual.png" width="50"><br>Protección visual</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-descartable.png" width="50"><br>Ropa descartable</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-impermeable.png" width="50"><br>Ropa impermeable</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-señalizacion.png" width="50"><br>Señalización</li>
-                  <li class="btn col-5 col-sm-3 bg-primary p-1"><img src="ES-FrontEnd/Elementos/Imagenes/TiposProductos/p-otros.png" width="50"><br>Otros equipos de protección</li>
-                </ul>
-              </div>
+        <!-- PRODUCTOS--> 
+        <div class="col-12 col-lg-9">
 
-              <!-- PRODUCTOS--> 
-              <div class="tab-content grey lighten-3">
-                <div class="tab-pane fade show active" id="producto" role="tabpanel">
-                  <div id="content" class="row p-0 mx-1"></div>
-                </div>
-              </div>
-              
-              <!-- PAGINACION-->
-              <div class="d-flex align-items-center flex-wrap justify-content-center py-4 grey lighten-3">
-                  <div id="PAGINACION"></div>      
-              </div>
+            <!-- BOTON MOSTRAR CATEGORIAS -->
+            <div class="d-flex align-items-center flex-wrap mb-3 ml-3 d-block d-lg-none">
+                <a id="filtros" class="btn bg-primary m-0 py-2">
+                    <i class="fa fa-filter"></i> <b>Filtros</b>
+                </a>  
+            </div>
 
-          </div>
-     
+            <!-- PRODUCTOS--> 
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="producto" role="tabpanel">
+                <div id="content" class="row p-0 mx-1"></div>
+              </div>
+            </div>
+
+            <!-- PAGINACION-->
+            <div class="d-flex align-items-center flex-wrap justify-content-center py-4">
+                <div id="PAGINACION"></div>      
+            </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -195,6 +195,55 @@
         })
 
 </script>
+
+    <script>
+    mostrarCategorias();
+      
+    //-MOSTRAR TODOS LAS CATEGORIAS--
+    function mostrarCategorias(){
+        
+        $.ajax({
+            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_MostrarCategoria.php',
+            type: 'GET',
+            dataType: 'json',
+            error: function(error){
+                mostrar=true;
+                if(error.status == 401){
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
+                }
+                else{
+                    mostrarToast("error","Error no identificado.");
+                }
+            },
+            success: function(datos){
+                if(datos.response == 0){
+                    mostrar=true;
+                    mostrarToast("error",'ERROR: '+datos.message);
+                }
+                else{
+                    $("ul.categoria").html("");
+                    var categorias = ""
+                    for (var i=0;i<datos.length;i++){
+                        categorias+="<li class='list-group-item'>  \
+                            <div class='custom-control custom-checkbox'>  \
+                                <input type='checkbox' class='custom-control-input' id='"+datos[i].CATCODIGO+"'>  \
+                                <label class='custom-control-label pt-1 pl-2' for='"+datos[i].CATCODIGO+"'>"+datos[i].CATNOMBRE+"</label>  \
+                            </div>  \
+                        </li>"
+                    }
+                    $("ul.categoria").html(categorias);
+                }
+            }
+        });
+    }
+    
+    //FUNCION PARA COMPRIMIR EL MENU
+    $('#filtros').click(function(){
+        $(".filtros").toggleClass("mostrar");
+    });
+  
+    </script>
+
 
 </body>
 </html>

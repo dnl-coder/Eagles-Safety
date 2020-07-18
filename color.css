@@ -1,23 +1,24 @@
 :root {
-  --primary: #5EAE27;
-  --secundary: #666568; 
+  --primary:#5EAE27;
+  --secundary:#666568; 
 
-  --enfasis1: #00838f; 
-  --enfasis2: #006064; 
-  --enfasis3: #00e676; 
+  --enfasis1:#00838f; 
+  --enfasis2:#006064; 
+  --enfasis3:#00e676; 
 
-  --light1: #e8f5e9;
-  --light2: #c8e6c9; 
-  --light3: #a5d6a7; 
+  --light1:#e8f5e9;
+  --light2:#c8e6c9; 
+  --light3:#a5d6a7; 
   
-  --dark1: #1c2331;
-  --dark2: #212121;
-  --dark3: #263238;
+  --dark1:#1c2331;
+  --dark2:#212121;
+  --dark3:#263238;
+  --dark4:#6a6a6a;
 
-  --formInvalid: #e57373;
-  --formValid: #e8f0fe;
-  --textLink: #2196f3;
-  --alternative1: #e53935; 
+  --formInvalid:#e57373;
+  --formValid:#e8f0fe;
+  --textLink:#2196f3;
+  --alternative1:#e53935; 
 }
 
 /*background*/
@@ -32,6 +33,7 @@
 .bg-dark1{background: var(--dark1) !important;}
 .bg-dark2{background: var(--dark2) !important;}
 .bg-dark3{background: var(--dark3) !important;}
+.bg-dark4{background: var(--dark4) !important;}
 
 .bg-gradiente {
     background: linear-gradient(to right, var(--enfasis1), var(--enfasis2), var(--enfasis3));
@@ -55,6 +57,7 @@
 .font-dark1{color: var(--dark1) !important;}
 .font-dark2{color: var(--dark2) !important;}
 .font-dark3{color: var(--dark3) !important;}
+.font-dark4{color: var(--dark4) !important;}
 
 .text-formValid{color: var(--formValid) !important;}
 .text-formInvalid{color: var(--formInvalid) !important;}

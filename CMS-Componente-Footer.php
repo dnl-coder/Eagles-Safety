@@ -7,7 +7,7 @@
 
     <!-- CONFIGURACION GENERAL-->
     <?php include_once "ES-FrontEnd/Elementos/Generales-CMS/config.php";?>
-    
+
 </head>
 
 <body>
@@ -16,43 +16,56 @@
     
     <!-- BARRA DE NAVEGACION-->
     <?php include_once "ES-FrontEnd/Elementos/Generales-CMS/barraNavegacion.php";?>
-
+    
     <!-- CONTENIDO GENERAL-->
     <section class="cuerpo" id="cuerpo">
-      
+     
+      <!-- CUERPO-->
+      <div class="px-5 mb-5">
+
+          <!--TITULO-->
+          <h3 class="titulo">PIE DE PÁGINA</h3>
+
+          
+
+      </div>
+
       <!-- TOAST -->
       <div role="alert" aria-live="assertive" aria-atomic="true" class="toast py-1 px-3 succesfull z-depth-3" data-delay="4000" data-animation="true">
         <div class="toast-body">Mensaje</div>
       </div>
-      
+
     </section> 
     
-    <!-- CONTENT-->
+    <!-- CONTENT--> 
     
     <!-- JS Scripts-->
     <script type="text/javascript" src="ES-FrontEnd/Elementos/Generales-CMS/funciones.js"></script>
+    
     <script>
-      
-      var mostrar=false;
-      
-      
-      //--MOSTRAR TOAST --  
-      function mostrarToast(tipo,msj){
+
+    //--INICIALIZAR FUNCIONES--
+    var mostrar=false;
+
+    
+
+    //--MOSTRAR TOAST CON MENSAJE--
+    function mostrarToast(tipo,msj){
         if(mostrar==true){
-            switch(tipo){
-                case 'exito':
-                    $(".toast").removeClass("succesfull");
-                    $(".toast").removeClass("error");
+                    switch(tipo){
+                        case 'exito':
+                            $(".toast").removeClass("succesfull");
+                            $(".toast").removeClass("error");
 
-                    $(".toast").addClass("succesfull");
-                    break;
-                case 'error':
-                    $(".toast").removeClass("succesfull");
-                    $(".toast").removeClass("error");
+                            $(".toast").addClass("succesfull");
+                            break;
+                        case 'error':
+                            $(".toast").removeClass("succesfull");
+                            $(".toast").removeClass("error");
 
-                    $(".toast").addClass("error");
-                    break;
-            }
+                            $(".toast").addClass("error");
+                            break;
+                    }
 
             $('.toast-body').html('');
             $('.toast-body').html(msj);
@@ -62,9 +75,9 @@
         }
         mostrar=false;
     }
-  
+
     </script>
-	
+
 </body>
 
 </html>

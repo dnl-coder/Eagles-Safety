@@ -41,6 +41,8 @@
     <script type="text/javascript" src="ES-FrontEnd/MDB/js/mdb.min.js"></script>
     <!--CODE JS PAGINACION-->
     <script type="text/javascript" src="ES-FrontEnd/MDB/js/jquery.bootpag.min.js"></script>
+    <!--Librarys JS-->
+
        
     <!-- JS GENERALES-->
     <script type="text/javascript" src="ES-FrontEnd/Elementos/Generales-Web/funciones.js"></script>
