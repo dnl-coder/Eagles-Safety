@@ -37,7 +37,7 @@
 
 .bg-gradiente {
     background: linear-gradient(to right, var(--enfasis1), var(--enfasis2), var(--enfasis3));
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .bg-formValid{background: var(--formValid) !important;}

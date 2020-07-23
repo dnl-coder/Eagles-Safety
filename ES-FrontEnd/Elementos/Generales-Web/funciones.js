@@ -231,7 +231,8 @@ vistaWeb.prototype.mostrarSliders = function(){
             $("#CarouselInicio .carousel-inner").html(sliders);
             $("img.Simagen").attr("src",datos[0].SLDRIMAGEN);
             $("div.Simagen").css("background-image","url("+datos[0].SLDRIMAGEN+")");
-            $(".fondo").css("background-image",'url(https://mdbootstrap.com/img/Photos/Others/architecture.jpg)');
+            $(".fondo").css("background-image","url(ES-FrontEnd/Elementos/Imagenes/Slider/pantalla.jpg)");
+            //$(".fondo").css("background-image",'url(https://mdbootstrap.com/img/Photos/Others/architecture.jpg)');
         }
     });
 };
@@ -253,7 +254,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
         success: function(datos){
             var componente="";
             switch(datos.COMP1){
-              case "1": componente+="<div id='banner1' class='container my-5 py-5'> \
+              case "1": componente+="<div id='banner1' class='container py-5'> \
             <section class='px-md-5 mx-md-5 dark-grey-text text-center text-lg-left'> \
               <div class='row'> \
                 <div class='col-lg-6 mb-4 mb-lg-0 d-flex align-items-center justify-content-center'> \
@@ -269,7 +270,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
             </section> \
           </div>"; break;
               case "2": componente+="<div id='banner1' class='tab-pane fade show' id='op2' role='tabpanel' aria-labelledby='op2-tab'> \
-          <div class='container my-5 py-5'> \
+          <div class='container py-5'> \
             <section class='px-md-5 mx-md-5 text-center dark-grey-text'> \
               <div class='row'> \
                 <div class='col-md-6 mb-4 mb-md-0'> \
@@ -289,7 +290,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
             </section> \
           </div> \
         </div>"; break;
-              case "3": componente+="<div id='banner1' class='container my-5 py-5'> \
+              case "3": componente+="<div id='banner1' class='container py-5'> \
             <section class='px-md-5 mx-md-5 text-center text-lg-left dark-grey-text'> \
               <h3 class='font-weight-bold wow fadeIn'>"+datos.C1TITULO+"</h3> \
               <p class='text-muted mb-5 wow fadeIn'>"+datos.C1DESCRIPCION+"</p> \
@@ -308,7 +309,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
               </div> \
             </section> \
           </div>"; break;
-              case "4": componente+="<div id='banner1' class='container my-5 py-5'> \
+              case "4": componente+="<div id='banner1' class='container py-5'> \
             <section class='px-md-5 mx-md-5 text-center dark-grey-text'> \
               <div class='row d-flex justify-content-center'> \
                 <div class='col-xl-6 col-md-8'> \
@@ -341,7 +342,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
               </div> \
             </section> \
           </div>"; break;
-              case '5': componente+="<div id='banner1' class='container my-5 p-5> \
+              case '5': componente+="<div id='banner1' class='container p-5'> \
             <section class='dark-grey-text'> \
               <h2 class='text-center font-weight-bold mb-4 pb-2'>"+datos.C1TITULO+"</h2> \
               <p class='text-center lead grey-text mx-auto mb-5'>"+datos.C1DESCRIPCION+"</p> \
@@ -532,7 +533,7 @@ vistaWeb.prototype.mostrarComponente2 = function(){
             </section> \
           </div>"; break;
             }
-            $("div#banner1").after(componente);
+            $("div#seccionCategorias").after(componente);
             $(".c1imagen1").css("background-image","url("+datos.C2IMAGEN1+")");
             $(".c1imagen1").css("background-repeat","no-repeat");
             $(".c1imagen1").css("background-size","cover");
@@ -579,8 +580,8 @@ vistaWeb.prototype.mostrarInformacionEmpresa = function(){
             document.getElementById('red1ES').href = datos[0].INFEMPRED_SOCIAL1;
             document.getElementById('red2ES').href = datos[0].INFEMPRED_SOCIAL2;
 
-            $("#tel1ES").html(datos[0].INFEMPTELEFONO1);
-            $("#tel2ES").html(datos[0].INFEMPTELEFONO2);
+            $(".tel1ES").html(datos[0].INFEMPTELEFONO1);
+            $(".tel2ES").html(datos[0].INFEMPTELEFONO2);
 
             $("#direccion1ES").html(datos[0].INFEMPDOMICILIO+", "+datos[0].INFEMPDISTRITO);
             $("#direccion2ES").html(datos[0].INFEMPPROVINCIA+", "+datos[0].INFEMPPAIS);
@@ -721,6 +722,33 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
                   </div> \
                 </div> \
               </div>";
+
+                }
+                contenedor += "</div> \
+            </section> \
+          </div>";
+                break;
+                
+              case "3":
+                contenedor += "<div class='container mt-5'>  \
+            <section class='dark-grey-text text-center'>  \
+              <h3 class='font-weight-bold mb-2 pb-2'>Productos de alta calidad</h3>  \
+              <p class='grey-text w-responsive mx-auto mb-2'>Los mejores acabados, diseños y modelos a tu alcance.</p>  \
+                <div class='row justify-content-center'>";                
+                for(var i=0; i<datos.length ; i++){
+                    contenedor += "<div class='col-lg-3 col-md-6 p-2 text-left'>  \
+          <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.seleccionarProducto(this)'>  \
+              <div class='view overlay zoom'>  \
+                  <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' style='cursor:pointer; height:40vh;'>  \
+              </div>  \
+              <div class='card-body'>  \
+                  <p class='mb-2 font-dark4'>PROTECTA</p>  \
+                  <p class='mb-1'>"+datos[i].PRODNOMBRE+"</p>  \
+                  <p class='mb-2 font-dark4'>COD 1161560</p>  \
+                  <p class='mb-2 bg-primary text-white px-2 border rounded-pill' style='width:fit-content;'>DISPONIBLE</p>  \
+              </div>  \
+          </div>  \
+          </div>";
 
                 }
                 contenedor += "</div> \
@@ -956,11 +984,9 @@ vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
     for(var i=primero; i<ultimo; i++){
         contenido += "<div class='col-12 col-sm-6 col-md-4 col-lg-3 p-2'>\n\
         <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.seleccionarProducto(this)'>\n\
-            <!--imagen-->\n\
             <div class='view overlay zoom'>\n\
-                <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' style='cursor:pointer; height:40vh;'>\n\
+                <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"'>\n\
             </div>\n\
-            <!--titulo-->\n\
             <div class='card-body'>\n\
                 <p class='mb-2 font-dark4'>PROTECTA</p>\n\
                 <p class='mb-1'>"+datos[i].PRODNOMBRE+"</p>\n\

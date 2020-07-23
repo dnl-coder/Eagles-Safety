@@ -18,7 +18,7 @@
     <?php include_once "ES-FrontEnd/Elementos/Generales-Web/barraNavegacion.php";?>
 
     <!-- ENCABEZADO -->   
-    <div class="container-fluid" style="height: 250px; background: url('ES-FrontEnd/Elementos/Imagenes/Encabezado.jpg') no-repeat center; background-size: cover;">
+    <div class="container-fluid" style="height: 250px; background: url('ES-FrontEnd/Elementos/Imagenes/Encabezados/Contactanos.jpg') no-repeat center; background-size: cover;">
 
        <div class="container">
             <br><br><br>

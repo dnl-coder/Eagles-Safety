@@ -18,7 +18,7 @@
           
           <li class="nav-item"><a class="nav-link" href="Nosotros.php">Nosotros</a></li>
           
-          <li class="nav-item"><a class="nav-link" href="Productos.php">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="Tienda.php">Productos</a></li>
           
           <li class="nav-item"><a class="nav-link" href="Contactos.php">Contáctanos</a></li>
           
@@ -35,3 +35,5 @@
       </div>
       
     </nav>
+    
+   <div id="top" style="z-index: -50000; position:absolute; top:0;"></div>

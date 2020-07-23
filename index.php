@@ -24,7 +24,7 @@
     
     <!-- BARRA DE NAVEGACION-->
     <?php include_once "ES-FrontEnd/Elementos/Generales-Web/barraNavegacion.php";?>
-    
+    <!--
     <div id="pre-loading">
      
       <style>
@@ -79,7 +79,7 @@
       </div>
       
     </div>
-    
+    -->
     <!-- CAROUSEL DE IMAGENES-->
     <div id="CarouselInicio" class="carousel slide" data-ride="carousel">
 
@@ -96,17 +96,69 @@
           <span class="sr-only">Siguiente</span>
       </a>
 
-    </div>                    
+    </div>         
     
+    <!-- CATEGORIAS DESTACADAS-->
+    <div id="seccionCategorias" class="container-fluid">
+      <div class="row">
+        <div class="col-12 mb-5">
+
+          <!--DESCRIPCION -->
+          <h3 class="h4-responsive font-weight-bold px-4 pb-2 font-primary wow fadeIn">Categorías <span class="font-secundary">destacadas</span></h3>
+
+          <!--CAROUSEL DE CATEGORIAS DESTACADAS -->
+          <div class="mx-3 text-center d-none d-sm-flex">
+          <div id="carouselCategorias" class="carousel slide w-100" data-ride="carousel">
+
+              <!--CATEGORIAS -->
+              <div id="categoriasDestacadas" class="carousel-inner w-100" role="listbox"></div>
+
+              <!--CONTROLADOR -->
+              <a class="carousel-control-prev" href="#carouselCategorias" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselCategorias" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+              </a>
+
+          </div>
+          </div>
+
+          <!--CAROUSEL DE CATEGORIAS DESTACADAS RESPONSIVE -->
+          <div class="mx-3 text-center d-flex d-sm-none">
+          <div id="carouselCategoriasCelular" class="carousel slide w-100" data-ride="carousel">
+
+              <!--CATEGORIAS -->
+              <div id="categoriasDestacadasCelular" class="carousel-inner w-100" role="listbox"></div>
+
+              <!--CONTROLADOR -->
+              <a class="carousel-control-prev" href="#carouselCategoriasCelular" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselCategoriasCelular" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+              </a>
+
+          </div>
+          </div>
+
+        </div>  
+      </div>
+    </div>
+          
     <!-- PRODUCTOS DESTACADOS-->
     <div id="DESTACADOS"></div>
 
     <!-- CAROUSEL DE MARCAS-->
-    <div class="black darken-4 py-5">
+    <div class="py-5">
       <div class="container my-5">
 
       <!--DESCRIPCION -->
-      <h3 class="h4-responsive font-weight-bold px-4 pb-2 white-text text-center wow fadeIn">Calidad y seguridad garantizada en cada una de nuestras marcas.</h3>
+      <h3 class="h4-responsive font-weight-bold px-4 pb-2 grey-text text-center wow fadeIn">Calidad y seguridad garantizada en cada una de nuestras marcas.</h3>
 
       <!--CAROUSEL DE MARCAS -->
       <div class="container text-center d-none d-sm-flex">
@@ -155,11 +207,127 @@
     
     <!-- CONTENT-->
     
-    <!-- JS PRE-LOADING-->
-    <script type="text/javascript">
+    <script>
       
+      mostrarCategoriasDestacadas();
       
+      function mostrarCategoriasDestacadas(){
+        
+        $.ajax({
+            url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarCategorias.php',
+            type: 'GET',
+            datatype:'json',
+            error: function(error){
+                if(error.status == 401){
+                    console.log("Archivos no encontrados");
+                }
+                else{
+                    console.log("Error no identificado");
+                }
+            },
+            success: function(datos){
+                var contenedor = "";
+
+                //VERSION WEB
+                contenedor += "<div class='carousel-item row row-cols-5 no-gutters active'>";
+                for(var i=0; i<datos.length ; i++){
+                    if(i<5){
+                        contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
+                  <div class='view overlay' style='height: 330px'> \
+                    <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top' height='320'> \
+                    <a id='"+datos[i].CATCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
+                  </div> \
+                  <div class='card-body text-center px-1 py-2'> \
+                    <h6 class='font-weight-bold text-uppercase'> \
+                      <a id='"+datos[i].CATCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[i].CATNOMBRE+"</a> \
+                    </h6> \
+                  </div> \
+                </div></div>"
+                    }
+                }
+                contenedor+="\n\</div>"
+                for(var j=0; j<datos.length-1; j++){
+
+                    var a=0;
+                    contenedor += "<div class='carousel-item row row-cols-5 no-gutters'>";
+
+                    for(var k=1; k<6; k++){
+
+                        if((k+j)<datos.length){
+                            contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
+                  <div class='view overlay' style='height: 330px'> \
+                    <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[k+j].CATIMAGEN+"' class='card-img-top' height='320'> \
+                    <a id='"+datos[k+j].CATCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
+                  </div> \
+                  <div class='card-body text-center px-1 py-2'> \
+                    <h6 class='font-weight-bold text-uppercase'> \
+                      <a id='"+datos[k+j].CATCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[k+j].CATNOMBRE+"</a> \
+                    </h6> \
+                  </div> \
+                </div></div>"
+                        }else{
+                            contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
+                  <div class='view overlay' style='height: 330px'> \
+                    <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[a].CATIMAGEN+"' class='card-img-top' height='320'> \
+                    <a id='"+datos[a].CATCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
+                  </div> \
+                  <div class='card-body text-center px-1 py-2'> \
+                    <h6 class='font-weight-bold text-uppercase'> \
+                      <a id='"+datos[a].CATCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[a].CATNOMBRE+"</a> \
+                    </h6> \
+                  </div> \
+                </div></div>"
+                            a++;
+                        }
+
+                    }
+                    contenedor+="\n\</div>"
+
+                }
+                $("#categoriasDestacadas").html(contenedor);
+
+                //VERSION MOVIL
+                contenedor = "";
+                for(var i=0; i<datos.length ; i++){
+                    if(i==0){
+                        contenedor += "<div class='carousel-item justify-content-center no-gutters p-2 text-left active'>";
+                        contenedor+="\n\<div class='card align-items-center'> \
+                  <div class='view overlay' style='height: 238.078px'> \
+                    <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
+                    <a id='"+datos[i].CATCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
+                  </div> \
+                  <div class='card-body text-center'> \
+                    <h5 class='mb-3'> \
+                      <strong> \
+                        <a id='"+datos[i].CATCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[i].CATNOMBRE+"</a> \
+                      </strong> \
+                    </h5> \
+                  </div> \
+                </div></div>"
+                    }else{
+                        contenedor += "<div class='carousel-item justify-content-center p-2 text-left no-gutters '>";
+                        contenedor+="\n\<div class='card align-items-center'> \
+                  <div class='view overlay' style='height: 238.078px'> \
+                    <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
+                    <a id='"+datos[i].CATCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
+                  </div> \
+                  <div class='card-body text-center'> \
+                    <h5 class='mb-3'> \
+                      <strong> \
+                        <a id='"+datos[i].CATCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[i].CATNOMBRE+"</a> \
+                      </strong> \
+                    </h5> \
+                  </div> \
+                </div></div>"
+                    }
+                }
+                $("#categoriasDestacadasCelular").html(contenedor);
+            }
+        });
+        
+      }
       
+  
     </script>
 
 </body>

@@ -129,6 +129,12 @@
                 <label class="custom-control-label" for="c1Estilo2">Estilo 2</label>
               </div>
               
+              <!-- ESTILO 3 -->
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="c1Estilo3" name="c1Estilos" value="3" checked>
+                <label class="custom-control-label" for="c1Estilo3">Estilo 3</label>
+              </div>
+              
             </div>
             
             <!-- Botones -->
@@ -151,10 +157,15 @@
           <a class="nav-link font-secundary" id="op2-tab" data-toggle="tab" href="#op2" role="tab" aria-controls="op2"
             aria-selected="true">Estilo 2</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link font-secundary" id="op3-tab" data-toggle="tab" href="#op3" role="tab" aria-controls="op3"
+            aria-selected="true">Estilo 3</a>
+        </li>
       </ul>
       
       <!-- Vista previa de estilos-->
       <div class="tab-content">
+       
         <!-- ESTILO 1 -->
         <div class="tab-pane fade show active" id="op1" role="tabpanel" aria-labelledby="op1-tab">
           <div class="bg-light1 container-fluid pt-5 pb-2 text-center">
@@ -193,6 +204,25 @@
             </section>
           </div>
         </div>
+        
+        <!-- ESTILO 3 -->
+        <div class="tab-pane fade show" id="op3" role="tabpanel" aria-labelledby="op3-tab">
+          <div class="container mt-5">
+            <section class="dark-grey-text text-center">
+
+              <!-- TITULO -->
+              <h3 class="font-weight-bold mb-2 pb-2">Productos de alta calidad</h3>
+              
+              <!-- DESCRIPCION -->
+              <p class="grey-text w-responsive mx-auto mb-2">Los mejores acabados, diseños y modelos a tu alcance.</p>
+
+              <!--PRODUCTOS -->  
+              <div id="DESTACADOS3" class="row justify-content-center"></div>
+
+            </section>
+          </div>
+        </div>
+        
       </div>
       
       <!-- TOAST -->
@@ -307,6 +337,7 @@
                 else{
                     var contenedor1 = "";
                     var contenedor2 = "";
+                    var contenedor3 = "";
 
                     for(var i=0; i<datos.length ; i++){
                         contenedor1 += "<div class='col-12 wow fadeIn' style='min-width:150px; max-width:250px;'> \
@@ -340,11 +371,26 @@
                       </div> \
                     </div> \
                   </div>";
+                      
+                        contenedor3 += "<div class='col-lg-3 col-md-6 p-2 text-left'>  \
+          <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.seleccionarProducto(this)'>  \
+              <div class='view overlay zoom'>  \
+                  <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' style='cursor:pointer; height:40vh;'>  \
+              </div>  \
+              <div class='card-body'>  \
+                  <p class='mb-2 font-dark4'>PROTECTA</p>  \
+                  <p class='mb-1'>"+datos[i].PRODNOMBRE+"</p>  \
+                  <p class='mb-2 font-dark4'>COD 1161560</p>  \
+                  <p class='mb-2 bg-primary text-white px-2 border rounded-pill' style='width:fit-content;'>DISPONIBLE</p>  \
+              </div>  \
+          </div>  \
+          </div>";
 
                     }
 
                     $("#DESTACADOS").html(contenedor1);
                     $("#DESTACADOS2").html(contenedor2);
+                    $("#DESTACADOS3").html(contenedor3);
                 }
 
               }

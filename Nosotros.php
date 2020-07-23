@@ -24,7 +24,7 @@
     <?php include_once "ES-FrontEnd/Elementos/Generales-Web/barraNavegacion.php";?>
  
     <!-- ENCABEZADO -->   
-    <div class="container-fluid" style="height: 250px; background: url('ES-FrontEnd/Elementos/Imagenes/Nosotros/Encabezado.jpg') no-repeat center; background-size: cover;">
+    <div class="container-fluid" style="height: 250px; background: url('ES-FrontEnd/Elementos/Imagenes/Encabezados/Nosotros.jpg') no-repeat center; background-size: cover;">
 
        <div class="container">
             <br><br><br>
@@ -89,7 +89,7 @@
     </div>       
 
     <!-- DESCRIPCION-->  
-    <div class="py-1">
+    <div>
       <div class="row">
 
           <!-- MISION-->

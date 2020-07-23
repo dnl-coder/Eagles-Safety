@@ -107,5 +107,18 @@ class Model_Web{
         return $this->_conexion->retornar_select();
         
     }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR CATEGORÍA GENERAL
+    ===========================================*/
+    
+    public function mostrarCategoria() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM categoria";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+        
+    }
 }
 ?>
