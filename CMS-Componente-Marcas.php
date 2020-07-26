@@ -65,7 +65,7 @@
      
         <!--OPCIONES-->
         <div class="alert alert-dark p-1 mx-auto my-4 row" role="alert">
-          <div class="col-12 col-md-5 h5-responsive numeroSliders">Slider usados <span id="cantSlider">4</span> de 20</div>
+          <div class="col-12 col-md-5 h5-responsive numeroSliders">Slider usados <span id="cantSlider"></span> de 20</div>
           <div class="col-12 col-md-7 row m-0 justify-content-center">
             <button class="btn py-2 bg-primary" data-toggle="modal" data-target="#agregarSlider">Agregar</button>
             <button class="btn py-2 bg-primary" onclick="cargarDatos()">Actualizar</button>
@@ -152,10 +152,10 @@
             dataType: 'json',
             error: function(error){
                 if(error.status == 401){
-                    console.log("No se pudo establecer conexion con el servidor")
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
                 }
                 else{
-                    console.log("Error no identificado.")
+                    mostrarToast("error","Error no identificado.");
                 }
             },
             success: function(datos){
@@ -229,36 +229,41 @@
 
     //--ELIMINAR SLIDER--      
     function eliminarSlider(cod){
+        
+        if($("#cantSlider").html() == "4" ){
+            mostrar=true;
+            mostrarToast("error","Mínimo deben haber 4 elementos");
+        }else{
+          
+          var $datos={
+              '_codigo': cod
+          }
 
-        var $datos={
-            '_codigo': cod
+          $.ajax({
+              url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_EliminarMarca.php',
+              type: 'POST',
+              data: $datos,
+              dataType: 'json',
+              error: function(error){
+                  if(error.status == 401){
+                      mostrarToast("error","No se pudo establecer conexion con el servidor");
+                  }
+                  else{
+                      mostrarToast("error","Error no identificado.");
+                  }
+              },
+              success: function(datos){
+                  if(datos.response == 0){
+                      mostrarToast("error",datos.message);
+                  }
+                  else{
+                      mostrar=true;
+                      mostrarToast('exito','Imagen eliminada correctamente');
+                      cargarDatos();
+                  }
+              }
+          });
         }
-
-        $.ajax({
-            url: 'ES-BackEnd/Controlador/Controlador-CMS/Controlador_EliminarMarca.php',
-            type: 'POST',
-            data: $datos,
-            dataType: 'json',
-            error: function(error){
-                if(error.status == 401){
-                    console.log("No se pudo establecer conexion con el servidor")
-                }
-                else{
-                    console.log("Error no identificado.")
-                }
-            },
-            success: function(datos){
-                if(datos.response == 0){
-                    console.log('ERROR: '+datos.message)
-                }
-                else{
-                    mostrar=true;
-                    mostrarToast('exito','Imagen eliminada correctamente');
-                    cargarDatos();
-                }
-            }
-        });
-
     }
 
     //--VALIDAR DATOS INGRESADOS EN EL FORMULARIO--  
@@ -340,15 +345,15 @@
             dataType: 'json',
             error: function(error){
                 if(error.status == 401){
-                    console.log("No se pudo establecer conexion con el servidor")
+                    mostrarToast("error","No se pudo establecer conexion con el servidor");
                 }
                 else{
-                    console.log("Error no identificado.")
+                    mostrarToast("error","Error no identificado.");
                 }
             },
             success: function(datos){
                 if(datos.response == 0){
-                    console.log('ERROR: '+datos.message)
+                    mostrarToast("error",datos.message);
                 }
                 else{
                     document.getElementById("guardar").disabled=false;

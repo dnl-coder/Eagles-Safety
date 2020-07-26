@@ -46,7 +46,7 @@ class Model_Web{
         CARGAR PRODUCTOS (TODOS)
     =======================================================*/
     public function cargarProductos($categoria){
-        $sql = "SELECT P.* FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' ";
+        $sql = "SELECT * FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO INNER JOIN marca M ON P.CODMARCA= M.MARCCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' ";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
     }
@@ -55,7 +55,7 @@ class Model_Web{
         CARGAR PRODUCTOS DESTACADOS
     =======================================================*/
     public function mostrarProductosDestacados(){
-        $sql = "SELECT * FROM producto WHERE PRODDESTACADO = '1' ";
+        $sql = "SELECT P.*, M.MARCNOMBRE, (SELECT `componentes`.`COMPDESTACADOS` FROM `componentes`) AS 'COMPDESTACADOS' FROM `producto` P INNER JOIN `marca` M ON P.`CODMARCA`= M.MARCCODIGO WHERE PRODDESTACADO = '1';";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
     }
@@ -83,16 +83,93 @@ class Model_Web{
     }
   
     /*===========================================
+        CONSULTA: MOSTRAR DATOS DEL COMPONENTE 2
+    ===========================================*/
+  
+    public function mostrarDatosComponente2() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT `componente2-adicional`.*, `componentes`.`COMP2` FROM `componente2-adicional`, `componentes`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    }
+  
+    /*===========================================
         CONSULTA: MOSTRAR SLIDER DE LA EMPRESA
     ===========================================*/
     
     public function mostrarSliders() {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "SELECT * FROM slider";
+        $sql = "SELECT `slider`.*, `componentes`.`COMPSLIDER` FROM `slider`, `componentes`;";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
         
     }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR CATEGORÍA GENERAL
+    ===========================================*/
+    
+    public function mostrarCategoria() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM categoria";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+        
+    }
+  
+    /*===========================================
+        CONSULTA: DETALLE PRODUCTO
+    ===========================================*/
+    
+    public function detalleProducto($codigo) {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM `producto` INNER JOIN `marca` ON `producto`.`CODMARCA`= `marca`.MARCCODIGO INNER JOIN `categoria` ON `producto`.`CATCODIGO`= `categoria`.`CATCODIGO` WHERE `PRODCODIGO` = ".$codigo." ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    }
+  
+    /*=======================================================s
+        CARGAR MARCAS DE PRODUCTOS X CATEGORIA
+    =======================================================*/
+    public function cargarMarcasProductos($categoria){
+        $sql = "SELECT DISTINCT  M.* FROM `producto` P INNER JOIN `categoria` C ON P.CATCODIGO = C.CATCODIGO INNER JOIN `marca` M ON P.`CODMARCA`= M.MARCCODIGO WHERE C.`CATNOMBRE`='" . $categoria . "' ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+    /*=======================================================s
+        CARGAR TAGS DE PRODUCTOS X CATEGORIA
+    =======================================================*/
+    public function cargarTagsProductos($categoria){
+        $sql = "SELECT DISTINCT P.PRODTAGS FROM `producto` P INNER JOIN `categoria` C ON P.CATCODIGO = C.CATCODIGO WHERE C.`CATNOMBRE`='" . $categoria . "' ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+    /*=======================================================s
+        CARGAR PRODUCTOS (FILTRO MARCA)
+    =======================================================*/
+    public function filtroMarca($categoria,$marca){
+        $sql = "SELECT * FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO INNER JOIN marca M ON P.CODMARCA= M.MARCCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' AND P.CODMARCA=" . $marca;
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+    /*=======================================================s
+        CARGAR PRODUCTOS (FILTRO TAGS)
+    =======================================================*/
+    public function filtroTag($categoria,$tag){
+        $sql = "SELECT * FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO INNER JOIN marca M ON P.CODMARCA= M.MARCCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' AND P.PRODTAGS LIKE '%" . $tag . "%' ; ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+  
 }
 ?>

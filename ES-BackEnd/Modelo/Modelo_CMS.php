@@ -36,6 +36,19 @@ class Model_CMS{
         return $this->_conexion->retornar_array();
         
     } 
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS NOSOTROS
+    ===========================================*/
+    
+    public function mostrarDatosNosotros() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM nosotros";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    } 
     
     /*===========================================
         CONSULTA: ACTUALIZAR DATOS DE LA EMPRESA
@@ -96,7 +109,7 @@ class Model_CMS{
     public function mostrarSliders() {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "SELECT * FROM slider";
+        $sql = "SELECT `slider`.*, `componentes`.`COMPSLIDER` FROM `slider`, `componentes`;";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
         
@@ -197,10 +210,10 @@ class Model_CMS{
         CONSULTA: AGREGAR PRODUCTO
     ===========================================*/
     
-    public function agregarProducto($nombre, $rutaFoto,$descripcion,$descripcionespecifica,$categoria,$destacado) {
+    public function agregarProducto($titulo, $codigoEspecifico,$presentacion,$codmarca,$codcategoria,$tags,$descripcion,$imagen,$destacado,$fichaTecnica) {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "INSERT INTO `producto` (`PRODCODIGO`, `PRODNOMBRE`, `PRODIMAGEN`, `PRODDESCRIPCION`, `PRODDESCRIPCION_ESPECIFICA`, `CATCODIGO`, `PRODDESTACADO`) VALUES (NULL, '".$nombre."', '".$rutaFoto."', '".$descripcion."', '".$descripcionespecifica."', '".$categoria."', '".$destacado."');";
+        $sql = "INSERT INTO `producto` (`PRODCODIGO`, `PRODNOMBRE`, `PRODCODIGOES`, `PRODIMAGEN`, `PRODPRESENTACION`, `CODMARCA`, `PRODTAGS`, `PRODDESCRIPCION`, `PRODFICHATEC`, `CATCODIGO`, `PRODDESTACADO`) VALUES (NULL, '".$titulo."', '".$codigoEspecifico."', '".$imagen."', '".$presentacion."', '".$codmarca."', '".$tags."', '".$descripcion."', '".$fichaTecnica."', '".$codcategoria."', '".$destacado."');";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
@@ -223,10 +236,10 @@ class Model_CMS{
         CONSULTA: ACTUALIZAR PRODUCTO
     ===========================================*/
     
-    public function actualizarProducto($codigo,$nombre,$rutaFoto,$descripcion,$descripcionespecifica,$categoria,$destacado) {
+    public function actualizarProducto($codigo,$titulo, $codigoEspecifico,$presentacion,$codmarca,$codcategoria,$tags,$descripcion,$imagen,$destacado,$fichaTecnica) {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `producto` SET `PRODNOMBRE` = '".$nombre."', `PRODIMAGEN` = '".$rutaFoto."', `PRODDESCRIPCION` = '".$descripcion."', `PRODDESCRIPCION_ESPECIFICA` = '".$descripcionespecifica."', `CATCODIGO` = '".$categoria."', `PRODDESTACADO` = '".$destacado."'  WHERE `PRODCODIGO` = '".$codigo."';";
+        $sql = "UPDATE `producto` SET `PRODNOMBRE`= '".$titulo."',`PRODCODIGOES`= '".$codigoEspecifico."',`PRODIMAGEN`= '".$imagen."',`PRODPRESENTACION`= '".$presentacion."',`CODMARCA`= '".$codmarca."',`PRODTAGS`= '".$tags."',`PRODDESCRIPCION`= '".$descripcion."',`PRODFICHATEC`= '".$fichaTecnica."',`CATCODIGO`= '".$codcategoria."',`PRODDESTACADO`= '".$destacado."' WHERE `PRODCODIGO` = '".$codigo."';";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
@@ -288,10 +301,10 @@ class Model_CMS{
         CONSULTA: ACTUALIZAR NOSOTROS
     ===========================================*/
 
-    public function actualizarNosotros($rutaFoto,$descripcion,$vision,$mision) {
+    public function actualizarNosotros($rutaMision,$rutaVision,$descripcion,$vision,$mision) {
             
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `nosotros` SET `NOSTIMAGEN` = '".$rutaFoto."', `NOSTDESCRIPCION` = '".$descripcion."', `NOSTVISION` = '".$vision."',  `NOSTMISION` = '".$mision."' WHERE `NOSTCODIGO` = 1;";
+        $sql = "UPDATE `nosotros` SET `NOSTMISION_IMAGEN` = '".$rutaMision."', `NOSTVISION_IMAGEN` = '".$rutaVision."', `NOSTDESCRIPCION` = '".$descripcion."', `NOSTVISION` = '".$vision."',  `NOSTMISION` = '".$mision."' WHERE `NOSTCODIGO` = 1;";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
@@ -309,6 +322,32 @@ class Model_CMS{
         return $this->_conexion->insert_registro();
         
     }  
+  
+    /*===========================================
+        CONSULTA: DETALLE SLIDER
+    ===========================================*/
+    
+    public function detalleSlider($codigo) {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT `slider`.*, `componentes`.`COMPSLIDER` FROM `slider`, `componentes` WHERE `SLDRCODIGO` = ".$codigo."; ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    }
+  
+    /*===========================================
+        CONSULTA: ACTUALIZAR ESTILO DEL SLIDER
+    ===========================================*/
+  
+    public function actualizarEstiloSlider($estilo){
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `componentes` SET `COMPSLIDER` = '".$estilo."' WHERE `COMPCODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
+    }
   
     /*===========================================
         CONSULTA: MOSTRAR DATOS DEL COMPONENTE 1
@@ -343,6 +382,136 @@ class Model_CMS{
         
         //FUNCION CON LA CONSULTA A REALIZAR
         $sql = "UPDATE `componentes` SET `COMP1` = '".$estilo."' WHERE `COMPCODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
+    }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DEL COMPONENTE 2
+    ===========================================*/
+  
+    public function mostrarDatosComponente2() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT `componente2-adicional`.*, `componentes`.`COMP2` FROM `componente2-adicional`, `componentes`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();        
+    }
+  
+    /*===========================================
+        CONSULTA: ACTUALIZAR DATOS DEL COMPONENTE 2
+    ===========================================*/
+  
+    public function actualizarDatosComponente2($titulo,$descripcion,$imagen1,$imagen2,$T1Titulo,$T1Descripcion,$T2Titulo,$T2Descripcion,$T3Titulo,$T3Descripcion) {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `componente2-adicional` SET `C2TITULO` = '".$titulo."', `C2DESCRIPCION` = '".$descripcion."', `C2IMAGEN1` = '".$imagen1."',  `C2IMAGEN2` = '".$imagen2."', `C2T1TITULO` = '".$T1Titulo."', `C2T1DESCRIPCION` = '".$T1Descripcion."', `C2T2TITULO` = '".$T2Titulo."',  `C2T2DESCRIPCION` = '".$T2Descripcion."', `C2T3TITULO` = '".$T3Titulo."', `C2T3DESCRIPCION` = '".$T3Descripcion."' WHERE `C2CODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
+    }
+  
+    /*===========================================
+        CONSULTA: ACTUALIZAR ESTILO DEL COMPONENTE 2
+    ===========================================*/
+  
+    public function actualizarEstiloComponente2($estilo){
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `componentes` SET `COMP2` = '".$estilo."' WHERE `COMPCODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
+    }
+  
+    /*=======================================================s
+        CONSULTA: CARGAR PRODUCTOS DESTACADOS
+    =======================================================*/
+    public function mostrarProductosDestacados(){
+        $sql = "SELECT P.*, C.CATNOMBRE, M.MARCNOMBRE  FROM `producto` P INNER JOIN `categoria` C ON P.CATCODIGO = C.CATCODIGO INNER JOIN `marca` M ON P.`CODMARCA` = M.MARCCODIGO WHERE P.PRODDESTACADO = '1' ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+    /*=======================================================s
+        CONSULTA: CARGAR PRODUCTOS (TODOS)
+    =======================================================*/
+    public function cargarProductos($categoria){
+        $sql = "SELECT P.*, C.CATNOMBRE FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+    /*===========================================
+        CONSULTA: ACTUALIZAR ESTILO DESTACADOS
+    ===========================================*/
+  
+    public function actualizarEstiloDestacados($estilo){
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `componentes` SET `COMPDESTACADOS` = '".$estilo."' WHERE `COMPCODIGO` = 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();
+
+    }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DE LOS COMPONENTES
+    ===========================================*/
+  
+    public function mostrarDatosComponentes() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM `componentes`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();        
+    }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR DATOS DE LA PALETA DE COLORES VIGENTE
+    ===========================================*/
+  
+    public function mostrarColoresWeb() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM `paleta-colores` ORDER by COLORCODIGO DESC LIMIT 1;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();        
+    }
+  
+    /*===========================================
+        CONSULTA: AGREGAR PALETA DE COLORES
+    ===========================================*/
+  
+    public function agregarPaletaColores($primary, $secundary,$enfasis1,$enfasis2,$enfasis3,$light1,$light2,$light3) {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "INSERT INTO `paleta-colores`(`COLORCODIGO`, `COLORPRIMARY`, `COLORSECUNDARY`, `COLORENFASIS1`, `COLORENFASIS2`, `COLORENFASIS3`, `COLORLIGHT1`, `COLORLIGHT2`, `COLORLIGHT3`) VALUES (NULL,'".$primary."','".$secundary."','".$enfasis1."','".$enfasis2."','".$enfasis3."','".$light1."','".$light2."','".$light3."');";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->insert_registro();        
+    }
+  
+    /*===========================================
+        CONSULTA: MOSTRAR TODAS LAS PALETAS DE COLORES
+    ===========================================*/
+  
+    public function mostrarPaletasColores() {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM `paleta-colores`;";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();        
+    }
+  
+    /*===========================================
+        CONSULTA: ACTUALIZAR PRODUCTOS DESTACADOS
+    ===========================================*/
+  
+    public function actualizarDestacado($codigo,$destacado){
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "UPDATE `producto` SET `PRODDESTACADO` = '".$destacado."'  WHERE `PRODCODIGO` = '".$codigo."';";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
 

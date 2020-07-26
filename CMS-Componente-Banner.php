@@ -211,7 +211,7 @@
                 <!--IMAGEN-->
                 <div class="col-lg-6 mb-4 mb-lg-0 d-flex align-items-center justify-content-center">
 
-                  <img class="c1imagen img-fluid wow fadeInLeft">
+                  <img class="c1imagen img-fluid wow fadeInLeft" style="max-height:400px;">
 
                 </div>
 
@@ -256,7 +256,7 @@
                 <!--IMAGEN-->
                 <div class="col-md-5 mb-4 mb-md-0">
 
-                  <img class="c1imagen img-fluid wow fadeInRight">
+                  <img class="c1imagen img-fluid wow fadeInRight" style="max-height:400px;">
 
                 </div>
 
@@ -703,7 +703,7 @@
       //--ACTUALIZAR DATOS DEL COMPONENTE 1 --  
       function actualizarDatosComponente1(){
         
-        var rutaFoto;
+        var rutaFoto, nombreFoto;
 
         if(document.getElementById('foto').files.length == 0){
           if(document.getElementById('previewFoto').src==""){

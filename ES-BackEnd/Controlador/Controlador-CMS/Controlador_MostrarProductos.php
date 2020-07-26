@@ -6,17 +6,17 @@
 //METODO POST
 
 require_once(__DIR__."/../../Modelo/ConexionBD.php");
-require_once(__DIR__."/../../Modelo/Modelo_Web.php");
+require_once(__DIR__."/../../Modelo/Modelo_CMS.php");
 
-$Model_Web = new Model_Web();
+$Model_CMS = new Model_CMS();
 
 if(isset($_POST['_categoria'])){
     
     $categoria = $_POST['_categoria'];
 
-    if($Model_Web->cargarProductos($categoria)){                        
+    if($Model_CMS->cargarProductos($categoria)){                        
     
-        $array = $Model_Web->cargarProductos($categoria);  
+        $array = $Model_CMS->cargarProductos($categoria);  
 
     }else{                        
     $array = array(

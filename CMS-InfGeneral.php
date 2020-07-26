@@ -24,7 +24,7 @@
       <div class="px-5 mb-5">
 
           <!--TITULO-->
-          <h3 class="titulo">ACTUALIZAR INFORMACION GENERAL</h3>
+          <h3 class="titulo">INFORMACIÓN GENERAL DE LA EMPRESA</h3>
 
           <!--CONTENIDO DEL FORMULARIO-->
           <div>
@@ -303,7 +303,7 @@
                                     actualizarDatosEmpresa()
                             }else{
                                     mostrar=true;
-                                    mostrarToast("error",$("#estado").val());
+                                    mostrarToast("error",$("#estado1").val());
                             }
 
                     }

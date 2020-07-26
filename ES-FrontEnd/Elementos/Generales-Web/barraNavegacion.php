@@ -18,7 +18,7 @@
           
           <li class="nav-item"><a class="nav-link" href="Nosotros.php">Nosotros</a></li>
           
-          <li class="nav-item"><a class="nav-link" href="Productos.php">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="Tienda.php">Productos</a></li>
           
           <li class="nav-item"><a class="nav-link" href="Contactos.php">Contáctanos</a></li>
           
@@ -27,11 +27,13 @@
         <!--REDES SOCIALES-->
         <ul class="navbar-nav rs">
           <li class="d-flex flex-column">
-            <a id="telNavES"></a>
-            <a id="correoNavES"></a>
+            <a class="telNavES"></a>
+            <a class="correoNavES"></a>
           </li>
         </ul>
         
       </div>
       
     </nav>
+    
+   <div id="top" style="z-index: -50000; position:absolute; top:0;"></div>

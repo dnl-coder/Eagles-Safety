@@ -11,10 +11,6 @@
 
     <!--FUENTES-->
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script:700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Leckerli+One" rel="stylesheet">   
-    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
 
     <!-- ESTILOS DE LA PAGINA -->
     
@@ -24,7 +20,10 @@
     <link rel="stylesheet" href="ES-FrontEnd/MDB/css/bootstrap.min.css">
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="ES-FrontEnd/MDB/css/mdb.min.css">
-
+    <!-- Librarys CSS-->
+    <link rel="stylesheet" href="ES-FrontEnd/MDB/dist/tooltipster.css">
+    <link rel="stylesheet" href="ES-FrontEnd/MDB/dist/tooltipster-light-extra.css">
+    
     <!-- ESTILOS GENERALES -->
     <link rel="stylesheet" href="color.css">
     <link rel="stylesheet" href="ES-FrontEnd/Elementos/Generales-CMS/style.css">
@@ -39,14 +38,18 @@
     <script type="text/javascript" src="ES-FrontEnd/MDB/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="ES-FrontEnd/MDB/js/mdb.min.js"></script>
-    <!--CODE JS PAGINACION-->
+    <!--Librarys JS-->
     <script type="text/javascript" src="ES-FrontEnd/MDB/js/jquery.bootpag.min.js"></script>
+    <script type="text/javascript" src="ES-FrontEnd/MDB/dist/jquery.tooltipster.min.js"></script>
+    <script type="text/javascript" src="ES-FrontEnd/MDB/dist/jquery.multiform-text-editor.js"></script>
     
     <!-- JS Scripts-->
     <script src="ES-FrontEnd/Elementos/Generales-CMS/scripts.js"></script> 
     <script>
       
       $( document ).ready(function() {
+        mostrarInformacionEmpresa();
+        cargarPaletaColores();
         new WOW().init();
       });
       

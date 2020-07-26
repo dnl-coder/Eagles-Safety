@@ -8,7 +8,7 @@ function verificarLogin(){
 }
 
 //FUNCION PARA AGREGAR CLASE ACTIVE AL ELEMENTO SELECCIONADO DEL NAV
- $(document).ready(function () { 
+$(document).ready(function () { 
  
     $( ".list-sidebar a" ).each(function() { 
       if ($(this).attr("href") !== "#") { 
@@ -18,160 +18,17 @@ function verificarLogin(){
           } 
       }
     }); 
- 
- }); 
 
-/*=============================================
-    FUNCIONES DE CAMBIO DE VISTA
-=============================================*/
+}); 
 
-//--REDIRIGIR A VISTA MARCAS--
-function ventanaMarcas(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/CMS-Index/ModificarMarcas.html',  
-        contentType: "text / html",
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    }); 
-    
-}
+//--AJUSTAR MENU DE ACUERDO AL TAMAÑO DE PANTALLA--
+$(window).resize(function(){
 
-//--REDIRIGIR A VISTA SLIDER--
-function ventanaSlider(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/CMS-Index/ModificarSlider.html',  
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    }); 
-    
-}
+    if (window.innerWidth>991){
+        $('.sidebar').removeClass('mostrar');
+    }
 
-//--REDIRIGIR A VISTA ACTUALIZAR BANNER--
-function ventanaActualizarBanner(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/CMS-Index/ActualizarBanner.html',  
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    }); 
-    
-}
-
-//--REDIRIGIR A VISTA ACTUALIZAR DATOS EMPRESA--
-function ventanaActualizarDatosEmpresa(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/CMS-Index/ActualizarDatosEmpresa.html',  
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    }); 
-    
-}
-
-//--REDIRIGIR A VISTA CONTACTANOS--
-function vistaContactanos(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/VistaContactanos.html', 
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    }); 
-}
-
-//--REDIRIGIR A VISTA NOSOTROS--
-function vistaNosotros(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/VistaNosotros.html', 
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    }); 
-}
-
-//--REDIRIGIR A VISTA PRINCIPAL--
-function vistaPrincipal(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/VistaPrincipal.html',  
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    }); 
-}
-
-//--REDIRIGIR A VISTA NUEVO PRODUCTO--
-function vistaNuevoProducto(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/CMS-Productos/NuevoProducto.html',  
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    });
-}
-
-//--REDIRIGIR A VISTA EDITAR PRODUCTO--
-function vistaEditarProducto(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/CMS-Productos/ActualizarProducto.html',  
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    });
-}
-
-//--REDIRIGIR A VISTA ELIMINAR PRODUCTO--
-function vistaEliminarProducto(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/CMS-Productos/EliminarProducto.html',  
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    });
-}
-
-//--REDIRIGIR A VISTA NUEVA CATEGORIA--
-function vistaNuevaCategoria(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/CMS-Productos/NuevaCategoria.html',  
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    });
-}
-
-//--REDIRIGIR A VISTA ACTUALIZAR CATEGORIA--
-function vistaActualizarCategoria(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/CMS-Productos/ActualizarCategoria.html',  
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    });
-}
-
-//--REDIRIGIR A VISTA ELIMINAR CATEGORIA--
-function vistaEliminarCategoria(){
-    
-    $.ajax({  
-        url: 'ES-FrontEnd/Vista-CMS/CMS-Productos/EliminarCategoria.html',  
-        success: function(data) {  
-            $('#cuerpo').html(data);  
-        }  
-    });
-}
+});
 
 /*=============================================
     FUNCIONES GENERALES
