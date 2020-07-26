@@ -12,6 +12,7 @@
     <script type="text/javascript">
       vWeb.mostrarSliders();
       vWeb.mostrarComponente1();
+      vWeb.mostrarCategoriasDestacadas();
       vWeb.mostrarComponente2();
       vWeb.mostrarMarcas();
       vWeb.mostrarProductosDestacados();
@@ -206,129 +207,6 @@
     <?php include_once "ES-FrontEnd/Elementos/Generales-Web/piePagina.php";?>   
     
     <!-- CONTENT-->
-    
-    <script>
-      
-      mostrarCategoriasDestacadas();
-      
-      function mostrarCategoriasDestacadas(){
-        
-        $.ajax({
-            url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarCategorias.php',
-            type: 'GET',
-            datatype:'json',
-            error: function(error){
-                if(error.status == 401){
-                    console.log("Archivos no encontrados");
-                }
-                else{
-                    console.log("Error no identificado");
-                }
-            },
-            success: function(datos){
-                var contenedor = "";
-
-                //VERSION WEB
-                contenedor += "<div class='carousel-item row row-cols-5 no-gutters active'>";
-                for(var i=0; i<datos.length ; i++){
-                    if(i<5){
-                        contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
-                  <div class='view overlay' style='height: 330px'> \
-                    <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top' height='320'> \
-                    <a id='"+datos[i].CATCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
-                  </div> \
-                  <div class='card-body text-center px-1 py-2'> \
-                    <h6 class='font-weight-bold text-uppercase'> \
-                      <a id='"+datos[i].CATCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[i].CATNOMBRE+"</a> \
-                    </h6> \
-                  </div> \
-                </div></div>"
-                    }
-                }
-                contenedor+="\n\</div>"
-                for(var j=0; j<datos.length-1; j++){
-
-                    var a=0;
-                    contenedor += "<div class='carousel-item row row-cols-5 no-gutters'>";
-
-                    for(var k=1; k<6; k++){
-
-                        if((k+j)<datos.length){
-                            contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
-                  <div class='view overlay' style='height: 330px'> \
-                    <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[k+j].CATIMAGEN+"' class='card-img-top' height='320'> \
-                    <a id='"+datos[k+j].CATCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
-                  </div> \
-                  <div class='card-body text-center px-1 py-2'> \
-                    <h6 class='font-weight-bold text-uppercase'> \
-                      <a id='"+datos[k+j].CATCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[k+j].CATNOMBRE+"</a> \
-                    </h6> \
-                  </div> \
-                </div></div>"
-                        }else{
-                            contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
-                  <div class='view overlay' style='height: 330px'> \
-                    <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[a].CATIMAGEN+"' class='card-img-top' height='320'> \
-                    <a id='"+datos[a].CATCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
-                  </div> \
-                  <div class='card-body text-center px-1 py-2'> \
-                    <h6 class='font-weight-bold text-uppercase'> \
-                      <a id='"+datos[a].CATCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[a].CATNOMBRE+"</a> \
-                    </h6> \
-                  </div> \
-                </div></div>"
-                            a++;
-                        }
-
-                    }
-                    contenedor+="\n\</div>"
-
-                }
-                $("#categoriasDestacadas").html(contenedor);
-
-                //VERSION MOVIL
-                contenedor = "";
-                for(var i=0; i<datos.length ; i++){
-                    if(i==0){
-                        contenedor += "<div class='carousel-item justify-content-center no-gutters p-2 text-left active'>";
-                        contenedor+="\n\<div class='card align-items-center'> \
-                  <div class='view overlay' style='height: 238.078px'> \
-                    <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
-                    <a id='"+datos[i].CATCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
-                  </div> \
-                  <div class='card-body text-center'> \
-                    <h5 class='mb-3'> \
-                      <strong> \
-                        <a id='"+datos[i].CATCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[i].CATNOMBRE+"</a> \
-                      </strong> \
-                    </h5> \
-                  </div> \
-                </div></div>"
-                    }else{
-                        contenedor += "<div class='carousel-item justify-content-center p-2 text-left no-gutters '>";
-                        contenedor+="\n\<div class='card align-items-center'> \
-                  <div class='view overlay' style='height: 238.078px'> \
-                    <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
-                    <a id='"+datos[i].CATCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
-                  </div> \
-                  <div class='card-body text-center'> \
-                    <h5 class='mb-3'> \
-                      <strong> \
-                        <a id='"+datos[i].CATCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[i].CATNOMBRE+"</a> \
-                      </strong> \
-                    </h5> \
-                  </div> \
-                </div></div>"
-                    }
-                }
-                $("#categoriasDestacadasCelular").html(contenedor);
-            }
-        });
-        
-      }
-      
-  
-    </script>
 
 </body>
 </html>

@@ -69,21 +69,21 @@
                 <span class="fa fa-chevron-left pull-right mt-2"></span> 
             </a>
             <ul class="sub-menu collapse show" id="dashboard1">
-                <li><a href="CMS-Componente-Navegador.php"> Navegador </a></li>
-                <li><a href="CMS-Componente-Encabezado.php"> Encabezados </a></li>
+                <!--<li><a href="CMS-Componente-Navegador.php"> Navegador </a></li>
+                <li><a href="CMS-Componente-Encabezado.php"> Encabezados </a></li>-->
                 <li><a href="CMS-Componente-Carrusel.php"> Carrusel de imágenes </a></li>
                 <li><a href="CMS-Componente-Banner.php"> Banner 1</a></li>
                 <li><a href="CMS-Componente-Banner2.php"> Banner 2</a></li>
                 <li><a href="CMS-Componente-ProdDestacados.php"> Productos Destacados</a></li>
                 <li><a href="CMS-Componente-Marcas.php"> Marcas </a></li>
-                <li><a href="CMS-Componente-Banner3.php"> Banner 3</a></li>
-                <li><a href="CMS-Componente-Footer.php"> Pie de página</a></li>
+                <!--<li><a href="CMS-Componente-Banner3.php"> Banner 3</a></li>
+                <li><a href="CMS-Componente-Footer.php"> Pie de página</a></li>-->
                 
             </ul>
         </li>
         
         <!-- MENU PLUGGINS-->
-        <li> 
+        <!--<li> 
             <a href="#" data-toggle="collapse" data-target="#dashboard4" aria-expanded="true"> 
                 <i class="fas fa-splotch"></i>
                 <span class="nav-label"> Pluggins</span> 
@@ -95,7 +95,7 @@
                 <li><a href="CMS-Pluggin-Extras.php"> Extras</a></li>
                 
             </ul>
-        </li>
+        </li>-->
 
         <!-- MENU PRODUCTOS-->
         <li> 
@@ -112,15 +112,15 @@
         </li>
         
         <!-- MENU CONFIGURACION-->
-        <li> 
+        <!--<li> 
             <a href="CMS-Configuracion.php"> 
                 <i class="fas fa-cog"></i>
                 <span class="nav-label"> Configuración</span>
             </a>
-        </li>
+        </li>-->
         
         <!-- MENU USUARIO-->
-        <li class="d-lg-none"> 
+        <!--<li class="d-lg-none"> 
             <a href="#" data-toggle="collapse" data-target="#dashboard3" class="collapsed"> 
                 <i class="fas fa-address-book"></i> 
                 <span class="nav-label"> Usuario </span> 
@@ -131,7 +131,7 @@
                 <li><a onclick="vistaEditarProducto()"> Configuración </a></li>
                 <li><a onclick="vistaEliminarProducto()"> Cerrar sesión </a></li>
             </ul>
-        </li>
+        </li>-->
 
       </ul>
     </div>

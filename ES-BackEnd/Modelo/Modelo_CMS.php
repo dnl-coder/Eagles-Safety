@@ -210,10 +210,10 @@ class Model_CMS{
         CONSULTA: AGREGAR PRODUCTO
     ===========================================*/
     
-    public function agregarProducto($nombre, $rutaFoto,$descripcion,$descripcionespecifica,$categoria,$destacado) {
+    public function agregarProducto($titulo, $codigoEspecifico,$presentacion,$codmarca,$codcategoria,$tags,$descripcion,$imagen,$destacado,$fichaTecnica) {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "INSERT INTO `producto` (`PRODCODIGO`, `PRODNOMBRE`, `PRODIMAGEN`, `PRODDESCRIPCION`, `PRODDESCRIPCION_ESPECIFICA`, `CATCODIGO`, `PRODDESTACADO`) VALUES (NULL, '".$nombre."', '".$rutaFoto."', '".$descripcion."', '".$descripcionespecifica."', '".$categoria."', '".$destacado."');";
+        $sql = "INSERT INTO `producto` (`PRODCODIGO`, `PRODNOMBRE`, `PRODCODIGOES`, `PRODIMAGEN`, `PRODPRESENTACION`, `CODMARCA`, `PRODTAGS`, `PRODDESCRIPCION`, `PRODFICHATEC`, `CATCODIGO`, `PRODDESTACADO`) VALUES (NULL, '".$titulo."', '".$codigoEspecifico."', '".$imagen."', '".$presentacion."', '".$codmarca."', '".$tags."', '".$descripcion."', '".$fichaTecnica."', '".$codcategoria."', '".$destacado."');";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
@@ -236,10 +236,10 @@ class Model_CMS{
         CONSULTA: ACTUALIZAR PRODUCTO
     ===========================================*/
     
-    public function actualizarProducto($codigo,$nombre,$rutaFoto,$descripcion,$descripcionespecifica,$categoria,$destacado) {
+    public function actualizarProducto($codigo,$titulo, $codigoEspecifico,$presentacion,$codmarca,$codcategoria,$tags,$descripcion,$imagen,$destacado,$fichaTecnica) {
         
         //FUNCION CON LA CONSULTA A REALIZAR
-        $sql = "UPDATE `producto` SET `PRODNOMBRE` = '".$nombre."', `PRODIMAGEN` = '".$rutaFoto."', `PRODDESCRIPCION` = '".$descripcion."', `PRODDESCRIPCION_ESPECIFICA` = '".$descripcionespecifica."', `CATCODIGO` = '".$categoria."', `PRODDESTACADO` = '".$destacado."'  WHERE `PRODCODIGO` = '".$codigo."';";
+        $sql = "UPDATE `producto` SET `PRODNOMBRE`= '".$titulo."',`PRODCODIGOES`= '".$codigoEspecifico."',`PRODIMAGEN`= '".$imagen."',`PRODPRESENTACION`= '".$presentacion."',`CODMARCA`= '".$codmarca."',`PRODTAGS`= '".$tags."',`PRODDESCRIPCION`= '".$descripcion."',`PRODFICHATEC`= '".$fichaTecnica."',`CATCODIGO`= '".$codcategoria."',`PRODDESTACADO`= '".$destacado."' WHERE `PRODCODIGO` = '".$codigo."';";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->insert_registro();
         
@@ -429,7 +429,7 @@ class Model_CMS{
         CONSULTA: CARGAR PRODUCTOS DESTACADOS
     =======================================================*/
     public function mostrarProductosDestacados(){
-        $sql = "SELECT `producto`.*, `categoria`.CATNOMBRE  FROM `producto` INNER JOIN `categoria` ON `producto`.CATCODIGO = `categoria`.CATCODIGO WHERE `producto`.PRODDESTACADO = '1' ";
+        $sql = "SELECT P.*, C.CATNOMBRE, M.MARCNOMBRE  FROM `producto` P INNER JOIN `categoria` C ON P.CATCODIGO = C.CATCODIGO INNER JOIN `marca` M ON P.`CODMARCA` = M.MARCCODIGO WHERE P.PRODDESTACADO = '1' ";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
     }

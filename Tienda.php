@@ -58,11 +58,9 @@
                 <!--FILTROS APLICADOS-->  
                 <div class="my-3">
                   <p class="font-dark4 h6-responsive font-weight-bold">Filtros aplicados</p>
-                  <div class="tags mt-3">
-                    <div class="chip white border rounded-pill px-3 py-1">3M<i class="close fas fa-times"></i></div>
-                  </div>
+                  <div class="filtrosAplicados mt-3"></div>
                   <div class="text-center my-3">
-                    <a class="font-dark4">Limpiar filtros</a>
+                    <a class="font-primary" onclick="limpiarFiltros()">Limpiar filtros</a>
                   </div>
 
                 </div>
@@ -78,7 +76,7 @@
                 <hr>
                 <div class="my-3">
                   <p class="font-dark4 h6-responsive font-weight-bold mb-1">Disponibilidad</p>
-                  <ul class="list-group">
+                  <ul class="disponibilidad list-group">
                       <li class="list-group-item">
                           <div class="custom-control custom-radio">
                               <input type="radio" class="custom-control-input" id="disponibilidad1" name="disponibilidad">
@@ -98,7 +96,7 @@
                 <hr>
                 <div class="my-3">
                   <p class="font-dark4 h6-responsive font-weight-bold mb-1">Ficha técnica</p>
-                  <ul class="list-group">
+                  <ul class="fichaTecnica list-group">
                       <li class="list-group-item">
                           <div class="custom-control custom-radio">
                               <input type="radio" class="custom-control-input" id="fichaTecnica1" name="fichaTecnica">
@@ -175,13 +173,22 @@
     
     <!-- JS DEL ARCHIVO-->
     <script type="text/javascript">
-      
-      mostrarCategorias();
-      mostrarMarcas();
 
-      categoria="Protección Anticaída";
-      vWeb.mostrarProductosXCategoria(categoria);
+      //--OBTENER CATEGORIA--
+      <?php $categoria = isset($_GET['catNombre'])? $_GET['catNombre'] : "no existe" ; ?>
+      if( "<?php echo $categoria; ?>" == "no existe" ){
+        categoria="Protección Anticaída";
+      }else{
+        categoria = "<?php echo $categoria; ?>" ;
+      }
+      
+      //--DEFINIR VARIABLES Y FUNCIONES--
+      var dataFiltro = [];
       ubicacionMenu(categoria);
+      vWeb.mostrarProductosXCategoria(categoria);
+      vWeb.mostrarMarcasFiltros(categoria);
+      vWeb.mostrarTagsFiltros(categoria);
+      vWeb.mostrarCategoriasFiltros();
 
       //--SELECCIONAR CATEGORIA--
       $('body').on('click', '#categorias li', function (e) {
@@ -197,7 +204,7 @@
                   $(this).addClass("active");
               }
           }); 
-      })
+      });
       $('body').on('click', '#filtroCategoriasContent li', function (e) {
           e.preventDefault()
           $('#filtroCategoriasContent').addClass('d-none');
@@ -213,8 +220,66 @@
               }
           }); 
 
-      })
+      });
+      
+      //--AGREGAR FILTRO SELECCIONADO [MARCA]--
+      $('body').on('change', '.marcas li input:checked', function (e) {
+          e.preventDefault();
+        
+          if($(".filtrosAplicados").html() == ""){
+            filtroMarca(true, $(this).attr("id"));
+          }else{
+            filtroMarca(false, $(this).attr("id"));
+          }
+        
+          $(this).prop('disabled', true);
+          $(".filtrosAplicados").append("<div id='"+$(this).next().html()+"' class='chip white border rounded-pill px-3 my-1 text-break'><span class='font-primary pr-1'>Marca</span>"+$(this).next().html()+"<i class='close fas fa-times'></i></div>");
+          
+      });
+      
+      //--AGREGAR FILTRO SELECCIONADO [TAGS]--
+      $('body').on('change', '.tags li input:checked', function (e) {
+          e.preventDefault();
+        
+          if($(".filtrosAplicados").html() == ""){
+            filtroTags(true, $(this).attr("id"));
+          }else{
+            filtroTags(false, $(this).attr("id"));
+          }
+        
+          $(this).prop('disabled', true);
+          $(".filtrosAplicados").append("<div id='"+$(this).next().html()+"' class='chip white border rounded-pill px-3 my-1'><span class='font-primary pr-1'>Tag</span>"+$(this).next().html()+"<i class='close fas fa-times'></i></div>");
+        
+      });
+      
+      //--ELIMINAR FILTRO SELECCIONADO [MARCA]--
+      $('body').on('click', '.filtrosAplicados .chip .close', function (e) {
+          e.preventDefault();
+          var filtro = $(this).parent().attr("id");
+          $(".marcas li input:checked").each(function() {
+            if( filtro == $(this).next().html() ){
+              $(this).prop('disabled', false);
+              $(this).prop('checked',false);
+            }
+          });
+          $(this).parent(".chip").remove();
+      });
+      
+      //--ELIMINAR FILTRO SELECCIONADO [TAGS]--
+      $('body').on('click', '.filtrosAplicados .chip .close', function (e) {
+          e.preventDefault();
+          var filtro = $(this).parent().attr("id");
+          $(".tags li input:checked").each(function() {
+            if( filtro == $(this).next().html() ){
+              $(this).prop('disabled', false);
+              $(this).prop('checked',false);
+            }
+          });
+          $(this).parent(".chip").remove();
+      });
 
+      
+      
       //--MOSTRAR/OCULTAR CATEGORIAS--
       $("#filtroCategorias").click(function() {
           $("#filtroCategoriasContent").toggleClass("d-none");
@@ -225,93 +290,170 @@
           $(".filtros").toggleClass("mostrar");
       });
       
-      //-MOSTRAR TODOS LAS CATEGORIAS--
-      function mostrarCategorias(){
-
-          $.ajax({
-              url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarCategorias.php',
-              type: 'GET',
-              dataType: 'json',
-              error: function(error){
-                  mostrar=true;
-                  if(error.status == 401){
-                      mostrarToast("error","No se pudo establecer conexion con el servidor");
-                  }
-                  else{
-                      mostrarToast("error","Error no identificado.");
-                  }
-              },
-              success: function(datos){
-                  if(datos.response == 0){
-                      mostrar=true;
-                      mostrarToast("error",'ERROR: '+datos.message);
-                  }
-                  else{
-                      var categorias = "";
-                      var categorias2 = "";
-                      for (var i=0;i<datos.length;i++){
-                          if(i==0){
-                            categorias+="<li class='col btn p-1 active'><img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATICONO+"' width='60'><p class='px-2'>"+datos[i].CATNOMBRE+"</p></li>"
-                          }else{
-                            categorias+="<li class='col btn p-1'><img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATICONO+"' width='60'><p class='px-2'>"+datos[i].CATNOMBRE+"</p></li>"
-                          }
-                        
-                          categorias2+="<li class='btn col-5 col-sm-3 bg-primary p-1'><img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATICONO+"' width='50'><br>"+datos[i].CATNOMBRE+"</li>"
-                          
-                      }
-                      $("#categorias ul").html(categorias);
-                      $("#filtroCategoriasContent ul").html(categorias2);
-                  }
-              }
+      //ELIMINAR FILTROS
+      function limpiarFiltros(){
+          $(".filtros li input:checked").each(function() {
+              $(this).prop('disabled', false);
+              $(this).prop('checked',false);
           });
+          $(".chip").remove();
+          vWeb.mostrarProductosXCategoria(categoria);
+          dataFiltro = [];
       }
-
-      //-MOSTRAR TODOS LAS MARCAS--
-      function mostrarMarcas(){
-
+      
+      //-UBICACION DEL MENU--
+      function ubicacionMenu(categoria){
+          var ubicacion= "";
+          ubicacion += "<li class='breadcrumb-item'><i class='fa fa-home fa-lg mt-1 mr-2 white-text' aria-hidden='true'></i><a class='white-text' href='index.php'>Inicio</a></li>  \
+            <li class='breadcrumb-item'><a class='white-text' href='Tienda.php'>Productos</a></li>  \
+            <li class='breadcrumb-item active'>"+categoria+"</li>";
+          $("#menuUbicacion").html(ubicacion);
+      }
+      
+      /* --> SELECCIONAR CATEGORIA [FILTRO] */ 
+      function filtroMarca(dat, marca){
+          var $datos={
+              '_categoria': categoria,
+              '_marca': marca
+          }
           $.ajax({
-              url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarMarcas.php',
-              type: 'GET',
-              dataType: 'json',
-              error: function(error){
-                  mostrar=true;
+              url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_FiltroMarca.php',
+              type: 'POST',
+              data: $datos,
+              datatype:'json',
+              error: function(error){	
                   if(error.status == 401){
-                      mostrarToast("error","No se pudo establecer conexion con el servidor");
+                      console.log("Categoria incorrecta");
                   }
                   else{
-                      mostrarToast("error","Error no identificado.");
+                      console.log("Error no identificado");
                   }
               },
               success: function(datos){
-                  if(datos.response == 0){
-                      mostrar=true;
-                      mostrarToast("error",'ERROR: '+datos.message);
-                  }
-                  else{
-                      $("ul.marcas").html("");
-                      var marcas = ""
-                      for (var i=0;i<datos.length;i++){
-                          marcas+="<li class='list-group-item'>  \
-                              <div class='custom-control custom-checkbox'>  \
-                                  <input type='checkbox' class='custom-control-input' id='"+datos[i].MARCCODIGO+"'>  \
-                                  <label class='custom-control-label pt-1 pl-2' for='"+datos[i].MARCCODIGO+"'>"+datos[i].MARCNOMBRE+"</label>  \
-                              </div>  \
-                          </li>"
-                      }
-                      $("ul.marcas").html(marcas);
+                  data=datos;
+                  if(datos.response==0){
+                      var vacio="<div class='container text-center m-5 p-5'><h1 class='h1-responsive font-weight-bold grey-text'>NO DISPONIBLE </h1><i class='fa fa-lock fa-4x p-5 grey-text'></i></div>"
+                      $("#content").html(vacio);
+                  }else{
+                      $.merge(dataFiltro, datos);
+                      
+                      var hash = {};
+                      dataFiltro = dataFiltro.filter(function(current) {
+                        var exists = !hash[current.PRODCODIGO];
+                        hash[current.PRODCODIGO] = true;
+                        return exists;
+                      });
+                      
+                      dat==true? generarPaginacion(datos) : generarPaginacion(dataFiltro);
                   }
               }
           });
       }
       
-      function ubicacionMenu(categoria){
-          var ubicacion= "";
-          ubicacion += "<li class='breadcrumb-item'><i class='fa fa-home fa-lg mt-1 mr-2 white-text' aria-hidden='true'></i><a class='white-text' href='index.php'>Inicio</a></li>  \
-            <li class='breadcrumb-item'>Productos</li>  \
-            <li class='breadcrumb-item active'>"+categoria+"</li>";
-          $("#menuUbicacion").html(ubicacion);
+      /* --> SELECCIONAR CATEGORIA [FILTRO] */ 
+      function filtroTags(dat, tag){
+          var $datos={
+              '_categoria': categoria,
+              '_tag': tag
+          }
+          $.ajax({
+              url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_FiltroTags.php',
+              type: 'POST',
+              data: $datos,
+              datatype:'json',
+              error: function(error){	
+                  if(error.status == 401){
+                      console.log("Categoria incorrecta");
+                  }
+                  else{
+                      console.log("Error no identificado");
+                  }
+              },
+              success: function(datos){
+                  data=datos;
+                  if(datos.response==0){
+                      var vacio="<div class='container text-center m-5 p-5'><h1 class='h1-responsive font-weight-bold grey-text'>NO DISPONIBLE </h1><i class='fa fa-lock fa-4x p-5 grey-text'></i></div>"
+                      $("#content").html(vacio);
+                  }else{
+                      $.merge(dataFiltro, datos);
+                    
+                      var hash = {};
+                      dataFiltro = dataFiltro.filter(function(current) {
+                        var exists = !hash[current.PRODCODIGO];
+                        hash[current.PRODCODIGO] = true;
+                        return exists;
+                      });
+                      dat==true? generarPaginacion(datos) : generarPaginacion(dataFiltro);
+                  }
+              }
+          });
       }
-  
+      
+      /* --> GENERAR PAGINACION [FILTRO] */ 
+      var totalProductos;
+      var paginasProductos=0;
+      function generarPaginacion(datos){
+        
+          var total = datos.length;
+          var paginas=0;
+
+          //CANTIDAD DE PAGINAS
+          if(total%8==0){
+              paginas=total/8;
+          }else{
+              paginas=(total/8)+1;
+              paginas=Math.floor(paginas);
+          }
+        
+          //GENERAR CONTENEDOR
+          $('#PAGINACION').bootpag({
+              total: paginas,
+              page: 1,
+              maxVisible: 5,
+              activeClass: 'activePage',
+              disabledClass: 'disabled'
+          }).on("page", function(event, num){
+              generarProductos(totalProductos, paginasProductos, dataFiltro,num);
+          });
+          generarProductos(total, paginas, datos,1);
+        
+          totalProductos=total;
+          paginasProductos=paginas;
+        
+      }
+
+      /* --> GENERAR CUADRICULA DE PRODUCTOS [FILTRO] */ 
+      function generarProductos(total, paginas, datos,num){  
+        
+          var primero=(num-1)*8;
+          var ultimo=num*8;
+          var contenido = "";
+
+          if(paginas==num){
+              ultimo=total;
+          }
+        
+          for(var i=primero; i<ultimo; i++){
+              contenido += "<div class='col-12 col-sm-6 col-md-4 col-lg-3 p-2'>\n\
+              <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.mostrarProducto(this)'>\n\
+                  <div class='view overlay zoom'>\n\
+                      <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"'>\n\
+                  </div>\n\
+                  <div class='card-body'>\n\
+                      <p class='mb-2 font-dark4'>"+datos[i].MARCNOMBRE+"</p>\n\
+                      <p class='mb-1 titulo'>"+datos[i].PRODNOMBRE+"</p>\n\
+                      <p class='mb-2 font-dark4'>COD "+datos[i].PRODCODIGOES+"</p>\n\
+                      <p class='mb-2 bg-primary text-white px-2 border rounded-pill' style='width:fit-content;'>DISPONIBLE</p>\n\
+                  </div>\n\
+              </div>\n\
+              </div>";
+
+          }
+          $("#content").html(contenido);
+      }
+
+      
+      
     </script>
 
 

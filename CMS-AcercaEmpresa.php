@@ -42,6 +42,7 @@
                   </div>
 
                   <!--MISION-->
+                  <form action="" id="form">
                   <div class="row">
 
                       <!--DESCRIPCION-->
@@ -80,6 +81,7 @@
                       </div>
 
                   </div>
+                  </form>
 
               </div>
 
@@ -222,7 +224,7 @@
       });
 
       $.ajax({
-          url: "ES-BackEnd/Controlador/Controlador-CMS/Controlador_GuardarImagenEmpresa.php",
+          url: "ES-BackEnd/Controlador/Controlador-CMS/Controlador_GuardarImagenNosotros.php",
           type: "POST",
           data: nuevoFormulario,
           contentType: false,
@@ -301,7 +303,6 @@
         });
 
     }
-
 
     //--MOSTRAR TOAST CON MENSAJE--
     function mostrarToast(tipo,msj){

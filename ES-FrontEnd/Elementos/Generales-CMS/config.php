@@ -21,6 +21,8 @@
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="ES-FrontEnd/MDB/css/mdb.min.css">
     <!-- Librarys CSS-->
+    <link rel="stylesheet" href="ES-FrontEnd/MDB/dist/tooltipster.css">
+    <link rel="stylesheet" href="ES-FrontEnd/MDB/dist/tooltipster-light-extra.css">
     
     <!-- ESTILOS GENERALES -->
     <link rel="stylesheet" href="color.css">
@@ -38,6 +40,8 @@
     <script type="text/javascript" src="ES-FrontEnd/MDB/js/mdb.min.js"></script>
     <!--Librarys JS-->
     <script type="text/javascript" src="ES-FrontEnd/MDB/js/jquery.bootpag.min.js"></script>
+    <script type="text/javascript" src="ES-FrontEnd/MDB/dist/jquery.tooltipster.min.js"></script>
+    <script type="text/javascript" src="ES-FrontEnd/MDB/dist/jquery.multiform-text-editor.js"></script>
     
     <!-- JS Scripts-->
     <script src="ES-FrontEnd/Elementos/Generales-CMS/scripts.js"></script> 

@@ -46,7 +46,7 @@ class Model_Web{
         CARGAR PRODUCTOS (TODOS)
     =======================================================*/
     public function cargarProductos($categoria){
-        $sql = "SELECT P.* FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' ";
+        $sql = "SELECT * FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO INNER JOIN marca M ON P.CODMARCA= M.MARCCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' ";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
     }
@@ -55,7 +55,7 @@ class Model_Web{
         CARGAR PRODUCTOS DESTACADOS
     =======================================================*/
     public function mostrarProductosDestacados(){
-        $sql = "SELECT `producto`.*, `componentes`.`COMPDESTACADOS` FROM `producto`, `componentes` WHERE PRODDESTACADO = '1';";
+        $sql = "SELECT P.*, M.MARCNOMBRE, (SELECT `componentes`.`COMPDESTACADOS` FROM `componentes`) AS 'COMPDESTACADOS' FROM `producto` P INNER JOIN `marca` M ON P.`CODMARCA`= M.MARCCODIGO WHERE PRODDESTACADO = '1';";
         $this->_conexion->ejecutar_sentencia($sql);
         return $this->_conexion->retornar_select();
     }
@@ -120,5 +120,56 @@ class Model_Web{
         return $this->_conexion->retornar_select();
         
     }
+  
+    /*===========================================
+        CONSULTA: DETALLE PRODUCTO
+    ===========================================*/
+    
+    public function detalleProducto($codigo) {
+        
+        //FUNCION CON LA CONSULTA A REALIZAR
+        $sql = "SELECT * FROM `producto` INNER JOIN `marca` ON `producto`.`CODMARCA`= `marca`.MARCCODIGO INNER JOIN `categoria` ON `producto`.`CATCODIGO`= `categoria`.`CATCODIGO` WHERE `PRODCODIGO` = ".$codigo." ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_array();
+        
+    }
+  
+    /*=======================================================s
+        CARGAR MARCAS DE PRODUCTOS X CATEGORIA
+    =======================================================*/
+    public function cargarMarcasProductos($categoria){
+        $sql = "SELECT DISTINCT  M.* FROM `producto` P INNER JOIN `categoria` C ON P.CATCODIGO = C.CATCODIGO INNER JOIN `marca` M ON P.`CODMARCA`= M.MARCCODIGO WHERE C.`CATNOMBRE`='" . $categoria . "' ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+    /*=======================================================s
+        CARGAR TAGS DE PRODUCTOS X CATEGORIA
+    =======================================================*/
+    public function cargarTagsProductos($categoria){
+        $sql = "SELECT DISTINCT P.PRODTAGS FROM `producto` P INNER JOIN `categoria` C ON P.CATCODIGO = C.CATCODIGO WHERE C.`CATNOMBRE`='" . $categoria . "' ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+    /*=======================================================s
+        CARGAR PRODUCTOS (FILTRO MARCA)
+    =======================================================*/
+    public function filtroMarca($categoria,$marca){
+        $sql = "SELECT * FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO INNER JOIN marca M ON P.CODMARCA= M.MARCCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' AND P.CODMARCA=" . $marca;
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+    /*=======================================================s
+        CARGAR PRODUCTOS (FILTRO TAGS)
+    =======================================================*/
+    public function filtroTag($categoria,$tag){
+        $sql = "SELECT * FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO INNER JOIN marca M ON P.CODMARCA= M.MARCCODIGO WHERE C.CATNOMBRE ='" . $categoria . "' AND P.PRODTAGS LIKE '%" . $tag . "%' ; ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
+  
 }
 ?>

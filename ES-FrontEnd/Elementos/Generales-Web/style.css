@@ -9,6 +9,7 @@ html, body{
     scrollbar-highlight-color: var(--primary);
 }
 p{cursor: context-menu;}
+b{font-weight: bold;}
 
 /*barra desplazamiento style*/
 ::-webkit-scrollbar-track{
@@ -256,6 +257,13 @@ p{cursor: context-menu;}
     font-style: italic;
     font-family: serif;
 }
+.carousel-control-next, .carousel-control-prev {
+    background: var(--secundary) !important;
+    width: 2% !important;
+    height: 6%;
+    margin: auto;
+}
+
 /*destacados style*/
 .product-ofertas{background: var(--light1);}
 
@@ -360,6 +368,15 @@ PRODUCTOS    (PRODUCTOS)
     background-color: var(--primary);
 }
 
+/*filtros aplicados style*/
+.filtrosAplicados .chip{
+  color: grey;
+  font-size: .9rem;
+}
+.filtrosAplicados .chip i{
+  font-size: 1.2rem;
+}
+
 .mostrar{
     display: block !important;
     position: fixed;
@@ -381,16 +398,12 @@ PRODUCTOS    (PRODUCTOS)
 #PAGINACION .activePage a{ color: white; }
 #PAGINACION .activePage:hover { background: var(--primary); }
 
-#content img{
-    cursor:pointer; 
-    height:30vh; 
-}
-
 /*=============================================
 DETALLE PRODUCTO    (PRODUCTOS)
 =============================================*/
 
-#content p, #DESTACADOS p, #productosRelacionados p, #productosRelacionadosCelular p{
+#content .titulo, #DESTACADOS .titulo, #productosRelacionados .titulo, #productosRelacionadosCelular .titulo{
+    height: 39px;
     font-size: 0.8rem;
     font-weight: 600 !important;
     overflow: hidden;
@@ -398,11 +411,15 @@ DETALLE PRODUCTO    (PRODUCTOS)
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    align-items: center;
+}
+
+#content img, #DESTACADOS .DESTACADO1 img, #DESTACADOS .DESTACADO3 img, #productosRelacionados img, #productosRelacionadosCelular img{
+    cursor:pointer; 
+    height:30vh; 
 }
 
 #myTab a.active,#myTab a:hover{background: var(--primary) !important; color: white !important;}
-
-
 
 /*=============================================
 MEDIA RESPONSIVE

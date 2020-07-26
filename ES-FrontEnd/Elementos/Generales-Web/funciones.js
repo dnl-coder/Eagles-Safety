@@ -130,6 +130,7 @@ function cargarPaletaColores(){
 /*=============================================
     FUNCIONES GENERALES
 =============================================*/
+
 var data="";
 var vistaWeb = function (){}
 
@@ -591,7 +592,7 @@ vistaWeb.prototype.mostrarInformacionEmpresa = function(){
     });
 };
 
-//-- FUNCION MOSTRAR MARCAS DE LA EMPRESA --
+//-- FUNCION MOSTRAR MARCAS DE LA EMPRESA (SLIDER) --
 vistaWeb.prototype.mostrarMarcas = function(){
     $.ajax({
         url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarMarcas.php',
@@ -652,6 +653,123 @@ vistaWeb.prototype.mostrarMarcas = function(){
     });
 };
 
+//-- FUNCION MOSTRAR CATEGORIAS DE LA EMPRESA (SLIDER) --
+vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
+        
+  $.ajax({
+      url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarCategorias.php',
+      type: 'GET',
+      datatype:'json',
+      error: function(error){
+          if(error.status == 401){
+              console.log("Archivos no encontrados");
+          }
+          else{
+              console.log("Error no identificado");
+          }
+      },
+      success: function(datos){
+          var contenedor = "";
+
+          //VERSION WEB
+          contenedor += "<div class='carousel-item row row-cols-5 no-gutters active'>";
+          for(var i=0; i<datos.length ; i++){
+              if(i<5){
+                  contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
+            <div class='view overlay' style='height: 330px'> \
+              <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top' height='320'> \
+              <a><div class='mask rgba-white-slight'></div></a> \
+            </div> \
+            <div class='card-body text-center px-1 py-2'> \
+              <h6 class='font-weight-bold text-uppercase'> \
+                <a class='dark-grey-text'>"+datos[i].CATNOMBRE+"</a> \
+              </h6> \
+            </div> \
+          </div></div>"
+              }
+          }
+          contenedor+="\n\</div>"
+          for(var j=0; j<datos.length-1; j++){
+
+              var a=0;
+              contenedor += "<div class='carousel-item row row-cols-5 no-gutters'>";
+
+              for(var k=1; k<6; k++){
+
+                  if((k+j)<datos.length){
+                      contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
+            <div class='view overlay' style='height: 330px'> \
+              <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[k+j].CATIMAGEN+"' class='card-img-top' height='320'> \
+              <a><div class='mask rgba-white-slight'></div></a> \
+            </div> \
+            <div class='card-body text-center px-1 py-2'> \
+              <h6 class='font-weight-bold text-uppercase'> \
+                <a class='dark-grey-text'>"+datos[k+j].CATNOMBRE+"</a> \
+              </h6> \
+            </div> \
+          </div></div>"
+                  }else{
+                      contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
+            <div class='view overlay' style='height: 330px'> \
+              <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[a].CATIMAGEN+"' class='card-img-top' height='320'> \
+              <a><div class='mask rgba-white-slight'></div></a> \
+            </div> \
+            <div class='card-body text-center px-1 py-2'> \
+              <h6 class='font-weight-bold text-uppercase'> \
+                <a class='dark-grey-text'>"+datos[a].CATNOMBRE+"</a> \
+              </h6> \
+            </div> \
+          </div></div>"
+                      a++;
+                  }
+
+              }
+              contenedor+="\n\</div>"
+
+          }
+          $("#categoriasDestacadas").html(contenedor);
+
+          //VERSION MOVIL
+          contenedor = "";
+          for(var i=0; i<datos.length ; i++){
+              if(i==0){
+                  contenedor += "<div class='carousel-item justify-content-center no-gutters p-2 text-left active'>";
+                  contenedor+="\n\<div class='card align-items-center'> \
+            <div class='view overlay' style='height: 238.078px'> \
+              <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
+              <a><div class='mask rgba-white-slight'></div></a> \
+            </div> \
+            <div class='card-body text-center'> \
+              <h5 class='mb-3'> \
+                <strong> \
+                  <a class='dark-grey-text'>"+datos[i].CATNOMBRE+"</a> \
+                </strong> \
+              </h5> \
+            </div> \
+          </div></div>"
+              }else{
+                  contenedor += "<div class='carousel-item justify-content-center p-2 text-left no-gutters '>";
+                  contenedor+="\n\<div class='card align-items-center'> \
+            <div class='view overlay' style='height: 238.078px'> \
+              <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
+              <a><div class='mask rgba-white-slight'></div></a> \
+            </div> \
+            <div class='card-body text-center'> \
+              <h5 class='mb-3'> \
+                <strong> \
+                  <a class='dark-grey-text'>"+datos[i].CATNOMBRE+"</a> \
+                </strong> \
+              </h5> \
+            </div> \
+          </div></div>"
+              }
+          }
+          $("#categoriasDestacadasCelular").html(contenedor);
+      }
+  });
+
+}
+
 //-- FUNCION MOSTRAR PRODUCTOS DESTACADOS--
 vistaWeb.prototype.mostrarProductosDestacados = function(){
     $.ajax({
@@ -678,16 +796,16 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
               <div class='card-deck mb-4 row justify-content-center'>";
                 for(var i=0; i<datos.length ; i++){
                     contenedor += "<div class='col-12 wow fadeIn' style='min-width:150px; max-width:250px;'> \
-                    <div class='card m-1'> \
+                    <div class='card m-1' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.mostrarProducto(this)'> \
                         <div class='view overlay zoom'> \
-                            <img id='"+datos[i].PRODCODIGO+"' class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' onclick='vWeb.seleccionarProducto(this)' style='cursor:pointer;' height='200px'> \
+                            <img class='card-img-top DESTACADO1' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' style='cursor:pointer;' height='200px'> \
                         </div> \
                         <div class='card-body'> \
-                            <p class='font-weight-bold text-uppercase mb-1' style='height:80px;'>"+datos[i].PRODNOMBRE+"</p> \
+                            <p class='titulo font-weight-bold text-uppercase mb-1'>"+datos[i].PRODNOMBRE+"</p> \
                             <hr class='bg-light3 my-0' style='width: 60%; height:3px;'> \
                             <hr class='bg-primary my-1' style='width: 20%; height:3px;'> \
                             <div class='text-right'> \
-                                <a id='"+datos[i].PRODCODIGO+"' class='btn bg-primary btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a>  \
+                                <a class='btn bg-primary btn-sm py-0 px-1'>Ver más</a>  \
                             </div> \
                         </div> \
                     </div> \
@@ -708,17 +826,15 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
               <div class='row justify-content-center'>";                
                 for(var i=0; i<datos.length ; i++){
                     contenedor += "<div class='col-lg-3 col-md-6 mb-4 justify-content-center d-flex align-items-stretch'> \
-                <div class='card align-items-center'> \
-                  <div class='destacado2 view overlay' style='height: 238.078px'> \
-                    <img src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' class='card-img-top'> \
-                    <a id='"+datos[i].PRODCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
+                <div class='card align-items-center' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.mostrarProducto(this)'> \
+                  <div class='view overlay' style='height: 330px'> \
+                    <img src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' class='card-img-top DESTACADO2' height='320'> \
+                    <a><div class='mask rgba-white-slight'></div></a> \
                   </div> \
-                  <div class='card-body text-center'> \
-                    <h5 class='mb-3'> \
-                      <strong> \
-                        <a id='"+datos[i].PRODCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[i].PRODNOMBRE+"</a> \
-                      </strong> \
-                    </h5> \
+                  <div class='card-body text-center px-1 py-2'> \
+                    <h6 class='font-weight-bold text-uppercase'> \
+                      <a class='dark-grey-text'>"+datos[i].PRODNOMBRE+"</a> \
+                    </h6> \
                   </div> \
                 </div> \
               </div>";
@@ -737,14 +853,14 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
                 <div class='row justify-content-center'>";                
                 for(var i=0; i<datos.length ; i++){
                     contenedor += "<div class='col-lg-3 col-md-6 p-2 text-left'>  \
-          <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.seleccionarProducto(this)'>  \
+          <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.mostrarProducto(this)'>  \
               <div class='view overlay zoom'>  \
-                  <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' style='cursor:pointer; height:40vh;'>  \
+                  <img class='card-img-top DESTACADO3' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' style='cursor:pointer; height:40vh;'>  \
               </div>  \
               <div class='card-body'>  \
-                  <p class='mb-2 font-dark4'>PROTECTA</p>  \
-                  <p class='mb-1'>"+datos[i].PRODNOMBRE+"</p>  \
-                  <p class='mb-2 font-dark4'>COD 1161560</p>  \
+                  <p class='mb-2 font-dark4'>"+datos[i].MARCNOMBRE+"</p>  \
+                  <p class='titulo mb-1'>"+datos[i].PRODNOMBRE+"</p>  \
+                  <p class='mb-2 font-dark4'>COD "+datos[i].PRODCODIGOES+"</p>  \
                   <p class='mb-2 bg-primary text-white px-2 border rounded-pill' style='width:fit-content;'>DISPONIBLE</p>  \
               </div>  \
           </div>  \
@@ -760,70 +876,6 @@ vistaWeb.prototype.mostrarProductosDestacados = function(){
             $("#DESTACADOS").html(contenedor);
         }
     });
-};
-
-//-- FUNCION SELECCIONAR Y MOSTRAR LA INFORMACION DEL PRODUCTO --
-vistaWeb.prototype.seleccionarProducto = function(e){
-    var id = e.id;
-    var modal="";
-    var numproducto = 0;
-    datos=data;
-    //BUSCAR DATOS DE PRODUCTO EN ARRAY
-    for(var i=0; i<datos.length; i++){
-       if(datos[i].PRODCODIGO == id){
-           var texto=datos[i].PRODDESCRIPCION;
-           numproducto = i;
-       }
-    }
-    //Descripcion General- Características
-    var lineas = texto.split("\n");
-    var caracteristicas="";
-    
-    for(var i=0; i<lineas.length; i++){
-        caracteristicas+="\n\<li>"+lineas[i]+"</li>";
-    }
-    
-    modal+="<div class='modal-content'>\n\
-    <!-- ENCABEZADO -->\n\
-    <div class='modal-header pb-0 border border-0'>\n\
-        <!-- TITULO --> \n\
-        <div>\n\
-          <p class='font-weight-bold small mb-0'>"+datos[numproducto].PRODNOMBRE+"</p>\n\
-          <hr class='bg-light3 my-0 mx-0' style='width: 60%; height:2px;'>\n\
-          <hr class='bg-primary my-1 mx-0' style='width: 20%; height:2px;'>\n\
-        </div>\n\
-        <!-- BOTON CERRAR --> \n\
-        <button type='button' class='close p-3' data-dismiss='modal' aria-label='Close'>\n\
-            <span aria-hidden='true'>&times;</span>\n\
-        </button>\n\
-    </div>\n\
-    <!-- CUERPO -->\n\
-    <div class='modal-body'>\n\
-    <div class='row'>\n\
-        <!-- IMAGEN Y CONTACTO --> \n\
-        <div class='col-12 col-lg-5 py-1'>\n\
-            <!-- imagen -->   \n\
-            <img class='img-fluid d-block mx-auto' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[numproducto].PRODIMAGEN+"' style='max-height:40vh;' />\n\
-        </div>    \n\
-        <!-- CARACTERISTICAS -->\n\
-        <div class='col-12 col-lg-7 p-0'>\n\
-            <!-- descripcion --> \n\
-            <div class='mx-2'>\n\
-                <p class='font-weight-bold small'>Características</p>\n\
-                <ul class='pl-3 small'>"+caracteristicas+"\n\</ul>\n\
-                <div class='row justify-content-center'>\n\
-                  <p class='mx-1 px-2 py-1 mb-0 small text-white rounded black'><i class='fas mr-1 fa-shield-alt'></i>Seguridad</p>\n\
-                  <p class='mx-1 px-2 py-1 mb-0 small text-white rounded bg-primary'><i class='fas mr-1 fa-balance-scale'></i>Calidad</p>\n\
-                  <p class='mx-1 px-2 py-1 mb-0 small text-white rounded bg-enfasis3'><i class='fas mr-1 fa-trophy'></i>Garantía</p>\n\
-                </div>\n\
-            </div>\n\
-        </div>\n\
-    </div> \n\
-    </div>\n\
-    </div>";
-    $(".modal-dialog").html(modal);
-    
-    $("#modalDescripcion").modal({show:true});
 };
 
 //-- FUNCION MOSTRAR INFORMACION DE LA EMPRESA --
@@ -915,7 +967,165 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
     });
 };
 
-//-- FUNCION MOSTRAR PRODUCTOS X CATEGORIA--
+/*=============================================
+    FUNCIONES INFORMACION DE FILTROS
+=============================================*/
+
+/* --> MOSTRAR TODOS LAS CATEGORIAS EN EL MENU DE LA TIENDA */ 
+vistaWeb.prototype.mostrarCategoriasFiltros = function(){
+
+    $.ajax({
+        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarCategorias.php',
+        type: 'GET',
+        dataType: 'json',
+        error: function(error){
+            if(error.status == 401){
+                console.log("No se pudo establecer conexion con el servidor");
+            }
+            else{
+                console.log("Error no identificado.");
+            }
+        },
+        success: function(datos){
+            if(datos.response == 0){
+                console.log('ERROR: '+datos.message);
+            }
+            else{
+                var categorias = "";
+                var categorias2 = "";
+                for (var i=0;i<datos.length;i++){
+                    if(i==0){
+                      categorias+="<li class='col btn p-1 active'><img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATICONO+"' width='60'><p class='px-2'>"+datos[i].CATNOMBRE+"</p></li>"
+                    }else{
+                      categorias+="<li class='col btn p-1'><img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATICONO+"' width='60'><p class='px-2'>"+datos[i].CATNOMBRE+"</p></li>"
+                    }
+
+                    categorias2+="<li class='btn col-5 col-sm-3 bg-primary p-1'><img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATICONO+"' width='50'><br>"+datos[i].CATNOMBRE+"</li>"
+
+                }
+                $("#categorias ul").html(categorias);
+                $("#filtroCategoriasContent ul").html(categorias2);
+            }
+        }
+    });
+  
+}
+      
+/* --> MOSTRAR TODOS LAS MARCAS SEGUN LA CATEGORIA SELECCIONADA */ 
+vistaWeb.prototype.mostrarMarcasFiltros = function(opcion){
+
+    var $categoria={
+        '_categoria': opcion
+    }
+
+    $.ajax({
+        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarMarcasXProducto.php',
+        type: 'POST',
+        data: $categoria,
+        dataType: 'json',
+        error: function(error){
+            if(error.status == 401){
+                console.log("No se pudo establecer conexion con el servidor");
+            }
+            else{
+                console.log("Error no identificado.");
+            }
+        },
+        success: function(datos){
+            if(datos.response == 0){
+                console.log('ERROR: '+datos.message);
+            }
+            else{
+                $("ul.marcas").html("");
+                var marcas = ""
+                for (var i=0;i<datos.length;i++){
+                    marcas+="<li class='list-group-item'>  \
+                        <div class='custom-control custom-checkbox'>  \
+                            <input type='checkbox' class='custom-control-input' id='"+datos[i].MARCCODIGO+"'>  \
+                            <label class='custom-control-label pt-1 pl-2' for='"+datos[i].MARCCODIGO+"'>"+datos[i].MARCNOMBRE+"</label>  \
+                        </div>  \
+                    </li>"
+                }
+                $("ul.marcas").html(marcas);
+            }
+        }
+    });
+  
+}
+      
+/* --> MOSTRAR TODOS LOS TAGS SEGUN LA CATEGORIA SELECCIONADA */ 
+vistaWeb.prototype.mostrarTagsFiltros = function(opcion){
+
+    var $categoria={
+        '_categoria': opcion
+    }
+
+    $.ajax({
+        url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarTagsXProducto.php',
+        type: 'POST',
+        data: $categoria,
+        dataType: 'json',
+        error: function(error){
+            if(error.status == 401){
+                console.log("No se pudo establecer conexion con el servidor");
+            }
+            else{
+                console.log("Error no identificado.");
+            }
+        },
+        success: function(datos){
+            if(datos.response == 0){
+                console.log('ERROR: '+datos.message);
+            }
+            else{
+                $("ul.tags").html("");
+                var tags = [];
+                var evaluar = [];
+                for (var i=0;i<datos.length;i++){
+
+                  if(i==0){
+                    tags=datos[i].PRODTAGS.split(";");
+                  }else{
+                    evaluar=datos[i].PRODTAGS.split(";");
+                    for (var j=0;j<tags.length;j++){
+                      for( var k=0;k<evaluar.length;k++){
+                        if(evaluar[k] == tags[j]){
+                          evaluar.splice(k, 1);
+                        }
+                      }
+                    }
+                    tags.push(evaluar[0]);
+                  }
+                }
+                var content="";
+                for( var i=0;i<tags.length;i++){
+                  if(i==0){
+                    content+="<li class='list-group-item'>  \
+                        <div class='custom-control custom-checkbox'>  \
+                            <input type='checkbox' class='custom-control-input' id=' "+tags[i]+"'>  \
+                            <label class='custom-control-label pt-1 pl-2' for='"+tags[i]+"'>"+tags[i]+"</label>  \
+                        </div>  \
+                    </li>"
+                  }else{
+                    content+="<li class='list-group-item'>  \
+                        <div class='custom-control custom-checkbox'>  \
+                            <input type='checkbox' class='custom-control-input' id='"+tags[i]+"'>  \
+                            <label class='custom-control-label pt-1 pl-2' for='"+tags[i]+"'>"+tags[i]+"</label>  \
+                        </div>  \
+                    </li>"
+                  }
+                }
+                $("ul.tags").html(content);
+            }
+        }
+    });
+  
+}
+      
+/*=============================================
+    FUNCION MOSTRAR PRODUCTOS X CATEGORIA
+=============================================*/
+
 /* --> SELECCIONAR CATEGORIA */ 
 vistaWeb.prototype.mostrarProductosXCategoria = function(opcion){
     var $categoria={
@@ -952,10 +1162,10 @@ vistaWeb.prototype.generarPaginacion = function(datos){
     var paginas=0;
     
     //CANTIDAD DE PAGINAS
-    if(total%12==0){
-        paginas=total/12;
+    if(total%8==0){
+        paginas=total/8;
     }else{
-        paginas=(total/12)+1;
+        paginas=(total/8)+1;
         paginas=Math.floor(paginas);
     }
     
@@ -974,8 +1184,8 @@ vistaWeb.prototype.generarPaginacion = function(datos){
 
 /* --> GENERAR CUADRICULA DE PRODUCTOS */ 
 vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
-    var primero=(num-1)*12;
-    var ultimo=num*12;
+    var primero=(num-1)*8;
+    var ultimo=num*8;
     var contenido = "";
     
     if(paginas==num){
@@ -983,14 +1193,14 @@ vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
     }
     for(var i=primero; i<ultimo; i++){
         contenido += "<div class='col-12 col-sm-6 col-md-4 col-lg-3 p-2'>\n\
-        <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.seleccionarProducto(this)'>\n\
+        <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.mostrarProducto(this)'>\n\
             <div class='view overlay zoom'>\n\
                 <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"'>\n\
             </div>\n\
             <div class='card-body'>\n\
-                <p class='mb-2 font-dark4'>PROTECTA</p>\n\
-                <p class='mb-1'>"+datos[i].PRODNOMBRE+"</p>\n\
-                <p class='mb-2 font-dark4'>COD 1161560</p>\n\
+                <p class='mb-2 font-dark4'>"+datos[i].MARCNOMBRE+"</p>\n\
+                <p class='mb-1 titulo'>"+datos[i].PRODNOMBRE+"</p>\n\
+                <p class='mb-2 font-dark4'>COD "+datos[i].PRODCODIGOES+"</p>\n\
                 <p class='mb-2 bg-primary text-white px-2 border rounded-pill' style='width:fit-content;'>DISPONIBLE</p>\n\
             </div>\n\
         </div>\n\
@@ -998,6 +1208,43 @@ vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
     
     }
     $("#content").html(contenido);
+};
+
+/* --> REDIRIGIR AL PRODUCTO */ 
+vistaWeb.prototype.mostrarProducto = function(cod){
+
+  var $datos={
+      '_codigo': cod.id
+  }
+
+  $.ajax({
+      url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_DetalleProducto.php',
+      type: 'POST',
+      data: $datos,
+      dataType: 'json',
+      error: function(error){
+          if(error.status == 401){
+              console.log("No se pudo establecer conexion con el servidor");
+          }
+          else{
+              console.log("Error no identificado.");
+          }
+      },
+      success: function(datos){
+          if(datos.response == 0){
+              console.log('ERROR: '+datos.message);
+          }
+          else{
+
+              sessionStorage["presentacion"]=datos.PRODPRESENTACION;
+              sessionStorage["descripcion"]=datos.PRODDESCRIPCION;
+
+              window.location.href = "Producto.php?nombre="+datos.PRODNOMBRE+"&codigoEs="+datos.PRODCODIGOES+"&imagen="+datos.PRODIMAGEN+"&codMarca="+datos.CODMARCA+"&marcaNombre="+datos.MARCNOMBRE+"&marcaImagen="+datos.MARCIMAGEN+"&tags="+datos.PRODTAGS+"&fichaTec="+datos.PRODFICHATEC+"&catCodigo="+datos.CATCODIGO+"&catNombre="+datos.CATNOMBRE+"&destacado="+datos.PRODDESTACADO ;
+
+          }
+      }
+  });
+  
 };
 
 var vWeb = new vistaWeb();

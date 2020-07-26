@@ -343,44 +343,42 @@
                         contenedor1 += "<div class='col-12 wow fadeIn' style='min-width:150px; max-width:250px;'> \
                         <div class='card m-1'> \
                             <div class='view overlay zoom'> \
-                                <img id='"+datos[i].PRODCODIGO+"' class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' onclick='vWeb.seleccionarProducto(this)' style='cursor:pointer;' height='200px'> \
+                                <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' style='cursor:pointer;' height='200px'> \
                             </div> \
                             <div class='card-body'> \
-                                <p class='font-weight-bold text-uppercase mb-1' style='height:80px;'>"+datos[i].PRODNOMBRE+"</p> \
+                                <p class='tituloProd font-weight-bold text-uppercase mb-1' style='height:50px;'>"+datos[i].PRODNOMBRE+"</p> \
                                 <hr class='bg-light3 my-0' style='width: 60%; height:3px;'> \
                                 <hr class='bg-primary my-1' style='width: 20%; height:3px;'> \
                                 <div class='text-right'> \
-                                    <a id='"+datos[i].PRODCODIGO+"' class='btn bg-primary btn-sm py-0 px-1' onclick='vWeb.seleccionarProducto(this)'>Ver más</a>  \
+                                    <a class='btn bg-primary btn-sm py-0 px-1'>Ver más</a>  \
                                 </div> \
                             </div> \
                         </div> \
                         </div>";
 
                         contenedor2 += "<div class='col-lg-3 col-md-6 mb-4 justify-content-center d-flex align-items-stretch'> \
-                    <div class='card align-items-center'> \
-                      <div class='destacado2 view overlay' style='height: 238.078px'> \
-                        <img src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' class='card-img-top'> \
-                        <a id='"+datos[i].PRODCODIGO+"' onclick='vWeb.seleccionarProducto(this)'><div class='mask rgba-white-slight'></div></a> \
+                        <div class='card align-items-center' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.mostrarProducto(this)'> \
+                      <div class='view overlay' style='height: 330px'> \
+                        <img src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' class='card-img-top DESTACADO2' height='320'> \
+                        <a><div class='mask rgba-white-slight'></div></a> \
                       </div> \
-                      <div class='card-body text-center'> \
-                        <h5 class='mb-3'> \
-                          <strong> \
-                            <a id='"+datos[i].PRODCODIGO+"' class='dark-grey-text' onclick='vWeb.seleccionarProducto(this)'>"+datos[i].PRODNOMBRE+"</a> \
-                          </strong> \
-                        </h5> \
+                      <div class='card-body text-center px-1 py-2'> \
+                        <h6 class='font-weight-bold text-uppercase'> \
+                          <a class='dark-grey-text'>"+datos[i].PRODNOMBRE+"</a> \
+                        </h6> \
                       </div> \
                     </div> \
                   </div>";
                       
                         contenedor3 += "<div class='col-lg-3 col-md-6 p-2 text-left'>  \
-          <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.seleccionarProducto(this)'>  \
+          <div class='card'>  \
               <div class='view overlay zoom'>  \
                   <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"' style='cursor:pointer; height:40vh;'>  \
               </div>  \
               <div class='card-body'>  \
-                  <p class='mb-2 font-dark4'>PROTECTA</p>  \
-                  <p class='mb-1'>"+datos[i].PRODNOMBRE+"</p>  \
-                  <p class='mb-2 font-dark4'>COD 1161560</p>  \
+                  <p class='mb-2 font-dark4'>"+datos[i].MARCNOMBRE+"</p>  \
+                  <p class='tituloProd mb-1'>"+datos[i].PRODNOMBRE+"</p>  \
+                  <p class='mb-2 font-dark4'>COD "+datos[i].PRODCODIGOES+"</p>  \
                   <p class='mb-2 bg-primary text-white px-2 border rounded-pill' style='width:fit-content;'>DISPONIBLE</p>  \
               </div>  \
           </div>  \
