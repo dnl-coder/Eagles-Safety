@@ -36,8 +36,8 @@
       </div>
       
       <form class="form-inline my-2 mx-auto mx-md-0 row">
-        <input class="col-10 form-control" type="text" placeholder="Buscar producto" aria-label="Search">
-        <button class="col btn bg-dark2 white-text p-2"><i class="fas fa-search"></i></button>
+        <input id="filtroProducto" class="col-10 form-control" type="text" placeholder="Buscar producto" aria-label="Search">
+        <button type="button" class="col btn bg-dark2 white-text p-2" onclick="buscarProducto()"><i class="fas fa-search"></i></button>
       </form>
       
     </nav>

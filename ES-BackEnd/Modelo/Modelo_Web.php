@@ -170,6 +170,15 @@ class Model_Web{
         return $this->_conexion->retornar_select();
     }
   
+    /*=======================================================s
+        CARGAR PRODUCTOS (FILTRO PRODUCTO)
+    =======================================================*/
+    public function filtroProducto($nombre){
+        $sql = "SELECT * FROM producto P INNER JOIN categoria C ON P.CATCODIGO= C.CATCODIGO INNER JOIN marca M ON P.CODMARCA= M.MARCCODIGO WHERE P.PRODNOMBRE LIKE '%" . $nombre . "%' ; ";
+        $this->_conexion->ejecutar_sentencia($sql);
+        return $this->_conexion->retornar_select();
+    }
+  
   
 }
 ?>

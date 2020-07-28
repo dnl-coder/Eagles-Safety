@@ -30,8 +30,8 @@
       </div>
       
       <form class="form-inline my-2 mx-auto mx-md-0 row">
-        <input class="col-10 form-control" type="text" placeholder="Buscar producto" aria-label="Search">
-        <button class="col btn bg-dark2 white-text p-2"><i class="fas fa-search"></i></button>
+        <input id="filtroProducto" class="col-10 form-control" type="text" placeholder="Buscar producto" aria-label="Search">
+        <button type="button" class="col btn bg-dark2 white-text p-2" onclick="buscarProducto()"><i class="fas fa-search"></i></button>
       </form>
       
     </nav>
@@ -368,6 +368,38 @@
         
       }
       
+      /* --> MOSTRAR DATOS DEL FILTRO NOMBRE DEL PRODUCTO */ 
+      function buscarProducto(){
+
+          var $datos={
+              '_nombre': $("#filtroProducto").val()
+          }
+          $.ajax({
+              url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_FiltroProducto.php',
+              type: 'POST',
+              data: $datos,
+              datatype:'json',
+              error: function(error){	
+                  if(error.status == 401){
+                      console.log("Categoria incorrecta");
+                  }
+                  else{
+                      console.log("Error no identificado");
+                  }
+              },
+              success: function(datos){
+                  data=datos;
+                  if(datos.response==0){
+                      var vacio="<div class='container text-center m-5 p-5'><h1 class='h1-responsive font-weight-bold grey-text'>NO DISPONIBLE </h1><i class='fa fa-lock fa-4x p-5 grey-text'></i></div>"
+                      $("#content").html(vacio);
+                  }else{
+                      dataFiltro=datos;
+                      generarPaginacion(datos);
+                  }
+              }
+          });
+      }   
+      
       /* --> MOSTRAR DATOS DEL FILTRO MARCA */ 
       function filtroMarca(dat, marca){
           var $datos={
@@ -408,6 +440,25 @@
           });
       }
       
+      /* --> ELIMINAR DATOS DEL FILTRO MARCA */ 
+      function eliminarFiltroMarca(marca){
+
+        for(var i=0;i<dataFiltro.length;i++){
+          if (dataFiltro[i].MARCNOMBRE == marca){
+            delete dataFiltro[i];
+          }
+        }
+        
+        dataFiltro = dataFiltro.filter(Boolean);
+        
+        if($(".filtrosAplicados").html() == ""){
+          limpiarFiltros();
+        }else{
+          generarPaginacion(dataFiltro);
+        }
+        
+      }
+      
       /* --> MOSTRAR DATOS DEL FILTRO TAG */ 
       function filtroTags(dat, tag){
           var $datos={
@@ -446,6 +497,31 @@
               }
           });
       }
+ 
+      /* --> ELIMINAR DATOS DEL FILTRO MARCA */ 
+      function eliminarFiltroTag(tag){
+
+        for(var i=0;i<dataFiltro.length;i++){
+          var tags=dataFiltro[i].PRODTAGS.split(";");
+          
+          for (var j=0;j<tags.length;j++){
+            
+            if (tags[j] == tag){
+              delete dataFiltro[i];
+              break;
+            }
+          }
+        }
+
+        dataFiltro = dataFiltro.filter(Boolean);
+        
+        if($(".filtrosAplicados").html() == ""){
+          limpiarFiltros();
+        }else{
+          generarPaginacion(dataFiltro);
+        }
+        
+      }
       
       /* --> GENERAR PAGINACION [FILTRO] */ 
       function generarPaginacion(datos){
@@ -477,50 +553,6 @@
           paginasProductos=paginas;
         
       } 
-      
-      /* --> ELIMINAR DATOS DEL FILTRO MARCA */ 
-      function eliminarFiltroMarca(marca){
-
-        for(var i=0;i<dataFiltro.length;i++){
-          if (dataFiltro[i].MARCNOMBRE == marca){
-            delete dataFiltro[i];
-          }
-        }
-        
-        dataFiltro = dataFiltro.filter(Boolean);
-        
-        if($(".filtrosAplicados").html() == ""){
-          limpiarFiltros();
-        }else{
-          generarPaginacion(dataFiltro);
-        }
-        
-      }
-      
-      /* --> ELIMINAR DATOS DEL FILTRO MARCA */ 
-      function eliminarFiltroTag(tag){
-
-        for(var i=0;i<dataFiltro.length;i++){
-          var tags=dataFiltro[i].PRODTAGS.split(";");
-          
-          for (var j=0;j<tags.length;j++){
-            
-            if (tags[j] == tag){
-              delete dataFiltro[i];
-              break;
-            }
-          }
-        }
-
-        dataFiltro = dataFiltro.filter(Boolean);
-        
-        if($(".filtrosAplicados").html() == ""){
-          limpiarFiltros();
-        }else{
-          generarPaginacion(dataFiltro);
-        }
-        
-      }
       
     </script>
 
