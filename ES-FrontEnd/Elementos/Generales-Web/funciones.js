@@ -675,14 +675,14 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
           contenedor += "<div class='carousel-item row row-cols-5 no-gutters active'>";
           for(var i=0; i<datos.length ; i++){
               if(i<5){
-                  contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
+                  contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center' > \
             <div class='view overlay' style='height: 330px'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top' height='320'> \
-              <a><div class='mask rgba-white-slight'></div></a> \
+              <a href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
             <div class='card-body text-center px-1 py-2'> \
               <h6 class='font-weight-bold text-uppercase'> \
-                <a class='dark-grey-text'>"+datos[i].CATNOMBRE+"</a> \
+                <a class='dark-grey-text' href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'>"+datos[i].CATNOMBRE+"</a> \
               </h6> \
             </div> \
           </div></div>"
@@ -700,11 +700,11 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
                       contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
             <div class='view overlay' style='height: 330px'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[k+j].CATIMAGEN+"' class='card-img-top' height='320'> \
-              <a><div class='mask rgba-white-slight'></div></a> \
+              <a href='Tienda.php?catNombre="+datos[k+j].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
             <div class='card-body text-center px-1 py-2'> \
               <h6 class='font-weight-bold text-uppercase'> \
-                <a class='dark-grey-text'>"+datos[k+j].CATNOMBRE+"</a> \
+                <a class='dark-grey-text' href='Tienda.php?catNombre="+datos[k+j].CATNOMBRE+"'>"+datos[k+j].CATNOMBRE+"</a> \
               </h6> \
             </div> \
           </div></div>"
@@ -712,11 +712,11 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
                       contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
             <div class='view overlay' style='height: 330px'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[a].CATIMAGEN+"' class='card-img-top' height='320'> \
-              <a><div class='mask rgba-white-slight'></div></a> \
+              <a href='Tienda.php?catNombre="+datos[a].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
             <div class='card-body text-center px-1 py-2'> \
               <h6 class='font-weight-bold text-uppercase'> \
-                <a class='dark-grey-text'>"+datos[a].CATNOMBRE+"</a> \
+                <a class='dark-grey-text' href='Tienda.php?catNombre="+datos[a].CATNOMBRE+"'>"+datos[a].CATNOMBRE+"</a> \
               </h6> \
             </div> \
           </div></div>"
@@ -737,12 +737,12 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
                   contenedor+="\n\<div class='card align-items-center'> \
             <div class='view overlay' style='height: 238.078px'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
-              <a><div class='mask rgba-white-slight'></div></a> \
+              <a href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
             <div class='card-body text-center'> \
               <h5 class='mb-3'> \
                 <strong> \
-                  <a class='dark-grey-text'>"+datos[i].CATNOMBRE+"</a> \
+                  <a class='dark-grey-text' href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'>"+datos[i].CATNOMBRE+"</a> \
                 </strong> \
               </h5> \
             </div> \
@@ -752,12 +752,12 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
                   contenedor+="\n\<div class='card align-items-center'> \
             <div class='view overlay' style='height: 238.078px'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
-              <a><div class='mask rgba-white-slight'></div></a> \
+              <a href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
             <div class='card-body text-center'> \
               <h5 class='mb-3'> \
                 <strong> \
-                  <a class='dark-grey-text'>"+datos[i].CATNOMBRE+"</a> \
+                  <a class='dark-grey-text' href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'>"+datos[i].CATNOMBRE+"</a> \
                 </strong> \
               </h5> \
             </div> \
@@ -972,7 +972,7 @@ vistaWeb.prototype.insertarMensajeContactanos = function(){
 =============================================*/
 
 /* --> MOSTRAR TODOS LAS CATEGORIAS EN EL MENU DE LA TIENDA */ 
-vistaWeb.prototype.mostrarCategoriasFiltros = function(){
+vistaWeb.prototype.mostrarCategoriasFiltros = function(categoria){
 
     $.ajax({
         url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_MostrarCategorias.php',
@@ -994,7 +994,7 @@ vistaWeb.prototype.mostrarCategoriasFiltros = function(){
                 var categorias = "";
                 var categorias2 = "";
                 for (var i=0;i<datos.length;i++){
-                    if(i==0){
+                    if(datos[i].CATNOMBRE==categoria){
                       categorias+="<li class='col btn p-1 active'><img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATICONO+"' width='60'><p class='px-2'>"+datos[i].CATNOMBRE+"</p></li>"
                     }else{
                       categorias+="<li class='col btn p-1'><img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATICONO+"' width='60'><p class='px-2'>"+datos[i].CATNOMBRE+"</p></li>"
@@ -1005,6 +1005,7 @@ vistaWeb.prototype.mostrarCategoriasFiltros = function(){
                 }
                 $("#categorias ul").html(categorias);
                 $("#filtroCategoriasContent ul").html(categorias2);
+              
             }
         }
     });
@@ -1041,7 +1042,7 @@ vistaWeb.prototype.mostrarMarcasFiltros = function(opcion){
                 for (var i=0;i<datos.length;i++){
                     marcas+="<li class='list-group-item'>  \
                         <div class='custom-control custom-checkbox'>  \
-                            <input type='checkbox' class='custom-control-input' id='"+datos[i].MARCCODIGO+"'>  \
+                            <input type='checkbox' class='"+datos[i].MARCCODIGO+" custom-control-input' id='"+datos[i].MARCCODIGO+"'>  \
                             <label class='custom-control-label pt-1 pl-2' for='"+datos[i].MARCCODIGO+"'>"+datos[i].MARCNOMBRE+"</label>  \
                         </div>  \
                     </li>"
@@ -1102,14 +1103,14 @@ vistaWeb.prototype.mostrarTagsFiltros = function(opcion){
                   if(i==0){
                     content+="<li class='list-group-item'>  \
                         <div class='custom-control custom-checkbox'>  \
-                            <input type='checkbox' class='custom-control-input' id=' "+tags[i]+"'>  \
+                            <input type='checkbox' class='"+tags[i]+" custom-control-input' id=' "+tags[i]+"'>  \
                             <label class='custom-control-label pt-1 pl-2' for='"+tags[i]+"'>"+tags[i]+"</label>  \
                         </div>  \
                     </li>"
                   }else{
                     content+="<li class='list-group-item'>  \
                         <div class='custom-control custom-checkbox'>  \
-                            <input type='checkbox' class='custom-control-input' id='"+tags[i]+"'>  \
+                            <input type='checkbox' class='"+tags[i]+" custom-control-input' id='"+tags[i]+"'>  \
                             <label class='custom-control-label pt-1 pl-2' for='"+tags[i]+"'>"+tags[i]+"</label>  \
                         </div>  \
                     </li>"
@@ -1156,11 +1157,12 @@ vistaWeb.prototype.mostrarProductosXCategoria = function(opcion){
     });
 };
 
-/* --> GENERAR PAGINACION */ 
+/* --> GENERAR PAGINACION [FILTRO] */ 
 vistaWeb.prototype.generarPaginacion = function(datos){
+
     var total = datos.length;
     var paginas=0;
-    
+
     //CANTIDAD DE PAGINAS
     if(total%8==0){
         paginas=total/8;
@@ -1168,7 +1170,7 @@ vistaWeb.prototype.generarPaginacion = function(datos){
         paginas=(total/8)+1;
         paginas=Math.floor(paginas);
     }
-    
+
     //GENERAR CONTENEDOR
     $('#PAGINACION').bootpag({
         total: paginas,
@@ -1180,8 +1182,9 @@ vistaWeb.prototype.generarPaginacion = function(datos){
         vWeb.generarProductos(total, paginas, datos,num);
     });
     vWeb.generarProductos(total, paginas, datos,1);
-};
 
+};
+      
 /* --> GENERAR CUADRICULA DE PRODUCTOS */ 
 vistaWeb.prototype.generarProductos = function(total, paginas, datos,num){
     var primero=(num-1)*8;
