@@ -1034,7 +1034,7 @@ vistaWeb.prototype.mostrarMarcasFiltros = function(opcion){
         },
         success: function(datos){
             if(datos.response == 0){
-                console.log('ERROR: '+datos.message);
+                $("ul.marcas").html("<p class='font-dark4 text-center'>Sin resultados</p>");
             }
             else{
                 $("ul.marcas").html("");
@@ -1076,7 +1076,7 @@ vistaWeb.prototype.mostrarTagsFiltros = function(opcion){
         },
         success: function(datos){
             if(datos.response == 0){
-                console.log('ERROR: '+datos.message);
+                $("ul.tags").html("<p class='font-dark4 text-center'>Sin resultados</p>");
             }
             else{
                 $("ul.tags").html("");
@@ -1088,33 +1088,26 @@ vistaWeb.prototype.mostrarTagsFiltros = function(opcion){
                     tags=datos[i].PRODTAGS.split(";");
                   }else{
                     evaluar=datos[i].PRODTAGS.split(";");
+                    
                     for (var j=0;j<tags.length;j++){
                       for( var k=0;k<evaluar.length;k++){
-                        if(evaluar[k] == tags[j]){
+                        if( $.trim(evaluar[k]) == $.trim(tags[j]) ){
                           evaluar.splice(k, 1);
                         }
                       }
                     }
-                    tags.push(evaluar[0]);
+                    if(evaluar.length > 0){tags.push( $.trim(evaluar[0]) );}
                   }
                 }
                 var content="";
                 for( var i=0;i<tags.length;i++){
-                  if(i==0){
-                    content+="<li class='list-group-item'>  \
-                        <div class='custom-control custom-checkbox'>  \
-                            <input type='checkbox' class='"+tags[i]+" custom-control-input' id=' "+tags[i]+"'>  \
-                            <label class='custom-control-label pt-1 pl-2' for='"+tags[i]+"'>"+tags[i]+"</label>  \
-                        </div>  \
-                    </li>"
-                  }else{
-                    content+="<li class='list-group-item'>  \
+                  tags[i] = $.trim(tags[i]); 
+                  content+="<li class='list-group-item'>  \
                         <div class='custom-control custom-checkbox'>  \
                             <input type='checkbox' class='"+tags[i]+" custom-control-input' id='"+tags[i]+"'>  \
                             <label class='custom-control-label pt-1 pl-2' for='"+tags[i]+"'>"+tags[i]+"</label>  \
                         </div>  \
                     </li>"
-                  }
                 }
                 $("ul.tags").html(content);
             }
@@ -1126,6 +1119,8 @@ vistaWeb.prototype.mostrarTagsFiltros = function(opcion){
 /*=============================================
     FUNCION MOSTRAR PRODUCTOS X CATEGORIA
 =============================================*/
+
+var totalP, paginasP;
 
 /* --> SELECCIONAR CATEGORIA */ 
 vistaWeb.prototype.mostrarProductosXCategoria = function(opcion){
@@ -1179,9 +1174,16 @@ vistaWeb.prototype.generarPaginacion = function(datos){
         activeClass: 'activePage',
         disabledClass: 'disabled'
     }).on("page", function(event, num){
-        vWeb.generarProductos(total, paginas, datos,num);
+        console.log(totalP)
+        console.log(paginasP)
+        console.log(data)
+      
+        vWeb.generarProductos(totalP, paginasP, data,num);
     });
     vWeb.generarProductos(total, paginas, datos,1);
+  
+    totalP=total;
+    paginasP=paginas;
 
 };
       
