@@ -240,6 +240,16 @@
       vWeb.mostrarTagsFiltros(categoria);
       vWeb.mostrarCategoriasFiltros(categoria);
 
+      
+      //--OBTENER PRODUCTO--
+      var producto="";
+      <?php $producto = isset($_GET['producto'])? $_GET['producto'] : "no existe" ; ?>
+      if( "<?php echo $producto; ?>" != "no existe" ){
+        producto = "<?php echo $producto; ?>" ;
+        buscarProducto();
+      }
+      
+      
       //--SELECCIONAR CATEGORIA--
       $('body').on('click', '#categorias li', function (e) {
           e.preventDefault()
@@ -370,9 +380,12 @@
       
       /* --> MOSTRAR DATOS DEL FILTRO NOMBRE DEL PRODUCTO */ 
       function buscarProducto(){
-
+          var nombre="";
+        
+          producto==""? nombre=$("#filtroProducto").val() : nombre=producto;
+        
           var $datos={
-              '_nombre': $("#filtroProducto").val()
+              '_nombre': nombre
           }
           $.ajax({
               url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_FiltroProducto.php',
@@ -395,6 +408,13 @@
                   }else{
                       dataFiltro=datos;
                       generarPaginacion(datos);
+                    
+                      $("#categorias li").each(function() { 
+                          $(this).removeClass("active");
+                      }); 
+                    
+                      producto="";
+                    
                   }
               }
           });

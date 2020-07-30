@@ -37,7 +37,7 @@
       
       <form class="form-inline my-2 mx-auto mx-md-0 row">
         <input id="filtroProducto" class="col-10 form-control" type="text" placeholder="Buscar producto" aria-label="Search">
-        <button type="button" class="col btn bg-dark2 white-text p-2" onclick="buscarProducto()"><i class="fas fa-search"></i></button>
+        <a type="button" class="fProducto col btn bg-dark2 white-text p-2" onclick="buscarProducto(this)"><i class="fas fa-search"></i></a>
       </form>
       
     </nav>
@@ -196,6 +196,11 @@
         $('a#previewPDF').removeClass("disabled");
 
         $('a#previewPDF').attr({target: '_blank', href  : url+"ES-FrontEnd/Elementos/Imagenes/Productos/Ficha tecnica/<?php echo $pdf; ?>"});
+      }
+      
+      //-- BUSCAR PRODUCTO --  
+      function buscarProducto(){
+        $("a.fProducto").attr({href  : "Tienda.php? producto=" + $("#filtroProducto").val()});
       }
       
       /* --> MOSTRAR PRODUCTOS RELACIONADOS SEGUN LA CATEGORIA */ 
