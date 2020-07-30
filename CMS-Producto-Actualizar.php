@@ -149,7 +149,7 @@
                   </div>
 
                   <!-- CONTENIDO EDITABLE -->
-                  <div id="presentacion" class="box-txt" contenteditable="true">Presentación del producto</div>
+                  <div id="presentacion" class="box-txt text-left" contenteditable="true">Presentación del producto</div>
 
 
                   <div class="caracteristicas">
@@ -515,6 +515,9 @@
                     mostrarToast("error",'ERROR: '+datos.message);
                 }
                 else{
+                  
+                    document.getElementById("form2").reset();
+                  
                     $("#titulo").val(datos.PRODNOMBRE);
                     $("#codigo").val(datos.PRODCODIGOES);
                     $("#presentacion").html(datos.PRODPRESENTACION);
@@ -707,7 +710,7 @@
         }
       
         if(document.getElementById('pdf').files.length == 0){
-          if($('a#previewPDF').attr("href")==""){
+          if($('a#previewPDF').attr("href")=="" || $('a#previewPDF').attr("href")==undefined){
               rutaPDF="-";
           }else{
               nombrePDF=$('a#previewPDF').attr("href").split("/Ficha tecnica/");

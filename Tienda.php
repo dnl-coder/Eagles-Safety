@@ -23,14 +23,15 @@
     <!-- MENU DE UBICACION-->
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
       
-      <div class="mr-auto">
+      <div class="mr-auto d-none d-md-inline-flex">
         <nav aria-label="breadcrumb">
-          <ol id="menuUbicacion" class="breadcrumb clearfix d-none d-md-inline-flex pt-0"></ol>
+          <ol id="menuUbicacion" class="breadcrumb clearfix pt-0"></ol>
         </nav>
       </div>
       
-      <form class="form-inline my-2">
-        <input class="form-control mr-4 mr-sm-2" type="text" placeholder="Buscar producto" aria-label="Search">
+      <form class="form-inline my-2 mx-auto mx-md-0 row">
+        <input id="filtroProducto" class="col-10 form-control" type="text" placeholder="Buscar producto" aria-label="Search">
+        <button type="button" class="col btn bg-dark2 white-text p-2" onclick="buscarProducto()"><i class="fas fa-search"></i></button>
       </form>
       
     </nav>
@@ -73,7 +74,7 @@
                 </div>
 
                 <!--DISPONIBILIDAD-->  
-                <hr>
+                <!--<hr>
                 <div class="my-3">
                   <p class="font-dark4 h6-responsive font-weight-bold mb-1">Disponibilidad</p>
                   <ul class="disponibilidad list-group">
@@ -91,9 +92,9 @@
                       </li>
                   </ul>
                 </div>
-                
+                -->
                 <!--FICHA TECNICA-->  
-                <hr>
+                <!--<hr>
                 <div class="my-3">
                   <p class="font-dark4 h6-responsive font-weight-bold mb-1">Ficha técnica</p>
                   <ul class="fichaTecnica list-group">
@@ -111,7 +112,7 @@
                       </li>
                   </ul>
                 </div>
-                
+                -->
                 <!--TAGS-->  
                 <hr>
                 <div class="my-3">
@@ -121,6 +122,53 @@
 
             </div>
 
+        </div>
+        <div class="filtros modal fade" id="modalFiltros" tabindex="-1" role="dialog" aria-labelledby="modalFiltros"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+             
+              <!--TITULO--> 
+              <div class="modal-header"> 
+                <div class="font-dark4">
+                    <h6 class="h6-responsive font-weight-bold"><i class="fas fa-sliders-h"></i> FILTROS</h6>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              
+              <!--OPCIONES DE FILTROS-->  
+              <div class="modal-body">
+
+                <!--FILTROS APLICADOS-->  
+                <div class="mb-3">
+                  <p class="font-dark4 h6-responsive font-weight-bold">Filtros aplicados</p>
+                  <div class="filtrosAplicados mt-3"></div>
+                  <div class="text-center my-3">
+                    <a class="font-primary" onclick="limpiarFiltros()">Limpiar filtros</a>
+                  </div>
+
+                </div>
+
+                <!--MARCAS-->  
+                <hr>
+                <div class="my-3">
+                  <p class="font-dark4 h6-responsive font-weight-bold mb-1">Marcas</p>
+                  <ul class="marcas list-group"></ul>
+                </div>
+
+                <!--TAGS-->  
+                <hr>
+                <div class="my-3">
+                  <p class="font-dark4 h6-responsive font-weight-bold mb-1">Tags</p>
+                  <ul class="tags list-group"></ul>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
         </div>
         
         <!-- PRODUCTOS--> 
@@ -133,10 +181,10 @@
                     <i class="fas fa-boxes mr-2"></i>CATEGORIAS
                 </a>  
                 
-                <a id="filtros" class="btn bg-primary m-0 py-2 px-2">
+                <button type="button" class="btn bg-primary m-0 py-2 px-2" data-toggle="modal" data-target="#modalFiltros">
                     <i class="fa fa-filter mr-2"></i>FILTROS
-                </a> 
-                 
+                </button>
+                
             </div>
             
             <!-- FILTRO CATEGORIAS--> 
@@ -181,20 +229,35 @@
       }else{
         categoria = "<?php echo $categoria; ?>" ;
       }
-      
+
       //--DEFINIR VARIABLES Y FUNCIONES--
       var dataFiltro = [];
+      var totalProductos;
+      var paginasProductos=0;
       ubicacionMenu(categoria);
       vWeb.mostrarProductosXCategoria(categoria);
       vWeb.mostrarMarcasFiltros(categoria);
       vWeb.mostrarTagsFiltros(categoria);
-      vWeb.mostrarCategoriasFiltros();
+      vWeb.mostrarCategoriasFiltros(categoria);
 
+      
+      //--OBTENER PRODUCTO--
+      var producto="";
+      <?php $producto = isset($_GET['producto'])? $_GET['producto'] : "no existe" ; ?>
+      if( "<?php echo $producto; ?>" != "no existe" ){
+        producto = "<?php echo $producto; ?>" ;
+        buscarProducto();
+      }
+      
+      
       //--SELECCIONAR CATEGORIA--
       $('body').on('click', '#categorias li', function (e) {
           e.preventDefault()
           categoria=$(this).text();
+          limpiarFiltros();
           vWeb.mostrarProductosXCategoria(categoria);
+          vWeb.mostrarMarcasFiltros(categoria);
+          vWeb.mostrarTagsFiltros(categoria);
           ubicacionMenu(categoria);
           $(this).tab('show');
 
@@ -209,7 +272,10 @@
           e.preventDefault()
           $('#filtroCategoriasContent').addClass('d-none');
           categoria=$(this).text();
+          limpiarFiltros();
           vWeb.mostrarProductosXCategoria(categoria);
+          vWeb.mostrarMarcasFiltros(categoria);
+          vWeb.mostrarTagsFiltros(categoria);
           ubicacionMenu(categoria);
           $(this).tab('show');
 
@@ -226,6 +292,9 @@
       $('body').on('change', '.marcas li input:checked', function (e) {
           e.preventDefault();
         
+          var id=$(this).attr("id");
+          $("."+id).prop('checked',true);
+        
           if($(".filtrosAplicados").html() == ""){
             filtroMarca(true, $(this).attr("id"));
           }else{
@@ -240,6 +309,9 @@
       //--AGREGAR FILTRO SELECCIONADO [TAGS]--
       $('body').on('change', '.tags li input:checked', function (e) {
           e.preventDefault();
+        
+          var id=$(this).attr("id");
+          $("."+$.trim(id)).prop('checked',true);
         
           if($(".filtrosAplicados").html() == ""){
             filtroTags(true, $(this).attr("id"));
@@ -263,6 +335,7 @@
             }
           });
           $(this).parent(".chip").remove();
+          eliminarFiltroMarca(filtro);
       });
       
       //--ELIMINAR FILTRO SELECCIONADO [TAGS]--
@@ -276,19 +349,13 @@
             }
           });
           $(this).parent(".chip").remove();
+          eliminarFiltroTag(filtro);
       });
 
-      
-      
       //--MOSTRAR/OCULTAR CATEGORIAS--
       $("#filtroCategorias").click(function() {
           $("#filtroCategoriasContent").toggleClass("d-none");
       }); 
-
-      //FUNCION PARA COMPRIMIR EL MENU
-      $('#filtros').click(function(){
-          $(".filtros").toggleClass("mostrar");
-      });
       
       //ELIMINAR FILTROS
       function limpiarFiltros(){
@@ -308,9 +375,52 @@
             <li class='breadcrumb-item'><a class='white-text' href='Tienda.php'>Productos</a></li>  \
             <li class='breadcrumb-item active'>"+categoria+"</li>";
           $("#menuUbicacion").html(ubicacion);
+        
       }
       
-      /* --> SELECCIONAR CATEGORIA [FILTRO] */ 
+      /* --> MOSTRAR DATOS DEL FILTRO NOMBRE DEL PRODUCTO */ 
+      function buscarProducto(){
+          var nombre="";
+        
+          producto==""? nombre=$("#filtroProducto").val() : nombre=producto;
+        
+          var $datos={
+              '_nombre': nombre
+          }
+          $.ajax({
+              url: 'ES-BackEnd/Controlador/Controlador-Web/Controlador_FiltroProducto.php',
+              type: 'POST',
+              data: $datos,
+              datatype:'json',
+              error: function(error){	
+                  if(error.status == 401){
+                      console.log("Categoria incorrecta");
+                  }
+                  else{
+                      console.log("Error no identificado");
+                  }
+              },
+              success: function(datos){
+                  data=datos;
+                  if(datos.response==0){
+                      var vacio="<div class='container text-center m-5 p-5'><h1 class='h1-responsive font-weight-bold grey-text'>NO DISPONIBLE </h1><i class='fa fa-lock fa-4x p-5 grey-text'></i></div>"
+                      $("#content").html(vacio);
+                  }else{
+                      dataFiltro=datos;
+                      generarPaginacion(datos);
+                    
+                      $("#categorias li").each(function() { 
+                          $(this).removeClass("active");
+                      }); 
+                    
+                      producto="";
+                    
+                  }
+              }
+          });
+      }   
+      
+      /* --> MOSTRAR DATOS DEL FILTRO MARCA */ 
       function filtroMarca(dat, marca){
           var $datos={
               '_categoria': categoria,
@@ -350,7 +460,26 @@
           });
       }
       
-      /* --> SELECCIONAR CATEGORIA [FILTRO] */ 
+      /* --> ELIMINAR DATOS DEL FILTRO MARCA */ 
+      function eliminarFiltroMarca(marca){
+
+        for(var i=0;i<dataFiltro.length;i++){
+          if (dataFiltro[i].MARCNOMBRE == marca){
+            delete dataFiltro[i];
+          }
+        }
+        
+        dataFiltro = dataFiltro.filter(Boolean);
+        
+        if($(".filtrosAplicados").html() == ""){
+          limpiarFiltros();
+        }else{
+          generarPaginacion(dataFiltro);
+        }
+        
+      }
+      
+      /* --> MOSTRAR DATOS DEL FILTRO TAG */ 
       function filtroTags(dat, tag){
           var $datos={
               '_categoria': categoria,
@@ -388,10 +517,33 @@
               }
           });
       }
+ 
+      /* --> ELIMINAR DATOS DEL FILTRO MARCA */ 
+      function eliminarFiltroTag(tag){
+
+        for(var i=0;i<dataFiltro.length;i++){
+          var tags=dataFiltro[i].PRODTAGS.split(";");
+          
+          for (var j=0;j<tags.length;j++){
+            
+            if (tags[j] == tag){
+              delete dataFiltro[i];
+              break;
+            }
+          }
+        }
+
+        dataFiltro = dataFiltro.filter(Boolean);
+        
+        if($(".filtrosAplicados").html() == ""){
+          limpiarFiltros();
+        }else{
+          generarPaginacion(dataFiltro);
+        }
+        
+      }
       
       /* --> GENERAR PAGINACION [FILTRO] */ 
-      var totalProductos;
-      var paginasProductos=0;
       function generarPaginacion(datos){
         
           var total = datos.length;
@@ -413,46 +565,14 @@
               activeClass: 'activePage',
               disabledClass: 'disabled'
           }).on("page", function(event, num){
-              generarProductos(totalProductos, paginasProductos, dataFiltro,num);
+              vWeb.generarProductos(totalProductos, paginasProductos, dataFiltro,num);
           });
-          generarProductos(total, paginas, datos,1);
+          vWeb.generarProductos(total, paginas, datos,1);
         
           totalProductos=total;
           paginasProductos=paginas;
         
-      }
-
-      /* --> GENERAR CUADRICULA DE PRODUCTOS [FILTRO] */ 
-      function generarProductos(total, paginas, datos,num){  
-        
-          var primero=(num-1)*8;
-          var ultimo=num*8;
-          var contenido = "";
-
-          if(paginas==num){
-              ultimo=total;
-          }
-        
-          for(var i=primero; i<ultimo; i++){
-              contenido += "<div class='col-12 col-sm-6 col-md-4 col-lg-3 p-2'>\n\
-              <div class='card' id='"+datos[i].PRODCODIGO+"' onclick='vWeb.mostrarProducto(this)'>\n\
-                  <div class='view overlay zoom'>\n\
-                      <img class='card-img-top' src='ES-FrontEnd/Elementos/Imagenes/Productos/"+datos[i].PRODIMAGEN+"'>\n\
-                  </div>\n\
-                  <div class='card-body'>\n\
-                      <p class='mb-2 font-dark4'>"+datos[i].MARCNOMBRE+"</p>\n\
-                      <p class='mb-1 titulo'>"+datos[i].PRODNOMBRE+"</p>\n\
-                      <p class='mb-2 font-dark4'>COD "+datos[i].PRODCODIGOES+"</p>\n\
-                      <p class='mb-2 bg-primary text-white px-2 border rounded-pill' style='width:fit-content;'>DISPONIBLE</p>\n\
-                  </div>\n\
-              </div>\n\
-              </div>";
-
-          }
-          $("#content").html(contenido);
-      }
-
-      
+      } 
       
     </script>
 

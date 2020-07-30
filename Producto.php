@@ -24,19 +24,20 @@
     <!-- MENU DE UBICACION-->
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
       
-      <div class="mr-auto">
+      <div class="mr-auto d-none d-md-inline-flex">
         <nav aria-label="breadcrumb">
-          <ol id="menuUbicacion" class="breadcrumb clearfix d-none d-md-inline-flex pt-0">
+          <ol id="menuUbicacion" class="breadcrumb clearfix pt-0">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg mt-1 mr-2 white-text" aria-hidden="true"></i><a class="white-text" href="index.php">Inicio</a></li>
             <li class="breadcrumb-item"><a class="white-text" href="Tienda.php">Productos</a></li>
-            <li class="breadcrumb-item"><a class="white-text" href="Tienda.php?categoria=<?php echo  $_GET['catNombre'] ?>"><?php echo  $_GET['catNombre'] ?></a></li>
+            <li class="breadcrumb-item"><a class="white-text" href="Tienda.php?catNombre=<?php echo  $_GET['catNombre'] ?>"><?php echo  $_GET['catNombre'] ?></a></li>
             <li class="breadcrumb-item active"><?php echo  $_GET['nombre'] ?></li>
           </ol>
         </nav>
       </div>
       
-      <form class="form-inline my-2">
-        <input class="form-control mr-4 mr-sm-2" type="text" placeholder="Buscar producto" aria-label="Search">
+      <form class="form-inline my-2 mx-auto mx-md-0 row">
+        <input id="filtroProducto" class="col-10 form-control" type="text" placeholder="Buscar producto" aria-label="Search">
+        <a type="button" class="fProducto col btn bg-dark2 white-text p-2" onclick="buscarProducto(this)"><i class="fas fa-search"></i></a>
       </form>
       
     </nav>
@@ -195,6 +196,11 @@
         $('a#previewPDF').removeClass("disabled");
 
         $('a#previewPDF').attr({target: '_blank', href  : url+"ES-FrontEnd/Elementos/Imagenes/Productos/Ficha tecnica/<?php echo $pdf; ?>"});
+      }
+      
+      //-- BUSCAR PRODUCTO --  
+      function buscarProducto(){
+        $("a.fProducto").attr({href  : "Tienda.php? producto=" + $("#filtroProducto").val()});
       }
       
       /* --> MOSTRAR PRODUCTOS RELACIONADOS SEGUN LA CATEGORIA */ 

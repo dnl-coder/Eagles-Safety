@@ -37,13 +37,17 @@ b{font-weight: bold;}
     border-radius:50%;
     color: white;
     position: fixed;
-    bottom: 1%;
-    left: 1%;
+    bottom: 11%;
+    right: 1%;
     vertical-align: middle;
 }
 .wsp:hover{
     animation: bounceWSP .5s infinite;
+    transition: .5s;
     color: white;
+    border-radius: 5%;
+    display: inline-flex;
+    align-items: center;
 }
 
 .fb-msg{
@@ -51,13 +55,25 @@ b{font-weight: bold;}
     border-radius:50%;
     color: white;
     position: fixed;
-    bottom: 13%;
-    left: 1%;
+    bottom: 21%;
+    right: 1%;
     vertical-align: middle;
 }
 .fb-msg:hover{
     animation: bounceFB .5s infinite;
+    transition: .5s;
     color: white;
+    border-radius: 5%;
+    display: inline-flex;
+    align-items: center;
+}
+
+.wsp:hover i, .fb-msg:hover i{
+    padding-right: .5rem;
+}
+.wsp:hover::after, .fb-msg:hover::after{
+    content: "¿Tienes alguna duda?";
+    transition: 1s;
 }
 
 .to-top{
@@ -73,18 +89,18 @@ b{font-weight: bold;}
 /* animaciones de iconos flotantes */
 @keyframes bounceWSP { 
   from { 
-    bottom: 1%;
+    bottom: 11%;
   } 
   to { 
-    bottom: 3%;
+    bottom: 12%;
   } 
 }
 @keyframes bounceFB { 
   from { 
-    bottom: 13%;
+    bottom: 21%;
   } 
   to { 
-    bottom: 15%;
+    bottom: 22%;
   } 
 }
 
