@@ -2,12 +2,13 @@
 
 if(isset($_POST['_correo']) && isset($_POST['_asunto']) && isset($_POST['_mensaje'])){
     
-    $to = "ventas@es.com.pe";
+    $to = "rmanrique@es.com.pe";
     $subject = $_POST['_asunto'];
     $message = $_POST['_mensaje'];
-    $headers = "From: " . $_POST['_correo'];
+    $headers = "De: " . $_POST['_correo'];
+    $all = $headers. " " ."\n".$message;
 
-    if(mail($to, $subject, $message, $headers)){
+    if(mail($to, $subject, $all, $headers)){
         $msg = array(
             "response" => 1,
             "message" => "Registro correcto"                      

@@ -910,19 +910,19 @@ vistaWeb.prototype.validar = function(){
     var mensaje=$("#mensaje").val();    
     
     if(asunto == null || asunto.length == 0 || /^\s+$/.test(asunto)){
-        alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
+        alert('ERROR: El campo asunto no debe ir vacío o lleno de solamente espacios en blanco');
         $("#asunto").focus();
     }
     else if(mensaje == null || mensaje.length == 0 || /^\s+$/.test(mensaje)){
-        alert('ERROR: El campo contraseña no debe ir vacío o lleno de solamente espacios en blanco');
+        alert('ERROR: El campo mensaje no debe ir vacío o lleno de solamente espacios en blanco');
         $("#mensaje").focus();
     }
-    else if(asunto.length<3 || asunto.length>40){
-        alert('ERROR Nombre: Tamaño mínimo : 3. Tamaño máximo: 40');
+    else if(asunto.length<3 || asunto.length>60){
+        alert('ERROR Nombre: Tamaño mínimo : 3. Tamaño máximo: 60');
         $("#asunto").focus();
     }
-    else if(mensaje.length<4 || mensaje.length>40){
-        alert('ERROR Mensaje: Tamaño mínimo: 4. Tamaño máximo: 100');
+    else if(mensaje.length<4 || mensaje.length>400){
+        alert('ERROR Mensaje: Tamaño mínimo: 4. Tamaño máximo: 400');
         $("#mensaje").focus();
     }
     else if(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/.test(correo)){
