@@ -16,7 +16,7 @@
         if (localStorage.getItem("user") === null || localStorage.getItem("estado") == "out" ) {
           console.log("Es necesario iniciar sesión");
         } else {
-          window.location="inicio.php";
+          window.location="CMS-Inicio.php";
         }
     }
 
@@ -34,12 +34,12 @@
             alert('ERROR: El campo contraseña no debe ir vacío o lleno de solamente espacios en blanco');
             $("#ingresarContraseña").focus();
         }
-        else if(user.length<5 || user.length>12){
-            alert('ERROR Usuario: Tamaño mínimo : 5. Tamaño máximo: 12');
+        else if(user.length<4 || user.length>12){
+            alert('ERROR Usuario: Tamaño mínimo : 4. Tamaño máximo: 12');
             $("#ingresarUsuario").focus();
         }
-        else if(pass.length<5 || pass.length>12){
-            alert('ERROR Contraseña: Tamaño mínimo: 5. Tamaño máximo: 12');
+        else if(pass.length<4 || pass.length>12){
+            alert('ERROR Contraseña: Tamaño mínimo: 4. Tamaño máximo: 12');
             $("#ingresarContraseña").focus();
         }
         else if(/^\w+$/.test(user) && /^\w+$/.test(pass)){
@@ -80,7 +80,7 @@
                     localStorage.setItem("user", usuario);
                     localStorage.setItem("estado", "in");
 
-                    window.location="inicio.php";
+                    window.location="CMS-Inicio.php";
                 }
                 else{
                     $('#ingresarUsuario').removeClass('green');
@@ -139,7 +139,7 @@
             </div>
 
             <!-- Boton Iniciar Sesion -->
-            <button class="btn bg-primary btn-block my-4" onclick="validar()">Ingresar</button>
+            <button type="button" class="btn bg-primary btn-block my-4" onclick="validar()">Ingresar</button>
 
         </form>
         <!-- Login -->

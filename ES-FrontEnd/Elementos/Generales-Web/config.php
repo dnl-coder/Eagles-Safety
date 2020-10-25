@@ -42,6 +42,17 @@
     <!--CODE JS PAGINACION-->
     <script type="text/javascript" src="ES-FrontEnd/MDB/js/jquery.bootpag.min.js"></script>
     <!--Librarys JS-->
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174540853-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-174540853-1');
+    </script>
+
        
     <!-- JS GENERALES-->
     <script type="text/javascript" src="ES-FrontEnd/Elementos/Generales-Web/funciones.js"></script>
