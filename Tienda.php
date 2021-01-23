@@ -526,7 +526,7 @@
           
           for (var j=0;j<tags.length;j++){
             
-            if (tags[j] == tag){
+            if (tags[j].trim() == tag){
               delete dataFiltro[i];
               break;
             }

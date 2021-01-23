@@ -171,9 +171,9 @@
                 <div class="row">
                   <div class="col-md-12 mb-4 white-text text-center">
                     <h1 class="Stitulo h1-responsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown"
-                      data-wow-delay="0.3s"><strong></strong></h1>
+                      data-wow-delay="0.3s" style='text-shadow: 1px 1px 8px #212529;'><strong></strong></h1>
                     <hr class="my-4 wow fadeInDown" data-wow-delay="0.4s" style="border-top: 3px solid #fff; width: 80px;">
-                    <h5 class="text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s"><strong class="Sdescripcion"></strong></h5>
+                    <h5 class="text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s" style='text-shadow: 1px 1px 8px #212529;'><strong class="Sdescripcion"></strong></h5>
                     <a class="btn botonCuarto wow fadeInDown disabled" href="Nosotros.php" data-wow-delay="0.4s">Ver más</a>
                     <a class="btn botonCuarto wow fadeInDown disabled" href="Contactos.php" data-wow-delay="0.4s">Contáctanos</a>
                   </div>

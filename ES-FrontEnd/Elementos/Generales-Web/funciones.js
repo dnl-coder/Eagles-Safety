@@ -160,8 +160,8 @@ vistaWeb.prototype.mostrarSliders = function(){
                     <h1 class='h1-responsive font-weight-bold mt-5 mt-md-0 mt-lg-5'>"+datos[0].SLDRNOMBRE+"</h1> \
                     <hr class='hr-light'> \
                     <h6 class='Sdescripcion mb-4'>"+datos[0].SLDRDESCRIPCION+"</h6> \
-                    <a class='btn botonPrincipal' href='Nosotros.php'>Ver más</a> \
-                    <a class='btn botonCuarto' href='Contactos.php'>Contáctanos</a> \
+                    <a class='btn botonPrincipal' href='Nosotros'>Ver más</a> \
+                    <a class='btn botonCuarto' href='Contactos'>Contáctanos</a> \
                   </div> \
                   <div class='col-md-6 col-xl-5 mt-xl-5 wow fadeInRight text-center pb-5 pb-md-0 px-5 px-md-0' data-wow-delay='0.3s'> \
                     <img class='Simagen img-fluid px-5 px-md-0' style='max-height:400px;'> \
@@ -182,8 +182,8 @@ vistaWeb.prototype.mostrarSliders = function(){
                     <h1 class='display-4 mb-0 pt-md-5 pt-5 white-text font-weight-bold wow fadeInDown' data-wow-delay='0.3s'>"+datos[0].SLDRNOMBRE+"</h1> \
                     <h5 class='text-uppercase pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 white-text font-weight-bold wow fadeInDown' data-wow-delay='0.3s'>"+datos[0].SLDRDESCRIPCION+"</h5> \
                     <div class='wow fadeInDown' data-wow-delay='0.3s'> \
-                      <a class='btn bg-enfasis1 btn-lg btn-rounded' href='Nosotros.php'>Ver más</a> \
-                      <a class='btn bg-enfasis2 btn-lg btn-rounded' href='Contactos.php'>Contáctanos</a> \
+                      <a class='btn bg-enfasis1 btn-lg btn-rounded' href='Nosotros'>Ver más</a> \
+                      <a class='btn bg-enfasis2 btn-lg btn-rounded' href='Contactos'>Contáctanos</a> \
                     </div> \
                   </div> \
                 </div> \
@@ -199,11 +199,11 @@ vistaWeb.prototype.mostrarSliders = function(){
               <div class='container'> \
                 <div class='row'> \
                   <div class='col-md-12 mb-4 white-text text-center'> \
-                    <h1 class='h1-responsive white-text text-uppercase font-weight-bold mb-0 pt-5 wow fadeInDown' data-wow-delay='0.3s'><strong>"+datos[0].SLDRNOMBRE+"</strong></h1> \
+                    <h1 class='h1-responsive white-text text-uppercase font-weight-bold mb-0 pt-5 wow fadeInDown' data-wow-delay='0.3s' style='text-shadow: 1px 1px 8px #212529;'><strong>"+datos[0].SLDRNOMBRE+"</strong></h1> \
                     <hr class='my-4 wow fadeInDown' data-wow-delay='0.4s' style='border-top: 3px solid #fff; width: 80px;'> \
-                    <h5 class='text-uppercase mb-4 white-text wow fadeInDown h5-responsive' data-wow-delay='0.4s'><strong>"+datos[0].SLDRDESCRIPCION+"</strong></h5> \
-                    <a class='btn botonCuarto wow fadeInDown' href='Nosotros.php' data-wow-delay='0.4s'>Ver más</a> \
-                    <a class='btn botonCuarto wow fadeInDown' href='Contactos.php' data-wow-delay='0.4s'>Contáctanos</a> \
+                    <h5 class='text-uppercase mb-4 white-text wow fadeInDown h5-responsive' data-wow-delay='0.4s' style='text-shadow: 1px 1px 8px #212529;'><strong>"+datos[0].SLDRDESCRIPCION+"</strong></h5> \
+                    <a class='btn botonCuarto wow fadeInDown' href='Nosotros' data-wow-delay='0.4s'>Ver más</a> \
+                    <a class='btn botonCuarto wow fadeInDown' href='Contactos' data-wow-delay='0.4s'>Contáctanos</a> \
                   </div> \
                 </div> \
               </div> \
