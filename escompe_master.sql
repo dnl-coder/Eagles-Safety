@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 18-10-2020 a las 18:17:28
--- Versión del servidor: 5.6.49-cll-lve
+-- Tiempo de generación: 08-12-2020 a las 21:04:10
+-- Versión del servidor: 5.6.50-cll-lve
 -- Versión de PHP: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `escompe_master`
 --
+CREATE DATABASE IF NOT EXISTS `escompe_master` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `escompe_master`;
 
 -- --------------------------------------------------------
 
@@ -130,7 +132,7 @@ CREATE TABLE `componentes` (
 --
 
 INSERT INTO `componentes` (`COMPCODIGO`, `COMPSLIDER`, `COMP1`, `COMP2`, `COMP3`, `COMPDESTACADOS`, `COMPCATEGORIAS`, `COMPMARCAS`) VALUES
-(1, 3, 5, 4, 1, 3, 0, 0);
+(1, 1, 5, 4, 1, 3, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -419,8 +421,7 @@ CREATE TABLE `slider` (
 --
 
 INSERT INTO `slider` (`SLDRCODIGO`, `SLDRNOMBRE`, `SLDRDESCRIPCION`, `SLDRIMAGEN`) VALUES
-(34, 'EQUIPOS QUE PROTEGEN TU VIDA', 'Tenemos los mejores productos para garantizar tu cuidado.', 'ES-FrontEnd/Elementos/Imagenes/Slider/recurso.png'),
-(35, 'EXPERIENCIA, SEGURIDAD Y GARANTIA', 'Tenemos los mejores productos para garantizar tu cuidado.', 'ES-FrontEnd/Elementos/Imagenes/Slider/construction-709487_1920.jpg');
+(34, 'EQUIPOS QUE PROTEGEN TU VIDA', 'Tenemos los mejores productos para garantizar tu cuidado.', 'ES-FrontEnd/Elementos/Imagenes/Slider/PORTADA ES FB.png');
 
 -- --------------------------------------------------------
 

@@ -354,7 +354,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='fas fa-2x fa-flag-checkered font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Calidad</h5> \
+                      <h5 class='font-weight-bold mb-3'>Orientada al cliente</h5> \
                       <p class='grey-text'>"+datos.C1CARACTERISTICA1+"</p> \
                     </div> \
                   </div> \
@@ -363,7 +363,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='fas fa-2x fa-flask font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Eficiente</h5> \
+                      <h5 class='font-weight-bold mb-3'>Calidad</h5> \
                       <p class='grey-text'>"+datos.C1CARACTERISTICA2+"</p> \
                     </div> \
                   </div> \
@@ -372,7 +372,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='fas fa-2x fa-glass-martini font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Garantía</h5> \
+                      <h5 class='font-weight-bold mb-3'>Honestidad</h5> \
                       <p class='grey-text mb-md-0'>"+datos.C1CARACTERISTICA3+"</p> \
                     </div> \
                   </div> \
@@ -386,7 +386,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='far fa-2x fa-heart font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Confiable</h5> \
+                      <h5 class='font-weight-bold mb-3'>Trabajo en equipo</h5> \
                       <p class='grey-text'>"+datos.C1CARACTERISTICA4+"</p> \
                     </div> \
                   </div> \
@@ -395,7 +395,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='fas fa-2x fa-bolt font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Eficaz</h5> \
+                      <h5 class='font-weight-bold mb-3'>Integridad</h5> \
                       <p class='grey-text'>"+datos.C1CARACTERISTICA5+"</p> \
                     </div> \
                   </div> \
@@ -404,7 +404,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='fas fa-2x fa-magic font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Mágico</h5> \
+                      <h5 class='font-weight-bold mb-3'>Pasión</h5> \
                       <p class='grey-text mb-0'>"+datos.C1CARACTERISTICA6+"</p> \
                     </div> \
                   </div> \
@@ -1120,6 +1120,7 @@ vistaWeb.prototype.mostrarTagsFiltros = function(opcion){
     FUNCION MOSTRAR PRODUCTOS X CATEGORIA
 =============================================*/
 
+var total, paginas;
 var totalP, paginasP;
 
 /* --> SELECCIONAR CATEGORIA */ 
@@ -1155,8 +1156,8 @@ vistaWeb.prototype.mostrarProductosXCategoria = function(opcion){
 /* --> GENERAR PAGINACION [FILTRO] */ 
 vistaWeb.prototype.generarPaginacion = function(datos){
 
-    var total = datos.length;
-    var paginas=0;
+    total = datos.length;
+    paginas=0;
 
     //CANTIDAD DE PAGINAS
     if(total%8==0){
@@ -1174,13 +1175,10 @@ vistaWeb.prototype.generarPaginacion = function(datos){
         activeClass: 'activePage',
         disabledClass: 'disabled'
     }).on("page", function(event, num){
-        console.log(totalP)
-        console.log(paginasP)
-        console.log(data)
       
         vWeb.generarProductos(totalP, paginasP, data,num);
     });
-    vWeb.generarProductos(total, paginas, datos,1);
+    vWeb.generarProductos(total, paginas, data,1);
   
     totalP=total;
     paginasP=paginas;
@@ -1241,10 +1239,22 @@ vistaWeb.prototype.mostrarProducto = function(cod){
           }
           else{
 
-              sessionStorage["presentacion"]=datos.PRODPRESENTACION;
-              sessionStorage["descripcion"]=datos.PRODDESCRIPCION;
+              sessionStorage["Producto-presentacion"]=datos.PRODPRESENTACION;
+              sessionStorage["Producto-descripcion"]=datos.PRODDESCRIPCION;
+            
+              sessionStorage["Producto-nombre"]=datos.PRODNOMBRE;
+              sessionStorage["Producto-codigoEs"]=datos.PRODCODIGOES;
+              sessionStorage["Producto-imagen"]=datos.PRODIMAGEN;
+              sessionStorage["Producto-codMarca"]=datos.CODMARCA;
+              sessionStorage["Producto-marcaNombre"]=datos.MARCNOMBRE;
+              sessionStorage["Producto-marcaImagen"]=datos.MARCIMAGEN;
+              sessionStorage["Producto-tags"]=datos.PRODTAGS;
+              sessionStorage["Producto-fichaTec"]=datos.PRODFICHATEC;
+              sessionStorage["Producto-catCodigo"]=datos.CATCODIGO;
+              sessionStorage["Producto-catNombre"]=datos.CATNOMBRE;
+              sessionStorage["Producto-destacado"]=datos.PRODDESTACADO;
 
-              window.location.href = "Producto.php?nombre="+datos.PRODNOMBRE+"&codigoEs="+datos.PRODCODIGOES+"&imagen="+datos.PRODIMAGEN+"&codMarca="+datos.CODMARCA+"&marcaNombre="+datos.MARCNOMBRE+"&marcaImagen="+datos.MARCIMAGEN+"&tags="+datos.PRODTAGS+"&fichaTec="+datos.PRODFICHATEC+"&catCodigo="+datos.CATCODIGO+"&catNombre="+datos.CATNOMBRE+"&destacado="+datos.PRODDESTACADO ;
+              window.location.href = "Producto";
 
           }
       }

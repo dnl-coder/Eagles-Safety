@@ -546,8 +546,8 @@
       /* --> GENERAR PAGINACION [FILTRO] */ 
       function generarPaginacion(datos){
         
-          var total = datos.length;
-          var paginas=0;
+          total = datos.length;
+          paginas=0;
 
           //CANTIDAD DE PAGINAS
           if(total%8==0){
@@ -565,12 +565,12 @@
               activeClass: 'activePage',
               disabledClass: 'disabled'
           }).on("page", function(event, num){
-              vWeb.generarProductos(totalProductos, paginasProductos, dataFiltro,num);
+              vWeb.generarProductos(totalP, paginasP, dataFiltro,num);
           });
           vWeb.generarProductos(total, paginas, datos,1);
         
-          totalProductos=total;
-          paginasProductos=paginas;
+          totalP=total;
+          paginasP=paginas;
         
       } 
       
