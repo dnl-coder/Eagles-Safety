@@ -53,7 +53,7 @@
           <h3 class="h4-responsive font-weight-bold px-4 pb-2 font-primary wow fadeIn">Categorías <span class="font-secundary">destacadas</span></h3>
 
           <!--CAROUSEL DE CATEGORIAS DESTACADAS -->
-          <div class="mx-3 text-center d-none d-sm-flex">
+          <div class="mx-3 text-center d-none d-md-flex">
           <div id="carouselCategorias" class="carousel slide w-100" data-ride="carousel">
 
               <!--CATEGORIAS -->
@@ -73,7 +73,7 @@
           </div>
 
           <!--CAROUSEL DE CATEGORIAS DESTACADAS RESPONSIVE -->
-          <div class="mx-3 text-center d-flex d-sm-none">
+          <div class="mx-3 text-center d-flex d-md-none">
           <div id="carouselCategoriasCelular" class="carousel slide w-100" data-ride="carousel">
 
               <!--CATEGORIAS -->

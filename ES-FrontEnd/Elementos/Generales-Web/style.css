@@ -283,6 +283,12 @@ b{font-weight: bold;}
 /*destacados style*/
 .product-ofertas{background: var(--light1);}
 
+
+
+#carouselCategorias .view{
+  width: 100%;
+}
+
 /*=============================================
   NOSOTROS
 =============================================*/

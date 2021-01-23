@@ -524,11 +524,11 @@ vistaWeb.prototype.mostrarComponente2 = function(){
             </section> \
           </div>"; break;
               case "4": componente+="<div class='container-fluid px-0'> \
-            <section class='c1imagen1 text-center white-text p-5' style='background-attachment: fixed;'> \
-              <div class='row d-flex justify-content-center my-5'> \
-                <div class='col-md-6'> \
-                    <h3 class='font-weight-bold'>"+datos.C2TITULO+"</h3> \
-                    <p>"+datos.C2DESCRIPCION+"</p> \
+            <section class='c1imagen1 text-center white-text p-5' style='background-attachment: fixed; height: 50vh;'> \
+              <div class='row d-flex justify-content-center' style='height: 100%'> \
+                <div class='col-md-6 my-auto '> \
+                    <h1 class='font-weight-bold' style='text-shadow: 1px 1px 8px #212529;'>"+datos.C2TITULO+"</h1> \
+                    <p style='text-shadow: 1px 1px 8px #212529;     font-size: 1.5rem;'>"+datos.C2DESCRIPCION+"</p> \
                 </div> \
               </div> \
             </section> \
@@ -676,7 +676,7 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
           for(var i=0; i<datos.length ; i++){
               if(i<5){
                   contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center' > \
-            <div class='view overlay' style='height: 330px'> \
+            <div class='view overlay' style='height: 330px; width: 100%;'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top' height='320'> \
               <a href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
@@ -698,7 +698,7 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
 
                   if((k+j)<datos.length){
                       contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
-            <div class='view overlay' style='height: 330px'> \
+            <div class='view overlay' style='height: 330px; width: 100%;'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[k+j].CATIMAGEN+"' class='card-img-top' height='320'> \
               <a href='Tienda.php?catNombre="+datos[k+j].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
@@ -710,7 +710,7 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
           </div></div>"
                   }else{
                       contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
-            <div class='view overlay' style='height: 330px'> \
+            <div class='view overlay' style='height: 330px; width: 100%;'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[a].CATIMAGEN+"' class='card-img-top' height='320'> \
               <a href='Tienda.php?catNombre="+datos[a].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
@@ -735,12 +735,12 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
               if(i==0){
                   contenedor += "<div class='carousel-item justify-content-center no-gutters p-2 text-left active'>";
                   contenedor+="\n\<div class='card align-items-center'> \
-            <div class='view overlay' style='height: 238.078px'> \
+            <div class='view overlay' style='height: 238.078px; width: 100%;'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
               <a href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
-            <div class='card-body text-center'> \
-              <h5 class='mb-3'> \
+            <div class='card-body text-center' style='padding: .1rem;'> \
+              <h5 class='my-3'> \
                 <strong> \
                   <a class='dark-grey-text' href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'>"+datos[i].CATNOMBRE+"</a> \
                 </strong> \
@@ -750,12 +750,12 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
               }else{
                   contenedor += "<div class='carousel-item justify-content-center p-2 text-left no-gutters '>";
                   contenedor+="\n\<div class='card align-items-center'> \
-            <div class='view overlay' style='height: 238.078px'> \
+            <div class='view overlay' style='height: 238.078px; width: 100%;'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
               <a href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
-            <div class='card-body text-center'> \
-              <h5 class='mb-3'> \
+            <div class='card-body text-center' style='padding: .1rem;'> \
+              <h5 class='my-3'> \
                 <strong> \
                   <a class='dark-grey-text' href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'>"+datos[i].CATNOMBRE+"</a> \
                 </strong> \
