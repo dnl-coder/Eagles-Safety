@@ -509,7 +509,7 @@
           }              
           }
       });
-
+      console.log(nuevoFormulario)
       $.ajax({
           url: "ES-BackEnd/Controlador/Controlador-CMS/Controlador_GuardarImagenProducto.php",
           type: "POST",

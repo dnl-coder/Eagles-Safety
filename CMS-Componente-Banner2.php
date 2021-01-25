@@ -329,12 +329,12 @@
         <!-- ESTILO 4 -->
         <div class="tab-pane fade show" id="op4" role="tabpanel" aria-labelledby="op4-tab">
           <div class="container my-5 px-0 z-depth-1">
-            <section class="c1imagen1 text-center white-text p-5" style="background-attachment: fixed;">
-              <div class="row d-flex justify-content-center my-5">
-                <div class="col-md-6">
+            <section class="c1imagen1 text-center white-text p-5" style="background-attachment: fixed; height: 50vh;">
+              <div class="row d-flex justify-content-center" style='height: 100%'>
+                <div class="col-md-6 my-auto">
 
-                    <h3 class="c1titulo font-weight-bold"></h3>
-                    <p class="c1descripcion"></p>
+                    <h1 class="c1titulo font-weight-bold" style='text-shadow: 1px 1px 8px #212529;'></h1>
+                    <p class="c1descripcion" style='text-shadow: 1px 1px 8px #212529; font-size: 1.5rem;'></p>
 
                 </div>
               </div>

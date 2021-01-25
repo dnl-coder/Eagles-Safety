@@ -10,8 +10,7 @@
     
 </head>
 
-<body onload="$('#presentacion').html(sessionStorage.getItem('presentacion'));
-        $('#informacionGeneral').html(sessionStorage.getItem('descripcion'));">
+<body>
    
     <!-- CONTENT-->
     
@@ -27,10 +26,10 @@
       <div class="mr-auto d-none d-md-inline-flex">
         <nav aria-label="breadcrumb">
           <ol id="menuUbicacion" class="breadcrumb clearfix pt-0">
-            <li class="breadcrumb-item"><i class="fa fa-home fa-lg mt-1 mr-2 white-text" aria-hidden="true"></i><a class="white-text" href="index.php">Inicio</a></li>
-            <li class="breadcrumb-item"><a class="white-text" href="Tienda.php">Productos</a></li>
-            <li class="breadcrumb-item"><a class="white-text" href="Tienda.php?catNombre=<?php echo  $_GET['catNombre'] ?>"><?php echo  $_GET['catNombre'] ?></a></li>
-            <li class="breadcrumb-item active"><?php echo  $_GET['nombre'] ?></li>
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg mt-1 mr-2 white-text" aria-hidden="true"></i><a class="white-text" href="index">Inicio</a></li>
+            <li class="breadcrumb-item"><a class="white-text" href="Tienda">Productos</a></li>
+            <li class="breadcrumb-item"><a href="Tienda" class="white-text"></a></li>
+            <li class="breadcrumb-item active"></li>
           </ol>
         </nav>
       </div>
@@ -48,15 +47,15 @@
            
         <!-- IMAGEN-->
         <div class="col-lg-6 text-center">
-          <img src="ES-FrontEnd/Elementos/Imagenes/Productos/<?php echo  $_GET['imagen'] ?>" class="img-fluid mb-5 pb-4 border w-100">
+          <img id="producto-imagen" class="img-fluid mb-5 pb-4 border w-100">
         </div>
 
         <!-- PRESENTACION DEL PRODUCTO-->
         <div class="col-lg-5 text-center text-md-left mb-4">
 
           <!-- TITULO-->
-          <h2 class="h2-responsive text-center text-md-left font-weight-bold dark-grey-text mb-1 ml-0"><?php echo  $_GET['nombre'] ?></h2>
-          <h5 class="h5-responsive text-center text-md-left font-weight-bold dark-grey-text mb-1 ml-0">COD: <?php echo  $_GET['codigoEs'] ?></h5>
+          <h2 id="producto-nombre" class="h2-responsive text-center text-md-left font-weight-bold dark-grey-text mb-1 ml-0"></h2>
+          <h5 id="producto-codigoEs" class="h5-responsive text-center text-md-left font-weight-bold dark-grey-text mb-1 ml-0"></h5>
           
           <!-- TAGS-->
           <div class='row m-0 mt-3 mb-4 justify-content-center justify-content-md-start'>
@@ -71,9 +70,9 @@
             <p class="ml-0 text-left" id="presentacion">
 
             <div class="caracteristicas ml-0">
-              <p><span class="font-weight-bold">Producto de: </span><img src="<?php echo  $_GET['marcaImagen'] ?>" height="30"></p>
-              <p><span class="font-weight-bold">Categoría: </span><span class="categoria"><?php echo  $_GET['catNombre'] ?></span></p>
-              <p><span class="font-weight-bold">Tags: </span><span class="tags"><?php echo  $_GET['tags'] ?></span></p>
+              <p><span class="font-weight-bold">Producto de: </span><img id="producto-marcaImagen" height="30"></p>
+              <p><span class="font-weight-bold">Categoría: </span><span class="categoria"></span></p>
+              <p><span class="font-weight-bold">Tags: </span><span class="tags"></span></p>
               <p>
                 <span class="font-weight-bold">Compartir: </span>
                 <span class="compartir">
@@ -178,10 +177,25 @@
       
       //-- FUNCIONES DE LA VISTA
       mostrarProductosRelacionados();
+      sessionStorage["Tienda-categoria"]=sessionStorage.getItem('Producto-catNombre');
+      
+      $('#presentacion').html(sessionStorage.getItem('Producto-presentacion'));
+      $('#informacionGeneral').html(sessionStorage.getItem('Producto-descripcion'));
+      
+      $("#menuUbicacion li").eq(2).find("a").html(sessionStorage.getItem('Producto-catNombre'));
+      $("#menuUbicacion li").eq(3).html(sessionStorage.getItem('Producto-nombre'));
+      
+      $("#producto-imagen").attr("src","ES-FrontEnd/Elementos/Imagenes/Productos/"+sessionStorage.getItem('Producto-imagen'));
+      
+      $("#producto-nombre").html(sessionStorage.getItem('Producto-nombre'));
+      $("#producto-codigoEs").html("COD: "+sessionStorage.getItem('Producto-codigoEs'));
+      
+      $("#producto-marcaImagen").attr("src",sessionStorage.getItem('Producto-marcaImagen'));
+      $(".categoria").html(sessionStorage.getItem('Producto-catNombre'));
+      $(".tags").html(sessionStorage.getItem('Producto-tags'));
       
       //-- OBTENER PDF DEL PRODUCTO
-      <?php $pdf=$_GET['fichaTec']; ?>
-      if( "<?php echo $pdf; ?>" != "-" ){
+      if( sessionStorage.getItem('Producto-fichaTec') != null && sessionStorage.getItem('Producto-fichaTec').length != 0 ){
          $(".disponibilidadPDF").html("Archivo disponible");
          verPDF();
       }
@@ -195,7 +209,7 @@
 
         $('a#previewPDF').removeClass("disabled");
 
-        $('a#previewPDF').attr({target: '_blank', href  : url+"ES-FrontEnd/Elementos/Imagenes/Productos/Ficha tecnica/<?php echo $pdf; ?>"});
+        $('a#previewPDF').attr({target: '_blank', href  : url+"ES-FrontEnd/Elementos/Imagenes/Productos/Ficha tecnica/"+sessionStorage.getItem('Producto-fichaTec')});
       }
       
       //-- BUSCAR PRODUCTO --  
@@ -207,7 +221,7 @@
       function mostrarProductosRelacionados(){
 
         var $categoria={
-            '_categoria': "<?php echo  $_GET['catNombre'] ?>"
+            '_categoria': sessionStorage.getItem('Producto-catNombre')
         }
 
         $.ajax({

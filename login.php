@@ -16,7 +16,7 @@
         if (localStorage.getItem("user") === null || localStorage.getItem("estado") == "out" ) {
           console.log("Es necesario iniciar sesión");
         } else {
-          window.location="CMS-Inicio.php";
+          window.location="CMS-Inicio";
         }
     }
 
@@ -63,10 +63,14 @@
             dataType: 'json',
             error: function(error){
                 if(error.status == 401){
-                    console.log("Usuario y contraseña incorrectas");
+                    $('#ingresarUsuario').removeClass('green');
+                    $('#ingresarUsuario').addClass('red');
+                    $('#ingresarContraseña').removeClass('green');
+                    $('#ingresarContraseña').addClass('red');
+                    alert("Usuario y contraseña incorrectas");
                 }
                 else{
-                    console.log("Error no identificado");
+                    alert("Error no identificado");
                 }
             },
             success: function(datos){
@@ -80,14 +84,14 @@
                     localStorage.setItem("user", usuario);
                     localStorage.setItem("estado", "in");
 
-                    window.location="CMS-Inicio.php";
+                    window.location="CMS-Inicio";
                 }
                 else{
                     $('#ingresarUsuario').removeClass('green');
                     $('#ingresarUsuario').addClass('red');
                     $('#ingresarContraseña').removeClass('green');
                     $('#ingresarContraseña').addClass('red');
-                    console.log('ERROR: '+datos.message);
+                    alert('ERROR: '+datos.message);
                 }
             }
         });

@@ -160,8 +160,8 @@ vistaWeb.prototype.mostrarSliders = function(){
                     <h1 class='h1-responsive font-weight-bold mt-5 mt-md-0 mt-lg-5'>"+datos[0].SLDRNOMBRE+"</h1> \
                     <hr class='hr-light'> \
                     <h6 class='Sdescripcion mb-4'>"+datos[0].SLDRDESCRIPCION+"</h6> \
-                    <a class='btn botonPrincipal' href='Nosotros.php'>Ver más</a> \
-                    <a class='btn botonCuarto' href='Contactos.php'>Contáctanos</a> \
+                    <a class='btn botonPrincipal' href='Nosotros'>Ver más</a> \
+                    <a class='btn botonCuarto' href='Contactos'>Contáctanos</a> \
                   </div> \
                   <div class='col-md-6 col-xl-5 mt-xl-5 wow fadeInRight text-center pb-5 pb-md-0 px-5 px-md-0' data-wow-delay='0.3s'> \
                     <img class='Simagen img-fluid px-5 px-md-0' style='max-height:400px;'> \
@@ -182,8 +182,8 @@ vistaWeb.prototype.mostrarSliders = function(){
                     <h1 class='display-4 mb-0 pt-md-5 pt-5 white-text font-weight-bold wow fadeInDown' data-wow-delay='0.3s'>"+datos[0].SLDRNOMBRE+"</h1> \
                     <h5 class='text-uppercase pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 white-text font-weight-bold wow fadeInDown' data-wow-delay='0.3s'>"+datos[0].SLDRDESCRIPCION+"</h5> \
                     <div class='wow fadeInDown' data-wow-delay='0.3s'> \
-                      <a class='btn bg-enfasis1 btn-lg btn-rounded' href='Nosotros.php'>Ver más</a> \
-                      <a class='btn bg-enfasis2 btn-lg btn-rounded' href='Contactos.php'>Contáctanos</a> \
+                      <a class='btn bg-enfasis1 btn-lg btn-rounded' href='Nosotros'>Ver más</a> \
+                      <a class='btn bg-enfasis2 btn-lg btn-rounded' href='Contactos'>Contáctanos</a> \
                     </div> \
                   </div> \
                 </div> \
@@ -199,11 +199,11 @@ vistaWeb.prototype.mostrarSliders = function(){
               <div class='container'> \
                 <div class='row'> \
                   <div class='col-md-12 mb-4 white-text text-center'> \
-                    <h1 class='h1-responsive white-text text-uppercase font-weight-bold mb-0 pt-5 wow fadeInDown' data-wow-delay='0.3s'><strong>"+datos[0].SLDRNOMBRE+"</strong></h1> \
+                    <h1 class='h1-responsive white-text text-uppercase font-weight-bold mb-0 pt-5 wow fadeInDown' data-wow-delay='0.3s' style='text-shadow: 1px 1px 8px #212529;'><strong>"+datos[0].SLDRNOMBRE+"</strong></h1> \
                     <hr class='my-4 wow fadeInDown' data-wow-delay='0.4s' style='border-top: 3px solid #fff; width: 80px;'> \
-                    <h5 class='text-uppercase mb-4 white-text wow fadeInDown h5-responsive' data-wow-delay='0.4s'><strong>"+datos[0].SLDRDESCRIPCION+"</strong></h5> \
-                    <a class='btn botonCuarto wow fadeInDown' href='Nosotros.php' data-wow-delay='0.4s'>Ver más</a> \
-                    <a class='btn botonCuarto wow fadeInDown' href='Contactos.php' data-wow-delay='0.4s'>Contáctanos</a> \
+                    <h5 class='text-uppercase mb-4 white-text wow fadeInDown h5-responsive' data-wow-delay='0.4s' style='text-shadow: 1px 1px 8px #212529;'><strong>"+datos[0].SLDRDESCRIPCION+"</strong></h5> \
+                    <a class='btn botonCuarto wow fadeInDown' href='Nosotros' data-wow-delay='0.4s'>Ver más</a> \
+                    <a class='btn botonCuarto wow fadeInDown' href='Contactos' data-wow-delay='0.4s'>Contáctanos</a> \
                   </div> \
                 </div> \
               </div> \
@@ -354,7 +354,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='fas fa-2x fa-flag-checkered font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Calidad</h5> \
+                      <h5 class='font-weight-bold mb-3'>Orientada al cliente</h5> \
                       <p class='grey-text'>"+datos.C1CARACTERISTICA1+"</p> \
                     </div> \
                   </div> \
@@ -363,7 +363,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='fas fa-2x fa-flask font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Eficiente</h5> \
+                      <h5 class='font-weight-bold mb-3'>Calidad</h5> \
                       <p class='grey-text'>"+datos.C1CARACTERISTICA2+"</p> \
                     </div> \
                   </div> \
@@ -372,7 +372,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='fas fa-2x fa-glass-martini font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Garantía</h5> \
+                      <h5 class='font-weight-bold mb-3'>Honestidad</h5> \
                       <p class='grey-text mb-md-0'>"+datos.C1CARACTERISTICA3+"</p> \
                     </div> \
                   </div> \
@@ -386,7 +386,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='far fa-2x fa-heart font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Confiable</h5> \
+                      <h5 class='font-weight-bold mb-3'>Trabajo en equipo</h5> \
                       <p class='grey-text'>"+datos.C1CARACTERISTICA4+"</p> \
                     </div> \
                   </div> \
@@ -395,7 +395,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='fas fa-2x fa-bolt font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Eficaz</h5> \
+                      <h5 class='font-weight-bold mb-3'>Integridad</h5> \
                       <p class='grey-text'>"+datos.C1CARACTERISTICA5+"</p> \
                     </div> \
                   </div> \
@@ -404,7 +404,7 @@ vistaWeb.prototype.mostrarComponente1 = function(){
                       <i class='fas fa-2x fa-magic font-primary'></i> \
                     </div> \
                     <div class='col-10'> \
-                      <h5 class='font-weight-bold mb-3'>Mágico</h5> \
+                      <h5 class='font-weight-bold mb-3'>Pasión</h5> \
                       <p class='grey-text mb-0'>"+datos.C1CARACTERISTICA6+"</p> \
                     </div> \
                   </div> \
@@ -524,11 +524,11 @@ vistaWeb.prototype.mostrarComponente2 = function(){
             </section> \
           </div>"; break;
               case "4": componente+="<div class='container-fluid px-0'> \
-            <section class='c1imagen1 text-center white-text p-5' style='background-attachment: fixed;'> \
-              <div class='row d-flex justify-content-center my-5'> \
-                <div class='col-md-6'> \
-                    <h3 class='font-weight-bold'>"+datos.C2TITULO+"</h3> \
-                    <p>"+datos.C2DESCRIPCION+"</p> \
+            <section class='c1imagen1 text-center white-text p-5' style='background-attachment: fixed; height: 50vh;'> \
+              <div class='row d-flex justify-content-center' style='height: 100%'> \
+                <div class='col-md-6 my-auto '> \
+                    <h1 class='font-weight-bold' style='text-shadow: 1px 1px 8px #212529;'>"+datos.C2TITULO+"</h1> \
+                    <p style='text-shadow: 1px 1px 8px #212529;     font-size: 1.5rem;'>"+datos.C2DESCRIPCION+"</p> \
                 </div> \
               </div> \
             </section> \
@@ -676,7 +676,7 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
           for(var i=0; i<datos.length ; i++){
               if(i<5){
                   contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center' > \
-            <div class='view overlay' style='height: 330px'> \
+            <div class='view overlay' style='height: 330px; width: 100%;'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top' height='320'> \
               <a href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
@@ -698,7 +698,7 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
 
                   if((k+j)<datos.length){
                       contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
-            <div class='view overlay' style='height: 330px'> \
+            <div class='view overlay' style='height: 330px; width: 100%;'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[k+j].CATIMAGEN+"' class='card-img-top' height='320'> \
               <a href='Tienda.php?catNombre="+datos[k+j].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
@@ -710,7 +710,7 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
           </div></div>"
                   }else{
                       contenedor+="\n\<div class='col float-left p-2 text-left'><div class='card align-items-center'> \
-            <div class='view overlay' style='height: 330px'> \
+            <div class='view overlay' style='height: 330px; width: 100%;'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[a].CATIMAGEN+"' class='card-img-top' height='320'> \
               <a href='Tienda.php?catNombre="+datos[a].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
@@ -735,12 +735,12 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
               if(i==0){
                   contenedor += "<div class='carousel-item justify-content-center no-gutters p-2 text-left active'>";
                   contenedor+="\n\<div class='card align-items-center'> \
-            <div class='view overlay' style='height: 238.078px'> \
+            <div class='view overlay' style='height: 238.078px; width: 100%;'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
               <a href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
-            <div class='card-body text-center'> \
-              <h5 class='mb-3'> \
+            <div class='card-body text-center' style='padding: .1rem;'> \
+              <h5 class='my-3'> \
                 <strong> \
                   <a class='dark-grey-text' href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'>"+datos[i].CATNOMBRE+"</a> \
                 </strong> \
@@ -750,12 +750,12 @@ vistaWeb.prototype.mostrarCategoriasDestacadas = function(){
               }else{
                   contenedor += "<div class='carousel-item justify-content-center p-2 text-left no-gutters '>";
                   contenedor+="\n\<div class='card align-items-center'> \
-            <div class='view overlay' style='height: 238.078px'> \
+            <div class='view overlay' style='height: 238.078px; width: 100%;'> \
               <img src='ES-FrontEnd/Elementos/Imagenes/Categorias/"+datos[i].CATIMAGEN+"' class='card-img-top'> \
               <a href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'><div class='mask rgba-white-slight'></div></a> \
             </div> \
-            <div class='card-body text-center'> \
-              <h5 class='mb-3'> \
+            <div class='card-body text-center' style='padding: .1rem;'> \
+              <h5 class='my-3'> \
                 <strong> \
                   <a class='dark-grey-text' href='Tienda.php?catNombre="+datos[i].CATNOMBRE+"'>"+datos[i].CATNOMBRE+"</a> \
                 </strong> \
@@ -1120,6 +1120,7 @@ vistaWeb.prototype.mostrarTagsFiltros = function(opcion){
     FUNCION MOSTRAR PRODUCTOS X CATEGORIA
 =============================================*/
 
+var total, paginas;
 var totalP, paginasP;
 
 /* --> SELECCIONAR CATEGORIA */ 
@@ -1155,8 +1156,8 @@ vistaWeb.prototype.mostrarProductosXCategoria = function(opcion){
 /* --> GENERAR PAGINACION [FILTRO] */ 
 vistaWeb.prototype.generarPaginacion = function(datos){
 
-    var total = datos.length;
-    var paginas=0;
+    total = datos.length;
+    paginas=0;
 
     //CANTIDAD DE PAGINAS
     if(total%8==0){
@@ -1174,13 +1175,10 @@ vistaWeb.prototype.generarPaginacion = function(datos){
         activeClass: 'activePage',
         disabledClass: 'disabled'
     }).on("page", function(event, num){
-        console.log(totalP)
-        console.log(paginasP)
-        console.log(data)
       
         vWeb.generarProductos(totalP, paginasP, data,num);
     });
-    vWeb.generarProductos(total, paginas, datos,1);
+    vWeb.generarProductos(total, paginas, data,1);
   
     totalP=total;
     paginasP=paginas;
@@ -1240,11 +1238,27 @@ vistaWeb.prototype.mostrarProducto = function(cod){
               console.log('ERROR: '+datos.message);
           }
           else{
+            
+              sessionStorage.clear();
+            
+              //GUARDAR DATA
 
-              sessionStorage["presentacion"]=datos.PRODPRESENTACION;
-              sessionStorage["descripcion"]=datos.PRODDESCRIPCION;
+              sessionStorage["Producto-presentacion"]=datos.PRODPRESENTACION;
+              sessionStorage["Producto-descripcion"]=datos.PRODDESCRIPCION;
+            
+              sessionStorage["Producto-nombre"]=datos.PRODNOMBRE;
+              sessionStorage["Producto-codigoEs"]=datos.PRODCODIGOES;
+              sessionStorage["Producto-imagen"]=datos.PRODIMAGEN;
+              sessionStorage["Producto-codMarca"]=datos.CODMARCA;
+              sessionStorage["Producto-marcaNombre"]=datos.MARCNOMBRE;
+              sessionStorage["Producto-marcaImagen"]=datos.MARCIMAGEN;
+              sessionStorage["Producto-tags"]=datos.PRODTAGS;
+              sessionStorage["Producto-fichaTec"]=datos.PRODFICHATEC;
+              sessionStorage["Producto-catCodigo"]=datos.CATCODIGO;
+              sessionStorage["Producto-catNombre"]=datos.CATNOMBRE;
+              sessionStorage["Producto-destacado"]=datos.PRODDESTACADO;
 
-              window.location.href = "Producto.php?nombre="+datos.PRODNOMBRE+"&codigoEs="+datos.PRODCODIGOES+"&imagen="+datos.PRODIMAGEN+"&codMarca="+datos.CODMARCA+"&marcaNombre="+datos.MARCNOMBRE+"&marcaImagen="+datos.MARCIMAGEN+"&tags="+datos.PRODTAGS+"&fichaTec="+datos.PRODFICHATEC+"&catCodigo="+datos.CATCODIGO+"&catNombre="+datos.CATNOMBRE+"&destacado="+datos.PRODDESTACADO ;
+              window.location.href = "Producto";
 
           }
       }

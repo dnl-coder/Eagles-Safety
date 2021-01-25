@@ -389,7 +389,7 @@
 
                     <!-- CONTENIDO -->
                     <div class="col-10">
-                      <h5 class="font-weight-bold mb-3">Calidad</h5>
+                      <h5 class="font-weight-bold mb-3">Orientada al cliente</h5>
                       <p class="c1caracteristica1 grey-text"></p>
                     </div>
 
@@ -405,7 +405,7 @@
 
                     <!-- CONTENIDO -->
                     <div class="col-10">
-                      <h5 class="font-weight-bold mb-3">Eficiente</h5>
+                      <h5 class="font-weight-bold mb-3">Calidad</h5>
                       <p class="c1caracteristica2 grey-text"></p>
                     </div>
 
@@ -421,7 +421,7 @@
 
                     <!-- CONTENIDO -->
                     <div class="col-10">
-                      <h5 class="font-weight-bold mb-3">Garantía</h5>
+                      <h5 class="font-weight-bold mb-3">Honestidad</h5>
                       <p class="c1caracteristica3 grey-text mb-md-0"></p>
                     </div>
 
@@ -447,7 +447,7 @@
 
                     <!-- CONTENIDO -->
                     <div class="col-10">
-                      <h5 class="font-weight-bold mb-3">Confiable</h5>
+                      <h5 class="font-weight-bold mb-3">Trabajo en equipo</h5>
                       <p class="c1caracteristica4 grey-text"></p>
                     </div>
 
@@ -463,7 +463,7 @@
 
                     <!-- CONTENIDO -->
                     <div class="col-10">
-                      <h5 class="font-weight-bold mb-3">Eficaz</h5>
+                      <h5 class="font-weight-bold mb-3">Integridad</h5>
                       <p class="c1caracteristica5 grey-text"></p>
                     </div>
 
@@ -479,7 +479,7 @@
 
                     <!-- CONTENIDO -->
                     <div class="col-10">
-                      <h5 class="font-weight-bold mb-3">Mágico</h5>
+                      <h5 class="font-weight-bold mb-3">Pasión</h5>
                       <p class="c1caracteristica6 grey-text mb-0"></p>
                     </div>
 

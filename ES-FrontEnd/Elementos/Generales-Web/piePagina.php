@@ -152,7 +152,7 @@
     </div>
     
     <!--WhatsApp-->
-    <a class="btn wsp p-2" href="https://api.whatsapp.com/send?phone=51923289190" target="_blank"><i class="fab fa-whatsapp fa-3x"></i></a>
+    <a class="btn wsp p-2" href="https://api.whatsapp.com/send?phone=51999229937" target="_blank"><i class="fab fa-whatsapp fa-3x"></i></a>
     
     <!--Facebook-->
     <a class="btn fb-msg p-2" href="https://m.me/EaglesSafetyEIRL" target="_blank"><i class="fab fa-facebook-messenger fa-3x"></i></a>

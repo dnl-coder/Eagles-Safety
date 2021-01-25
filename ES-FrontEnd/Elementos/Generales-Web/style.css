@@ -274,14 +274,20 @@ b{font-weight: bold;}
     font-family: serif;
 }
 .carousel-control-next, .carousel-control-prev {
-    background: var(--secundary) !important;
-    width: 2% !important;
-    height: 6%;
+    background: var(--primary) !important;
+    width: 3% !important;
+    height: 20%;
     margin: auto;
 }
 
 /*destacados style*/
 .product-ofertas{background: var(--light1);}
+
+
+
+#carouselCategorias .view{
+  width: 100%;
+}
 
 /*=============================================
   NOSOTROS
