@@ -1238,6 +1238,10 @@ vistaWeb.prototype.mostrarProducto = function(cod){
               console.log('ERROR: '+datos.message);
           }
           else{
+            
+              sessionStorage.clear();
+            
+              //GUARDAR DATA
 
               sessionStorage["Producto-presentacion"]=datos.PRODPRESENTACION;
               sessionStorage["Producto-descripcion"]=datos.PRODDESCRIPCION;

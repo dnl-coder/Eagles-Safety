@@ -10,7 +10,7 @@
     
 </head>
 
-<body>
+<body onload="sessionStorage.clear();">
    
     <!-- CONTENT-->
     

@@ -26,15 +26,15 @@ class conexion {
     
 	public function __construct () {
 
-		$host = 'localhost';              //DIRECCION DEL HOST DONDE ESTARA ALOJADA LA BD
-		$user = 'root';                   //USUARIO DE INGRESO A LA BD
-		$password = '';                   //CONTRASEÑA DE INGRESO A LA BD
-		$database_name = 'escompe_master';     //NOMBRE DE LA BD
-        
-        //$host = 'localhost';              //DIRECCION DEL HOST DONDE ESTARA ALOJADA LA BD
-		//$user = 'escompe';                   //USUARIO DE INGRESO A LA BD
-		//$password = 'Y!F1mJ7Xl9.qe9';                   //CONTRASEÑA DE INGRESO A LA BD
+		//$host = 'localhost';              //DIRECCION DEL HOST DONDE ESTARA ALOJADA LA BD
+		//$user = 'root';                   //USUARIO DE INGRESO A LA BD
+		//$password = '';                   //CONTRASEÑA DE INGRESO A LA BD
 		//$database_name = 'escompe_master';     //NOMBRE DE LA BD
+        
+        $host = 'localhost';              //DIRECCION DEL HOST DONDE ESTARA ALOJADA LA BD
+		$user = 'u418931938_escompe';                   //USUARIO DE INGRESO A LA BD
+		$password = 'P9i-U!dRk3kg7!m';                   //CONTRASEÑA DE INGRESO A LA BD
+		$database_name = 'u418931938_escompe';     //NOMBRE DE LA BD
         
 		$this->_conexion=mysqli_connect($host, $user, $password, $database_name);
         
