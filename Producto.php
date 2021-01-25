@@ -195,7 +195,7 @@
       $(".tags").html(sessionStorage.getItem('Producto-tags'));
       
       //-- OBTENER PDF DEL PRODUCTO
-      if( sessionStorage.getItem('Producto-fichaTec') != null ){
+      if( sessionStorage.getItem('Producto-fichaTec') != null && sessionStorage.getItem('Producto-fichaTec').length != 0 ){
          $(".disponibilidadPDF").html("Archivo disponible");
          verPDF();
       }
