@@ -6,11 +6,11 @@ Using HTML5, CSS3, Javascript, JQuery, PHP and MySQL built a web catalog of a pe
 ## Stack
 
 ```python
-- React
-- Redux Toolkit
-- Ant Design
-- Chartjs
-- RapidAPI
+- HTML5
+- Javascript
+- JQuery
+- PHP
+- Postman
 - Git
-- Netlify
+- MySQL
 ```
